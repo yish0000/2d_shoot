@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="win32">
+      <UniqueIdentifier>{84a8ebd7-7cf0-47f6-b75e-d441df67da40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes">
+      <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource">
+      <UniqueIdentifier>{715254bc-d70b-4ec5-bf29-467dd3ace079}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Game">
+      <UniqueIdentifier>{48e9cb56-0193-4c6b-922a-74b74f192927}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Utility">
+      <UniqueIdentifier>{a0cf8436-91b2-492f-b080-5901786ab56c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\UI">
+      <UniqueIdentifier>{5d7184f6-4b9d-4f4f-9627-2cdaaed93f32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Data">
+      <UniqueIdentifier>{2ae615f7-2fc4-4dc1-8dfc-bd0e544cb35b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Network">
+      <UniqueIdentifier>{3aa2f4f4-a423-4520-b425-dfc8bd9900ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Scene">
+      <UniqueIdentifier>{f1c27fd5-3aef-4b97-8de6-fe147060f6cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Module">
+      <UniqueIdentifier>{c6eb02ce-00b2-4fbf-aaf0-1650aa49f3c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\AI">
+      <UniqueIdentifier>{c690dc4c-47e4-4719-83c0-41ffc03412aa}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AppDelegate.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\HelloWorldScene.cpp">
+      <Filter>Classes\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Game.cpp">
+      <Filter>Classes\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Module\ModuleBase.cpp">
+      <Filter>Classes\Module</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="main.h">
+      <Filter>win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AppDelegate.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\HelloWorldScene.h">
+      <Filter>Classes\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Game.h">
+      <Filter>Classes\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Module\ModuleBase.h">
+      <Filter>Classes\Module</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="game.rc">
+      <Filter>resource</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
