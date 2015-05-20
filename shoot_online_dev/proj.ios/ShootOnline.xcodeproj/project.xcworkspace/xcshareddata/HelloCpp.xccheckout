@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>E5C84183-FF89-4B75-965A-88ED936BCD64</string>
+	<key>IDESourceControlProjectName</key>
+	<string>HelloCpp</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>89F513F2874949D1C5BCC81C7220C35D435679AB</key>
+		<string>https://github.com/yish0000/2d_shoot.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>shoot_online_dev/proj.ios/HelloCpp.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>89F513F2874949D1C5BCC81C7220C35D435679AB</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/yish0000/2d_shoot.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>89F513F2874949D1C5BCC81C7220C35D435679AB</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>89F513F2874949D1C5BCC81C7220C35D435679AB</string>
+			<key>IDESourceControlWCCName</key>
+			<string>2d_shoot_online</string>
+		</dict>
+	</array>
+</dict>
+</plist>

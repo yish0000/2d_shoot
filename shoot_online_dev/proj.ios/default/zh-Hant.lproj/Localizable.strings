@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  DiceClient
+
+  Created by shizhenhua on 14-8-13.
+
+*/
+
+"GAMBLING_MYTURN" = "%@已經擲出點數，該您擲了！";
+"LIVEGAMBLING_FRIENDNOTICE" = "%@想要和您進行一場實時比賽，快來進行遊戲吧！";

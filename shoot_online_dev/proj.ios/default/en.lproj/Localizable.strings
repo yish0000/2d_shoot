@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  DiceClient
+
+  Created by shizhenhua on 14-8-13.
+
+*/
+
+"GAMBLING_MYTURN" = "It's your turn with %@, Try your best and good luck!";
+"LIVEGAMBLING_FRIENDNOTICE" = "%@ want to start a real-time game with you, Come on and good luck!";
