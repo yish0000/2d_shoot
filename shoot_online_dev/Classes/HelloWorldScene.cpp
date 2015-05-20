@@ -85,7 +85,7 @@ bool HelloWorld::init()
 void HelloWorld::onTouchesMoved(const std::vector<Touch*>& touches, Event *event)
 {
     auto touch = touches[0];
-    
+
     auto diff = touch->getDelta();
     auto node = getChildByTag(555);
     auto currentPos = node->getPosition();

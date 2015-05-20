@@ -17,7 +17,7 @@ public:
     
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
-    
+
     void onTouchesMoved(const std::vector<cocos2d::Touch*>& touches, cocos2d::Event *event);
 };
 
