@@ -45,10 +45,16 @@
     <ClCompile Include="..\Classes\HelloWorldScene.cpp">
       <Filter>Classes\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Game\Game.cpp">
+    <ClCompile Include="..\Classes\Scene\SCWorld.cpp">
+      <Filter>Classes\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Scene\SCTiledMap.cpp">
+      <Filter>Classes\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\SCGame.cpp">
       <Filter>Classes\Game</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Module\ModuleBase.cpp">
+    <ClCompile Include="..\Classes\Module\SCModuleBase.cpp">
       <Filter>Classes\Module</Filter>
     </ClCompile>
   </ItemGroup>
@@ -62,10 +68,16 @@
     <ClInclude Include="..\Classes\HelloWorldScene.h">
       <Filter>Classes\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Game\Game.h">
+    <ClInclude Include="..\Classes\Scene\SCWorld.h">
+      <Filter>Classes\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene\SCTiledMap.h">
+      <Filter>Classes\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\SCGame.h">
       <Filter>Classes\Game</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Module\ModuleBase.h">
+    <ClInclude Include="..\Classes\Module\SCModuleBase.h">
       <Filter>Classes\Module</Filter>
     </ClInclude>
   </ItemGroup>
