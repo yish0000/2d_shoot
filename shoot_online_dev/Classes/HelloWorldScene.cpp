@@ -27,6 +27,13 @@ bool HelloWorld::init()
         return false;
     }
     
+    setTouchEnabled(true);
+
+    // Load the tmx tiled map.
+    auto map = TMXTiledMap::create("map/d1z_01g_z01_fenzhengcaoyuan.tmx");
+    addChild(map, 0, 555);
+    map->setScale(4);
+    
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
@@ -75,6 +82,15 @@ bool HelloWorld::init()
     return true;
 }
 
+void HelloWorld::onTouchesMoved(const std::vector<Touch*>& touches, Event *event)
+{
+    auto touch = touches[0];
+    
+    auto diff = touch->getDelta();
+    auto node = getChildByTag(555);
+    auto currentPos = node->getPosition();
+    node->setPosition(currentPos + diff);
+}
 
 void HelloWorld::menuCloseCallback(Ref* pSender)
 {
