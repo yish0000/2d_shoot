@@ -58,6 +58,8 @@ private:
         float   floatValue;
         int     boolValue;
         string *stringValue;
+
+
     } ReturnValue;
 
     class CallInfo
