@@ -34,6 +34,12 @@
     <Filter Include="Classes\AI">
       <UniqueIdentifier>{c690dc4c-47e4-4719-83c0-41ffc03412aa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\Common">
+      <UniqueIdentifier>{1abfdfa3-183b-4046-bd50-d94265268f85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Account">
+      <UniqueIdentifier>{e17a197e-6f63-4973-8483-621830243849}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -57,6 +63,15 @@
     <ClCompile Include="..\Classes\Module\SCModuleBase.cpp">
       <Filter>Classes\Module</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Account\AccountPlatform.cpp">
+      <Filter>Classes\Account</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Common\SCEvent.cpp">
+      <Filter>Classes\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Common\SCThread.cpp">
+      <Filter>Classes\Common</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -79,6 +94,15 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Module\SCModuleBase.h">
       <Filter>Classes\Module</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Account\AccountPlatform.h">
+      <Filter>Classes\Account</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Common\SCEvent.h">
+      <Filter>Classes\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Common\SCThread.h">
+      <Filter>Classes\Common</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

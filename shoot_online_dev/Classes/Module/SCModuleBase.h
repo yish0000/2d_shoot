@@ -10,7 +10,9 @@
 #ifndef __SC_MODULEBASE_H__
 #define __SC_MODULEBASE_H__
 
-class SCModuleBase
+#include "Common/SCEvent.h"
+
+class SCModuleBase : public SCEventListener, public SCEventDispatcher
 {
 public:
 	SCModuleBase();
