@@ -14,8 +14,6 @@
 
 class SCMutex
 {
-	friend class SCCondition;
-
 public:
 	SCMutex(bool recursive=false);
 	~SCMutex();

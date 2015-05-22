@@ -55,8 +55,8 @@ class SCEventDispatcher
 	friend class SCEventProcessQueue;
 
 public:
-	SCEventDispatcher() {}
-	virtual ~SCEventDispatcher() {}
+	SCEventDispatcher();
+	virtual ~SCEventDispatcher();
 
 	// 主线程内调用
 	void addEventListener(const std::string& eventType, SCEventListener* listener, SEL_SCEventCallback callback, int priority=0);
@@ -64,17 +64,17 @@ public:
 	void removeAllForListener(SCEventListener* listener);
 	void removeAllListeners();
 
-	void dispatchEvent(SCEvent* pEvent, bool bDeleteAfterComplete = false);
+	void dispatchEvent(SCEvent* pEvent);
 	void dispatchEvent(const std::string& type);
 
-private:
+protected:
 	typedef std::multimap<SCEventListener*, SEL_SCEventCallback> ListenerMap;
 	typedef std::map<int, ListenerMap, std::greater<int> > PriorityMap;
 	typedef std::map<std::string, PriorityMap> EventMap;
 	EventMap m_eventMap;
 
 	// 处理事件
-	void onEvent(SCEvent* pEvent, bool bDeleteAfterComplete);
+	void onEvent(SCEvent* pEvent);
 };
 
 /** 事件处理，(GL Thread mainLoop中执行的)
@@ -85,14 +85,16 @@ class SCEventProcessQueue
 	{
 		SCEventDispatcher* pDispatcher;
 		SCEvent* pEvent;
-		bool bDeleteAfterComplete;
 	};
 
 public:
-	SCEventProcessQueue();
-	virtual ~SCEventProcessQueue();
+	SCEventProcessQueue() : m_bQueueEmpty(true) {}
+	virtual ~SCEventProcessQueue() {}
 
-	void addEvent(SCEventDispatcher* dispatcher, SCEvent* pEvent, bool bDeleteAfterComplete = false);
+	void registerDispatcher(SCEventDispatcher* pDispatcher);
+	void unregisterDispatcher(SCEventDispatcher* pDispatcher);
+
+	void addEvent(SCEventDispatcher* dispatcher, SCEvent* pEvent);
 	void update(float dt);
 
 	static SCEventProcessQueue& getInstance();
@@ -100,6 +102,7 @@ public:
 protected:
 	bool m_bQueueEmpty;
 	std::queue<Event> m_dispatchQueue;
+	std::vector<SCEventDispatcher*> m_dispachers;
 	SCMutex m_mutexQueue;
 };
 

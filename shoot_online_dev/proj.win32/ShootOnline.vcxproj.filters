@@ -40,6 +40,12 @@
     <Filter Include="Classes\Account">
       <UniqueIdentifier>{e17a197e-6f63-4973-8483-621830243849}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\Player">
+      <UniqueIdentifier>{eccad8f3-3452-41ee-81b6-a3b469bc9d33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Network\Http">
+      <UniqueIdentifier>{a9ebfd00-55a8-4bd1-8267-633800356bac}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -72,6 +78,12 @@
     <ClCompile Include="..\Classes\Common\SCThread.cpp">
       <Filter>Classes\Common</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Utility\SCUtilityFunc.cpp">
+      <Filter>Classes\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Module\SCModuleManager.cpp">
+      <Filter>Classes\Module</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -103,6 +115,18 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Common\SCThread.h">
       <Filter>Classes\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Module\SCModuleTypes.h">
+      <Filter>Classes\Module</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Common\SCEventTypes.h">
+      <Filter>Classes\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Utility\SCUtilityFunc.h">
+      <Filter>Classes\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Module\SCModuleManager.h">
+      <Filter>Classes\Module</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

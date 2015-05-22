@@ -140,20 +140,26 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClCompile Include="..\Classes\Game\SCGame.cpp" />
     <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
     <ClCompile Include="..\Classes\Module\SCModuleBase.cpp" />
+    <ClCompile Include="..\Classes\Module\SCModuleManager.cpp" />
     <ClCompile Include="..\Classes\Scene\SCWorld.cpp" />
     <ClCompile Include="..\Classes\Scene\SCTiledMap.cpp" />
+    <ClCompile Include="..\Classes\Utility\SCUtilityFunc.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\Account\AccountPlatform.h" />
     <ClInclude Include="..\Classes\AppDelegate.h" />
+    <ClInclude Include="..\Classes\Common\SCEventTypes.h" />
     <ClInclude Include="..\Classes\Common\SCThread.h" />
     <ClInclude Include="..\Classes\Common\SCEvent.h" />
     <ClInclude Include="..\Classes\Game\SCGame.h" />
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
     <ClInclude Include="..\Classes\Module\SCModuleBase.h" />
+    <ClInclude Include="..\Classes\Module\SCModuleManager.h" />
+    <ClInclude Include="..\Classes\Module\SCModuleTypes.h" />
     <ClInclude Include="..\Classes\Scene\SCWorld.h" />
     <ClInclude Include="..\Classes\Scene\SCTiledMap.h" />
+    <ClInclude Include="..\Classes\Utility\SCUtilityFunc.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>

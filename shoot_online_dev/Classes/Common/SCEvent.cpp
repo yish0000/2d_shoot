@@ -16,19 +16,31 @@
 //  
 ///////////////////////////////////////////////////////////////////////////
 
-void SCEventDispatcher::dispatchEvent(SCEvent* pEvent, bool bDeleteAfterComplete)
+SCEventDispatcher::SCEventDispatcher()
 {
-	SCEventProcessQueue::getInstance().addEvent(this, pEvent, bDeleteAfterComplete);
+	SCEventProcessQueue::getInstance().registerDispatcher(this);
+}
+
+SCEventDispatcher::~SCEventDispatcher()
+{
+	SCEventProcessQueue::getInstance().unregisterDispatcher(this);
+}
+
+void SCEventDispatcher::dispatchEvent(SCEvent* pEvent)
+{
+	SCEventProcessQueue::getInstance().addEvent(this, pEvent);
 }
 
 void SCEventDispatcher::dispatchEvent(const std::string& type)
 {
-	SCEvent e(type);
-	dispatchEvent(&e);
+	dispatchEvent(new SCEvent(type));
 }
 
 void SCEventDispatcher::addEventListener(const std::string& eventType, SCEventListener* listener, SEL_SCEventCallback callback, int priority)
 {
+	if( !listener || callback )
+		return;
+
 	ListenerMap& listenerMap = m_eventMap[eventType][priority];
 	ListenerMap::iterator it = listenerMap.lower_bound(listener);
 	ListenerMap::iterator ie = listenerMap.end();
@@ -110,8 +122,9 @@ void SCEventDispatcher::removeAllListeners()
 	m_eventMap.clear();
 }
 
-void SCEventDispatcher::onEvent(SCEvent* pEvent, bool bDeleteAfterComplete)
+void SCEventDispatcher::onEvent(SCEvent* pEvent)
 {
+	CCASSERT(pEvent, "pEvent is null!");
 	EventMap::iterator eit = m_eventMap.find(pEvent->getType());
 	if( eit == m_eventMap.end() )
 		return;
@@ -137,14 +150,37 @@ void SCEventDispatcher::onEvent(SCEvent* pEvent, bool bDeleteAfterComplete)
 //  
 ///////////////////////////////////////////////////////////////////////////
 
-void SCEventProcessQueue::addEvent(SCEventDispatcher* dispatcher, SCEvent* pEvent, bool bDeleteAfterComplete)
+SCEventProcessQueue& SCEventProcessQueue::getInstance()
+{
+	static SCEventProcessQueue obj;
+	return obj;
+}
+
+void SCEventProcessQueue::registerDispatcher(SCEventDispatcher* pDispatcher)
+{
+	m_dispachers.push_back(pDispatcher);
+}
+
+void SCEventProcessQueue::unregisterDispatcher(SCEventDispatcher* pDispatcher)
+{
+	std::vector<SCEventDispatcher*>::iterator it;
+	for(it=m_dispachers.begin(); it!=m_dispachers.end(); ++it)
+	{
+		if( (*it) == pDispatcher )
+		{
+			m_dispachers.erase(it);
+			break;
+		}
+	}
+}
+
+void SCEventProcessQueue::addEvent(SCEventDispatcher* dispatcher, SCEvent* pEvent)
 {
 	SCScopedMutex keeper(m_mutexQueue);
 
 	Event ev;
 	ev.pDispatcher = dispatcher;
 	ev.pEvent = pEvent;
-	ev.bDeleteAfterComplete = bDeleteAfterComplete;
 	m_dispatchQueue.push(ev);
 	m_bQueueEmpty = false;
 }
@@ -161,7 +197,14 @@ void SCEventProcessQueue::update(float delta)
 		{
 			Event entry = m_dispatchQueue.front();
 			m_dispatchQueue.pop();
-			entry.pDispatcher->onEvent(entry.pEvent, entry.bDeleteAfterComplete);
+
+			std::vector<SCEventDispatcher*>::iterator it = m_dispachers.begin();
+			for(; it!=m_dispachers.end(); ++it)
+			{
+				(*it)->onEvent(entry.pEvent);
+			}
+
+			delete entry.pEvent;
 		}
 
 		m_bQueueEmpty = true;
