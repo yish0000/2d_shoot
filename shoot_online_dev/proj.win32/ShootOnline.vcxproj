@@ -82,7 +82,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>pthreadVCE2.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
       <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -114,7 +114,7 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>libcurl_imp.lib;websockets.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>libcurl_imp.lib;websockets.lib;;pthreadVCE2.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
       <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -137,10 +137,13 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\Common\SCEvent.cpp" />
     <ClCompile Include="..\Classes\Common\SCThread.cpp" />
+    <ClCompile Include="..\Classes\Effect\SCEffect.cpp" />
     <ClCompile Include="..\Classes\Game\SCGame.cpp" />
+    <ClCompile Include="..\Classes\Game\SCJoystick.cpp" />
     <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
     <ClCompile Include="..\Classes\Module\SCModuleBase.cpp" />
     <ClCompile Include="..\Classes\Module\SCModuleManager.cpp" />
+    <ClCompile Include="..\Classes\Scene\SCSceneBase.cpp" />
     <ClCompile Include="..\Classes\Scene\SCWorld.cpp" />
     <ClCompile Include="..\Classes\Scene\SCTiledMap.cpp" />
     <ClCompile Include="..\Classes\Utility\SCUtilityFunc.cpp" />
@@ -152,13 +155,18 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\Common\SCEventTypes.h" />
     <ClInclude Include="..\Classes\Common\SCThread.h" />
     <ClInclude Include="..\Classes\Common\SCEvent.h" />
+    <ClInclude Include="..\Classes\Effect\SCEffect.h" />
     <ClInclude Include="..\Classes\Game\SCGame.h" />
+    <ClInclude Include="..\Classes\Game\SCJoystick.h" />
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
     <ClInclude Include="..\Classes\Module\SCModuleBase.h" />
     <ClInclude Include="..\Classes\Module\SCModuleManager.h" />
     <ClInclude Include="..\Classes\Module\SCModuleTypes.h" />
+    <ClInclude Include="..\Classes\Scene\SCSceneBase.h" />
     <ClInclude Include="..\Classes\Scene\SCWorld.h" />
     <ClInclude Include="..\Classes\Scene\SCTiledMap.h" />
+    <ClInclude Include="..\Classes\UIModule\UIModule.h" />
+    <ClInclude Include="..\Classes\UI\UIModule.cpp" />
     <ClInclude Include="..\Classes\Utility\SCUtilityFunc.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
@@ -176,6 +184,9 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

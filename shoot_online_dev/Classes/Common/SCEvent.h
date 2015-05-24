@@ -55,8 +55,8 @@ class SCEventDispatcher
 	friend class SCEventProcessQueue;
 
 public:
-	SCEventDispatcher();
-	virtual ~SCEventDispatcher();
+	SCEventDispatcher() {}
+	virtual ~SCEventDispatcher() {}
 
 	// 主线程内调用
 	void addEventListener(const std::string& eventType, SCEventListener* listener, SEL_SCEventCallback callback, int priority=0);
@@ -91,9 +91,6 @@ public:
 	SCEventProcessQueue() : m_bQueueEmpty(true) {}
 	virtual ~SCEventProcessQueue() {}
 
-	void registerDispatcher(SCEventDispatcher* pDispatcher);
-	void unregisterDispatcher(SCEventDispatcher* pDispatcher);
-
 	void addEvent(SCEventDispatcher* dispatcher, SCEvent* pEvent);
 	void update(float dt);
 
@@ -102,7 +99,6 @@ public:
 protected:
 	bool m_bQueueEmpty;
 	std::queue<Event> m_dispatchQueue;
-	std::vector<SCEventDispatcher*> m_dispachers;
 	SCMutex m_mutexQueue;
 };
 

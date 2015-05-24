@@ -16,16 +16,6 @@
 //  
 ///////////////////////////////////////////////////////////////////////////
 
-SCEventDispatcher::SCEventDispatcher()
-{
-	SCEventProcessQueue::getInstance().registerDispatcher(this);
-}
-
-SCEventDispatcher::~SCEventDispatcher()
-{
-	SCEventProcessQueue::getInstance().unregisterDispatcher(this);
-}
-
 void SCEventDispatcher::dispatchEvent(SCEvent* pEvent)
 {
 	SCEventProcessQueue::getInstance().addEvent(this, pEvent);
@@ -127,7 +117,10 @@ void SCEventDispatcher::onEvent(SCEvent* pEvent)
 	CCASSERT(pEvent, "pEvent is null!");
 	EventMap::iterator eit = m_eventMap.find(pEvent->getType());
 	if( eit == m_eventMap.end() )
+	{
+		delete pEvent;
 		return;
+	}
 
 	CCASSERT(!eit->second.empty(), "");
 	PriorityMap backup = eit->second;
@@ -142,6 +135,8 @@ void SCEventDispatcher::onEvent(SCEvent* pEvent)
 			(lit->first->*lit->second)(pEvent);
 		}
 	}
+
+	delete pEvent;
 }
 
 ///////////////////////////////////////////////////////////////////////////
@@ -154,24 +149,6 @@ SCEventProcessQueue& SCEventProcessQueue::getInstance()
 {
 	static SCEventProcessQueue obj;
 	return obj;
-}
-
-void SCEventProcessQueue::registerDispatcher(SCEventDispatcher* pDispatcher)
-{
-	m_dispachers.push_back(pDispatcher);
-}
-
-void SCEventProcessQueue::unregisterDispatcher(SCEventDispatcher* pDispatcher)
-{
-	std::vector<SCEventDispatcher*>::iterator it;
-	for(it=m_dispachers.begin(); it!=m_dispachers.end(); ++it)
-	{
-		if( (*it) == pDispatcher )
-		{
-			m_dispachers.erase(it);
-			break;
-		}
-	}
 }
 
 void SCEventProcessQueue::addEvent(SCEventDispatcher* dispatcher, SCEvent* pEvent)
@@ -193,19 +170,9 @@ void SCEventProcessQueue::update(float delta)
 	SCScopedMutex keeper(m_mutexQueue);
 	if( !m_bQueueEmpty )
 	{
-		while( !m_dispatchQueue.empty() )
-		{
-			Event entry = m_dispatchQueue.front();
-			m_dispatchQueue.pop();
-
-			std::vector<SCEventDispatcher*>::iterator it = m_dispachers.begin();
-			for(; it!=m_dispachers.end(); ++it)
-			{
-				(*it)->onEvent(entry.pEvent);
-			}
-
-			delete entry.pEvent;
-		}
+		Event entry = m_dispatchQueue.front();
+		m_dispatchQueue.pop();
+		entry.pDispatcher->onEvent(entry.pEvent);
 
 		m_bQueueEmpty = true;
 	}

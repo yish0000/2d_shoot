@@ -1,30 +1,28 @@
 /*
  * ------------------------------------------------------------------------
- *  Name:   SCWorld.cpp
- *  Desc:   世界对象
+ *  Name:   SCEffect.cpp
+ *  Desc:   特效对象
  *  Author: Yish
  *  Date:   2015/5/24
  * ------------------------------------------------------------------------
  */
 
-#include "SCWorld.h"
+#include "SCEffect.h"
 
-SCWorld::SCWorld()
+USING_NS_CC;
+
+SCEffect::SCEffect()
 {
 }
 
-SCWorld::~SCWorld()
+SCEffect::~SCEffect()
 {
 }
 
-bool SCWorld::init()
+bool SCEffect::init()
 {
 	if( !Node::init() )
 		return false;
 
 	return true;
-}
-
-void SCWorld::update(float dt)
-{
 }

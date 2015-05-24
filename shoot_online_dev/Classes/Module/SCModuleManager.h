@@ -25,7 +25,9 @@ public:
 	bool init();
 	void update(float dt);
 
-	SCModuleBase* getModule(int ID);
+	SCModuleBase* getModule(int type);
+
+	static SCModuleManager& getInstance();
 
 protected:
 	ModuleList m_Modules;

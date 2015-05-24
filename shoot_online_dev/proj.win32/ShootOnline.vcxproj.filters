@@ -28,9 +28,6 @@
     <Filter Include="Classes\Scene">
       <UniqueIdentifier>{f1c27fd5-3aef-4b97-8de6-fe147060f6cc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Classes\Module">
-      <UniqueIdentifier>{c6eb02ce-00b2-4fbf-aaf0-1650aa49f3c1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Classes\AI">
       <UniqueIdentifier>{c690dc4c-47e4-4719-83c0-41ffc03412aa}</UniqueIdentifier>
     </Filter>
@@ -46,6 +43,15 @@
     <Filter Include="Classes\Network\Http">
       <UniqueIdentifier>{a9ebfd00-55a8-4bd1-8267-633800356bac}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\Effect">
+      <UniqueIdentifier>{74f233df-3076-4690-b1f9-968e63222544}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Module">
+      <UniqueIdentifier>{c6eb02ce-00b2-4fbf-aaf0-1650aa49f3c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Network\Socket">
+      <UniqueIdentifier>{abaac9c5-0cc1-4458-8d18-3f71634bb373}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -53,9 +59,6 @@
     </ClCompile>
     <ClCompile Include="..\Classes\AppDelegate.cpp">
       <Filter>Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\HelloWorldScene.cpp">
-      <Filter>Classes\Scene</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Scene\SCWorld.cpp">
       <Filter>Classes\Scene</Filter>
@@ -84,6 +87,18 @@
     <ClCompile Include="..\Classes\Module\SCModuleManager.cpp">
       <Filter>Classes\Module</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Scene\SCSceneBase.cpp">
+      <Filter>Classes\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\HelloWorldScene.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\SCJoystick.cpp">
+      <Filter>Classes\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Effect\SCEffect.cpp">
+      <Filter>Classes\Effect</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -91,9 +106,6 @@
     </ClInclude>
     <ClInclude Include="..\Classes\AppDelegate.h">
       <Filter>Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\HelloWorldScene.h">
-      <Filter>Classes\Scene</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Scene\SCWorld.h">
       <Filter>Classes\Scene</Filter>
@@ -128,10 +140,31 @@
     <ClInclude Include="..\Classes\Module\SCModuleManager.h">
       <Filter>Classes\Module</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\Scene\SCSceneBase.h">
+      <Filter>Classes\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\HelloWorldScene.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\SCJoystick.h">
+      <Filter>Classes\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UIModule\UIModule.h">
+      <Filter>Classes\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\UIModule.cpp">
+      <Filter>Classes\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Effect\SCEffect.h">
+      <Filter>Classes\Effect</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">
       <Filter>resource</Filter>
     </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>

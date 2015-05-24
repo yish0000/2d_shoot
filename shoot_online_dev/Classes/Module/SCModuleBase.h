@@ -14,7 +14,7 @@
 #include "Common/SCEventTypes.h"
 #include "SCModuleTypes.h"
 
-class SCModuleBase : public SCEventListener, public SCEventDispatcher
+class SCModuleBase : public SCEventListener
 {
 public:
 	SCModuleBase();
@@ -25,6 +25,13 @@ public:
 
 	int getModuleType() const { return m_iType; }
 	float getUpdateInterval() const { return m_fUpdateInterval; }
+
+	// 注册事件
+	void addEventListener(const std::string& eventType, SEL_SCEventCallback callback, int priority=0);
+
+	// 派发事件
+	void dispatchEvent(SCEvent* pEvent);
+	void dispatchEvent(const std::string& eventName);
 
 protected:
 	int m_iType;

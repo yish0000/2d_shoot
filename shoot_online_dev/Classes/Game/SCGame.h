@@ -12,8 +12,18 @@
 
 #include "cocos2d.h"
 
-class SCGame : public cocos2d::Object
+class SCGame : public cocos2d::Ref
 {
+public:
+
+	enum GAMESTATE
+	{
+		GS_NONE,
+		GS_LOADING,
+		GS_MAIN,
+		GS_BATTLE,
+	};
+
 public:
 	SCGame();
 	virtual ~SCGame();
@@ -21,7 +31,12 @@ public:
 	virtual bool init();
 	virtual void update(float dt);
 
+	GAMESTATE getGameState() const { return m_gameState; }
+
 	static SCGame& getInstance();
+
+protected:
+	GAMESTATE m_gameState;
 };
 
 ///////////////////////////////////////////////////////////////////////////

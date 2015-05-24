@@ -13,11 +13,12 @@
 
 enum
 {
-	MODULE_UNKNOWN,
+	MODULE_TYPE_UNKNOWN,
 
-	MODULE_LOGIN,
-	MODULE_GAME,
-	MODULE_NETWORK,
+	MODULE_TYPE_LOGIN,
+	MODULE_TYPE_GAME,
+	MODULE_TYPE_NETWORK,
+	MODULE_TYPE_UI,
 };
 
 ///////////////////////////////////////////////////////////////////////////

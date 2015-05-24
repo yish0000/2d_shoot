@@ -13,10 +13,14 @@
 #include <cocos2d.h>
 #include "Module/SCModuleBase.h"
 
+class UIModule;
+
 inline cocos2d::Scheduler* glb_getScheduler() { return cocos2d::Director::getInstance()->getScheduler(); }
 inline cocos2d::Scene* glb_getCurScene() { return cocos2d::Director::getInstance()->getRunningScene(); }
 
+int glb_getGameState();
 SCModuleBase* glb_getModule(int moduleType);
+inline UIModule* glb_getUIModule() { return (UIModule*)glb_getModule(MODULE_TYPE_UI); }
 
 ///////////////////////////////////////////////////////////////////////////
 

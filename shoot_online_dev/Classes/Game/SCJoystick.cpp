@@ -1,30 +1,26 @@
 /*
  * ------------------------------------------------------------------------
- *  Name:   SCWorld.cpp
- *  Desc:   世界对象
+ *  Name:   SCJoystick.cpp
+ *  Desc:   手柄对象
  *  Author: Yish
  *  Date:   2015/5/24
  * ------------------------------------------------------------------------
  */
 
-#include "SCWorld.h"
+#include "SCJoystick.h"
 
-SCWorld::SCWorld()
+SCJoystick::SCJoystick()
 {
 }
 
-SCWorld::~SCWorld()
+SCJoystick::~SCJoystick()
 {
 }
 
-bool SCWorld::init()
+bool SCJoystick::init()
 {
 	if( !Node::init() )
 		return false;
 
 	return true;
-}
-
-void SCWorld::update(float dt)
-{
 }
