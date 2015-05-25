@@ -1,7 +1,7 @@
-/*
+ï»¿/*
  * ------------------------------------------------------------------------
  *  Name:   Event.h
- *  Desc:   ÊÂ¼şÏµÍ³
+ *  Desc:   äº‹ä»¶ç³»ç»Ÿ
  *  Author: Yish
  *  Date:   2015/5/21
  * ------------------------------------------------------------------------
@@ -19,7 +19,7 @@
 class SCEventListener;
 class SCEventDispatcher;
 
-/** ÊÂ¼ş»ùÀà
+/** äº‹ä»¶åŸºç±»
 */
 class SCEvent
 {
@@ -37,7 +37,7 @@ protected:
 	SCEventDispatcher* m_pSource;
 };
 
-/** ÊÂ¼ş¼àÌıÆ÷»ùÀà
+/** äº‹ä»¶ç›‘å¬å™¨åŸºç±»
 */
 class SCEventListener
 {
@@ -48,7 +48,7 @@ public:
 typedef void (SCEventListener::*SEL_SCEventCallback) (SCEvent* pEvent);
 #define sceventcallback_selector(selector) (SEL_SCEventCallback)(&selector)
 
-/** ÊÂ¼şÅÉ·¢
+/** äº‹ä»¶æ´¾å‘
 */
 class SCEventDispatcher
 {
@@ -58,7 +58,7 @@ public:
 	SCEventDispatcher() {}
 	virtual ~SCEventDispatcher() {}
 
-	// Ö÷Ïß³ÌÄÚµ÷ÓÃ
+	// ä¸»çº¿ç¨‹å†…è°ƒç”¨
 	void addEventListener(const std::string& eventType, SCEventListener* listener, SEL_SCEventCallback callback, int priority=0);
 	void removeEventListener(const std::string& eventType, SCEventListener* listener, SEL_SCEventCallback callback, int priority=0);
 	void removeAllForListener(SCEventListener* listener);
@@ -73,11 +73,11 @@ protected:
 	typedef std::map<std::string, PriorityMap> EventMap;
 	EventMap m_eventMap;
 
-	// ´¦ÀíÊÂ¼ş
+	// å¤„ç†äº‹ä»¶
 	void onEvent(SCEvent* pEvent);
 };
 
-/** ÊÂ¼ş´¦Àí£¬(GL Thread mainLoopÖĞÖ´ĞĞµÄ)
+/** äº‹ä»¶å¤„ç†ï¼Œ(GL Thread mainLoopä¸­æ‰§è¡Œçš„)
 */
 class SCEventProcessQueue
 {
@@ -88,9 +88,10 @@ class SCEventProcessQueue
 	};
 
 public:
-	SCEventProcessQueue() : m_bQueueEmpty(true) {}
-	virtual ~SCEventProcessQueue() {}
+	SCEventProcessQueue();
+	virtual ~SCEventProcessQueue();
 
+	bool init();
 	void addEvent(SCEventDispatcher* dispatcher, SCEvent* pEvent);
 	void update(float dt);
 

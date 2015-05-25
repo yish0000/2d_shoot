@@ -15,6 +15,15 @@
 class SCTiledMap : public cocos2d::TMXTiledMap
 {
 public:
+
+	struct Collision
+	{
+		cocos2d::Point pos;
+		cocos2d::Rect boundingBox;
+		bool xCollision;
+	};
+
+public:
 	SCTiledMap();
 	virtual ~SCTiledMap();
 

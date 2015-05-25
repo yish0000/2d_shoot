@@ -1,7 +1,7 @@
-/*
+Ôªø/*
  * ------------------------------------------------------------------------
  *  Name:   SCModuleBase.cpp
- *  Desc:   ƒ£øÈª˘¿‡
+ *  Desc:   Ê®°ÂùóÂü∫Á±ª
  *  Author: Yish
  *  Date:   2015/5/20
  * ------------------------------------------------------------------------
@@ -13,7 +13,7 @@
 
 USING_NS_CC;
 
-SCModuleBase::SCModuleBase() : m_iType(MODULE_UNKNOWN), m_fUpdateInterval(-1)
+SCModuleBase::SCModuleBase() : m_iType(MODULE_TYPE_UNKNOWN), m_fUpdateInterval(-1)
 {
 }
 

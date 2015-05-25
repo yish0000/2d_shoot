@@ -40,17 +40,32 @@
     <Filter Include="Classes\Player">
       <UniqueIdentifier>{eccad8f3-3452-41ee-81b6-a3b469bc9d33}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Classes\Network\Http">
-      <UniqueIdentifier>{a9ebfd00-55a8-4bd1-8267-633800356bac}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Classes\Effect">
       <UniqueIdentifier>{74f233df-3076-4690-b1f9-968e63222544}</UniqueIdentifier>
     </Filter>
     <Filter Include="Classes\Module">
       <UniqueIdentifier>{c6eb02ce-00b2-4fbf-aaf0-1650aa49f3c1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Classes\Network\Socket">
+    <Filter Include="Classes\Network\netlib">
+      <UniqueIdentifier>{d2deff77-dd8f-47a8-a02f-eb03af59b898}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Network\netlib\Http">
+      <UniqueIdentifier>{a9ebfd00-55a8-4bd1-8267-633800356bac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Network\netlib\Socket">
       <UniqueIdentifier>{abaac9c5-0cc1-4458-8d18-3f71634bb373}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Network\netlib\Stream">
+      <UniqueIdentifier>{71eea68d-3765-4b28-8a74-28d519c3bfd0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Network\netlib\Protocol">
+      <UniqueIdentifier>{4101f793-d5b0-48d1-8f14-00ed8bf4a27a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Network\netlib\JsonLib">
+      <UniqueIdentifier>{38076baa-3e4b-4085-b392-10587e13b9a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Network\netlib\JsonLib\include">
+      <UniqueIdentifier>{a8418657-481c-4418-9042-cdf5b41aa05b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -98,6 +113,36 @@
     </ClCompile>
     <ClCompile Include="..\Classes\Effect\SCEffect.cpp">
       <Filter>Classes\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Network\SCNetworkModule.cpp">
+      <Filter>Classes\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Network\netlib\stream\BinaryStreamCoder.cpp">
+      <Filter>Classes\Network\netlib\Stream</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Network\netlib\stream\JsonStreamCoder.cpp">
+      <Filter>Classes\Network\netlib\Stream</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Network\netlib\stream\KeyedStreamCoder.cpp">
+      <Filter>Classes\Network\netlib\Stream</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Network\netlib\protocol\Processor.cpp">
+      <Filter>Classes\Network\netlib\Protocol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Network\netlib\protocol\Protocol.cpp">
+      <Filter>Classes\Network\netlib\Protocol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Network\netlib\libjson\json_reader.cpp">
+      <Filter>Classes\Network\netlib\JsonLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Network\netlib\libjson\json_value.cpp">
+      <Filter>Classes\Network\netlib\JsonLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Network\netlib\libjson\json_writer.cpp">
+      <Filter>Classes\Network\netlib\JsonLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Network\netlib\http\HttpCurl.cpp">
+      <Filter>Classes\Network\netlib\Http</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -149,14 +194,77 @@
     <ClInclude Include="..\Classes\Game\SCJoystick.h">
       <Filter>Classes\Game</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\UIModule\UIModule.h">
-      <Filter>Classes\UI</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\UI\UIModule.cpp">
       <Filter>Classes\UI</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Effect\SCEffect.h">
       <Filter>Classes\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Network\SCNetworkModule.h">
+      <Filter>Classes\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\UIModule.h">
+      <Filter>Classes\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Network\netlib\stream\BinaryStream.h">
+      <Filter>Classes\Network\netlib\Stream</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Network\netlib\stream\BinaryStreamCoder.h">
+      <Filter>Classes\Network\netlib\Stream</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Network\netlib\stream\JsonStream.h">
+      <Filter>Classes\Network\netlib\Stream</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Network\netlib\stream\JsonStreamCoder.h">
+      <Filter>Classes\Network\netlib\Stream</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Network\netlib\stream\KeyedStream.h">
+      <Filter>Classes\Network\netlib\Stream</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Network\netlib\stream\KeyedStreamCoder.h">
+      <Filter>Classes\Network\netlib\Stream</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Network\netlib\stream\StreamCoder.h">
+      <Filter>Classes\Network\netlib\Stream</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Network\netlib\protocol\Processor.h">
+      <Filter>Classes\Network\netlib\Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Network\netlib\protocol\Protocol.h">
+      <Filter>Classes\Network\netlib\Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Network\netlib\libjson\json_batchallocator.h">
+      <Filter>Classes\Network\netlib\JsonLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Network\netlib\libjson\json_tool.h">
+      <Filter>Classes\Network\netlib\JsonLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Network\netlib\http\HttpCurl.h">
+      <Filter>Classes\Network\netlib\Http</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Network\netlib\libjson\json\autolink.h">
+      <Filter>Classes\Network\netlib\JsonLib\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Network\netlib\libjson\json\config.h">
+      <Filter>Classes\Network\netlib\JsonLib\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Network\netlib\libjson\json\features.h">
+      <Filter>Classes\Network\netlib\JsonLib\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Network\netlib\libjson\json\forwards.h">
+      <Filter>Classes\Network\netlib\JsonLib\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Network\netlib\libjson\json\json.h">
+      <Filter>Classes\Network\netlib\JsonLib\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Network\netlib\libjson\json\reader.h">
+      <Filter>Classes\Network\netlib\JsonLib\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Network\netlib\libjson\json\value.h">
+      <Filter>Classes\Network\netlib\JsonLib\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Network\netlib\libjson\json\writer.h">
+      <Filter>Classes\Network\netlib\JsonLib\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -165,6 +273,14 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram.cd" />
+    <None Include="..\Classes\Network\netlib\libjson\json_internalarray.inl">
+      <Filter>Classes\Network\netlib\JsonLib</Filter>
+    </None>
+    <None Include="..\Classes\Network\netlib\libjson\json_internalmap.inl">
+      <Filter>Classes\Network\netlib\JsonLib</Filter>
+    </None>
+    <None Include="..\Classes\Network\netlib\libjson\json_valueiterator.inl">
+      <Filter>Classes\Network\netlib\JsonLib</Filter>
+    </None>
   </ItemGroup>
 </Project>

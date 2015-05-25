@@ -1,7 +1,7 @@
-/*
+ï»¿/*
  * ------------------------------------------------------------------------
  *  Name:   SCModuleBase.h
- *  Desc:   Ä£¿é»ùÀà
+ *  Desc:   æ¨¡å—åŸºç±»
  *  Author: Yish
  *  Date:   2015/5/20
  * ------------------------------------------------------------------------
@@ -26,10 +26,10 @@ public:
 	int getModuleType() const { return m_iType; }
 	float getUpdateInterval() const { return m_fUpdateInterval; }
 
-	// ×¢²áÊÂ¼ş
+	// æ³¨å†Œäº‹ä»¶
 	void addEventListener(const std::string& eventType, SEL_SCEventCallback callback, int priority=0);
 
-	// ÅÉ·¢ÊÂ¼ş
+	// æ´¾å‘äº‹ä»¶
 	void dispatchEvent(SCEvent* pEvent);
 	void dispatchEvent(const std::string& eventName);
 

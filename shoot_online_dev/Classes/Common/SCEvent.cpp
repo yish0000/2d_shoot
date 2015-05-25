@@ -1,14 +1,14 @@
-/*
+﻿/*
  * ------------------------------------------------------------------------
  *  Name:   SCEvent.cpp
- *  Desc:   �¼�ϵͳ
+ *  Desc:   事件系统
  *  Author: Yish
  *  Date:   2015/5/21
  * ------------------------------------------------------------------------
  */
 
 #include "SCEvent.h"
-#include "base/ccMacros.h"
+#include "cocos2d.h"
 
 ///////////////////////////////////////////////////////////////////////////
 //  
@@ -149,6 +149,17 @@ SCEventProcessQueue& SCEventProcessQueue::getInstance()
 {
 	static SCEventProcessQueue obj;
 	return obj;
+}
+
+SCEventProcessQueue::SCEventProcessQueue()
+	: m_bQueueEmpty(true)
+{
+	cocos2d::Director::getInstance()->getScheduler()->scheduleUpdate(this, 0, false);
+}
+
+SCEventProcessQueue::~SCEventProcessQueue()
+{
+	cocos2d::Director::getInstance()->getScheduler()->unscheduleUpdate(this);
 }
 
 void SCEventProcessQueue::addEvent(SCEventDispatcher* dispatcher, SCEvent* pEvent)

@@ -69,7 +69,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(EngineRoot)cocos\audio\include;$(EngineRoot)external;$(EngineRoot)external\pthread\include;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)extensions;..\Classes;..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(EngineRoot)cocos\audio\include;$(EngineRoot)external;$(EngineRoot)external\pthread\include;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)external\curl\include\win32;$(EngineRoot)extensions;..\Classes;..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USE_MATH_DEFINES;GL_GLEXT_PROTOTYPES;CC_ENABLE_CHIPMUNK_INTEGRATION=1;COCOS2D_DEBUG=1;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -102,7 +102,7 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>$(EngineRoot)cocos\audio\include;$(EngineRoot)external;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)external\pthread\include;$(EngineRoot)extensions;..\Classes;..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(EngineRoot)cocos\audio\include;$(EngineRoot)external;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)external\pthread\include;$(EngineRoot)external\curl\include\win32;$(EngineRoot)extensions;..\Classes;..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USE_MATH_DEFINES;GL_GLEXT_PROTOTYPES;CC_ENABLE_CHIPMUNK_INTEGRATION=1;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -143,6 +143,16 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
     <ClCompile Include="..\Classes\Module\SCModuleBase.cpp" />
     <ClCompile Include="..\Classes\Module\SCModuleManager.cpp" />
+    <ClCompile Include="..\Classes\Network\netlib\http\HttpCurl.cpp" />
+    <ClCompile Include="..\Classes\Network\netlib\libjson\json_reader.cpp" />
+    <ClCompile Include="..\Classes\Network\netlib\libjson\json_value.cpp" />
+    <ClCompile Include="..\Classes\Network\netlib\libjson\json_writer.cpp" />
+    <ClCompile Include="..\Classes\Network\netlib\protocol\Processor.cpp" />
+    <ClCompile Include="..\Classes\Network\netlib\protocol\Protocol.cpp" />
+    <ClCompile Include="..\Classes\Network\netlib\stream\BinaryStreamCoder.cpp" />
+    <ClCompile Include="..\Classes\Network\netlib\stream\JsonStreamCoder.cpp" />
+    <ClCompile Include="..\Classes\Network\netlib\stream\KeyedStreamCoder.cpp" />
+    <ClCompile Include="..\Classes\Network\SCNetworkModule.cpp" />
     <ClCompile Include="..\Classes\Scene\SCSceneBase.cpp" />
     <ClCompile Include="..\Classes\Scene\SCWorld.cpp" />
     <ClCompile Include="..\Classes\Scene\SCTiledMap.cpp" />
@@ -162,11 +172,32 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\Module\SCModuleBase.h" />
     <ClInclude Include="..\Classes\Module\SCModuleManager.h" />
     <ClInclude Include="..\Classes\Module\SCModuleTypes.h" />
+    <ClInclude Include="..\Classes\Network\netlib\http\HttpCurl.h" />
+    <ClInclude Include="..\Classes\Network\netlib\libjson\json\autolink.h" />
+    <ClInclude Include="..\Classes\Network\netlib\libjson\json\config.h" />
+    <ClInclude Include="..\Classes\Network\netlib\libjson\json\features.h" />
+    <ClInclude Include="..\Classes\Network\netlib\libjson\json\forwards.h" />
+    <ClInclude Include="..\Classes\Network\netlib\libjson\json\json.h" />
+    <ClInclude Include="..\Classes\Network\netlib\libjson\json\reader.h" />
+    <ClInclude Include="..\Classes\Network\netlib\libjson\json\value.h" />
+    <ClInclude Include="..\Classes\Network\netlib\libjson\json\writer.h" />
+    <ClInclude Include="..\Classes\Network\netlib\libjson\json_batchallocator.h" />
+    <ClInclude Include="..\Classes\Network\netlib\libjson\json_tool.h" />
+    <ClInclude Include="..\Classes\Network\netlib\protocol\Processor.h" />
+    <ClInclude Include="..\Classes\Network\netlib\protocol\Protocol.h" />
+    <ClInclude Include="..\Classes\Network\netlib\stream\BinaryStream.h" />
+    <ClInclude Include="..\Classes\Network\netlib\stream\BinaryStreamCoder.h" />
+    <ClInclude Include="..\Classes\Network\netlib\stream\JsonStream.h" />
+    <ClInclude Include="..\Classes\Network\netlib\stream\JsonStreamCoder.h" />
+    <ClInclude Include="..\Classes\Network\netlib\stream\KeyedStream.h" />
+    <ClInclude Include="..\Classes\Network\netlib\stream\KeyedStreamCoder.h" />
+    <ClInclude Include="..\Classes\Network\netlib\stream\StreamCoder.h" />
+    <ClInclude Include="..\Classes\Network\SCNetworkModule.h" />
     <ClInclude Include="..\Classes\Scene\SCSceneBase.h" />
     <ClInclude Include="..\Classes\Scene\SCWorld.h" />
     <ClInclude Include="..\Classes\Scene\SCTiledMap.h" />
-    <ClInclude Include="..\Classes\UIModule\UIModule.h" />
     <ClInclude Include="..\Classes\UI\UIModule.cpp" />
+    <ClInclude Include="..\Classes\UI\UIModule.h" />
     <ClInclude Include="..\Classes\Utility\SCUtilityFunc.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
@@ -186,7 +217,9 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ResourceCompile Include="game.rc" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram.cd" />
+    <None Include="..\Classes\Network\netlib\libjson\json_internalarray.inl" />
+    <None Include="..\Classes\Network\netlib\libjson\json_internalmap.inl" />
+    <None Include="..\Classes\Network\netlib\libjson\json_valueiterator.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
