@@ -1,10 +1,3 @@
-//
-//  md5.cpp
-//
-//  Created by 吴碧海 on 12-7-28.
-//  Copyright (c) 2012年 GameDream. All rights reserved.
-//
-
 /* MD5C.C - RSA Data Security, Inc., MD5 message-digest algorithm
  */
 
@@ -34,7 +27,7 @@
 #include <stdio.h>
 #include <string.h>
 
-namespace wge
+namespace scnet
 {
 #define S11 7
 #define S12 12
@@ -300,4 +293,4 @@ void MD5::transform(UINT4 state[4], const unsigned char block[64])
     /* Zeroize sensitive information. */
     memset(x, 0, sizeof(x));
 }
-};
+}

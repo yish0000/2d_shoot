@@ -1,43 +1,131 @@
-//
-//  NetMan.cpp
-//
-//  Created by bihai wu on 12-3-22.
-//
-
 #include "HttpMan.h"
 #include "HttpCurl.h"
-#include "Assert.h"
+#include "cocos2d.h"
 
-namespace wge
+namespace scnet
 {
-struct HttpEntry
+
+///////////////////////////////////////////////////////////////////////////
+//  
+//  class HttpEntryQueue
+//  
+///////////////////////////////////////////////////////////////////////////
+
+void HttpEntryQueue::push(HttpEntry* entry)
 {
-    HttpReq req;
-    HttpHandler *handler;
-    int timeout;
-};
-    
-class HttpThread : public Thread
+	SCScopedMutex keeper(m_mutex);
+	bool empty = m_queue.empty();
+	m_queue.push(entry);
+	if( empty )
+		m_cond.broadcast();
+}
+
+bool HttpEntryQueue::pop(HttpEntry*& entry, int timeoutInMillis)
 {
-public:
-    HttpThread(BlockingQueue<const HttpEntry *> *queue):_queue(queue)
-    {}
-    
-protected:
-    virtual int run();
-    
-private:
-    HttpThread(const HttpThread &);
-    HttpThread &operator=(const HttpThread &);
-    
-private:
-    BlockingQueue<const HttpEntry *> *_queue;
-};
+	SCScopedMutex keeper(m_mutex);
+	if( m_queue.empty() )
+		m_cond.wait(m_mutex, timeoutInMillis);
+
+	if( m_queue.empty() )
+		return false;
+	else
+	{
+		entry = m_queue.front();
+		m_queue.pop();
+		return true;
+	}
+}
+
+bool HttpEntryQueue::tryPop(HttpEntry*& entry)
+{
+	SCScopedMutex keeper(m_mutex);
+	if( m_queue.empty() )
+		return false;
+	else
+	{
+		entry = m_queue.front();
+		m_queue.pop();
+		return true;
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////
+//  
+//  class HttpThread
+//  
+///////////////////////////////////////////////////////////////////////////
+
+HttpThread::HttpThread(HttpEntryQueue* q) : _state(TS_CREATED), _queue(q)
+{
+}
+
+bool HttpThread::start()
+{    
+	_state = TS_RUNNING;
+
+	pthread_attr_t attr;
+	pthread_attr_init(&attr);
+	pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED);
+	if( 0 != pthread_create(&_threadId, &attr, threadProc, this) )
+	{
+		CCLOG("pthread_create failed");
+		pthread_attr_destroy(&attr);
+		return false;
+	}
+	pthread_attr_destroy(&attr);
+	return true;
+}
+
+void HttpThread::waitStop()
+{
+	SCScopedMutex keeper(_mutex);
+	if( _state != TS_STOPPED )
+	{
+		_stopCond.wait(_mutex);
+	}
+}
+
+void HttpThread::stop()
+{
+	SCScopedMutex keeper(_mutex);
+	if( _state != TS_STOPPED )
+	{
+		_state = TS_STOPPING;
+	}
+}
+
+bool HttpThread::willStop()
+{
+	SCScopedMutex keeper(_mutex);
+	return _state == TS_STOPPING;
+}
+
+void* HttpThread::threadProc(void* arg)
+{
+	HttpThread* t = (HttpThread*)arg;
+	while( !t->willStop() )
+	{
+		int ret = t->run();
+		if( ret < 0 )		//deleted
+			return NULL;
+		else if( ret == 0 )	//to stop
+			break;
+	}
+	t->doStop();
+	return NULL;
+}
+
+void HttpThread::doStop()
+{
+	SCScopedMutex keeper(_mutex);
+	_state = TS_STOPPED;
+	_stopCond.signal();
+}
     
 int HttpThread::run()
 {
-    const HttpEntry *entry = NULL;
-    if (!_queue->pop(entry, 1000))
+    HttpEntry *entry = NULL;
+    if( !_queue->pop(entry, 1000) )
         return 1;
     
     entry->handler->onRequestStart(entry->req);
@@ -65,90 +153,70 @@ int HttpThread::run()
     }
     
     delete entry;
-    
     return 1;
 }
 
-bool HttpMan::init(const std::map<int, int> &threadNums)
+///////////////////////////////////////////////////////////////////////////
+//  
+//  class HttpMan
+//  
+///////////////////////////////////////////////////////////////////////////
+
+bool HttpMan::init(int threadNums)
 {
-    std::map<int, int>::const_iterator it = threadNums.begin(), ie = threadNums.end();
-    for (; it != ie; ++it)
-    {
-        int priority = it->first;
-        int threadNum = it->second;
-        
-        BlockingQueue<const HttpEntry *> *queue = new BlockingQueue<const HttpEntry *>();
-        _entryQueues[priority] = queue;
-        
-        for (int i = 0; i < threadNum; ++i)
-        {
-            _httpThreads.push_back(new HttpThread(queue));
-            Thread *thread = _httpThreads.back();
-            if (!thread->start())
-            {
-                stop();
-                return false;
-            }
-        }
-    }
+	for(int i=0; i<threadNums; ++i)
+	{
+		m_httpThreads.push_back(new HttpThread(&m_entryQueue));
+		HttpThread* thread = m_httpThreads.back();
+		if( !thread->start() )
+		{
+			stop();
+			return false;
+		}
+	}
     
     return true;
 }
 
 void HttpMan::stop()
 {
-    size_t threadNum = _httpThreads.size();
+    size_t threadNum = m_httpThreads.size();
     
-    for (size_t i = 0; i < threadNum; ++i)
-        _httpThreads[i]->stop();
-    
-    for (size_t i = 0; i < threadNum; ++i)
+    for(size_t i = 0; i < threadNum; ++i)
+        m_httpThreads[i]->stop();
+
+    for(size_t i = 0; i < threadNum; ++i)
     {
-        _httpThreads[i]->waitStop();
-        delete _httpThreads[i];
+        m_httpThreads[i]->waitStop();
+        delete m_httpThreads[i];
     }
     
-    std::map<int, BlockingQueue<const HttpEntry *> *>::iterator it = _entryQueues.begin(), ie = _entryQueues.end();
-    for (; it != ie; ++it)
+	HttpEntry* entry = NULL;
+    while( m_entryQueue.tryPop(entry) )
     {
-        BlockingQueue<const HttpEntry *> *queue = it->second;
-        const HttpEntry *entry = NULL;
-        while (queue->tryPop(entry))
-        {
-            delete entry;
-        }
-        delete queue;
+        delete entry;
     }
 }
 
 void HttpMan::get(const std::string &url, HttpHandler *handler, int timeout, unsigned int priority)
 {
-    std::map<int, BlockingQueue<const HttpEntry *> *>::iterator it = _entryQueues.find(priority);
-    WGEASSERT(it != _entryQueues.end());
-    if (it == _entryQueues.end())
-        return;
     HttpEntry *entry = new HttpEntry();
     entry->req.method = GET;
     entry->req.url = url;
     entry->handler = handler;
     entry->timeout = timeout;
-    
-    it->second->push(entry);
+    m_entryQueue.push(entry);
 }
 
 void HttpMan::post(const std::string &url, const std::string &body, HttpHandler *handler, int timeout, unsigned int priority)
 {
-    std::map<int, BlockingQueue<const HttpEntry *> *>::iterator it = _entryQueues.find(priority);
-    WGEASSERT(it != _entryQueues.end());
-    if (it == _entryQueues.end())
-        return;
     HttpEntry *entry = new HttpEntry();
     entry->req.method = POST;
     entry->req.url = url;
     entry->req.body = body;
     entry->handler = handler;
     entry->timeout = timeout;
-    
-    it->second->push(entry);
+    m_entryQueue.push(entry);
 }
-};
+
+}

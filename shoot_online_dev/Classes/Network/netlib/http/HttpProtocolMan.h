@@ -1,42 +1,27 @@
-//
-//  HttpProtocolMan.h
-//
-//  Created by bihai wu on 12-3-22.
-//
+#ifndef _SC_HttpProtocolMan_h
+#define _SC_HttpProtocolMan_h
 
-#ifndef _HttpProtocolMan_h
-#define _HttpProtocolMan_h
-
-#include "WEvent.h"
+#include <functional>
 #include "HttpMan.h"
-#include "StreamCoder.h"
+#include "../stream/StreamCoder.h"
 
-namespace wge
+namespace scnet
 {
-#define kEventTypeHttpProtocolError "kEventTypeHttpProtocolError"
 
-class HttpProtocolErrorEvent : public WEvent
-{
-public:
-    HttpProtocolErrorEvent(const std::string &type, const std::string &url_, const std::string &body_)
-    :WEvent(type),url(url_),body(body_)
-    {}
-    
-public:
-    std::string url;
-    std::string body;
-};
+class Protocol;
 
-class HttpProtocolMan : public HttpHandler, public WEventDispatcher, public WEventListener
+class HttpProtocolMan : public HttpHandler
 {    
-private:
-    enum
+public:
+
+	enum
     {
-        kProtocolTimeout = 30,
+        PROTOCOL_TIMEOUT = 30,
+		PROTOCOL_MAX_LEN = 65536,
     };
-    
-    HttpProtocolMan();
-    
+
+	typedef std::function<void(const Protocol*)> ProtoHandler;
+        
 public:
     virtual ~HttpProtocolMan();
     
@@ -50,32 +35,44 @@ public:
     {
         _coder = coder;
     }
+
     void setEncryptKey(const std::string &inEncryptKey, const std::string &outEncryptKey)
     {
         _inEncryptKey = inEncryptKey;
         _outEncryptKey = outEncryptKey;
     }
+
     void setCompress(bool compress)
     {
         _compress = compress;
     }
-    void get(const std::string &url, int timeout = kProtocolTimeout)
-    {
-        HttpMan::getInstance()->get(url, this, timeout, HttpMan::PRIORITY_PROTOCOL);
-    }
-    void post(const std::string &url, const Protocol *p, int timeout = kProtocolTimeout);
+
+	void setProtoHandler(ProtoHandler ph)
+	{
+		_protoHandler = ph;
+	}
+
+	bool init(int threadNums);
+	void stop();
+
+    void get(const std::string &url, int timeout = PROTOCOL_TIMEOUT);
+    void post(const std::string &url, const Protocol *p, int timeout = PROTOCOL_TIMEOUT);
     
 private:
     void onResponseSuccess(const HttpReq &req, const std::string &res);
     void onResponseFailed(const HttpReq &req);
-    void onNewProtocol(WEvent *e);
+    void onNewProtocol(const HttpReq &req, const Protocol* p);
     
 private:
     const ProtocolCoder *_coder;
     std::string _inEncryptKey;
     std::string _outEncryptKey;
     bool _compress;
+	ProtoHandler _protoHandler;
+
+	HttpProtocolMan();
 };
-};
+
+}
 
 #endif

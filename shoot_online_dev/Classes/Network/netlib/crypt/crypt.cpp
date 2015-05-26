@@ -1,17 +1,10 @@
-//
-//  crypt.cpp
-//
-//  Created by 吴碧海 on 13-4-29.
-//
-//
-
 #include "crypt.h"
 #include "rc4.h"
 #include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
 
-namespace wge
+namespace scnet
 {
     void Crypt::encrypt(unsigned char *content, size_t contentLen, const std::string &rc4Key, unsigned char offset, unsigned char mask)
     {

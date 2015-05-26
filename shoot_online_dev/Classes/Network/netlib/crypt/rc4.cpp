@@ -38,8 +38,9 @@
 
 #include "rc4.h"
 
-namespace wge
+namespace scnet
 {
+
 static void swap_bytes(uint8_t *a, uint8_t *b)
 {
 	uint8_t temp;
@@ -114,8 +115,10 @@ void
 RC4::crypt(const std::string &inbuf, std::string &outbuf)
 {
     size_t len = inbuf.size();
-    uint8_t out[len];
+    uint8_t* out = new uint8_t[len];
     crypt((const uint8_t *)inbuf.data(), out, len);
     outbuf.assign((char *)out, len);
+	delete[] out;
 }
-};
+
+}

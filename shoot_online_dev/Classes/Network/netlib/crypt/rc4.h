@@ -42,8 +42,9 @@
 #include <stdint.h>
 #include <string>
 
-namespace wge
+namespace scnet
 {
+
 class RC4
 {
 private:
@@ -64,6 +65,7 @@ public:
     void crypt(const uint8_t *inbuf, uint8_t *outbuf, int buflen);
     void crypt(const std::string &inbuf, std::string &outbuf);
 };
-};
+
+}
 
 #endif

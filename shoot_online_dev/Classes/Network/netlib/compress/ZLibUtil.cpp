@@ -1,22 +1,14 @@
-//
-//  ZlibUtil.cpp
-//  BaccaratMania
-//
-//  Created by 吴碧海 on 13-6-12.
-//
-//
-
 #include "ZLibUtil.h"
-#include "WAssert.h"
-#include <zlib.h>
+#include "zlib.h"
 #include <string.h>
+#include "cocos2d.h"
 
-namespace wge
+namespace scnet
 {
-    bool ZLibUtil::inflate(const std::string &ibuffer, std::string &obuffer)
+	bool ZLibUtil::inflate(const std::string &ibuffer, std::string &obuffer)
     {
         size_t bufferSize = ibuffer.size();        
-        char out[bufferSize];
+        char* out = new char[bufferSize];
         
         z_stream d_stream; /* decompression stream */
         d_stream.zalloc = (alloc_func)0;
@@ -30,7 +22,10 @@ namespace wge
         
         int err = Z_OK;
         if( (err = ::inflateInit2(&d_stream, -MAX_WBITS)) != Z_OK )
+		{
+			delete[] out;
             return false;
+		}
         
         std::string tempOBuffer;
         size_t reserveSize = bufferSize*5;
@@ -49,12 +44,13 @@ namespace wge
             switch (err)
             {
                 case Z_OK:
-                    WGEASSERT(d_stream.avail_out == 0);
+                    CCASSERT(d_stream.avail_out == 0, "");
                     tempOBuffer.insert(tempOBuffer.end(), out, out+bufferSize);
                     d_stream.next_out = (Bytef *)out;
                     d_stream.avail_out = bufferSize;
                     break;
                 default:
+					delete[] out;
                     ::inflateEnd(&d_stream);
                     return false;
             }
@@ -64,16 +60,20 @@ namespace wge
         
         err = ::inflateEnd(&d_stream);
         if (err != Z_OK)
+		{
+			delete[] out;
             return false;
+		}
         else
             obuffer.swap(tempOBuffer);
-        return true;
+		delete[] out;
+		return true;
     }
     
     bool ZLibUtil::deflate(const std::string &ibuffer, std::string &obuffer)
     {
         size_t bufferSize = ibuffer.size();        
-        char out[bufferSize];
+        char* out = new char[bufferSize];
         
         z_stream d_stream; /* decompression stream */
         d_stream.zalloc = (alloc_func)0;
@@ -87,7 +87,10 @@ namespace wge
         
         int err = Z_OK;
         if( (err = deflateInit2(&d_stream, 9, Z_DEFLATED, -MAX_WBITS, MAX_MEM_LEVEL, Z_DEFAULT_STRATEGY)) != Z_OK )
+		{
+			delete[] out;
             return false;
+		}
         
         std::string tempOBuffer;
         size_t reserveSize = bufferSize*2;
@@ -100,7 +103,7 @@ namespace wge
         {
             err = ::deflate(&d_stream, Z_NO_FLUSH);
             
-            WGEASSERT(err != Z_STREAM_END);
+            CCASSERT(err != Z_STREAM_END, "");
             
             switch (err)
             {
@@ -113,6 +116,7 @@ namespace wge
                     }
                     break;
                 default:
+					delete[] out;
                     ::inflateEnd(&d_stream);
                     return false;
             }
@@ -137,6 +141,7 @@ namespace wge
                     }
                     break;
                 default:
+					delete[] out;
                     ::inflateEnd(&d_stream);
                     return false;
             }
@@ -146,9 +151,13 @@ namespace wge
         
         err = ::deflateEnd(&d_stream);
         if (err != Z_OK)
+		{
+			delete[] out;
             return false;
+		}
         else
             obuffer.swap(tempOBuffer);
+		delete[] out;
         return true;
     }
 }

@@ -1,12 +1,5 @@
-//
-//  md5.h
-//
-//  Created by �寸�娴�on 12-7-28.
-//  Copyright (c) 2012骞�GameDream. All rights reserved.
-//
-
-#ifndef wge_md5_h
-#define wge_md5_h
+#ifndef sc_md5_h
+#define sc_md5_h
 
 /* Copyright (C) 1991-2, RSA Data Security, Inc. Created 1991. All
  rights reserved.
@@ -33,7 +26,7 @@
 #include <string>
 #include <stdint.h>
 
-namespace wge
+namespace scnet
 {
 class MD5
 {
@@ -65,6 +58,7 @@ private:
     void init();
     static void transform(UINT4 state[4], const unsigned char block[64]);
 };
-};
+
+}
 
 #endif

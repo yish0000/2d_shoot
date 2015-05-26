@@ -14,6 +14,8 @@
 
 class SCMutex
 {
+	friend class SCCondition;
+
 public:
 	SCMutex(bool recursive=false);
 	~SCMutex();
@@ -44,6 +46,24 @@ public:
 
 private:
 	SCMutex* m_mutex;
+};
+
+class SCCondition
+{
+public:
+	SCCondition();
+	~SCCondition();
+
+	void wait(SCMutex& m, int timeoutInMillis=0);
+	void signal();
+	void broadcast();
+
+private:
+	SCCondition(const SCCondition&);
+	SCCondition& operator =(const SCCondition&);
+
+private:
+	pthread_cond_t m_cond;
 };
 
 ///////////////////////////////////////////////////////////////////////////

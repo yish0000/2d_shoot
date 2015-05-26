@@ -1,40 +1,34 @@
-//
-//  HttpProtocolMan.cpp
-//
-//  Created by bihai wu on 12-3-22.
-//
-
 #include "HttpProtocolMan.h"
-#include "Protocol.h"
-#include "Processor.h"
-#include "rc4.h"
-#include "WLog.h"
-#include "ZLibUtil.h"
-#include "NetConfig.h"
+#include "../protocol/Protocol.h"
+#include "../protocol/Processor.h"
+#include "../crypt/rc4.h"
+#include "../compress/ZLibUtil.h"
+#include "cocos2d.h"
 
-namespace wge
+namespace scnet
 {
-#define kEventTypeHttpNewProtocol "kEventTypeHttpNewProtocol"
 
-class HttpProtocolEvent : public WEvent
+HttpProtocolMan::HttpProtocolMan() : _coder(NULL), _compress(false), _protoHandler(nullptr)
 {
-public:
-    HttpProtocolEvent(const std::string &type):WEvent(type),req(NULL),resp(NULL)
-    {}
-    
-public:
-    const struct HttpReq *req;
-    Protocol *resp;
-};
-
-HttpProtocolMan::HttpProtocolMan():_coder(NULL),_compress(false)
-{
-    addEventListener(kEventTypeHttpNewProtocol, this, weventcallback_selector(HttpProtocolMan::onNewProtocol));
 }
 
 HttpProtocolMan::~HttpProtocolMan()
 {
-    removeAllForListener(this);
+}
+
+bool HttpProtocolMan::init(int threadNums)
+{
+	return HttpMan::getInstance()->init(threadNums);
+}
+
+void HttpProtocolMan::stop()
+{
+	HttpMan::getInstance()->stop();
+}
+
+void HttpProtocolMan::get(const std::string &url, int timeout /* = PROTOCOL_TIMEOUT */)
+{
+	HttpMan::getInstance()->get(url, this, timeout, 0);
 }
 
 void HttpProtocolMan::post(const std::string &url, const Protocol *p, int timeout)
@@ -47,11 +41,11 @@ void HttpProtocolMan::post(const std::string &url, const Protocol *p, int timeou
         std::string compressedBytes;
         if (!ZLibUtil::deflate(content, compressedBytes))
         {
-            WGE_ERROR("HttpProtocolMan::post, compress failed, length=%zu", content.size());
+            CCLOG("HttpProtocolMan::post, compress failed, length=%zu", content.size());
             return;
         }
         else
-            WGE_DEBUG("HttpProtocolMan::post, compress success, rawLength=%zu, deflateLength=%zu", content.size(), compressedBytes.size());
+            CCLOG("HttpProtocolMan::post, compress success, rawLength=%zu, deflateLength=%zu", content.size(), compressedBytes.size());
         content.swap(compressedBytes);
     }
     
@@ -66,11 +60,11 @@ void HttpProtocolMan::post(const std::string &url, const Protocol *p, int timeou
     
     if (content.size() > PROTOCOL_MAX_LEN)
     {
-        WGE_ERROR("HttpProtocolMan::post, protocol length invalid, length=%zu", content.size());
+        CCLOG("HttpProtocolMan::post, protocol length invalid, length=%zu", content.size());
         return;
     }
     
-    HttpMan::getInstance()->post(url, content, this, timeout, HttpMan::PRIORITY_PROTOCOL);
+    HttpMan::getInstance()->post(url, content, this, timeout, 0);
 }
 
 void HttpProtocolMan::onResponseSuccess(const HttpReq &req, const std::string &res)
@@ -101,49 +95,39 @@ void HttpProtocolMan::onResponseSuccess(const HttpReq &req, const std::string &r
     
     if (!p)
     {
-        WGE_ERROR("HttpProtocolMan, received invalid protocol");
-        
-        HttpProtocolEvent e(kEventTypeHttpNewProtocol);
-        e.req = &req;
-        dispatchEvent(&e);
+        CCLOG("HttpProtocolMan, received invalid protocol");
+        onNewProtocol(req, NULL);
     }
     else
     {
-        HttpProtocolEvent e(kEventTypeHttpNewProtocol);
-        e.req = &req;
-        e.resp = p;
-        dispatchEvent(&e);
-        
-        delete p;
+		onNewProtocol(req, p);
     }
 }
 
 void HttpProtocolMan::onResponseFailed(const HttpReq &req)
 {
-    WGE_ERROR("HttpProtocolMan, onResponseFailed");
-
-    HttpProtocolEvent e(kEventTypeHttpNewProtocol);
-    e.req = &req;
-    dispatchEvent(&e);
+    CCLOG("HttpProtocolMan, onResponseFailed");
+	onNewProtocol(req, NULL);
 }
 
-void HttpProtocolMan::onNewProtocol(WEvent *e)
+void HttpProtocolMan::onNewProtocol(const HttpReq &req, const Protocol* p)
 {
-    HttpProtocolEvent *event = dynamic_cast<HttpProtocolEvent *>(e);
-    if (event->resp)
+    if (p)
     {
-        Protocol *resp = event->resp;
-        const Processor *proc = Processor::getProcessor(resp->type);
+        const Processor *proc = Processor::getProcessor(p->type);
         if (proc)
         {
-            proc->process(resp);
+            proc->process(p);
             return;
         }
-        else
-            WGE_ERROR("Fail to find processor for protocol %d", resp->type);
+
+		if( _protoHandler )
+			_protoHandler(p);
     }
-    
-    HttpProtocolErrorEvent eventError(kEventTypeHttpProtocolError, event->req->url, event->req->body);
-    dispatchEvent(&eventError);
+	else
+	{
+		CCLOG("Invalid protocol!! url=%s, body=%s", req.url.c_str(), req.body.c_str());
+	}
 }
-};
+
+}

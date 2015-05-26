@@ -67,6 +67,12 @@
     <Filter Include="Classes\Network\netlib\JsonLib\include">
       <UniqueIdentifier>{a8418657-481c-4418-9042-cdf5b41aa05b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\Network\netlib\Compress">
+      <UniqueIdentifier>{0c0ec797-ad25-4273-83d3-5c32243e83b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Network\netlib\Crypt">
+      <UniqueIdentifier>{d0c5c8fd-ac76-4634-9f9b-a78ebe0fc393}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -142,6 +148,24 @@
       <Filter>Classes\Network\netlib\JsonLib</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Network\netlib\http\HttpCurl.cpp">
+      <Filter>Classes\Network\netlib\Http</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Network\netlib\crypt\crypt.cpp">
+      <Filter>Classes\Network\netlib\Crypt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Network\netlib\crypt\md5.cpp">
+      <Filter>Classes\Network\netlib\Crypt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Network\netlib\crypt\rc4.cpp">
+      <Filter>Classes\Network\netlib\Crypt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Network\netlib\compress\ZLibUtil.cpp">
+      <Filter>Classes\Network\netlib\Compress</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Network\netlib\http\HttpMan.cpp">
+      <Filter>Classes\Network\netlib\Http</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Network\netlib\http\HttpProtocolMan.cpp">
       <Filter>Classes\Network\netlib\Http</Filter>
     </ClCompile>
   </ItemGroup>
@@ -265,6 +289,24 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Network\netlib\libjson\json\writer.h">
       <Filter>Classes\Network\netlib\JsonLib\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Network\netlib\crypt\crypt.h">
+      <Filter>Classes\Network\netlib\Crypt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Network\netlib\crypt\md5.h">
+      <Filter>Classes\Network\netlib\Crypt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Network\netlib\crypt\rc4.h">
+      <Filter>Classes\Network\netlib\Crypt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Network\netlib\compress\ZLibUtil.h">
+      <Filter>Classes\Network\netlib\Compress</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Network\netlib\http\HttpMan.h">
+      <Filter>Classes\Network\netlib\Http</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Network\netlib\http\HttpProtocolMan.h">
+      <Filter>Classes\Network\netlib\Http</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -34,7 +34,7 @@ public:
 
 	virtual bool init();
 
-	const std::string& getName() const { return m_sName; }
+	const std::string& getSceneName() const { return m_sName; }
 	cocos2d::Layer* getUILayer() const { return m_pUILayer; }
 
 protected:

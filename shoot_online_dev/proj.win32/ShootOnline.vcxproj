@@ -69,7 +69,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(EngineRoot)cocos\audio\include;$(EngineRoot)external;$(EngineRoot)external\pthread\include;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)external\curl\include\win32;$(EngineRoot)extensions;..\Classes;..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(EngineRoot)cocos\audio\include;$(EngineRoot)external;$(EngineRoot)external\pthread\include;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)external\curl\include\win32;$(EngineRoot)external\win32-specific\zlib\include;$(EngineRoot)extensions;..\Classes;..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USE_MATH_DEFINES;GL_GLEXT_PROTOTYPES;CC_ENABLE_CHIPMUNK_INTEGRATION=1;COCOS2D_DEBUG=1;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -82,7 +82,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>pthreadVCE2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>libcurl_imp.lib;websockets.lib;pthreadVCE2.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
       <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -102,7 +102,7 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>$(EngineRoot)cocos\audio\include;$(EngineRoot)external;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)external\pthread\include;$(EngineRoot)external\curl\include\win32;$(EngineRoot)extensions;..\Classes;..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(EngineRoot)cocos\audio\include;$(EngineRoot)external;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)external\pthread\include;$(EngineRoot)external\curl\include\win32;$(EngineRoot)external\win32-specific\zlib\include;$(EngineRoot)extensions;..\Classes;..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USE_MATH_DEFINES;GL_GLEXT_PROTOTYPES;CC_ENABLE_CHIPMUNK_INTEGRATION=1;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -143,7 +143,13 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
     <ClCompile Include="..\Classes\Module\SCModuleBase.cpp" />
     <ClCompile Include="..\Classes\Module\SCModuleManager.cpp" />
+    <ClCompile Include="..\Classes\Network\netlib\compress\ZLibUtil.cpp" />
+    <ClCompile Include="..\Classes\Network\netlib\crypt\crypt.cpp" />
+    <ClCompile Include="..\Classes\Network\netlib\crypt\md5.cpp" />
+    <ClCompile Include="..\Classes\Network\netlib\crypt\rc4.cpp" />
     <ClCompile Include="..\Classes\Network\netlib\http\HttpCurl.cpp" />
+    <ClCompile Include="..\Classes\Network\netlib\http\HttpMan.cpp" />
+    <ClCompile Include="..\Classes\Network\netlib\http\HttpProtocolMan.cpp" />
     <ClCompile Include="..\Classes\Network\netlib\libjson\json_reader.cpp" />
     <ClCompile Include="..\Classes\Network\netlib\libjson\json_value.cpp" />
     <ClCompile Include="..\Classes\Network\netlib\libjson\json_writer.cpp" />
@@ -172,7 +178,13 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\Module\SCModuleBase.h" />
     <ClInclude Include="..\Classes\Module\SCModuleManager.h" />
     <ClInclude Include="..\Classes\Module\SCModuleTypes.h" />
+    <ClInclude Include="..\Classes\Network\netlib\compress\ZLibUtil.h" />
+    <ClInclude Include="..\Classes\Network\netlib\crypt\crypt.h" />
+    <ClInclude Include="..\Classes\Network\netlib\crypt\md5.h" />
+    <ClInclude Include="..\Classes\Network\netlib\crypt\rc4.h" />
     <ClInclude Include="..\Classes\Network\netlib\http\HttpCurl.h" />
+    <ClInclude Include="..\Classes\Network\netlib\http\HttpMan.h" />
+    <ClInclude Include="..\Classes\Network\netlib\http\HttpProtocolMan.h" />
     <ClInclude Include="..\Classes\Network\netlib\libjson\json\autolink.h" />
     <ClInclude Include="..\Classes\Network\netlib\libjson\json\config.h" />
     <ClInclude Include="..\Classes\Network\netlib\libjson\json\features.h" />
