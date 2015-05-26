@@ -41,6 +41,38 @@
 		D2B5DA9C1B0CEBE700401BDF /* libcocos2dx-extensions iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B5DA5C1B0CEA0600401BDF /* libcocos2dx-extensions iOS.a */; };
 		D2B5DA9D1B0CEBE700401BDF /* libCocosDenshion iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B5DA621B0CEA0600401BDF /* libCocosDenshion iOS.a */; };
 		D2B5DAA21B0CF58100401BDF /* map in Resources */ = {isa = PBXBuildFile; fileRef = D2B5DAA11B0CF58100401BDF /* map */; };
+		D2B7BF9D1B13A0500012C51B /* AccountPlatform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B7BF431B13A0500012C51B /* AccountPlatform.cpp */; };
+		D2B7BF9E1B13A0500012C51B /* SCEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B7BF461B13A0500012C51B /* SCEvent.cpp */; };
+		D2B7BF9F1B13A0500012C51B /* SCThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B7BF491B13A0500012C51B /* SCThread.cpp */; };
+		D2B7BFA01B13A0500012C51B /* SCEffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B7BF4C1B13A0500012C51B /* SCEffect.cpp */; };
+		D2B7BFA11B13A0500012C51B /* SCGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B7BF4F1B13A0500012C51B /* SCGame.cpp */; };
+		D2B7BFA21B13A0500012C51B /* SCJoystick.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B7BF511B13A0500012C51B /* SCJoystick.cpp */; };
+		D2B7BFA31B13A0500012C51B /* SCModuleBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B7BF541B13A0500012C51B /* SCModuleBase.cpp */; };
+		D2B7BFA41B13A0500012C51B /* SCModuleManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B7BF561B13A0500012C51B /* SCModuleManager.cpp */; };
+		D2B7BFA51B13A0500012C51B /* ZLibUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B7BF5C1B13A0500012C51B /* ZLibUtil.cpp */; };
+		D2B7BFA61B13A0500012C51B /* crypt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B7BF5F1B13A0500012C51B /* crypt.cpp */; };
+		D2B7BFA71B13A0500012C51B /* md5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B7BF611B13A0500012C51B /* md5.cpp */; };
+		D2B7BFA81B13A0500012C51B /* rc4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B7BF631B13A0500012C51B /* rc4.cpp */; };
+		D2B7BFA91B13A0500012C51B /* HttpCurl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B7BF661B13A0500012C51B /* HttpCurl.cpp */; };
+		D2B7BFAA1B13A0500012C51B /* HttpMan.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B7BF681B13A0500012C51B /* HttpMan.cpp */; };
+		D2B7BFAB1B13A0500012C51B /* HttpProtocolMan.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B7BF6A1B13A0500012C51B /* HttpProtocolMan.cpp */; };
+		D2B7BFAC1B13A0500012C51B /* json_internalarray.inl in Resources */ = {isa = PBXBuildFile; fileRef = D2B7BF771B13A0500012C51B /* json_internalarray.inl */; };
+		D2B7BFAD1B13A0500012C51B /* json_internalmap.inl in Resources */ = {isa = PBXBuildFile; fileRef = D2B7BF781B13A0500012C51B /* json_internalmap.inl */; };
+		D2B7BFAE1B13A0500012C51B /* json_reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B7BF791B13A0500012C51B /* json_reader.cpp */; };
+		D2B7BFAF1B13A0500012C51B /* json_value.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B7BF7B1B13A0500012C51B /* json_value.cpp */; };
+		D2B7BFB01B13A0500012C51B /* json_valueiterator.inl in Resources */ = {isa = PBXBuildFile; fileRef = D2B7BF7C1B13A0500012C51B /* json_valueiterator.inl */; };
+		D2B7BFB11B13A0500012C51B /* json_writer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B7BF7D1B13A0500012C51B /* json_writer.cpp */; };
+		D2B7BFB21B13A0500012C51B /* Processor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B7BF7F1B13A0500012C51B /* Processor.cpp */; };
+		D2B7BFB31B13A0500012C51B /* Protocol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B7BF811B13A0500012C51B /* Protocol.cpp */; };
+		D2B7BFB41B13A0500012C51B /* BinaryStreamCoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B7BF851B13A0500012C51B /* BinaryStreamCoder.cpp */; };
+		D2B7BFB51B13A0500012C51B /* JsonStreamCoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B7BF881B13A0500012C51B /* JsonStreamCoder.cpp */; };
+		D2B7BFB61B13A0500012C51B /* KeyedStreamCoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B7BF8B1B13A0500012C51B /* KeyedStreamCoder.cpp */; };
+		D2B7BFB71B13A0500012C51B /* SCNetworkModule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B7BF8E1B13A0500012C51B /* SCNetworkModule.cpp */; };
+		D2B7BFB81B13A0500012C51B /* SCSceneBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B7BF911B13A0500012C51B /* SCSceneBase.cpp */; };
+		D2B7BFB91B13A0500012C51B /* SCTiledMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B7BF931B13A0500012C51B /* SCTiledMap.cpp */; };
+		D2B7BFBA1B13A0500012C51B /* SCWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B7BF951B13A0500012C51B /* SCWorld.cpp */; };
+		D2B7BFBB1B13A0500012C51B /* UIModule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B7BF981B13A0500012C51B /* UIModule.cpp */; };
+		D2B7BFBC1B13A0500012C51B /* SCUtilityFunc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B7BF9B1B13A0500012C51B /* SCUtilityFunc.cpp */; };
 		D44C620C132DFF330009C878 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620B132DFF330009C878 /* OpenAL.framework */; };
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
@@ -190,6 +222,80 @@
 		D2B5DA901B0CEA4800401BDF /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = SOURCE_ROOT; };
 		D2B5DA911B0CEA4800401BDF /* RootViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RootViewController.mm; sourceTree = SOURCE_ROOT; };
 		D2B5DAA11B0CF58100401BDF /* map */ = {isa = PBXFileReference; lastKnownFileType = folder; path = map; sourceTree = "<group>"; };
+		D2B7BF431B13A0500012C51B /* AccountPlatform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AccountPlatform.cpp; sourceTree = "<group>"; };
+		D2B7BF441B13A0500012C51B /* AccountPlatform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountPlatform.h; sourceTree = "<group>"; };
+		D2B7BF461B13A0500012C51B /* SCEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SCEvent.cpp; sourceTree = "<group>"; };
+		D2B7BF471B13A0500012C51B /* SCEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCEvent.h; sourceTree = "<group>"; };
+		D2B7BF481B13A0500012C51B /* SCEventTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCEventTypes.h; sourceTree = "<group>"; };
+		D2B7BF491B13A0500012C51B /* SCThread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SCThread.cpp; sourceTree = "<group>"; };
+		D2B7BF4A1B13A0500012C51B /* SCThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCThread.h; sourceTree = "<group>"; };
+		D2B7BF4C1B13A0500012C51B /* SCEffect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SCEffect.cpp; sourceTree = "<group>"; };
+		D2B7BF4D1B13A0500012C51B /* SCEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCEffect.h; sourceTree = "<group>"; };
+		D2B7BF4F1B13A0500012C51B /* SCGame.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SCGame.cpp; sourceTree = "<group>"; };
+		D2B7BF501B13A0500012C51B /* SCGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCGame.h; sourceTree = "<group>"; };
+		D2B7BF511B13A0500012C51B /* SCJoystick.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SCJoystick.cpp; sourceTree = "<group>"; };
+		D2B7BF521B13A0500012C51B /* SCJoystick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCJoystick.h; sourceTree = "<group>"; };
+		D2B7BF541B13A0500012C51B /* SCModuleBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SCModuleBase.cpp; sourceTree = "<group>"; };
+		D2B7BF551B13A0500012C51B /* SCModuleBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCModuleBase.h; sourceTree = "<group>"; };
+		D2B7BF561B13A0500012C51B /* SCModuleManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SCModuleManager.cpp; sourceTree = "<group>"; };
+		D2B7BF571B13A0500012C51B /* SCModuleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCModuleManager.h; sourceTree = "<group>"; };
+		D2B7BF581B13A0500012C51B /* SCModuleTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCModuleTypes.h; sourceTree = "<group>"; };
+		D2B7BF5C1B13A0500012C51B /* ZLibUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ZLibUtil.cpp; sourceTree = "<group>"; };
+		D2B7BF5D1B13A0500012C51B /* ZLibUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLibUtil.h; sourceTree = "<group>"; };
+		D2B7BF5F1B13A0500012C51B /* crypt.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = crypt.cpp; sourceTree = "<group>"; };
+		D2B7BF601B13A0500012C51B /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
+		D2B7BF611B13A0500012C51B /* md5.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = md5.cpp; sourceTree = "<group>"; };
+		D2B7BF621B13A0500012C51B /* md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = md5.h; sourceTree = "<group>"; };
+		D2B7BF631B13A0500012C51B /* rc4.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = rc4.cpp; sourceTree = "<group>"; };
+		D2B7BF641B13A0500012C51B /* rc4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rc4.h; sourceTree = "<group>"; };
+		D2B7BF661B13A0500012C51B /* HttpCurl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HttpCurl.cpp; sourceTree = "<group>"; };
+		D2B7BF671B13A0500012C51B /* HttpCurl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpCurl.h; sourceTree = "<group>"; };
+		D2B7BF681B13A0500012C51B /* HttpMan.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HttpMan.cpp; sourceTree = "<group>"; };
+		D2B7BF691B13A0500012C51B /* HttpMan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpMan.h; sourceTree = "<group>"; };
+		D2B7BF6A1B13A0500012C51B /* HttpProtocolMan.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HttpProtocolMan.cpp; sourceTree = "<group>"; };
+		D2B7BF6B1B13A0500012C51B /* HttpProtocolMan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpProtocolMan.h; sourceTree = "<group>"; };
+		D2B7BF6E1B13A0500012C51B /* autolink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = autolink.h; sourceTree = "<group>"; };
+		D2B7BF6F1B13A0500012C51B /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		D2B7BF701B13A0500012C51B /* features.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = features.h; sourceTree = "<group>"; };
+		D2B7BF711B13A0500012C51B /* forwards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = forwards.h; sourceTree = "<group>"; };
+		D2B7BF721B13A0500012C51B /* json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = json.h; sourceTree = "<group>"; };
+		D2B7BF731B13A0500012C51B /* reader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = reader.h; sourceTree = "<group>"; };
+		D2B7BF741B13A0500012C51B /* value.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = value.h; sourceTree = "<group>"; };
+		D2B7BF751B13A0500012C51B /* writer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = writer.h; sourceTree = "<group>"; };
+		D2B7BF761B13A0500012C51B /* json_batchallocator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = json_batchallocator.h; sourceTree = "<group>"; };
+		D2B7BF771B13A0500012C51B /* json_internalarray.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = json_internalarray.inl; sourceTree = "<group>"; };
+		D2B7BF781B13A0500012C51B /* json_internalmap.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = json_internalmap.inl; sourceTree = "<group>"; };
+		D2B7BF791B13A0500012C51B /* json_reader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = json_reader.cpp; sourceTree = "<group>"; };
+		D2B7BF7A1B13A0500012C51B /* json_tool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = json_tool.h; sourceTree = "<group>"; };
+		D2B7BF7B1B13A0500012C51B /* json_value.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = json_value.cpp; sourceTree = "<group>"; };
+		D2B7BF7C1B13A0500012C51B /* json_valueiterator.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = json_valueiterator.inl; sourceTree = "<group>"; };
+		D2B7BF7D1B13A0500012C51B /* json_writer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = json_writer.cpp; sourceTree = "<group>"; };
+		D2B7BF7F1B13A0500012C51B /* Processor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Processor.cpp; sourceTree = "<group>"; };
+		D2B7BF801B13A0500012C51B /* Processor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processor.h; sourceTree = "<group>"; };
+		D2B7BF811B13A0500012C51B /* Protocol.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Protocol.cpp; sourceTree = "<group>"; };
+		D2B7BF821B13A0500012C51B /* Protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Protocol.h; sourceTree = "<group>"; };
+		D2B7BF841B13A0500012C51B /* BinaryStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BinaryStream.h; sourceTree = "<group>"; };
+		D2B7BF851B13A0500012C51B /* BinaryStreamCoder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BinaryStreamCoder.cpp; sourceTree = "<group>"; };
+		D2B7BF861B13A0500012C51B /* BinaryStreamCoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BinaryStreamCoder.h; sourceTree = "<group>"; };
+		D2B7BF871B13A0500012C51B /* JsonStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonStream.h; sourceTree = "<group>"; };
+		D2B7BF881B13A0500012C51B /* JsonStreamCoder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JsonStreamCoder.cpp; sourceTree = "<group>"; };
+		D2B7BF891B13A0500012C51B /* JsonStreamCoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonStreamCoder.h; sourceTree = "<group>"; };
+		D2B7BF8A1B13A0500012C51B /* KeyedStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyedStream.h; sourceTree = "<group>"; };
+		D2B7BF8B1B13A0500012C51B /* KeyedStreamCoder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KeyedStreamCoder.cpp; sourceTree = "<group>"; };
+		D2B7BF8C1B13A0500012C51B /* KeyedStreamCoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyedStreamCoder.h; sourceTree = "<group>"; };
+		D2B7BF8D1B13A0500012C51B /* StreamCoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamCoder.h; sourceTree = "<group>"; };
+		D2B7BF8E1B13A0500012C51B /* SCNetworkModule.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SCNetworkModule.cpp; sourceTree = "<group>"; };
+		D2B7BF8F1B13A0500012C51B /* SCNetworkModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCNetworkModule.h; sourceTree = "<group>"; };
+		D2B7BF911B13A0500012C51B /* SCSceneBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SCSceneBase.cpp; sourceTree = "<group>"; };
+		D2B7BF921B13A0500012C51B /* SCSceneBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSceneBase.h; sourceTree = "<group>"; };
+		D2B7BF931B13A0500012C51B /* SCTiledMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SCTiledMap.cpp; sourceTree = "<group>"; };
+		D2B7BF941B13A0500012C51B /* SCTiledMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCTiledMap.h; sourceTree = "<group>"; };
+		D2B7BF951B13A0500012C51B /* SCWorld.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SCWorld.cpp; sourceTree = "<group>"; };
+		D2B7BF961B13A0500012C51B /* SCWorld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCWorld.h; sourceTree = "<group>"; };
+		D2B7BF981B13A0500012C51B /* UIModule.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIModule.cpp; sourceTree = "<group>"; };
+		D2B7BF991B13A0500012C51B /* UIModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIModule.h; sourceTree = "<group>"; };
+		D2B7BF9B1B13A0500012C51B /* SCUtilityFunc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SCUtilityFunc.cpp; sourceTree = "<group>"; };
+		D2B7BF9C1B13A0500012C51B /* SCUtilityFunc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCUtilityFunc.h; sourceTree = "<group>"; };
 		D44C620B132DFF330009C878 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -237,6 +343,15 @@
 		15AA9C4015B7EC450033D6C2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				D2B7BF421B13A0500012C51B /* Account */,
+				D2B7BF451B13A0500012C51B /* Common */,
+				D2B7BF4B1B13A0500012C51B /* Effect */,
+				D2B7BF4E1B13A0500012C51B /* Game */,
+				D2B7BF531B13A0500012C51B /* Module */,
+				D2B7BF591B13A0500012C51B /* Network */,
+				D2B7BF901B13A0500012C51B /* Scene */,
+				D2B7BF971B13A0500012C51B /* UI */,
+				D2B7BF9A1B13A0500012C51B /* Utility */,
 				1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */,
 				1AFAF8B416D35DE700DB1158 /* AppDelegate.h */,
 				1AFAF8B516D35DE700DB1158 /* HelloWorldScene.cpp */,
@@ -342,6 +457,216 @@
 			);
 			path = default;
 			sourceTree = SOURCE_ROOT;
+		};
+		D2B7BF421B13A0500012C51B /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				D2B7BF431B13A0500012C51B /* AccountPlatform.cpp */,
+				D2B7BF441B13A0500012C51B /* AccountPlatform.h */,
+			);
+			name = Account;
+			path = ../Classes/Account;
+			sourceTree = "<group>";
+		};
+		D2B7BF451B13A0500012C51B /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				D2B7BF461B13A0500012C51B /* SCEvent.cpp */,
+				D2B7BF471B13A0500012C51B /* SCEvent.h */,
+				D2B7BF481B13A0500012C51B /* SCEventTypes.h */,
+				D2B7BF491B13A0500012C51B /* SCThread.cpp */,
+				D2B7BF4A1B13A0500012C51B /* SCThread.h */,
+			);
+			name = Common;
+			path = ../Classes/Common;
+			sourceTree = "<group>";
+		};
+		D2B7BF4B1B13A0500012C51B /* Effect */ = {
+			isa = PBXGroup;
+			children = (
+				D2B7BF4C1B13A0500012C51B /* SCEffect.cpp */,
+				D2B7BF4D1B13A0500012C51B /* SCEffect.h */,
+			);
+			name = Effect;
+			path = ../Classes/Effect;
+			sourceTree = "<group>";
+		};
+		D2B7BF4E1B13A0500012C51B /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				D2B7BF4F1B13A0500012C51B /* SCGame.cpp */,
+				D2B7BF501B13A0500012C51B /* SCGame.h */,
+				D2B7BF511B13A0500012C51B /* SCJoystick.cpp */,
+				D2B7BF521B13A0500012C51B /* SCJoystick.h */,
+			);
+			name = Game;
+			path = ../Classes/Game;
+			sourceTree = "<group>";
+		};
+		D2B7BF531B13A0500012C51B /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				D2B7BF541B13A0500012C51B /* SCModuleBase.cpp */,
+				D2B7BF551B13A0500012C51B /* SCModuleBase.h */,
+				D2B7BF561B13A0500012C51B /* SCModuleManager.cpp */,
+				D2B7BF571B13A0500012C51B /* SCModuleManager.h */,
+				D2B7BF581B13A0500012C51B /* SCModuleTypes.h */,
+			);
+			name = Module;
+			path = ../Classes/Module;
+			sourceTree = "<group>";
+		};
+		D2B7BF591B13A0500012C51B /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				D2B7BF5A1B13A0500012C51B /* netlib */,
+				D2B7BF8E1B13A0500012C51B /* SCNetworkModule.cpp */,
+				D2B7BF8F1B13A0500012C51B /* SCNetworkModule.h */,
+			);
+			name = Network;
+			path = ../Classes/Network;
+			sourceTree = "<group>";
+		};
+		D2B7BF5A1B13A0500012C51B /* netlib */ = {
+			isa = PBXGroup;
+			children = (
+				D2B7BF5B1B13A0500012C51B /* compress */,
+				D2B7BF5E1B13A0500012C51B /* crypt */,
+				D2B7BF651B13A0500012C51B /* http */,
+				D2B7BF6C1B13A0500012C51B /* libjson */,
+				D2B7BF7E1B13A0500012C51B /* protocol */,
+				D2B7BF831B13A0500012C51B /* stream */,
+			);
+			path = netlib;
+			sourceTree = "<group>";
+		};
+		D2B7BF5B1B13A0500012C51B /* compress */ = {
+			isa = PBXGroup;
+			children = (
+				D2B7BF5C1B13A0500012C51B /* ZLibUtil.cpp */,
+				D2B7BF5D1B13A0500012C51B /* ZLibUtil.h */,
+			);
+			path = compress;
+			sourceTree = "<group>";
+		};
+		D2B7BF5E1B13A0500012C51B /* crypt */ = {
+			isa = PBXGroup;
+			children = (
+				D2B7BF5F1B13A0500012C51B /* crypt.cpp */,
+				D2B7BF601B13A0500012C51B /* crypt.h */,
+				D2B7BF611B13A0500012C51B /* md5.cpp */,
+				D2B7BF621B13A0500012C51B /* md5.h */,
+				D2B7BF631B13A0500012C51B /* rc4.cpp */,
+				D2B7BF641B13A0500012C51B /* rc4.h */,
+			);
+			path = crypt;
+			sourceTree = "<group>";
+		};
+		D2B7BF651B13A0500012C51B /* http */ = {
+			isa = PBXGroup;
+			children = (
+				D2B7BF661B13A0500012C51B /* HttpCurl.cpp */,
+				D2B7BF671B13A0500012C51B /* HttpCurl.h */,
+				D2B7BF681B13A0500012C51B /* HttpMan.cpp */,
+				D2B7BF691B13A0500012C51B /* HttpMan.h */,
+				D2B7BF6A1B13A0500012C51B /* HttpProtocolMan.cpp */,
+				D2B7BF6B1B13A0500012C51B /* HttpProtocolMan.h */,
+			);
+			path = http;
+			sourceTree = "<group>";
+		};
+		D2B7BF6C1B13A0500012C51B /* libjson */ = {
+			isa = PBXGroup;
+			children = (
+				D2B7BF6D1B13A0500012C51B /* json */,
+				D2B7BF761B13A0500012C51B /* json_batchallocator.h */,
+				D2B7BF771B13A0500012C51B /* json_internalarray.inl */,
+				D2B7BF781B13A0500012C51B /* json_internalmap.inl */,
+				D2B7BF791B13A0500012C51B /* json_reader.cpp */,
+				D2B7BF7A1B13A0500012C51B /* json_tool.h */,
+				D2B7BF7B1B13A0500012C51B /* json_value.cpp */,
+				D2B7BF7C1B13A0500012C51B /* json_valueiterator.inl */,
+				D2B7BF7D1B13A0500012C51B /* json_writer.cpp */,
+			);
+			path = libjson;
+			sourceTree = "<group>";
+		};
+		D2B7BF6D1B13A0500012C51B /* json */ = {
+			isa = PBXGroup;
+			children = (
+				D2B7BF6E1B13A0500012C51B /* autolink.h */,
+				D2B7BF6F1B13A0500012C51B /* config.h */,
+				D2B7BF701B13A0500012C51B /* features.h */,
+				D2B7BF711B13A0500012C51B /* forwards.h */,
+				D2B7BF721B13A0500012C51B /* json.h */,
+				D2B7BF731B13A0500012C51B /* reader.h */,
+				D2B7BF741B13A0500012C51B /* value.h */,
+				D2B7BF751B13A0500012C51B /* writer.h */,
+			);
+			path = json;
+			sourceTree = "<group>";
+		};
+		D2B7BF7E1B13A0500012C51B /* protocol */ = {
+			isa = PBXGroup;
+			children = (
+				D2B7BF7F1B13A0500012C51B /* Processor.cpp */,
+				D2B7BF801B13A0500012C51B /* Processor.h */,
+				D2B7BF811B13A0500012C51B /* Protocol.cpp */,
+				D2B7BF821B13A0500012C51B /* Protocol.h */,
+			);
+			path = protocol;
+			sourceTree = "<group>";
+		};
+		D2B7BF831B13A0500012C51B /* stream */ = {
+			isa = PBXGroup;
+			children = (
+				D2B7BF841B13A0500012C51B /* BinaryStream.h */,
+				D2B7BF851B13A0500012C51B /* BinaryStreamCoder.cpp */,
+				D2B7BF861B13A0500012C51B /* BinaryStreamCoder.h */,
+				D2B7BF871B13A0500012C51B /* JsonStream.h */,
+				D2B7BF881B13A0500012C51B /* JsonStreamCoder.cpp */,
+				D2B7BF891B13A0500012C51B /* JsonStreamCoder.h */,
+				D2B7BF8A1B13A0500012C51B /* KeyedStream.h */,
+				D2B7BF8B1B13A0500012C51B /* KeyedStreamCoder.cpp */,
+				D2B7BF8C1B13A0500012C51B /* KeyedStreamCoder.h */,
+				D2B7BF8D1B13A0500012C51B /* StreamCoder.h */,
+			);
+			path = stream;
+			sourceTree = "<group>";
+		};
+		D2B7BF901B13A0500012C51B /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				D2B7BF911B13A0500012C51B /* SCSceneBase.cpp */,
+				D2B7BF921B13A0500012C51B /* SCSceneBase.h */,
+				D2B7BF931B13A0500012C51B /* SCTiledMap.cpp */,
+				D2B7BF941B13A0500012C51B /* SCTiledMap.h */,
+				D2B7BF951B13A0500012C51B /* SCWorld.cpp */,
+				D2B7BF961B13A0500012C51B /* SCWorld.h */,
+			);
+			name = Scene;
+			path = ../Classes/Scene;
+			sourceTree = "<group>";
+		};
+		D2B7BF971B13A0500012C51B /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				D2B7BF981B13A0500012C51B /* UIModule.cpp */,
+				D2B7BF991B13A0500012C51B /* UIModule.h */,
+			);
+			name = UI;
+			path = ../Classes/UI;
+			sourceTree = "<group>";
+		};
+		D2B7BF9A1B13A0500012C51B /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				D2B7BF9B1B13A0500012C51B /* SCUtilityFunc.cpp */,
+				D2B7BF9C1B13A0500012C51B /* SCUtilityFunc.h */,
+			);
+			name = Utility;
+			path = ../Classes/Utility;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -487,11 +812,14 @@
 			files = (
 				D2B5DA891B0CEA2200401BDF /* Icon.png in Resources */,
 				D2B5DA7F1B0CEA2200401BDF /* InfoPlist.strings in Resources */,
+				D2B7BFB01B13A0500012C51B /* json_valueiterator.inl in Resources */,
 				D2B5DA831B0CEA2200401BDF /* Icon-72.png in Resources */,
+				D2B7BFAD1B13A0500012C51B /* json_internalmap.inl in Resources */,
 				1AFAF8BC16D35E4900DB1158 /* CloseNormal.png in Resources */,
 				D2B5DA8A1B0CEA2200401BDF /* Icon@2x.png in Resources */,
 				D2B5DA7E1B0CEA2200401BDF /* Default@2x.png in Resources */,
 				D2B5DA811B0CEA2200401BDF /* Icon-40.png in Resources */,
+				D2B7BFAC1B13A0500012C51B /* json_internalarray.inl in Resources */,
 				D2B5DA801B0CEA2200401BDF /* Localizable.strings in Resources */,
 				1AFAF8BD16D35E4900DB1158 /* CloseSelected.png in Resources */,
 				D2B5DAA21B0CF58100401BDF /* map in Resources */,
@@ -516,9 +844,38 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2B5DA921B0CEA4800401BDF /* AppController.mm in Sources */,
+				D2B7BFAF1B13A0500012C51B /* json_value.cpp in Sources */,
+				D2B7BFA91B13A0500012C51B /* HttpCurl.cpp in Sources */,
+				D2B7BFBB1B13A0500012C51B /* UIModule.cpp in Sources */,
+				D2B7BFB51B13A0500012C51B /* JsonStreamCoder.cpp in Sources */,
+				D2B7BFA11B13A0500012C51B /* SCGame.cpp in Sources */,
 				D2B5DA941B0CEA4800401BDF /* RootViewController.mm in Sources */,
+				D2B7BF9D1B13A0500012C51B /* AccountPlatform.cpp in Sources */,
+				D2B7BFA31B13A0500012C51B /* SCModuleBase.cpp in Sources */,
+				D2B7BFB61B13A0500012C51B /* KeyedStreamCoder.cpp in Sources */,
+				D2B7BFB81B13A0500012C51B /* SCSceneBase.cpp in Sources */,
+				D2B7BF9F1B13A0500012C51B /* SCThread.cpp in Sources */,
+				D2B7BFB41B13A0500012C51B /* BinaryStreamCoder.cpp in Sources */,
+				D2B7BFB31B13A0500012C51B /* Protocol.cpp in Sources */,
+				D2B7BFA61B13A0500012C51B /* crypt.cpp in Sources */,
+				D2B7BFAA1B13A0500012C51B /* HttpMan.cpp in Sources */,
+				D2B7BF9E1B13A0500012C51B /* SCEvent.cpp in Sources */,
+				D2B7BFB91B13A0500012C51B /* SCTiledMap.cpp in Sources */,
+				D2B7BFA01B13A0500012C51B /* SCEffect.cpp in Sources */,
+				D2B7BFB11B13A0500012C51B /* json_writer.cpp in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
+				D2B7BFB21B13A0500012C51B /* Processor.cpp in Sources */,
 				D2B5DA931B0CEA4800401BDF /* main.m in Sources */,
+				D2B7BFA21B13A0500012C51B /* SCJoystick.cpp in Sources */,
+				D2B7BFBC1B13A0500012C51B /* SCUtilityFunc.cpp in Sources */,
+				D2B7BFA41B13A0500012C51B /* SCModuleManager.cpp in Sources */,
+				D2B7BFA51B13A0500012C51B /* ZLibUtil.cpp in Sources */,
+				D2B7BFAE1B13A0500012C51B /* json_reader.cpp in Sources */,
+				D2B7BFBA1B13A0500012C51B /* SCWorld.cpp in Sources */,
+				D2B7BFA71B13A0500012C51B /* md5.cpp in Sources */,
+				D2B7BFB71B13A0500012C51B /* SCNetworkModule.cpp in Sources */,
+				D2B7BFA81B13A0500012C51B /* rc4.cpp in Sources */,
+				D2B7BFAB1B13A0500012C51B /* HttpProtocolMan.cpp in Sources */,
 				1AFAF8B816D35DE700DB1158 /* HelloWorldScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -595,6 +952,8 @@
 					"$(SRCROOT)/../../cocos2d-x-3.2/cocos/network",
 					"$(SRCROOT)/../../cocos2d-x-3.2/cocos/renderer",
 					"$(SRCROOT)/../../cocos2d-x-3.2/cocos/ui",
+					"$(SRCROOT)/../Classes",
+					"$(SRCROOT)/../../cocos2d-x-3.2/external/curl/include/ios",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/default/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
@@ -631,6 +990,8 @@
 					"$(SRCROOT)/../../cocos2d-x-3.2/cocos/network",
 					"$(SRCROOT)/../../cocos2d-x-3.2/cocos/renderer",
 					"$(SRCROOT)/../../cocos2d-x-3.2/cocos/ui",
+					"$(SRCROOT)/../Classes",
+					"$(SRCROOT)/../../cocos2d-x-3.2/external/curl/include/ios",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/default/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
