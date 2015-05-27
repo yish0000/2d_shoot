@@ -73,6 +73,15 @@
     <Filter Include="Classes\Network\netlib\Crypt">
       <UniqueIdentifier>{d0c5c8fd-ac76-4634-9f9b-a78ebe0fc393}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\Network\protocols">
+      <UniqueIdentifier>{92cc6b04-680d-4013-89ef-3db2135bc34d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Network\protocols\c2s">
+      <UniqueIdentifier>{9fe244a9-134b-4738-8f2c-02997905b46b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Network\protocols\s2c">
+      <UniqueIdentifier>{5a2a30c4-b3d8-4817-8d83-03cf24292c30}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

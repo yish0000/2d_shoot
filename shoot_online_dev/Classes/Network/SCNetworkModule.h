@@ -39,6 +39,7 @@ protected:
 	std::string m_sServerUrl;
 
 protected:
+	// 收到协议
 	void onNewProtocol(const scnet::Protocol* p);
 };
 
