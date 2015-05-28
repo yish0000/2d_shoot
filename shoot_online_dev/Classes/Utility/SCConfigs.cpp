@@ -1,7 +1,7 @@
 /*
  * ------------------------------------------------------------------------
  *  Name:   SCConfigs.cpp
- *  Desc:   APP配置数据
+ *  Desc:   APP閰嶇疆鏁版嵁
  *  Author: Yish
  *  Date:   2015/5/28
  * ------------------------------------------------------------------------
@@ -24,7 +24,7 @@ SCConfigs& SCConfigs::getInstance()
 	return obj;
 }
 
-// 加载配置文件
+// 鍔犺浇閰嶇疆鏂囦欢
 bool SCConfigs::load(const char* filename)
 {
 	Json::Value rootNode;

@@ -88,13 +88,19 @@ void SCTiledMap::addObjectGroup(const std::string& group)
 			m_conllisions.push_back(pCollision);
 			pObj = pCollision;
 		}
+        else if( group == "climb" )
+        {
+            SCTMClimb* pClimb = new SCTMClimb();
+            m_climbs.push_back(pClimb);
+            pObj = pClimb;
+        }
 		else if( group == "npc" )
 		{
 			SCTMNPC* pNPC = new SCTMNPC();
 			if( dic.find("tid") == dic.end() )
 			{
 				delete pNPC;
-				CCLOG("tid of the npc cannot be null!");
+				CCLOG("SCTileMap::addObjectGroup, tid of the npc cannot be null!");
 				return;
 			}
 			pNPC->m_iTID = dic["tid"].asInt();
@@ -106,11 +112,45 @@ void SCTiledMap::addObjectGroup(const std::string& group)
 			SCTMOrnament* pOrnament = new SCTMOrnament();
 			if( dic.find("gfx") == dic.end() )
 			{
-				
+                delete pOrnament;
+                CCLOG("SCTiledMap::addObjectGroup, gfx of ornament must not be null!");
+                return;
 			}
 			pOrnament->m_gfx = dic["gfx"].asString();
-			pOrnament->m_layer = dic[""]
+            
+            if( dic.find("layer") == dic.end() )
+                pOrnament->m_layer = "rd_add";
+            else
+                pOrnament->m_layer = dic["layer"].asString();
+            if( dic.find("scale") != dic.end() )
+                pOrnament->m_fScale = dic["scale"].asFloat();
 		}
+        else if( group == "platform" )
+        {
+            SCTMPlatform* pPlatform = new SCTMPlatform();
+            if( dic.find("tid") == dic.end() )
+            {
+                delete pPlatform;
+                CCLOG("SCTiledMap::addObjectGroup, tid of the platform cannot be null!");
+                return;
+            }
+            
+            pPlatform->m_iTID = dic["tid"].asInt();
+            m_platforms.push_back(pPlatform);
+            pObj = pPlatform;
+        }
+        else if( group == "player" )
+        {
+            SCTMPlayer* pPlayer = new SCTMPlayer();
+            m_players.push_back(pPlayer);
+            pObj = pPlayer;
+        }
+        else if( group == "transport" )
+        {
+            SCTMTransport* pTransport = new SCTMTransport();
+            m_transports.push_back(pTransport);
+            pObj = pTransport;
+        }
 
 		pObj->m_pos.set(x, y);
 		pObj->m_boundingBox.setRect(x, y, width, height);

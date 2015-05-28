@@ -18,6 +18,7 @@
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
+		D2A9D6F81B17721300CCA714 /* SCConfigs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2A9D6F61B17721300CCA714 /* SCConfigs.cpp */; };
 		D2B5DA7B1B0CEA2200401BDF /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2B5DA641B0CEA2200401BDF /* Default-568h@2x.png */; };
 		D2B5DA7C1B0CEA2200401BDF /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = D2B5DA651B0CEA2200401BDF /* Default-Portrait~ipad.png */; };
 		D2B5DA7D1B0CEA2200401BDF /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = D2B5DA661B0CEA2200401BDF /* Default.png */; };
@@ -193,6 +194,8 @@
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		D2A9D6F61B17721300CCA714 /* SCConfigs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SCConfigs.cpp; sourceTree = "<group>"; };
+		D2A9D6F71B17721300CCA714 /* SCConfigs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 2; path = SCConfigs.h; sourceTree = "<group>"; };
 		D2B5DA401B0CEA0500401BDF /* cocos2d_libs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2d_libs.xcodeproj; path = "../../cocos2d-x-3.2/build/cocos2d_libs.xcodeproj"; sourceTree = "<group>"; };
 		D2B5DA641B0CEA2200401BDF /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		D2B5DA651B0CEA2200401BDF /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
@@ -661,6 +664,8 @@
 		D2B7BF9A1B13A0500012C51B /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				D2A9D6F61B17721300CCA714 /* SCConfigs.cpp */,
+				D2A9D6F71B17721300CCA714 /* SCConfigs.h */,
 				D2B7BF9B1B13A0500012C51B /* SCUtilityFunc.cpp */,
 				D2B7BF9C1B13A0500012C51B /* SCUtilityFunc.h */,
 			);
@@ -860,6 +865,7 @@
 				D2B7BFA61B13A0500012C51B /* crypt.cpp in Sources */,
 				D2B7BFAA1B13A0500012C51B /* HttpMan.cpp in Sources */,
 				D2B7BF9E1B13A0500012C51B /* SCEvent.cpp in Sources */,
+				D2A9D6F81B17721300CCA714 /* SCConfigs.cpp in Sources */,
 				D2B7BFB91B13A0500012C51B /* SCTiledMap.cpp in Sources */,
 				D2B7BFA01B13A0500012C51B /* SCEffect.cpp in Sources */,
 				D2B7BFB11B13A0500012C51B /* json_writer.cpp in Sources */,
