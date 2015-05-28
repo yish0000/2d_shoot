@@ -23,10 +23,13 @@ public:
 		TM_OBJ_UNKNOWN,
 
 		TM_OBJ_COLLISION,	// 碰撞体
+		TM_OBJ_CLIMB,		// 攀爬物
 		TM_OBJ_NPC,			// 刷怪点
 		TM_OBJ_ORNAMENT,	// 装饰物
 		TM_OBJ_PLATFORM,	// 移动平台
 		TM_OBJ_OBSTACLE,	// 阻挡物
+		TM_OBJ_PLAYER,		// 玩家出生点
+		TM_OBJ_TRANSPORT,	// 传送点
 	};
 
 public:
@@ -50,6 +53,14 @@ public:
 
 public:
 	bool m_bXCollision;
+};
+
+/** 攀爬物
+*/
+class SCTMClimb : public SCTMObject
+{
+public:
+	SCTMClimb() : SCTMObject(TM_OBJ_CLIMB) {}
 };
 
 /** NPC位置
@@ -98,6 +109,24 @@ public:
 	int m_iTID;
 };
 
+/** 玩家出生点
+*/
+class SCTMPlayer : public SCTMObject
+{
+public:
+	SCTMPlayer() : SCTMObject(TM_OBJ_PLAYER) {}
+};
+
+/** 传送点
+*/
+class SCTMTransport : public SCTMObject
+{
+public:
+	SCTMTransport() : SCTMObject(TM_OBJ_TRANSPORT) {}
+};
+
+///////////////////////////////////////////////////////////////////////////
+
 /** 地图对象
 */
 class SCTiledMap : public cocos2d::TMXTiledMap
@@ -124,10 +153,13 @@ public:
 
 	// 场景对象列表
 	typedef std::vector<SCTMCollision*> CollisionList;
+	typedef std::vector<SCTMClimb> ClimbList;
 	typedef std::vector<SCTMNPC*> NPCList;
 	typedef std::vector<SCTMOrnament*> OrnamentList;
 	typedef std::vector<SCTMPlatform*> PlatformList;
 	typedef std::vector<SCTMObstacle*> ObstacleList;
+	typedef std::vector<SCTMPlayer*> PlayerList;
+	typedef std::vector<SCTMTransport*> TransportList;
 
 public:
 	SCTiledMap(int mapId);
@@ -135,8 +167,6 @@ public:
 
 	virtual bool init();
 	virtual void update(float dt);
-
-	void addTMXLayer(const std::string& layerName);
 
 	cocos2d::Point getWorldPosByScreenPos(const cocos2d::Point& pos);
 	cocos2d::Point getScreenPosByWorldPos(const cocos2d::Point& pos);
@@ -149,8 +179,11 @@ public:
 	// 跟踪指定节点
 	void followNode(cocos2d::Node* pNode);
 
-	uint32_t getTileWidth() const { return m_BlockSize.width; }
-	uint32_t getTileHeight() const { return m_BlockSize.height; }
+	cocos2d::Point getPixelPosByTilePos();
+	cocos2d::Point getTilePosByPixelPos();
+
+	uint32_t getRealWidth() const { return m_realSize.width; }
+	uint32_t getRealHeight() const { return m_realSize.height; }
 
 	int getMapID() const { return m_iMapID; }
 	const std::string& getMapFile() const { return m_sMapFile; }
@@ -158,9 +191,7 @@ public:
 protected:
 	int m_iMapID;					// 场景配置表ID
 	std::string m_sMapFile;			// TMX场景文件
-	cocos2d::Size m_BlockSize;		// Tile的宽高
-	cocos2d::Size m_BlockCount;		// Tile在X、Y轴上的个数
-	cocos2d::Size m_mapSize;		// 地图的真实大小
+	cocos2d::Size m_realSize;		// 地图的真实大小
 
 	std::map<std::string, LayerList> m_layers;
 	std::map<std::string, LayerNodeList> m_layerNodes;
@@ -172,16 +203,24 @@ protected:
 	std::unordered_map<cocos2d::TMXLayer*, cocos2d::TMXLayer*> m_loopLayers;
 
 	CollisionList m_conllisions;
+	ClimbList m_climbs;
 	NPCList m_npcs;
 	OrnamentList m_ornaments;
 	PlatformList m_platforms;
 	ObstacleList m_obstacles;
+	PlayerList m_players;
+	TransportList m_transports;
 
-	float m_fScale;		// 场景的缩放
+	float m_fScaleFactor;		// 缩放系数
 
 protected:
-	// 加载场景对象数据
+	// 添加Object
 	void addObjectGroup(const std::string& group);
+	// 添加地图层
+	void addTMXLayer(const std::string& layerName);
+
+	// 显示包围盒
+	void showBoundingBox();
 
 	// 更新各个层的位置
 	void updateLayerPosition(float dt);

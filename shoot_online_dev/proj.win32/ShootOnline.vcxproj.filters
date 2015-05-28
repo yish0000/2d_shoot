@@ -177,6 +177,9 @@
     <ClCompile Include="..\Classes\Network\netlib\http\HttpProtocolMan.cpp">
       <Filter>Classes\Network\netlib\Http</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Utility\SCConfigs.cpp">
+      <Filter>Classes\Utility</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -316,6 +319,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Network\netlib\http\HttpProtocolMan.h">
       <Filter>Classes\Network\netlib\Http</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Utility\SCConfigs.h">
+      <Filter>Classes\Utility</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

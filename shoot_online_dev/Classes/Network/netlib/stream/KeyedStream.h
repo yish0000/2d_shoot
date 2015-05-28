@@ -103,6 +103,16 @@ public:
     {
         stream >> _bs;
     }
+
+	KeyedStream &push(const std::string &key, bool val)
+	{
+		return pushPrimaryType(key, val);
+	}
+
+	const KeyedStream &pop(const std::string &key, bool &val) const
+	{
+		return popPrimaryType(key, val);
+	}
     
     KeyedStream &push(const std::string &key, int8_t val)
     {

@@ -41,6 +41,13 @@ public:
     {
         rootObj.decode(*this);
     }
+
+	template <typename K>
+	JsonStream &push(const K &key, bool val)
+	{
+		_value[key] = val;
+		return *this;
+	}
     
     template <typename K>
     JsonStream &push(const K &key, int8_t val)
@@ -221,6 +228,13 @@ public:
         }
         return *this;
     }
+
+	template <typename K>
+	const JsonStream &pop(const K &key, bool &val) const
+	{
+		val = _value[key].asBool();
+		return *this;
+	}
     
     template <typename K>
     const JsonStream &pop(const K &key, int8_t &val) const
