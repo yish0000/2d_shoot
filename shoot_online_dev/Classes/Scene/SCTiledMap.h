@@ -130,7 +130,7 @@ public:
 	typedef std::vector<SCTMObstacle*> ObstacleList;
 
 public:
-	SCTiledMap();
+	SCTiledMap(int mapId);
 	virtual ~SCTiledMap();
 
 	virtual bool init();
@@ -156,8 +156,8 @@ public:
 	const std::string& getMapFile() const { return m_sMapFile; }
 
 protected:
-	int m_iMapID;
-	std::string m_sMapFile;
+	int m_iMapID;					// 场景配置表ID
+	std::string m_sMapFile;			// TMX场景文件
 	cocos2d::Size m_BlockSize;		// Tile的宽高
 	cocos2d::Size m_BlockCount;		// Tile在X、Y轴上的个数
 	cocos2d::Size m_mapSize;		// 地图的真实大小
@@ -177,9 +177,11 @@ protected:
 	PlatformList m_platforms;
 	ObstacleList m_obstacles;
 
+	float m_fScale;		// 场景的缩放
+
 protected:
-	cocos2d::Point getPixelPosByTilePos();
-	cocos2d::Point getTilePosByPixelPos();
+	// 加载场景对象数据
+	void addObjectGroup(const std::string& group);
 
 	// 更新各个层的位置
 	void updateLayerPosition(float dt);
