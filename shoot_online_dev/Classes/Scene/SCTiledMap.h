@@ -49,7 +49,7 @@ protected:
 class SCTMCollision : public SCTMObject
 {
 public:
-	SCTMCollision() : SCTMObject(TM_OBJ_COLLISION) {}
+	SCTMCollision() : SCTMObject(TM_OBJ_COLLISION), m_bXCollision(false) {}
 
 public:
 	bool m_bXCollision;
@@ -68,7 +68,7 @@ public:
 class SCTMNPC : public SCTMObject
 {
 public:
-	SCTMNPC() : SCTMObject(TM_OBJ_NPC) {}
+    SCTMNPC() : SCTMObject(TM_OBJ_NPC), m_iTID(-1) {}
 
 public:
 	int m_iTID;		// NPC模板ID
@@ -79,7 +79,7 @@ public:
 class SCTMOrnament : public SCTMObject
 {
 public:
-	SCTMOrnament() : SCTMObject(TM_OBJ_ORNAMENT) {}
+	SCTMOrnament() : SCTMObject(TM_OBJ_ORNAMENT), m_fScale(1.0f) {}
 
 public:
 	std::string m_gfx;
@@ -92,7 +92,7 @@ public:
 class SCTMPlatform : public SCTMObject
 {
 public:
-	SCTMPlatform() : SCTMObject(TM_OBJ_PLATFORM) {}
+	SCTMPlatform() : SCTMObject(TM_OBJ_PLATFORM), m_iTID(-1) {}
 
 public:
 	int m_iTID;
@@ -103,7 +103,7 @@ public:
 class SCTMObstacle : public SCTMObject
 {
 public:
-	SCTMObstacle() : SCTMObject(TM_OBJ_OBSTACLE) {}
+	SCTMObstacle() : SCTMObject(TM_OBJ_OBSTACLE), m_iTID(-1) {}
 
 public:
 	int m_iTID;
@@ -153,7 +153,7 @@ public:
 
 	// 场景对象列表
 	typedef std::vector<SCTMCollision*> CollisionList;
-	typedef std::vector<SCTMClimb> ClimbList;
+	typedef std::vector<SCTMClimb*> ClimbList;
 	typedef std::vector<SCTMNPC*> NPCList;
 	typedef std::vector<SCTMOrnament*> OrnamentList;
 	typedef std::vector<SCTMPlatform*> PlatformList;

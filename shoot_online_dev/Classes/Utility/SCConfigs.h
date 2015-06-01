@@ -1,7 +1,7 @@
 /*
  * ------------------------------------------------------------------------
  *  Name:   SCConfigs.h
- *  Desc:   APPÅäÖÃĞÅÏ¢
+ *  Desc:   APPé…ç½®æ•°æ®
  *  Author: Yish
  *  Date:   2015/5/28
  * ------------------------------------------------------------------------
@@ -18,7 +18,7 @@ class SCConfigs : public scnet::JsonStreamObj
 public:
 	~SCConfigs() {}
 	
-	// ¼ÓÔØÅäÖÃĞÅÏ¢(jsonÎÄ¼ş)
+	// åŠ è½½é…ç½®æ–‡ä»¶
 	bool load(const char* filename);
 
 	bool isShowBoundingBox() const { return m_bShowBoundingBox; }
@@ -26,7 +26,7 @@ public:
 	static SCConfigs& getInstance();
 
 protected:
-	bool m_bShowBoundingBox;	// ÊÇ·ñÏÔÊ¾°üÎ§ºĞ
+	bool m_bShowBoundingBox;	// æ˜¯å¦æ˜¾ç¤ºåŒ…å›´ç›’
 
 protected:
 	SCConfigs();
