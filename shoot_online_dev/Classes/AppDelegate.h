@@ -18,8 +18,7 @@ public:
     @brief    Implement Director and Scene init code here.
     @return true    Initialize success, app continue.
     @return false   Initialize failed, app terminate.
-    */
-    virtual bool applicationDidFinishLaunching();
+    */    virtual bool applicationDidFinishLaunching();
 
     /**
     @brief  The function be called when the application enter background
