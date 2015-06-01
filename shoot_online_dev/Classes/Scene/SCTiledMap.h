@@ -148,6 +148,12 @@ public:
 		int distLoopY;
 		float speedX;
 		float speedY;
+
+		LayerProperty()
+			: loopX(0), distX(0), distLoopX(0), loopY(0), distY(0), distLoopY(0)
+			, speedX(0), speedY(0)
+		{
+		}
 	};
 	typedef std::unordered_map<cocos2d::TMXLayer*, LayerProperty> LayerPropertyCache;
 
@@ -169,7 +175,7 @@ public:
 	virtual void update(float dt);
 
 	// 添加指定节点到层上
-	bool addChildToLayer(cocos2d::Node* child, const std::string& layerName, float z)
+	bool addChildToLayer(cocos2d::Node* child, const std::string& layerName, float z = 0.0f);
 
 	cocos2d::Point getWorldPosByScreenPos(const cocos2d::Point& pos);
 	cocos2d::Point getScreenPosByWorldPos(const cocos2d::Point& pos);
@@ -186,40 +192,31 @@ public:
 
 	// 聚焦地图上的某一点
 	void runFocusAction(float fTime, int x, int y, float fScale, const std::function<void(void)>& callback);
+	void runUnfocusAction(float fTime, const std::function<void(void)>& callback);
 	void stopFocusAction();
+
 	// 执行缩放动作
 	void runScaleAction(float fTime, float fScale, const std::function<void(void)>& callback);
 	void runUnscaleAction(float fTime, const std::function<void(void)>& callback);
 	void stopScaleAction();
 
-	// 添加子节点到指定的层
-	void addChildToLayer(cocos2d::Node* pChild, const std::string& layerName, float zOrder);
-
 	// 检查包围盒碰撞
 	bool checkCollision(const cocos2d::Rect& boundingBox);
-	bool checkBottomCollision(const cocos2d::Rect& boundingBox, float xDist, float yDist);
-	bool checkLeftCollision(const cocos2d::Rect& boundingBox, float xDist, float yDist);
-	bool checkRightCollision(const cocos2d::Rect& boundingBox, float xDist, float yDist);
+	bool checkBottomCollision(const cocos2d::Rect& boundingBox, float xDist, float yDist, float& collisionY);
+	bool checkLeftCollision(const cocos2d::Rect& boundingBox, float xDist, float yDist, float& collisionX);
+	bool checkRightCollision(const cocos2d::Rect& boundingBox, float xDist, float yDist, float& collisionX);
 
 	// 检查是否可攀爬
 	bool checkClimb(const cocos2d::Rect& boundingBox);
-	bool checkBottomClimb(const cocos2d::Rect& boundingBox, float xDist, float yDist);
+	bool checkBottomClimb(const cocos2d::Rect& boundingBox, float xDist, float yDist, float& climbY);
 
 	// 获得layer节点
 	cocos2d::Node* getLayerNode(const std::string& name);
 
-	cocos2d::Point getPixelPosByTilePos();
-	cocos2d::Point getTilePosByPixelPos();
-
-	// 获取地图大小（宽高的Tile数量）
-	cocos2d::Size getMapSize() const;
-	// 获取Tile的宽高
-	cocos2d::Size getTileSize() const;
-
 	uint32_t getRealWidth() const { return m_realSize.width; }
 	uint32_t getRealHeight() const { return m_realSize.height; }
 
-	const CollisionList& getCollisionList() const { return m_conllisions; }
+	const CollisionList& getCollisionList() const { return m_collisions; }
 	const ClimbList& getClimbList() const { return m_climbs; }
 	const NPCList& getNpcPointList() const { return m_npcs; }
 	const OrnamentList& getOrnamentList() const { return m_ornaments; }
@@ -241,13 +238,13 @@ protected:
 
 	cocos2d::Layer* m_pFrontEffectLayer;
 	cocos2d::Layer* m_pBackEffectLayer;
+	float m_fEffectLayerZ;
 
 	LayerPropertyCache m_layerPropCache;
 
-	// 
 	std::unordered_map<cocos2d::TMXLayer*, cocos2d::TMXLayer*> m_loopLayers;
 
-	CollisionList m_conllisions;
+	CollisionList m_collisions;
 	ClimbList m_climbs;
 	NPCList m_npcs;
 	OrnamentList m_ornaments;
@@ -259,6 +256,9 @@ protected:
 	cocos2d::Node* m_pTargetNode;	// 跟踪指定的节点
 	bool m_bFocusing;				// 正在聚焦操作
 	float m_fScaleFactor;			// 缩放系数
+
+	cocos2d::Action* m_pMoveMapAction;
+	cocos2d::Action* m_pScaleAction;
 
 protected:
 	// 添加Object
