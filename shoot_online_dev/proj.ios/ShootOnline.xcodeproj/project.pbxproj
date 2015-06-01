@@ -15,6 +15,7 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
+		B6F42A451B1C381900E23F48 /* MessageQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B6F42A431B1C381900E23F48 /* MessageQueue.cpp */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
@@ -191,6 +192,11 @@
 		503AE11A17EB9C5A00D1A890 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		5087E78817EB974C00C73F5D /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		5087E78A17EB975400C73F5D /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		B6F42A401B1C381900E23F48 /* message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = message.h; sourceTree = "<group>"; };
+		B6F42A411B1C381900E23F48 /* type.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = type.h; sourceTree = "<group>"; };
+		B6F42A421B1C381900E23F48 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		B6F42A431B1C381900E23F48 /* MessageQueue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MessageQueue.cpp; sourceTree = "<group>"; };
+		B6F42A441B1C381900E23F48 /* MessageQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageQueue.h; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -346,6 +352,7 @@
 		15AA9C4015B7EC450033D6C2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				B6F42A3E1B1C381900E23F48 /* Logic */,
 				D2B7BF421B13A0500012C51B /* Account */,
 				D2B7BF451B13A0500012C51B /* Common */,
 				D2B7BF4B1B13A0500012C51B /* Effect */,
@@ -418,6 +425,27 @@
 			);
 			name = Resources;
 			path = ../Resources;
+			sourceTree = "<group>";
+		};
+		B6F42A3E1B1C381900E23F48 /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				B6F42A3F1B1C381900E23F48 /* common */,
+				B6F42A421B1C381900E23F48 /* config.h */,
+				B6F42A431B1C381900E23F48 /* MessageQueue.cpp */,
+				B6F42A441B1C381900E23F48 /* MessageQueue.h */,
+			);
+			name = Logic;
+			path = ../Classes/Logic;
+			sourceTree = "<group>";
+		};
+		B6F42A3F1B1C381900E23F48 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				B6F42A401B1C381900E23F48 /* message.h */,
+				B6F42A411B1C381900E23F48 /* type.h */,
+			);
+			path = common;
 			sourceTree = "<group>";
 		};
 		D2B5DA411B0CEA0500401BDF /* Products */ = {
@@ -879,6 +907,7 @@
 				D2B7BFAE1B13A0500012C51B /* json_reader.cpp in Sources */,
 				D2B7BFBA1B13A0500012C51B /* SCWorld.cpp in Sources */,
 				D2B7BFA71B13A0500012C51B /* md5.cpp in Sources */,
+				B6F42A451B1C381900E23F48 /* MessageQueue.cpp in Sources */,
 				D2B7BFB71B13A0500012C51B /* SCNetworkModule.cpp in Sources */,
 				D2B7BFA81B13A0500012C51B /* rc4.cpp in Sources */,
 				D2B7BFAB1B13A0500012C51B /* HttpProtocolMan.cpp in Sources */,
