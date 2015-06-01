@@ -178,13 +178,52 @@ public:
 	void shake(float fTime);
 	// 跟踪指定节点
 	void followNode(cocos2d::Node* pNode);
+	// 设置缩放系数
+	void setScaleFactor(float fScale);
+
+	// 聚焦地图上的某一点
+	void runFocusAction(float fTime, int x, int y, float fScale, const std::function<void(void)>& callback);
+	void stopFocusAction();
+	// 执行缩放动作
+	void runScaleAction(float fTime, float fScale, const std::function<void(void)>& callback);
+	void runUnscaleAction(float fTime, const std::function<void(void)>& callback);
+	void stopScaleAction();
+
+	// 添加子节点到指定的层
+	void addChildToLayer(cocos2d::Node* pChild, const std::string& layerName, float zOrder);
+
+	// 检查包围盒碰撞
+	bool checkCollision(const cocos2d::Rect& boundingBox);
+	bool checkBottomCollision(const cocos2d::Rect& boundingBox, float xDist, float yDist);
+	bool checkLeftCollision(const cocos2d::Rect& boundingBox, float xDist, float yDist);
+	bool checkRightCollision(const cocos2d::Rect& boundingBox, float xDist, float yDist);
+
+	// 检查是否可攀爬
+	bool checkClimb(const cocos2d::Rect& boundingBox);
+	bool checkBottomClimb(const cocos2d::Rect& boundingBox, float xDist, float yDist);
+
+	// 获得layer节点
+	cocos2d::Node* getLayerNode(const std::string& name);
 
 	cocos2d::Point getPixelPosByTilePos();
 	cocos2d::Point getTilePosByPixelPos();
 
+	// 获取地图大小（宽高的Tile数量）
+	cocos2d::Size getMapSize() const;
+	// 获取Tile的宽高
+	cocos2d::Size getTileSize() const;
+
 	uint32_t getRealWidth() const { return m_realSize.width; }
 	uint32_t getRealHeight() const { return m_realSize.height; }
 
+	const CollisionList& getCollisionList() const { return m_conllisions; }
+	const ClimbList& getClimbList() const { return m_climbs; }
+	const NPCList& getNpcPointList() const { return m_npcs; }
+	const OrnamentList& getOrnamentList() const { return m_ornaments; }
+	const PlatformList& getPlatformList() const { return m_platforms; }
+	const ObstacleList& getObstacleList() const { return m_obstacles; }
+	const PlayerList& getPlayerPointList() const { return m_players; }
+	
 	int getMapID() const { return m_iMapID; }
 	const std::string& getMapFile() const { return m_sMapFile; }
 
@@ -196,6 +235,9 @@ protected:
 	std::map<std::string, LayerList> m_layers;
 	std::map<std::string, LayerNodeList> m_layerNodes;
 	std::map<std::string, cocos2d::Node*> m_nodeTable;
+
+	cocos2d::Layer* m_pFrontEffectLayer;
+	cocos2d::Layer* m_pBackEffectLayer;
 
 	LayerPropertyCache m_layerPropCache;
 
@@ -211,16 +253,24 @@ protected:
 	PlayerList m_players;
 	TransportList m_transports;
 
-	float m_fScaleFactor;		// 缩放系数
+	cocos2d::Node* m_pTargetNode;	// 跟踪指定的节点
+	bool m_bFocusing;				// 正在聚焦操作
+	float m_fScaleFactor;			// 缩放系数
 
 protected:
 	// 添加Object
 	void addObjectGroup(const std::string& group);
 	// 添加地图层
 	void addTMXLayer(const std::string& layerName);
+	void addLayerImp(cocos2d::TMXLayer* pLayer, const std::string& name, const std::string& suffix, bool bLast);
+	// 缓存地图层的属性
+	void cacheLayerProperty(cocos2d::TMXLayer* pLayer);
 
 	// 显示包围盒
 	void showBoundingBox();
+
+	// 设置层的颜色
+	void setLayerColor(cocos2d::TMXLayer* pLayer, const cocos2d::Color3B& color);
 
 	// 更新各个层的位置
 	void updateLayerPosition(float dt);
@@ -228,6 +278,9 @@ protected:
 	void updateCamera(float dt);
 	// 更新特效层
 	void updateEffectLayer(float dt);
+
+	// 震动停止
+	void shakeStop(float dt);
 };
 
 ///////////////////////////////////////////////////////////////////////////
