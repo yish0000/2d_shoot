@@ -168,6 +168,9 @@ public:
 	virtual bool init();
 	virtual void update(float dt);
 
+	// 添加指定节点到层上
+	bool addChildToLayer(cocos2d::Node* child, const std::string& layerName, float z)
+
 	cocos2d::Point getWorldPosByScreenPos(const cocos2d::Point& pos);
 	cocos2d::Point getScreenPosByWorldPos(const cocos2d::Point& pos);
 

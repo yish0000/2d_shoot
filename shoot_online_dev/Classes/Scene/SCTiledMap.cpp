@@ -8,6 +8,7 @@
  */
 
 #include "SCTiledMap.h"
+#include "2d/CCShapeNode.h"
 #include "Utility/SCConfigs.h"
 
 USING_NS_CC;
@@ -188,6 +189,26 @@ void SCTiledMap::showBoundingBox()
 {
 	for(auto& col : m_conllisions)
 	{
-		
+		RectShape* pRect = RectShape::create(col->m_boundingBox.size);
+		pRect->setAnchorPoint(0, 0);
+		pRect->setPosition(col->m_boundingBox.x, col->m_boundingBox.y);
+		pRect->setLineColor(Color4F(1.0, 0.0, 0.0, 1.0));
+		addChildToLayer(rect, "rd_add");
+	}
+}
+
+// 添加child到指定层
+bool SCTiledMap::addChildToLayer(cocos2d::Node* child, const std::string& layerName, float z)
+{
+	Node* pLayer = m_nodeTable[layerName];
+	if( pLayer )
+	{
+		pLayer->addChild(child, z);
+		return true;
+	}
+	else
+	{
+		CCLOG("SCTiledMap::addChildToLayer, failed to add child node to layer(%s) on map(%s)!", layerName.c_str(), m_sMapFile.c_str());
+		return false;
 	}
 }

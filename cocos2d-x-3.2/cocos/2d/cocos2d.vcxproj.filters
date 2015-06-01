@@ -586,6 +586,9 @@
     <ClCompile Include="CCFastTMXTiledMap.cpp">
       <Filter>2d</Filter>
     </ClCompile>
+    <ClCompile Include="CCShapeNode.cpp">
+      <Filter>2d</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\physics\CCPhysicsBody.h">
@@ -1193,6 +1196,9 @@
       <Filter>2d</Filter>
     </ClInclude>
     <ClInclude Include="CCFastTMXLayer.h">
+      <Filter>2d</Filter>
+    </ClInclude>
+    <ClInclude Include="CCShapeNode.h">
       <Filter>2d</Filter>
     </ClInclude>
   </ItemGroup>
