@@ -11,12 +11,13 @@
 #include "SCSceneBase.h"
 #include "Utility/SCConfigs.h"
 #include "Utility/SCUtilityFunc.h"
+#include "Utility/SCGeometry.h"
 #include "cocos2d.h"
 
 USING_NS_CC;
 
 SCTiledMap::SCTiledMap(int mapId)
-	: m_iMapID(mapId), m_sMapFile(""), m_fScaleFactor(1.0f)
+	: m_iMapID(mapId), m_sMapFile(""), m_fScaleFactor(1.0f), m_fEffectLayerZ(100)
 {
 }
 
@@ -88,7 +89,7 @@ void SCTiledMap::addObjectGroup(const std::string& group)
 		{
 			SCTMCollision* pCollision = new SCTMCollision();
 			pCollision->m_bXCollision = dic["xcollision"].asBool();
-			m_conllisions.push_back(pCollision);
+			m_collisions.push_back(pCollision);
 			pObj = pCollision;
 		}
         else if( group == "climb" )
@@ -334,7 +335,7 @@ Layer* SCTiledMap::getBackEffectLayer()
 		m_pBackEffectLayer->setPosition(Point(0, 0));
 		m_pBackEffectLayer->setCascadeOpacityEnabled(true);
 		m_pBackEffectLayer->setContentSize(winSize);
-		glb_getCurScene()->addChild(m_pBackEffectLayer, SCENELAYER_ZORDER_UI + 1);
+		addChild(m_pBackEffectLayer, m_fEffectLayerZ);
 	}
 
 	return m_pFrontEffectLayer;
@@ -398,64 +399,43 @@ void SCTiledMap::addLayerImp(cocos2d::TMXLayer* pLayer, const std::string& name,
 	m_nodeTable[name + suffix] = pLayerNode;
 	cacheLayerProperty(pLayer);
 
+	LayerProperty prop = m_layerPropCache[pLayer];
+
 	// 设置颜色
-	Color3B layerColor = m_layerPropCache[pLayer].color;
-	if( m_layerPropCache[pLayer].color.r )
+	if( prop.color.r )
 	{
-		setLayerColor(pLayer, m_layerPropCache[pLayer].color);
+		setLayerColor(pLayer, prop.color);
 	}
 
-// 	table.insert(self.layers[name], layer)
-// 		local layerNode = display.newNode()
-// self:addChild(layerNode, layer:getZOrder())
-// 	 table.insert(self.layersNodes[name], layerNode)
-// 	 self.nodesTable[name..suffix] = layerNode
-// self:cacheLayerProperty(layer)
-// 
-// 	 -- 设置颜色
-// 	 if self.layerPropertyCache[layer].r then
-// self:setLayerColor(layer, ccc3(
-// 	 self.layerPropertyCache[layer].r,
-// 	 self.layerPropertyCache[layer].g,
-// 	 self.layerPropertyCache[layer].b
-// 	 )
-// 	 )
-// 	 end
-// 
-// 	 -- 查看add是否有循环
-// 	 if self.layerPropertyCache[layer].loopx or self.layerPropertyCache[layer].loopy then
-// 
-// 		 local loopLayer = self:layerNamed(name.. suffix .. "_loop")
-// 		 if loopLayer == nil then
-// 			 gErrorLog("地图"..self.mapName.."缺少循环层 "..name.. suffix.. "_loop")
-// 		 else
-// 		 local texture = loopLayer:getTexture()
-// 		 if texture then texture:setAntiAliasTexParameters() end
-// 
-// 			 self.loopLayers[layer] = loopLayer
-// 			 -- 设置颜色
-// 			 if self.layerPropertyCache[layer].r then
-// self:setLayerColor(loopLayer, ccc3(
-// 	 self.layerPropertyCache[layer].r,
-// 	 self.layerPropertyCache[layer].g,
-// 	 self.layerPropertyCache[layer].b
-// 	 )
-// 	 )
-// 	 end
-// 	 end
-// 	 end
-// 
-// 	 -- 在rd层的最后一层添加effect背景层
-// 	 if name == "rd" then
-// 		 self.effectLayerZ = self.effectLayerZ or 100
-// 		 if layer:getZOrder() < self.effectLayerZ then
-// 			 self.effectLayerZ = layer:getZOrder()
-// 			 end
-// 
-// 			 if last then
-// 				 self.effectLayerZ = self.effectLayerZ - 1
-// 				 end
-// 				 end
+	if( prop.loopX || prop.loopY )
+	{
+		std::string loopLayerName = name + suffix + "_loop";
+		TMXLayer* pLoopLayer = getLayer(loopLayerName);
+		if( !pLoopLayer )
+			CCLOG("SCTiledMap::addLayerImp, Map (%s) lost the loop layer (%s)", m_sMapFile.c_str(), loopLayerName);
+		Texture2D* pTexture = pLoopLayer->getTexture();
+		if( pTexture )
+			pTexture->setAntiAliasTexParameters();
+
+		m_loopLayers[pLayer] = pLoopLayer;
+
+		// 设置颜色
+		if( prop.color.r )
+		{
+			setLayerColor(pLoopLayer, prop.color);
+		}
+	}
+
+	// 在rd层的最后一层添加Effect背景层
+	if( name == "rd" )
+	{
+		if( m_fEffectLayerZ == 0.0f )
+			m_fEffectLayerZ = 100.0f;
+		if( pLayer->getLocalZOrder() < m_fEffectLayerZ )
+			m_fEffectLayerZ = pLayer->getLocalZOrder();
+		if( bLast )
+			m_fEffectLayerZ = m_fEffectLayerZ - 1;
+	}
 }
 
 // 缓存地图层的属性
@@ -495,13 +475,22 @@ void SCTiledMap::cacheLayerProperty(cocos2d::TMXLayer* pLayer)
 // 显示包围盒
 void SCTiledMap::showBoundingBox()
 {
-	for(auto& col : m_conllisions)
+	for(auto& col : m_collisions)
 	{
 		RectShape* pRect = RectShape::create(col->m_boundingBox.size);
-		pRect->setAnchorPoint(0, 0);
-		pRect->setPosition(col->m_boundingBox.x, col->m_boundingBox.y);
+		pRect->setAnchorPoint(Point(0, 0));
+		pRect->setPosition(col->m_boundingBox.origin.x, col->m_boundingBox.origin.y);
 		pRect->setLineColor(Color4F(1.0, 0.0, 0.0, 1.0));
-		addChildToLayer(rect, "rd_add");
+		addChildToLayer(pRect, "rd_add");
+	}
+
+	for(auto& climb : m_climbs)
+	{
+		RectShape* pRect = RectShape::create(climb->m_boundingBox.size);
+		pRect->setAnchorPoint(Point(0, 0));
+		pRect->setPosition(climb->m_boundingBox.origin.x, climb->m_boundingBox.origin.y);
+		pRect->setLineColor(Color4F(1.0f, 0.0f, 0.0f, 1.0f));
+		addChildToLayer(pRect, "rd_add");
 	}
 }
 
@@ -572,30 +561,256 @@ void SCTiledMap::runFocusAction(float fTime, int x, int y, float fScale, const s
 {
 	stopFocusAction();
 
-// 	 local scale = scale and (scale * self.scaleFactor) or self:getScale()
-	 // 	 local newX = ( -x + display.cx / scale ) * scale
-	 // 	 local newY = ( -y + display.height * 0.382 / scale ) * scale 
-	 // 	 newX = clampf(newX, (-self.width + display.width / scale) * scale, 0)
-	 // 	 newY = clampf(newY, (-self.height + display.cy / scale) * scale, 0)
-	 // 
-	 // 	 self.moveMapAction = transition.sequence({
-	 // CCSpawn:createWithTwoActions(
-	 // CCEaseExponentialOut:create(CCMoveTo:create(time or 1, ccp(newX, newY))), 
-	 // CCEaseExponentialOut:create(CCScaleTo:create(time or 1, scale))
-	 // 					 ), 
-	 // CCCallFunc:create(function ()
-	 // 		   self.moveMapAction = nil 
-	 // 		   if callback then
-	 // 			   callback()
-	 // 			   end
-	 // 			   end)})
-	 // self:runAction(self.moveMapAction)
-	 // 
-	 // 	 self.focusing = true
-	 // 	 end
+	if( fScale != 0.0f )
+		fScale = fScale * m_fScaleFactor;
+	else
+		fScale = getScale();
+
+	Size winSize = Director::getInstance()->getWinSize();
+	Point screenCenter = Point(winSize.width / 2, winSize.height / 2);
+
+	float newX = (-x + screenCenter.x / fScale) * fScale;
+	float newY = (-y + winSize.height * 0.382f / fScale) * fScale;
+	newX = clampf(newX, (-m_realSize.width + winSize.width / fScale) * fScale, 0.0f);
+	newY = clampf(newY, (-m_realSize.height + screenCenter.y / fScale) * fScale, 0.0f);
+
+	m_pMoveMapAction = Sequence::create(
+		Spawn::createWithTwoActions(EaseExponentialOut::create(MoveTo::create(fTime, Point(newX, newY))), EaseExponentialOut::create(ScaleTo::create(fTime, fScale))), 
+		CallFunc::create([&] {
+			m_pMoveMapAction = nullptr;
+			if( callback )
+				callback();
+		}), nullptr);
+	runAction(m_pMoveMapAction);
+
+	m_bFocusing = true;
+}
+
+// 取消聚焦回到原点
+void SCTiledMap::runUnfocusAction(float fTime, const std::function<void(void)>& callback)
+{
+	stopFocusAction();
+
+	if( !m_pTargetNode )
+		return;
+
+	float fScale = m_fScaleFactor;
+	Size winSize = Director::getInstance()->getWinSize();
+	Point screenCenter = Point(winSize.width / 2, winSize.height / 2);
+
+	Point targetPos = m_pTargetNode->getPosition();
+	float newX = (-targetPos.x + screenCenter.x / fScale) * fScale;
+	float newY = (-targetPos.y + winSize.height * 0.382f / fScale) * fScale;
+	newX = clampf(newX, (-m_realSize.width + winSize.width / fScale) * fScale, 0.0f);
+	newY = clampf(newY, (-m_realSize.height + screenCenter.y / fScale) * fScale, 0.0f);
+
+	m_pMoveMapAction = Sequence::create(
+		Spawn::createWithTwoActions(
+			EaseExponentialOut::create(MoveTo::create(fTime, Point(newX, newY))), 
+			EaseExponentialOut::create(ScaleTo::create(fTime, fScale))
+		), 
+		CallFunc::create([&] {
+			m_pMoveMapAction = nullptr;
+		}), nullptr);
+	runAction(m_pMoveMapAction);
+	m_bFocusing = true;
 }
 
 // 取消聚焦地图上的焦点
 void SCTiledMap::stopFocusAction()
 {
+	if( m_pMoveMapAction )
+	{
+		stopAction(m_pMoveMapAction);
+		m_pMoveMapAction = NULL;
+	}
+}
+
+// 执行缩放动作
+void SCTiledMap::runScaleAction(float fTime, float fScale, const std::function<void(void)>& callback)
+{
+	stopScaleAction();
+
+	m_pScaleAction = Sequence::create(
+		EaseExponentialOut::create(ScaleTo::create(fTime, fScale)),
+		CallFunc::create([&] {
+			m_pScaleAction = NULL;
+			if( callback )
+				callback();
+		}), nullptr);
+	runAction(m_pScaleAction);
+}
+
+// 取消缩放动作
+void SCTiledMap::runUnscaleAction(float fTime, const std::function<void(void)>& callback)
+{
+	stopScaleAction();
+
+	m_pScaleAction = Sequence::create(
+		EaseExponentialOut::create(ScaleTo::create(fTime, m_fScaleFactor)),
+		CallFunc::create([&] {
+			m_pScaleAction = NULL;
+			if( callback )
+				callback();
+		}), nullptr);
+	runAction(m_pScaleAction);
+}
+
+// 停止当前缩放动作
+void SCTiledMap::stopScaleAction()
+{
+	if( m_pScaleAction )
+	{
+		stopAction(m_pScaleAction);
+		m_pScaleAction = NULL;
+	}
+}
+
+// 获取layer节点
+cocos2d::Node* SCTiledMap::getLayerNode(const std::string& name)
+{
+	std::map<std::string, cocos2d::Node*>::iterator it = m_nodeTable.find(name);
+	return it != m_nodeTable.end() ? it->second : NULL;
+}
+
+// 检查包围盒碰撞
+bool SCTiledMap::checkCollision(const cocos2d::Rect& boundingBox)
+{
+	for(auto& col : m_collisions)
+	{
+		if( SCGeometry::bbIntersects(col->m_boundingBox, boundingBox) )
+			return true;
+	}
+
+	return false;
+}
+
+// 检测包围盒下边是否有碰撞
+bool SCTiledMap::checkBottomCollision(const cocos2d::Rect& boundingBox, float xDist, float yDist, float& collisionY)
+{
+	cocos2d::Rect rcBound = boundingBox;
+	rcBound.origin.x = rcBound.origin.x + xDist;
+	rcBound.origin.y = rcBound.origin.y - yDist;
+	rcBound.size.height = rcBound.size.height + yDist;
+
+	bool isCollision = false;
+	collisionY = 0;
+	for(auto& v : m_collisions)
+	{
+		// 只考虑位置在包围盒下面的
+		if( v->m_boundingBox.origin.y + v->m_boundingBox.size.height < boundingBox.origin.y )
+		{
+			if( SCGeometry::bbIntersects(v->m_boundingBox, boundingBox) )
+			{
+				// 取最近的碰撞位置
+				if( v->m_boundingBox.origin.y + v->m_boundingBox.size.height > collisionY )
+				{
+					isCollision = true;
+					collisionY = v->m_boundingBox.origin.y + v->m_boundingBox.size.height;
+				}
+			}
+		}
+	}
+
+	return isCollision;
+}
+
+// 检查包围盒左边是否有碰撞
+bool SCTiledMap::checkLeftCollision(const cocos2d::Rect& boundingBox, float xDist, float yDist, float& collisionX)
+{
+	cocos2d::Rect rcBound = boundingBox;
+	rcBound.origin.x = rcBound.origin.x - xDist;
+	rcBound.origin.y = rcBound.origin.y - yDist;
+	rcBound.size.width = rcBound.size.width + xDist;
+
+	bool isCollision = false;
+	for(auto& v : m_collisions)
+	{
+		// 只考虑位置在包围盒左面的
+		if( v->m_bXCollision && v->m_boundingBox.origin.x + v->m_boundingBox.size.width < boundingBox.origin.x )
+		{
+			if( SCGeometry::bbIntersects(v->m_boundingBox, boundingBox) )
+			{
+				// 取最近的碰撞位置
+				if( v->m_boundingBox.origin.x + v->m_boundingBox.size.width > collisionX ) 
+				{
+					isCollision = true;
+					collisionX = v->m_boundingBox.origin.x + v->m_boundingBox.size.width;
+				}
+			}
+		}
+	}
+
+	return isCollision;
+}
+
+// 检查包围盒右边是否有碰撞
+bool SCTiledMap::checkRightCollision(const cocos2d::Rect& boundingBox, float xDist, float yDist, float& collisionX)
+{
+	cocos2d::Rect rcBound = boundingBox;
+	rcBound.origin.y = rcBound.origin.y - yDist;
+	rcBound.size.width = rcBound.size.width + xDist;
+
+	bool isCollision = false;
+	collisionX = 100000.0f;
+	for(auto& v : m_collisions)
+	{
+		// 只考虑位置在包围盒右面的
+		if( v->m_bXCollision && v->m_boundingBox.origin.x > rcBound.origin.x + rcBound.size.width )
+		{
+			if( SCGeometry::bbIntersects(v->m_boundingBox, rcBound) )
+			{
+				// 取最近的碰撞位置
+				if( v->m_boundingBox.origin.x < collisionX )
+				{
+					isCollision = true;
+					collisionX = v->m_boundingBox.origin.x;
+				}
+			}
+		}
+	}
+
+	return isCollision;
+}
+
+// 检查包围盒攀爬
+bool SCTiledMap::checkClimb(const cocos2d::Rect& boundingBox)
+{
+	for(auto& v : m_climbs )
+	{
+		if( SCGeometry::bbIntersects(v->m_boundingBox, boundingBox) )
+			return true;
+	}
+
+	return false;
+}
+
+// 检查包围盒下面是否可攀爬
+bool SCTiledMap::checkBottomClimb(const cocos2d::Rect& boundingBox, float xDist, float yDist, float& climbY)
+{
+	cocos2d::Rect rcBound;
+	rcBound.origin.x = boundingBox.origin.x - xDist;
+	rcBound.origin.y = boundingBox.origin.y - yDist;
+	rcBound.size.height = boundingBox.size.height + yDist;
+
+	bool isClimb = false;
+	climbY = 0;
+	for(auto& v : m_climbs)
+	{
+		// 只考虑位置在包围盒下面的
+		if( v->m_boundingBox.origin.y + v->m_boundingBox.size.height < boundingBox.origin.y )
+		{
+			if( SCGeometry::bbIntersects(v->m_boundingBox, boundingBox) )
+			{
+				// 取最近的碰撞位置
+				if( v->m_boundingBox.origin.y + v->m_boundingBox.size.height > climbY )
+				{
+					isClimb = true;
+					climbY = v->m_boundingBox.origin.y + v->m_boundingBox.size.height;
+				}
+			}
+		}
+	}
+
+	return isClimb;
 }

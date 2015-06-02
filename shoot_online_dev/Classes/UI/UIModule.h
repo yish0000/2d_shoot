@@ -18,7 +18,10 @@ public:
 	UIModule();
 	virtual ~UIModule();
 
+	float getUIScale() const { return m_fUIScale; }
 
+protected:
+	float m_fUIScale;
 };
 
 ///////////////////////////////////////////////////////////////////////////

@@ -180,6 +180,9 @@
     <ClCompile Include="..\Classes\Utility\SCConfigs.cpp">
       <Filter>Classes\Utility</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Utility\SCGeometry.cpp">
+      <Filter>Classes\Utility</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -321,6 +324,12 @@
       <Filter>Classes\Network\netlib\Http</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Utility\SCConfigs.h">
+      <Filter>Classes\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Utility\SCGeometry.h">
+      <Filter>Classes\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Utility\SCCounter.h">
       <Filter>Classes\Utility</Filter>
     </ClInclude>
   </ItemGroup>

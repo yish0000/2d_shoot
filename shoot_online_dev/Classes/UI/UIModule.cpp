@@ -8,3 +8,8 @@
  */
 
 #include "UIModule.h"
+
+UIModule::UIModule()
+	: m_fUIScale(1.0f)
+{
+}
