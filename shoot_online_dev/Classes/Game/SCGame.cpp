@@ -8,6 +8,10 @@
  */
 
 #include "SCGame.h"
+#include "Module/SCModuleManager.h"
+#include "cocos2d.h"
+
+USING_NS_CC;
 
 SCGame& SCGame::getInstance()
 {
@@ -17,7 +21,7 @@ SCGame& SCGame::getInstance()
 
 SCGame::SCGame()
 {
-
+	m_gameState = GS_NONE;
 }
 
 SCGame::~SCGame()
@@ -26,10 +30,18 @@ SCGame::~SCGame()
 
 bool SCGame::init()
 {
+	// 初始化各个模块
+	SCModuleManager::getInstance().init();
+
+	Director::getInstance()->getScheduler()->scheduleUpdate(this, 0, false);
 	return true;
 }
 
 void SCGame::update(float dt)
 {
+	// 更新各个模块
+	SCModuleManager::getInstance().update(dt);
+
+
 }
 

@@ -23,12 +23,6 @@ SCModuleBase::~SCModuleBase()
 
 bool SCModuleBase::init()
 {
-	if( m_fUpdateInterval >= 0 )
-	{
-		Director* pDirector = Director::getInstance();
-		pDirector->getScheduler()->schedule(CC_CALLBACK_1(SCModuleBase::update, this), this, m_fUpdateInterval, false, "SCModuleBase::update");
-	}
-
 	addEventListener(SC_EVENT_MODULE_INITED, sceventcallback_selector(SCModuleBase::onEventModuleInited));
 	return true;
 }
@@ -53,5 +47,9 @@ void SCModuleBase::update(float dt)
 }
 
 void SCModuleBase::onEventModuleInited(SCEvent* pEvent)
+{
+}
+
+void SCModuleBase::clearResources()
 {
 }

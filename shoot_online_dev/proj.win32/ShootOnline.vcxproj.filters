@@ -329,6 +329,9 @@
     <ClInclude Include="..\Classes\Utility\SCGeometry.h">
       <Filter>Classes\Utility</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\Utility\SCCounter.h">
+      <Filter>Classes\Utility</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">

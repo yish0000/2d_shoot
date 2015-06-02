@@ -212,6 +212,7 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\Scene\SCTiledMap.h" />
     <ClInclude Include="..\Classes\UI\UIModule.cpp" />
     <ClInclude Include="..\Classes\UI\UIModule.h" />
+    <ClInclude Include="..\Classes\Utility\SCCounter.h" />
     <ClInclude Include="..\Classes\Utility\SCConfigs.h" />
     <ClInclude Include="..\Classes\Utility\SCGeometry.h" />
     <ClInclude Include="..\Classes\Utility\SCUtilityFunc.h" />

@@ -23,8 +23,8 @@ public:
 	virtual bool init();
 	virtual void update(float dt);
 
-	int getModuleType() const { return m_iType; }
-	float getUpdateInterval() const { return m_fUpdateInterval; }
+	// 清理资源
+	virtual void clearResources();
 
 	// 注册事件
 	void addEventListener(const std::string& eventType, SEL_SCEventCallback callback, int priority=0);
@@ -33,9 +33,11 @@ public:
 	void dispatchEvent(SCEvent* pEvent);
 	void dispatchEvent(const std::string& eventName);
 
+	// 获取模块类型
+	int getModuleType() const { return m_iType; }
+
 protected:
-	int m_iType;
-	float m_fUpdateInterval;
+	int m_iType;	// 模块类型
 
 	virtual void onEventModuleInited(SCEvent* pEvent);
 };

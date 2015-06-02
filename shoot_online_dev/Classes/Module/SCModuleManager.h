@@ -10,13 +10,13 @@
 #ifndef __SC_MODULEMANAGER_H__
 #define __SC_MODULEMANAGER_H__
 
-#include <vector>
+#include <map>
 #include "SCModuleBase.h"
 
 class SCModuleManager : public SCEventDispatcher
 {
 public:
-	typedef std::vector<SCModuleBase*> ModuleList;
+	typedef std::map<int, SCModuleBase*> ModuleMap;
 
 public:
 	SCModuleManager();
@@ -24,13 +24,14 @@ public:
 
 	bool init();
 	void update(float dt);
+	void clearResources();
 
 	SCModuleBase* getModule(int type);
 
 	static SCModuleManager& getInstance();
 
 protected:
-	ModuleList m_Modules;
+	ModuleMap m_Modules;
 };
 
 ///////////////////////////////////////////////////////////////////////////

@@ -25,8 +25,8 @@ public:
 	virtual void onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *unused_event); 
 	virtual void onTouchCancelled(cocos2d::Touch *touch, cocos2d::Event *unused_event);
 
-	// 快捷键处理
-	virtual void onAcceleration(cocos2d::Acceleration* acc, cocos2d::Event* unused_event);
+	virtual void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
+	virtual void onKeyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 
 	cocos2d::Node* getRootNode() const { return m_pRootNode; }
 
