@@ -9,6 +9,15 @@
 #ifndef __ShootOnline__SCSceneLogin__
 #define __ShootOnline__SCSceneLogin__
 
-#include <stdio.h>
+#include "SCSceneBase.h"
+
+class SCSceneLogin : public SCSceneBase
+{
+public:
+    SCSceneLogin();
+    
+    virtual bool init();
+    virtual void onEnter();
+};
 
 #endif /* defined(__ShootOnline__SCSceneLogin__) */

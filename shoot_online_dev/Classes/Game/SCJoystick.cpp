@@ -25,6 +25,22 @@ SCJoystick::~SCJoystick()
 {
 }
 
+SCJoystick* SCJoystick::create(const std::string &back_img, const std::string &center_img)
+{
+    SCJoystick* pJoystick = new SCJoystick(back_img, center_img);
+    if( pJoystick && pJoystick->init() )
+    {
+        pJoystick->autorelease();
+        return pJoystick;
+    }
+    else
+    {
+        delete pJoystick;
+        pJoystick = NULL;
+        return NULL;
+    }
+}
+
 bool SCJoystick::init()
 {
 	if( !Node::init() )

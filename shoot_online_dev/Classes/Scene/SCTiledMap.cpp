@@ -412,7 +412,7 @@ void SCTiledMap::addLayerImp(cocos2d::TMXLayer* pLayer, const std::string& name,
 		std::string loopLayerName = name + suffix + "_loop";
 		TMXLayer* pLoopLayer = getLayer(loopLayerName);
 		if( !pLoopLayer )
-			CCLOG("SCTiledMap::addLayerImp, Map (%s) lost the loop layer (%s)", m_sMapFile.c_str(), loopLayerName);
+			CCLOG("SCTiledMap::addLayerImp, Map (%s) lost the loop layer (%s)", m_sMapFile.c_str(), loopLayerName.c_str());
 		Texture2D* pTexture = pLoopLayer->getTexture();
 		if( pTexture )
 			pTexture->setAntiAliasTexParameters();

@@ -15,6 +15,15 @@
 USING_NS_CC;
 using namespace scnet;
 
+SCNetworkModule::SCNetworkModule()
+    : SCModuleBase(MODULE_TYPE_NETWORK)
+{
+}
+
+SCNetworkModule::~SCNetworkModule()
+{
+}
+
 bool SCNetworkModule::init()
 {
 	if( !SCModuleBase::init() )

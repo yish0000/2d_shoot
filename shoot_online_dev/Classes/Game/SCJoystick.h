@@ -18,7 +18,9 @@ public:
 	SCJoystick(const std::string& back_img, const std::string& center_img);
 	virtual ~SCJoystick();
 
-	virtual bool init();
+    static SCJoystick* create(const std::string& back_img, const std::string& center_img);
+
+    virtual bool init();
 
 	virtual bool onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_event); 
 	virtual void onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *unused_event); 

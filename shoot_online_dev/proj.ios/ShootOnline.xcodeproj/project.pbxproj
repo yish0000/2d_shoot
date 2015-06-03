@@ -19,6 +19,16 @@
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
+		D22AC3541B1DD9BC000F9AA4 /* SCGeometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22AC3521B1DD9BC000F9AA4 /* SCGeometry.cpp */; };
+		D22AC3651B1DE6F4000F9AA4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D22AC3641B1DE6F4000F9AA4 /* Images.xcassets */; };
+		D22AC3691B1DEC62000F9AA4 /* SCPlayerModule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22AC3681B1DEC62000F9AA4 /* SCPlayerModule.cpp */; };
+		D22AC36E1B1DF486000F9AA4 /* SCRole.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22AC36D1B1DF486000F9AA4 /* SCRole.cpp */; };
+		D22AC3711B1DFB24000F9AA4 /* SCHostPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22AC36F1B1DFB24000F9AA4 /* SCHostPlayer.cpp */; };
+		D22AC3741B1E1DC8000F9AA4 /* SCSceneManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22AC3731B1E1DC8000F9AA4 /* SCSceneManager.cpp */; };
+		D22AC3781B1E1E66000F9AA4 /* SCSceneLoading.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22AC3761B1E1E66000F9AA4 /* SCSceneLoading.cpp */; };
+		D22AC37B1B1E1EDD000F9AA4 /* SCSceneLogin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22AC3791B1E1EDD000F9AA4 /* SCSceneLogin.cpp */; };
+		D22AC37E1B1E206B000F9AA4 /* SCSceneMain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22AC37C1B1E206B000F9AA4 /* SCSceneMain.cpp */; };
+		D22AC3811B1E20AD000F9AA4 /* SCSceneBattle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22AC37F1B1E20AD000F9AA4 /* SCSceneBattle.cpp */; };
 		D2A9D6F81B17721300CCA714 /* SCConfigs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2A9D6F61B17721300CCA714 /* SCConfigs.cpp */; };
 		D2B5DA7B1B0CEA2200401BDF /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2B5DA641B0CEA2200401BDF /* Default-568h@2x.png */; };
 		D2B5DA7C1B0CEA2200401BDF /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = D2B5DA651B0CEA2200401BDF /* Default-Portrait~ipad.png */; };
@@ -202,6 +212,26 @@
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		D22AC3511B1DD9BC000F9AA4 /* SCCounter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCCounter.h; sourceTree = "<group>"; };
+		D22AC3521B1DD9BC000F9AA4 /* SCGeometry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SCGeometry.cpp; sourceTree = "<group>"; };
+		D22AC3531B1DD9BC000F9AA4 /* SCGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCGeometry.h; sourceTree = "<group>"; };
+		D22AC3641B1DE6F4000F9AA4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ShootOnline/Images.xcassets; sourceTree = SOURCE_ROOT; };
+		D22AC3671B1DEBCC000F9AA4 /* SCPlayerModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SCPlayerModule.h; path = ../Classes/Player/SCPlayerModule.h; sourceTree = "<group>"; };
+		D22AC3681B1DEC62000F9AA4 /* SCPlayerModule.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SCPlayerModule.cpp; path = ../Classes/Player/SCPlayerModule.cpp; sourceTree = "<group>"; };
+		D22AC36A1B1DEF51000F9AA4 /* SCRole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SCRole.h; path = ../Classes/Player/SCRole.h; sourceTree = "<group>"; };
+		D22AC36D1B1DF486000F9AA4 /* SCRole.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SCRole.cpp; path = ../Classes/Player/SCRole.cpp; sourceTree = "<group>"; };
+		D22AC36F1B1DFB24000F9AA4 /* SCHostPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SCHostPlayer.cpp; path = ../Classes/Player/SCHostPlayer.cpp; sourceTree = "<group>"; };
+		D22AC3701B1DFB24000F9AA4 /* SCHostPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SCHostPlayer.h; path = ../Classes/Player/SCHostPlayer.h; sourceTree = "<group>"; };
+		D22AC3721B1E163D000F9AA4 /* SCSceneManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSceneManager.h; sourceTree = "<group>"; };
+		D22AC3731B1E1DC8000F9AA4 /* SCSceneManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SCSceneManager.cpp; sourceTree = "<group>"; };
+		D22AC3761B1E1E66000F9AA4 /* SCSceneLoading.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SCSceneLoading.cpp; sourceTree = "<group>"; };
+		D22AC3771B1E1E66000F9AA4 /* SCSceneLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSceneLoading.h; sourceTree = "<group>"; };
+		D22AC3791B1E1EDD000F9AA4 /* SCSceneLogin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SCSceneLogin.cpp; sourceTree = "<group>"; };
+		D22AC37A1B1E1EDD000F9AA4 /* SCSceneLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSceneLogin.h; sourceTree = "<group>"; };
+		D22AC37C1B1E206B000F9AA4 /* SCSceneMain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SCSceneMain.cpp; sourceTree = "<group>"; };
+		D22AC37D1B1E206B000F9AA4 /* SCSceneMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSceneMain.h; sourceTree = "<group>"; };
+		D22AC37F1B1E20AD000F9AA4 /* SCSceneBattle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SCSceneBattle.cpp; sourceTree = "<group>"; };
+		D22AC3801B1E20AD000F9AA4 /* SCSceneBattle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSceneBattle.h; sourceTree = "<group>"; };
 		D2A9D6F61B17721300CCA714 /* SCConfigs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SCConfigs.cpp; sourceTree = "<group>"; };
 		D2A9D6F71B17721300CCA714 /* SCConfigs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 2; path = SCConfigs.h; sourceTree = "<group>"; };
 		D2B5DA401B0CEA0500401BDF /* cocos2d_libs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2d_libs.xcodeproj; path = "../../cocos2d-x-3.2/build/cocos2d_libs.xcodeproj"; sourceTree = "<group>"; };
@@ -354,6 +384,7 @@
 		15AA9C4015B7EC450033D6C2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				D22AC3661B1DEA8C000F9AA4 /* Player */,
 				B6F42A3E1B1C381900E23F48 /* Logic */,
 				D2B7BF421B13A0500012C51B /* Account */,
 				D2B7BF451B13A0500012C51B /* Common */,
@@ -419,6 +450,7 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D22AC3641B1DE6F4000F9AA4 /* Images.xcassets */,
 				D2B5DAA11B0CF58100401BDF /* map */,
 				D2B5DA631B0CEA2200401BDF /* default */,
 				1AFAF8B916D35E4900DB1158 /* CloseNormal.png */,
@@ -450,6 +482,34 @@
 				B6F42A411B1C381900E23F48 /* type.h */,
 			);
 			path = common;
+			sourceTree = "<group>";
+		};
+		D22AC3661B1DEA8C000F9AA4 /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				D22AC3671B1DEBCC000F9AA4 /* SCPlayerModule.h */,
+				D22AC3681B1DEC62000F9AA4 /* SCPlayerModule.cpp */,
+				D22AC36A1B1DEF51000F9AA4 /* SCRole.h */,
+				D22AC36D1B1DF486000F9AA4 /* SCRole.cpp */,
+				D22AC36F1B1DFB24000F9AA4 /* SCHostPlayer.cpp */,
+				D22AC3701B1DFB24000F9AA4 /* SCHostPlayer.h */,
+			);
+			name = Player;
+			sourceTree = "<group>";
+		};
+		D22AC3751B1E1E44000F9AA4 /* scenes */ = {
+			isa = PBXGroup;
+			children = (
+				D22AC3761B1E1E66000F9AA4 /* SCSceneLoading.cpp */,
+				D22AC3771B1E1E66000F9AA4 /* SCSceneLoading.h */,
+				D22AC3791B1E1EDD000F9AA4 /* SCSceneLogin.cpp */,
+				D22AC37A1B1E1EDD000F9AA4 /* SCSceneLogin.h */,
+				D22AC37C1B1E206B000F9AA4 /* SCSceneMain.cpp */,
+				D22AC37D1B1E206B000F9AA4 /* SCSceneMain.h */,
+				D22AC37F1B1E20AD000F9AA4 /* SCSceneBattle.cpp */,
+				D22AC3801B1E20AD000F9AA4 /* SCSceneBattle.h */,
+			);
+			name = scenes;
 			sourceTree = "<group>";
 		};
 		D2B5DA411B0CEA0500401BDF /* Products */ = {
@@ -672,12 +732,15 @@
 		D2B7BF901B13A0500012C51B /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				D22AC3751B1E1E44000F9AA4 /* scenes */,
 				D2B7BF911B13A0500012C51B /* SCSceneBase.cpp */,
 				D2B7BF921B13A0500012C51B /* SCSceneBase.h */,
 				D2B7BF931B13A0500012C51B /* SCTiledMap.cpp */,
 				D2B7BF941B13A0500012C51B /* SCTiledMap.h */,
 				D2B7BF951B13A0500012C51B /* SCWorld.cpp */,
 				D2B7BF961B13A0500012C51B /* SCWorld.h */,
+				D22AC3721B1E163D000F9AA4 /* SCSceneManager.h */,
+				D22AC3731B1E1DC8000F9AA4 /* SCSceneManager.cpp */,
 			);
 			name = Scene;
 			path = ../Classes/Scene;
@@ -696,6 +759,9 @@
 		D2B7BF9A1B13A0500012C51B /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				D22AC3511B1DD9BC000F9AA4 /* SCCounter.h */,
+				D22AC3521B1DD9BC000F9AA4 /* SCGeometry.cpp */,
+				D22AC3531B1DD9BC000F9AA4 /* SCGeometry.h */,
 				D2A9D6F61B17721300CCA714 /* SCConfigs.cpp */,
 				D2A9D6F71B17721300CCA714 /* SCConfigs.h */,
 				D2B7BF9B1B13A0500012C51B /* SCUtilityFunc.cpp */,
@@ -856,6 +922,7 @@
 				D2B5DA8A1B0CEA2200401BDF /* Icon@2x.png in Resources */,
 				D2B5DA7E1B0CEA2200401BDF /* Default@2x.png in Resources */,
 				D2B5DA811B0CEA2200401BDF /* Icon-40.png in Resources */,
+				D22AC3651B1DE6F4000F9AA4 /* Images.xcassets in Resources */,
 				D2B7BFAC1B13A0500012C51B /* json_internalarray.inl in Resources */,
 				D2B5DA801B0CEA2200401BDF /* Localizable.strings in Resources */,
 				1AFAF8BD16D35E4900DB1158 /* CloseSelected.png in Resources */,
@@ -883,9 +950,12 @@
 				D2B5DA921B0CEA4800401BDF /* AppController.mm in Sources */,
 				D2B7BFAF1B13A0500012C51B /* json_value.cpp in Sources */,
 				D2B7BFA91B13A0500012C51B /* HttpCurl.cpp in Sources */,
+				D22AC3741B1E1DC8000F9AA4 /* SCSceneManager.cpp in Sources */,
 				D2B7BFBB1B13A0500012C51B /* UIModule.cpp in Sources */,
 				D2B7BFB51B13A0500012C51B /* JsonStreamCoder.cpp in Sources */,
 				D2B7BFA11B13A0500012C51B /* SCGame.cpp in Sources */,
+				D22AC37B1B1E1EDD000F9AA4 /* SCSceneLogin.cpp in Sources */,
+				D22AC3541B1DD9BC000F9AA4 /* SCGeometry.cpp in Sources */,
 				D2B5DA941B0CEA4800401BDF /* RootViewController.mm in Sources */,
 				D2B7BF9D1B13A0500012C51B /* AccountPlatform.cpp in Sources */,
 				D2B7BFA31B13A0500012C51B /* SCModuleBase.cpp in Sources */,
@@ -895,11 +965,16 @@
 				D2B7BFB41B13A0500012C51B /* BinaryStreamCoder.cpp in Sources */,
 				D2B7BFB31B13A0500012C51B /* Protocol.cpp in Sources */,
 				D2B7BFA61B13A0500012C51B /* crypt.cpp in Sources */,
+				D22AC3781B1E1E66000F9AA4 /* SCSceneLoading.cpp in Sources */,
+				D22AC3691B1DEC62000F9AA4 /* SCPlayerModule.cpp in Sources */,
 				D2B7BFAA1B13A0500012C51B /* HttpMan.cpp in Sources */,
+				D22AC3711B1DFB24000F9AA4 /* SCHostPlayer.cpp in Sources */,
 				D2B7BF9E1B13A0500012C51B /* SCEvent.cpp in Sources */,
 				D2A9D6F81B17721300CCA714 /* SCConfigs.cpp in Sources */,
 				D2B7BFB91B13A0500012C51B /* SCTiledMap.cpp in Sources */,
+				D22AC37E1B1E206B000F9AA4 /* SCSceneMain.cpp in Sources */,
 				D2B7BFA01B13A0500012C51B /* SCEffect.cpp in Sources */,
+				D22AC3811B1E20AD000F9AA4 /* SCSceneBattle.cpp in Sources */,
 				D2B7BFB11B13A0500012C51B /* json_writer.cpp in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
 				D2B7BFB21B13A0500012C51B /* Processor.cpp in Sources */,
@@ -908,6 +983,7 @@
 				D2B7BFBC1B13A0500012C51B /* SCUtilityFunc.cpp in Sources */,
 				D2B7BFA41B13A0500012C51B /* SCModuleManager.cpp in Sources */,
 				D2B7BFA51B13A0500012C51B /* ZLibUtil.cpp in Sources */,
+				D22AC36E1B1DF486000F9AA4 /* SCRole.cpp in Sources */,
 				D2B7BFAE1B13A0500012C51B /* json_reader.cpp in Sources */,
 				D2B7BFBA1B13A0500012C51B /* SCWorld.cpp in Sources */,
 				D2B7BFA71B13A0500012C51B /* md5.cpp in Sources */,
@@ -967,6 +1043,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1007,6 +1085,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;

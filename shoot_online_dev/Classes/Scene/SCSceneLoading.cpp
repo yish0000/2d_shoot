@@ -7,3 +7,9 @@
 //
 
 #include "SCSceneLoading.h"
+
+SCSceneLoading::SCSceneLoading()
+    : SCSceneBase("Loading")
+{
+}
+

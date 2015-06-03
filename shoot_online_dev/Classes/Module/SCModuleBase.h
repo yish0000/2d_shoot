@@ -17,7 +17,7 @@
 class SCModuleBase : public SCEventListener
 {
 public:
-	SCModuleBase();
+	SCModuleBase(int type);
 	virtual ~SCModuleBase();
 
 	virtual bool init();

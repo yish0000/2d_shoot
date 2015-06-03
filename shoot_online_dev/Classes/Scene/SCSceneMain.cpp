@@ -7,3 +7,8 @@
 //
 
 #include "SCSceneMain.h"
+
+SCSceneMain::SCSceneMain()
+    : SCSceneBase("Main")
+{
+}

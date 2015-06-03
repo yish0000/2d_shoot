@@ -28,13 +28,16 @@ SCGame::~SCGame()
 {
 }
 
-bool SCGame::init()
+void SCGame::start()
 {
-	// 初始化各个模块
+    // 注册游戏心跳函数
+    Director::getInstance()->getScheduler()->scheduleUpdate(this, 0, false);
+	
+    // 初始化各个模块
 	SCModuleManager::getInstance().init();
 
-	Director::getInstance()->getScheduler()->scheduleUpdate(this, 0, false);
-	return true;
+    // 进入游戏场景（DEMO）
+    changeGameState(GS_BATTLE);
 }
 
 void SCGame::update(float dt)
@@ -45,3 +48,6 @@ void SCGame::update(float dt)
 
 }
 
+void SCGame::changeGameState(SCGame::GAMESTATE state)
+{
+}

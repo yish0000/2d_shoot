@@ -9,6 +9,12 @@
 #ifndef __ShootOnline__SCSceneMain__
 #define __ShootOnline__SCSceneMain__
 
-#include <stdio.h>
+#include "SCSceneBase.h"
+
+class SCSceneMain : public SCSceneBase
+{
+public:
+    SCSceneMain();
+};
 
 #endif /* defined(__ShootOnline__SCSceneMain__) */

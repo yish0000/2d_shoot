@@ -1,14 +1,19 @@
-//
-//  SCHostPlayer.h
-//  ShootOnline
-//
-//  Created by Yish on 15/6/2.
-//
-//
+/*
+ * ------------------------------------------------------------------------
+ *  Name:   SCHostPlayer.h
+ *  Desc:   主玩家对象
+ *  Author: Yish
+ *  Date:   2015/6/2
+ * ------------------------------------------------------------------------
+ */
 
-#ifndef __ShootOnline__SCHostPlayer__
-#define __ShootOnline__SCHostPlayer__
+#ifndef __SC_HOSTPLAYER_H__
+#define __SC_HOSTPLAYER_H__
 
-#include <stdio.h>
+class SCHostPlayer
+{
+public:
+    
+};
 
-#endif /* defined(__ShootOnline__SCHostPlayer__) */
+#endif

@@ -13,7 +13,7 @@
 
 USING_NS_CC;
 
-SCModuleBase::SCModuleBase() : m_iType(MODULE_TYPE_UNKNOWN), m_fUpdateInterval(-1)
+SCModuleBase::SCModuleBase(int type) : m_iType(type)
 {
 }
 

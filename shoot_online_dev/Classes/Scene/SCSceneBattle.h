@@ -9,6 +9,18 @@
 #ifndef __ShootOnline__SCSceneBattle__
 #define __ShootOnline__SCSceneBattle__
 
-#include <stdio.h>
+#include "SCSceneBase.h"
+#include "Game/SCJoystick.h"
+
+class SCSceneBattle : public SCSceneBase
+{
+public:
+    SCSceneBattle();
+    
+    virtual bool init();
+    
+protected:
+    SCJoystick* m_pJoystick;
+};
 
 #endif /* defined(__ShootOnline__SCSceneBattle__) */
