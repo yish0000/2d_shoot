@@ -58,4 +58,7 @@ void SCGame::changeGameState(SCGame::GAMESTATE state)
 	SCSceneBase* pCurScene = SCSceneManager::getInstance().getCurScene();
 	SCTiledMap* pMap = SCTiledMap::create(0);
 	pCurScene->addChild(pMap);
+
+	// 加载主玩家
+
 }

@@ -1,22 +1,22 @@
 ﻿/*
  * ------------------------------------------------------------------------
- *  Name:   SCJoystick.h
+ *  Name:   SCJoystickBase.h
  *  Desc:   摇杆对象
  *  Author: Yish
  *  Date:   2015/5/24
  * ------------------------------------------------------------------------
  */
 
-#ifndef __SC_JOYSTICK_H__
-#define __SC_JOYSTICK_H__
+#ifndef __SC_JOYSTICKBASE_H__
+#define __SC_JOYSTICKBASE_H__
 
 #include "2d/CCLayer.h"
 
-class SCJoystick : public cocos2d::Layer
+class SCJoystickBase : public cocos2d::Layer
 {
 public:
-	SCJoystick(const std::string& back_img, const std::string& center_img);
-	virtual ~SCJoystick();
+	SCJoystickBase(const std::string& back_img, const std::string& center_img);
+	virtual ~SCJoystickBase();
 
     virtual bool init();
 
@@ -46,4 +46,4 @@ protected:
 
 ///////////////////////////////////////////////////////////////////////////
 
-#endif	//#ifndef __SC_JOYSTICK_H__
+#endif	//#ifndef __SC_JOYSTICKBASE_H__

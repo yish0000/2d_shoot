@@ -1,13 +1,13 @@
 ﻿/*
  * ------------------------------------------------------------------------
- *  Name:   SCJoystick.cpp
+ *  Name:   SCJoystickBase.cpp
  *  Desc:   手柄对象
  *  Author: Yish
  *  Date:   2015/5/24
  * ------------------------------------------------------------------------
  */
 
-#include "SCJoystick.h"
+#include "SCJoystickBase.h"
 #include "UI/UIModule.h"
 #include "Utility/SCUtilityFunc.h"
 
@@ -15,33 +15,17 @@ USING_NS_CC;
 
 static const float JOYSTICK_RADIUS = 45.0f;
 
-SCJoystick::SCJoystick(const std::string& back_img, const std::string& center_img)
+SCJoystickBase::SCJoystickBase(const std::string& back_img, const std::string& center_img)
 	: m_sJoystickBack(back_img), m_sJoystickCenter(center_img), m_pSpriteBack(NULL), m_pSpriteCenter(NULL)
 	, m_fX(0.0f), m_fY(0.0f), m_fPosX(0.0f), m_fPosY(0.0f), m_pRootNode(NULL)
 {
 }
 
-SCJoystick::~SCJoystick()
+SCJoystickBase::~SCJoystickBase()
 {
 }
 
-SCJoystick* SCJoystick::create(const std::string &back_img, const std::string &center_img)
-{
-    SCJoystick* pJoystick = new SCJoystick(back_img, center_img);
-    if( pJoystick && pJoystick->init() )
-    {
-        pJoystick->autorelease();
-        return pJoystick;
-    }
-    else
-    {
-        delete pJoystick;
-        pJoystick = NULL;
-        return NULL;
-    }
-}
-
-bool SCJoystick::init()
+bool SCJoystickBase::init()
 {
 	if( !Node::init() )
 		return false;
@@ -75,7 +59,7 @@ bool SCJoystick::init()
 	return true;
 }
 
-bool SCJoystick::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_event)
+bool SCJoystickBase::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_event)
 {
 	if( touch->getLocation().x < 0 || touch->getLocation().x > m_fPosX * 2 ||
 		touch->getLocation().y < 0 || touch->getLocation().y > m_fPosY * 2 )
@@ -123,7 +107,7 @@ bool SCJoystick::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_even
 	return true;
 }
 
-void SCJoystick::onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *unused_event)
+void SCJoystickBase::onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *unused_event)
 {
 	if( touch->getLocation().x < 0 || touch->getLocation().x > m_fPosX * 2 ||
 		touch->getLocation().y < 0 || touch->getLocation().y > m_fPosY * 2 )
@@ -169,19 +153,23 @@ void SCJoystick::onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *unused_even
 
 }
 
-void SCJoystick::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *unused_event)
+void SCJoystickBase::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *unused_event)
 {
 	m_pSpriteBack->runAction(ScaleTo::create(0.2f, 1.0f));
 	m_pSpriteCenter->runAction(MoveTo::create(0.2f, Point(0.0f, 0.0f)));
+
+	onJoystickHandle(0.0f, 0.0f);
 }
 
-void SCJoystick::onTouchCancelled(cocos2d::Touch *touch, cocos2d::Event *unused_event)
+void SCJoystickBase::onTouchCancelled(cocos2d::Touch *touch, cocos2d::Event *unused_event)
 {
 	m_pSpriteBack->runAction(ScaleTo::create(0.2f, 1.0f));
 	m_pSpriteCenter->runAction(MoveTo::create(0.2f, Point(0.0f, 0.0f)));
+
+	onJoystickHandle(0.0f, 0.0f);
 }
 
-void SCJoystick::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
+void SCJoystickBase::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
 	float xDir = 0.0f;
 	float yDir = 0.0f;
@@ -207,7 +195,7 @@ void SCJoystick::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	onJoystickHandle(xDir, yDir);
 }
 
-void SCJoystick::onKeyReleased(EventKeyboard::KeyCode keyCode, Event* event)
+void SCJoystickBase::onKeyReleased(EventKeyboard::KeyCode keyCode, Event* event)
 {
 	float xDir = 0.0f;
 	float yDir = 0.0f;

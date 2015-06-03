@@ -69,7 +69,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(EngineRoot)cocos\audio\include;$(EngineRoot)external;$(EngineRoot)external\pthread\include;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)external\curl\include\win32;$(EngineRoot)external\win32-specific\zlib\include;$(EngineRoot)extensions;..\Classes;..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(EngineRoot)cocos\audio\include;$(EngineRoot)cocos\editor-support;$(EngineRoot)external;$(EngineRoot)external\pthread\include;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)external\curl\include\win32;$(EngineRoot)external\win32-specific\zlib\include;$(EngineRoot)extensions;..\Classes;..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USE_MATH_DEFINES;GL_GLEXT_PROTOTYPES;CC_ENABLE_CHIPMUNK_INTEGRATION=1;COCOS2D_DEBUG=1;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -102,7 +102,7 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>$(EngineRoot)cocos\audio\include;$(EngineRoot)external;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)external\pthread\include;$(EngineRoot)external\curl\include\win32;$(EngineRoot)external\win32-specific\zlib\include;$(EngineRoot)extensions;..\Classes;..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(EngineRoot)cocos\audio\include;$(EngineRoot)cocos\editor-support;$(EngineRoot)external;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)external\pthread\include;$(EngineRoot)external\curl\include\win32;$(EngineRoot)external\win32-specific\zlib\include;$(EngineRoot)extensions;..\Classes;..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USE_MATH_DEFINES;GL_GLEXT_PROTOTYPES;CC_ENABLE_CHIPMUNK_INTEGRATION=1;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -140,6 +140,7 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClCompile Include="..\Classes\Effect\SCEffect.cpp" />
     <ClCompile Include="..\Classes\Game\SCConfigs.cpp" />
     <ClCompile Include="..\Classes\Game\SCGame.cpp" />
+    <ClCompile Include="..\Classes\Game\SCGameJoystick.cpp" />
     <ClCompile Include="..\Classes\Logic\MessageQueue.cpp" />
     <ClCompile Include="..\Classes\Logic\ObjectManager.cpp" />
     <ClCompile Include="..\Classes\Module\SCModuleBase.cpp" />
@@ -160,6 +161,8 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClCompile Include="..\Classes\Network\netlib\stream\JsonStreamCoder.cpp" />
     <ClCompile Include="..\Classes\Network\netlib\stream\KeyedStreamCoder.cpp" />
     <ClCompile Include="..\Classes\Network\SCNetworkModule.cpp" />
+    <ClCompile Include="..\Classes\Player\SCComArmature.cpp" />
+    <ClCompile Include="..\Classes\Player\SCComPlayerFSM.cpp" />
     <ClCompile Include="..\Classes\Player\SCHostPlayer.cpp" />
     <ClCompile Include="..\Classes\Player\SCPlayerModule.cpp" />
     <ClCompile Include="..\Classes\Player\SCRole.cpp" />
@@ -173,7 +176,7 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClCompile Include="..\Classes\Scene\SCTiledMap.cpp" />
     <ClCompile Include="..\Classes\UI\UIModule.cpp" />
     <ClCompile Include="..\Classes\Utility\SCGeometry.cpp" />
-    <ClCompile Include="..\Classes\Utility\SCJoystick.cpp" />
+    <ClCompile Include="..\Classes\Utility\SCJoystickBase.cpp" />
     <ClCompile Include="..\Classes\Utility\SCUtilityFunc.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -186,6 +189,7 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\Effect\SCEffect.h" />
     <ClInclude Include="..\Classes\Game\SCConfigs.h" />
     <ClInclude Include="..\Classes\Game\SCGame.h" />
+    <ClInclude Include="..\Classes\Game\SCGameJoystick.h" />
     <ClInclude Include="..\Classes\Logic\common\message.h" />
     <ClInclude Include="..\Classes\Logic\common\type.h" />
     <ClInclude Include="..\Classes\Logic\config.h" />
@@ -222,6 +226,9 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\Network\netlib\stream\KeyedStreamCoder.h" />
     <ClInclude Include="..\Classes\Network\netlib\stream\StreamCoder.h" />
     <ClInclude Include="..\Classes\Network\SCNetworkModule.h" />
+    <ClInclude Include="..\Classes\Player\SCComArmature.h" />
+    <ClInclude Include="..\Classes\Player\SCComPlayerFSM.h" />
+    <ClInclude Include="..\Classes\Player\SCComponentBase.h" />
     <ClInclude Include="..\Classes\Player\SCHostPlayer.h" />
     <ClInclude Include="..\Classes\Player\SCPlayerModule.h" />
     <ClInclude Include="..\Classes\Player\SCRole.h" />
@@ -236,7 +243,7 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\UI\UIModule.h" />
     <ClInclude Include="..\Classes\Utility\SCCounter.h" />
     <ClInclude Include="..\Classes\Utility\SCGeometry.h" />
-    <ClInclude Include="..\Classes\Utility\SCJoystick.h" />
+    <ClInclude Include="..\Classes\Utility\SCJoystickBase.h" />
     <ClInclude Include="..\Classes\Utility\SCUtilityFunc.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
@@ -247,6 +254,9 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     </ProjectReference>
     <ProjectReference Include="..\..\cocos2d-x-3.2\cocos\audio\proj.win32\CocosDenshion.vcxproj">
       <Project>{f8edd7fa-9a51-4e80-baeb-860825d2eac6}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\cocos2d-x-3.2\cocos\editor-support\cocostudio\proj.win32\libCocosStudio.vcxproj">
+      <Project>{b57cf53f-2e49-4031-9822-047cc0e6bde2}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\cocos2d-x-3.2\external\chipmunk\proj.win32\chipmunk.vcxproj">
       <Project>{207bc7a9-ccf1-4f2f-a04d-45f72242ae25}</Project>

@@ -8,6 +8,9 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libAudio", "..\..\cocos2d-x-3.2\cocos\audio\proj.win32\CocosDenshion.vcxproj", "{F8EDD7FA-9A51-4E80-BAEB-860825D2EAC6}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ShootOnline", "ShootOnline.vcxproj", "{76A39BB2-9B84-4C65-98A5-654D86B86F2A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B57CF53F-2E49-4031-9822-047CC0E6BDE2} = {B57CF53F-2E49-4031-9822-047CC0E6BDE2}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libCocosStudio", "..\..\cocos2d-x-3.2\cocos\editor-support\cocostudio\proj.win32\libCocosStudio.vcxproj", "{B57CF53F-2E49-4031-9822-047CC0E6BDE2}"
 EndProject
