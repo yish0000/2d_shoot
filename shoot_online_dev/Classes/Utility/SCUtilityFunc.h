@@ -13,6 +13,8 @@
 #include <cocos2d.h>
 #include "Module/SCModuleBase.h"
 
+class SCPlayerModule;
+class SCNetworkModule;
 class UIModule;
 
 inline cocos2d::Scheduler* glb_getScheduler() { return cocos2d::Director::getInstance()->getScheduler(); }
@@ -20,7 +22,9 @@ inline cocos2d::Scene* glb_getCurScene() { return cocos2d::Director::getInstance
 
 int glb_getGameState();
 SCModuleBase* glb_getModule(int moduleType);
+inline SCPlayerModule* get_getPlayerModule() { return (SCPlayerModule*)glb_getModule(MODULE_TYPE_PLAYER); }
 inline UIModule* glb_getUIModule() { return (UIModule*)glb_getModule(MODULE_TYPE_UI); }
+inline SCNetworkModule* glb_getNetworkModule() { return (SCNetworkModule*)glb_getModule(MODULE_TYPE_NETWORK); }
 
 ///////////////////////////////////////////////////////////////////////////
 

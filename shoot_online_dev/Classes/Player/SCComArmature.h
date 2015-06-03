@@ -16,11 +16,25 @@
 class SCComArmature : public SCComponentBase
 {
 public:
-	SCComArmature(SCObject* pObj, const std::string& res_name);
+	SCComArmature(const std::string& res_name);
 	virtual ~SCComArmature();
 
 	virtual bool init();
 	virtual void update(float dt);
+
+	// 播放指定的动画
+	void playAnimation(const char* name, bool bLoop);
+	void pauseAnimation();
+	void resumeAnimation();
+
+	// 刷新模型
+	void refreshArmature();
+
+	// 设置透明
+	void fadeTo(int opacity, float fTime);
+
+	const std::string& getResName() const { return m_sResName; }
+	cocostudio::Armature* getArmature() { return m_pArmature; }
 
 protected:
 	std::string m_sResName;

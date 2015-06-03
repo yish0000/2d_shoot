@@ -10,13 +10,7 @@
 #ifndef __SC_HOSTPLAYER_H__
 #define __SC_HOSTPLAYER_H__
 
-#include "2d/CCNode.h"
-
-/** 游戏内的对象
-*/
-class SCObject : public cocos2d::Node
-{
-};
+#include "SCObject.h"
 
 class SCHostPlayer : public SCObject
 {

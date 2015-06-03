@@ -14,10 +14,9 @@
 USING_NS_CC;
 using namespace cocostudio;
 
-SCComArmature::SCComArmature(SCObject* pObj, const std::string& res_name)
-	: SCComponentBase(pObj), m_sResName(res_name), m_pArmature(NULL), m_pAnimation(NULL)
+SCComArmature::SCComArmature(const std::string& res_name)
+	: SCComponentBase(SC_COMPONENT_ARMATURE), m_sResName(res_name), m_pArmature(NULL), m_pAnimation(NULL)
 {
-
 }
 
 SCComArmature::~SCComArmature()
@@ -46,9 +45,41 @@ bool SCComArmature::init()
 
 	m_pAnimation = m_pArmature->getAnimation();
 	m_pGameObj->addChild(m_pArmature);
+	m_bActive = true;
 	return true;
 }
 
 void SCComArmature::update(float dt)
 {
+}
+
+void SCComArmature::refreshArmature()
+{
+	int dir = m_pGameObj->getFaceDirection();
+	CCASSERT(dir == 1 || dir == -1, "Invalid face direction value!!");
+
+	m_pArmature->setScaleX(m_pArmature->getScaleX() * dir);
+}
+
+void SCComArmature::playAnimation(const char* name, bool bLoop)
+{
+	if( bLoop )
+		m_pAnimation->play(name, -1);
+	else
+		m_pAnimation->play(name, -1, 0);
+}
+
+void SCComArmature::pauseAnimation()
+{
+	m_pAnimation->pause();
+}
+
+void SCComArmature::resumeAnimation()
+{
+	m_pAnimation->resume();
+}
+
+void SCComArmature::fadeTo(int opacity, float fTime)
+{
+	m_pArmature->runAction(FadeTo::create(fTime, opacity));
 }

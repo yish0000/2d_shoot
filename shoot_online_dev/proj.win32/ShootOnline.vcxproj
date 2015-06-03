@@ -162,8 +162,11 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClCompile Include="..\Classes\Network\netlib\stream\KeyedStreamCoder.cpp" />
     <ClCompile Include="..\Classes\Network\SCNetworkModule.cpp" />
     <ClCompile Include="..\Classes\Player\SCComArmature.cpp" />
+    <ClCompile Include="..\Classes\Player\SCComCollider.cpp" />
     <ClCompile Include="..\Classes\Player\SCComPlayerFSM.cpp" />
+    <ClCompile Include="..\Classes\Player\SCComPlayerMove.cpp" />
     <ClCompile Include="..\Classes\Player\SCHostPlayer.cpp" />
+    <ClCompile Include="..\Classes\Player\SCObject.cpp" />
     <ClCompile Include="..\Classes\Player\SCPlayerModule.cpp" />
     <ClCompile Include="..\Classes\Player\SCRole.cpp" />
     <ClCompile Include="..\Classes\Scene\SCSceneBase.cpp" />
@@ -227,9 +230,12 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\Network\netlib\stream\StreamCoder.h" />
     <ClInclude Include="..\Classes\Network\SCNetworkModule.h" />
     <ClInclude Include="..\Classes\Player\SCComArmature.h" />
+    <ClInclude Include="..\Classes\Player\SCComCollider.h" />
     <ClInclude Include="..\Classes\Player\SCComPlayerFSM.h" />
+    <ClInclude Include="..\Classes\Player\SCComPlayerMove.h" />
     <ClInclude Include="..\Classes\Player\SCComponentBase.h" />
     <ClInclude Include="..\Classes\Player\SCHostPlayer.h" />
+    <ClInclude Include="..\Classes\Player\SCObject.h" />
     <ClInclude Include="..\Classes\Player\SCPlayerModule.h" />
     <ClInclude Include="..\Classes\Player\SCRole.h" />
     <ClInclude Include="..\Classes\Scene\SCSceneBase.h" />

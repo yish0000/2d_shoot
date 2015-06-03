@@ -10,21 +10,26 @@
 #ifndef __SC_COMPONENTBASE_H__
 #define __SC_COMPONENTBASE_H__
 
+#include <string>
 
 enum
 {
 	SC_COMPONENT_UNKNOWN,
 
 	SC_COMPONENT_ARMATURE,		// ¹Ç÷À¶¯»­
-	SC_COMPONENT_PLAYERFSM,		// Ö÷Íæ¼Ò×´Ì¬»ú
+	SC_COMPONENT_PLAYERFSM,		// Íæ¼Ò×´Ì¬»ú
+	SC_COMPONENT_PLAYERMOVE,	// Íæ¼ÒÒÆ¶¯¿ØÖÆ
+	SC_COMPONENT_COLLIDER,		// Åö×²¼ì²â
 };
 
 class SCObject;
 
 class SCComponentBase
 {
+	friend class SCObject;
+
 public:
-	SCComponentBase(SCObject* pObj) : m_pGameObj(pObj), m_iType(SC_COMPONENT_UNKNOWN), m_bActive(false) {}
+	SCComponentBase(int type) : m_pGameObj(NULL), m_iType(type), m_bActive(false) {}
 	virtual ~SCComponentBase() {}
 
 	virtual bool init() = 0;
@@ -41,7 +46,10 @@ protected:
 	int m_iType;
 	SCObject* m_pGameObj;
 	bool m_bActive;
+
+	void setObject(SCObject* pObj) { m_pGameObj = pObj; }
 };
+
 ///////////////////////////////////////////////////////////////////////////
 
 #endif	//#ifndef __SC_COMPONENTBASE_H__

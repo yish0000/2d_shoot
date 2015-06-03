@@ -1,22 +1,22 @@
 /*
  * ------------------------------------------------------------------------
- *  Name:   SCComPlayerFSM.h
- *  Desc:   主玩家状态机
+ *  Name:   SCComCollider.h
+ *  Desc:   碰撞检测组件
  *  Author: Yish
  *  Date:   2015/6/3
  * ------------------------------------------------------------------------
  */
 
-#ifndef __SC_COMPLAYERFSM_H__
-#define __SC_COMPLAYERFSM_H__
+#ifndef __SC_COMCOLLIDER_H__
+#define __SC_COMCOLLIDER_H__
 
 #include "SCComponentBase.h"
 
-class SCComPlayerFSM : public SCComponentBase
+class SCComCollider : public SCComponentBase
 {
 public:
-	SCComPlayerFSM();
-	virtual ~SCComPlayerFSM();
+	SCComCollider();
+	virtual ~SCComCollider();
 
 	virtual bool init();
 	virtual void update(float dt);
@@ -24,4 +24,4 @@ public:
 
 ///////////////////////////////////////////////////////////////////////////
 
-#endif	//#ifndef __SC_COMPLAYERFSM_H__
+#endif	//#ifndef __SC_COMCOLLIDER_H__

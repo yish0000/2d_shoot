@@ -18,6 +18,8 @@ USING_NS_CC;
 
 SCTiledMap::SCTiledMap(int mapId)
 	: m_iMapID(mapId), m_sMapFile(""), m_fScaleFactor(1.0f), m_fEffectLayerZ(100)
+	, m_pBackEffectLayer(NULL), m_pFrontEffectLayer(NULL), m_pTargetNode(NULL)
+	, m_pMoveMapAction(NULL), m_pScaleAction(NULL), m_bFocusing(false)
 {
 	// 临时测试用的地图
 	m_sMapFile = "map/d1z_01g_z01_fenzhengcaoyuan.tmx";
@@ -386,7 +388,7 @@ Layer* SCTiledMap::getBackEffectLayer()
 		addChild(m_pBackEffectLayer, m_fEffectLayerZ);
 	}
 
-	return m_pFrontEffectLayer;
+	return m_pBackEffectLayer;
 }
 
 void SCTiledMap::addTMXLayer(const std::string& layerName)

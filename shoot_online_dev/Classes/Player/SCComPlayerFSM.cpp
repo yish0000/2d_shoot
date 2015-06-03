@@ -8,3 +8,22 @@
  */
 
 #include "SCComPlayerFSM.h"
+
+SCComPlayerFSM::SCComPlayerFSM()
+	: SCComponentBase(SC_COMPONENT_PLAYERFSM)
+{
+}
+
+SCComPlayerFSM::~SCComPlayerFSM()
+{
+}
+
+bool SCComPlayerFSM::init()
+{
+	m_bActive = true;
+	return true;
+}
+
+void SCComPlayerFSM::update(float dt)
+{
+}

@@ -12,6 +12,8 @@
 
 #include "cocos2d.h"
 
+class SCTiledMap;
+
 class SCGame : public cocos2d::Ref
 {
 public:
@@ -46,6 +48,7 @@ public:
 
 protected:
 	GAMESTATE m_gameState;
+	SCTiledMap* m_pMap;
 };
 
 ///////////////////////////////////////////////////////////////////////////

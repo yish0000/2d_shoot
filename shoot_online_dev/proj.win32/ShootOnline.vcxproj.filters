@@ -225,10 +225,19 @@
     <ClCompile Include="..\Classes\Game\SCGameJoystick.cpp">
       <Filter>Classes\Game</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Player\SCObject.cpp">
+      <Filter>Classes\Player</Filter>
+    </ClCompile>
     <ClCompile Include="..\Classes\Player\SCComArmature.cpp">
       <Filter>Classes\Player</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Player\SCComCollider.cpp">
+      <Filter>Classes\Player</Filter>
+    </ClCompile>
     <ClCompile Include="..\Classes\Player\SCComPlayerFSM.cpp">
+      <Filter>Classes\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Player\SCComPlayerMove.cpp">
       <Filter>Classes\Player</Filter>
     </ClCompile>
   </ItemGroup>
@@ -419,13 +428,22 @@
     <ClInclude Include="..\Classes\Game\SCGameJoystick.h">
       <Filter>Classes\Game</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\Player\SCComponentBase.h">
+      <Filter>Classes\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Player\SCObject.h">
+      <Filter>Classes\Player</Filter>
+    </ClInclude>
     <ClInclude Include="..\Classes\Player\SCComArmature.h">
+      <Filter>Classes\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Player\SCComCollider.h">
       <Filter>Classes\Player</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Player\SCComPlayerFSM.h">
       <Filter>Classes\Player</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Player\SCComponentBase.h">
+    <ClInclude Include="..\Classes\Player\SCComPlayerMove.h">
       <Filter>Classes\Player</Filter>
     </ClInclude>
   </ItemGroup>
