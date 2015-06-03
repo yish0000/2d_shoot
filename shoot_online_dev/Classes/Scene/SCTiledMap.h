@@ -171,6 +171,8 @@ public:
 	SCTiledMap(int mapId);
 	virtual ~SCTiledMap();
 
+	static SCTiledMap* create(int mapId);
+
 	virtual bool init();
 	virtual void update(float dt);
 

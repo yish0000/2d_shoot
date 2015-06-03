@@ -11,24 +11,26 @@
 
 #include "SCSceneBase.h"
 
-class SCSceneManager
+/** 场景类型
+*/
+enum
 {
-public:
-    
-    enum
-    {
-        SCENE_LOADING,
-        SCENE_LOGIN,
-        SCENE_MAIN,
-        SCENE_BATTLE,
-    };
-    
-    enum
-    {
-        TRANS_MOVEINR,
-        TRANS_FADEIN,
-    };
-    
+	SCENE_LOADING,
+	SCENE_LOGIN,
+	SCENE_MAIN,
+	SCENE_BATTLE,
+};
+
+/** 场景切换方式
+*/
+enum
+{
+	TRANS_MOVEINR,
+	TRANS_FADEIN,
+};
+
+class SCSceneManager
+{    
 public:
     SCSceneManager();
     

@@ -31,9 +31,9 @@ static TransitionScene* createTransitionScene(int transType, float fTime, Scene*
 {
     switch(transType)
     {
-        case SCSceneManager::TRANS_FADEIN:
+        case TRANS_FADEIN:
             return TransitionFade::create(fTime, pScene, Color3B(0, 0, 0));
-        case SCSceneManager::TRANS_MOVEINR:
+        case TRANS_MOVEINR:
             return TransitionMoveInR::create(fTime, pScene);
         default:
             return NULL;
@@ -46,30 +46,38 @@ void SCSceneManager::enterScene(int sceneType, int transType, float fTime)
     switch(sceneType)
     {
         case SCENE_LOADING:
-            pScene = new SCSceneLoading();
+            pScene = SCSceneLoading::create();
             break;
         case SCENE_LOGIN:
-            pScene = new SCSceneLoading();
+            pScene = SCSceneLoading::create();
             break;
         case SCENE_MAIN:
-            pScene = new SCSceneMain();
+            pScene = SCSceneMain::create();
             break;
         case SCENE_BATTLE:
-            pScene = new SCSceneBattle();
+            pScene = SCSceneBattle::create();
             break;
         default:
             CCLOG("SCSceneManager::enterScene, unknown scene type (%d)!", sceneType);
             return;
     }
     
-    TransitionScene* pTransScene = createTransitionScene(transType, fTime, pScene);
-    if( !pTransScene )
-    {
-        CCLOG("SCSceneManager::enterScene, failed to create the transition scene!");
-        return;
-    }
-    
-    Director::getInstance()->replaceScene(pTransScene);
-    m_pCurScene = pScene;
+	if( Director::getInstance()->getRunningScene() )
+	{
+		TransitionScene* pTransScene = createTransitionScene(transType, fTime, pScene);
+		if( !pTransScene )
+		{
+			CCLOG("SCSceneManager::enterScene, failed to create the transition scene!");
+			return;
+		}
+
+	    Director::getInstance()->replaceScene(pTransScene);
+	}
+	else
+	{
+		Director::getInstance()->runWithScene(pScene);
+	}
+
+	m_pCurScene = pScene;
     CCLOG("[SCSceneManager] enter scene (%d)", sceneType);
 }

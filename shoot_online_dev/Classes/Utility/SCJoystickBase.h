@@ -18,8 +18,6 @@ public:
 	SCJoystick(const std::string& back_img, const std::string& center_img);
 	virtual ~SCJoystick();
 
-    static SCJoystick* create(const std::string& back_img, const std::string& center_img);
-
     virtual bool init();
 
 	virtual bool onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_event); 
@@ -32,6 +30,9 @@ public:
 
 	cocos2d::Node* getRootNode() const { return m_pRootNode; }
 
+	// 摇杆处理函数
+	virtual void onJoystickHandle(float xDir, float yDir) = 0;
+
 protected:
 	std::string m_sJoystickBack;		// 摇杆背景图
 	std::string m_sJoystickCenter;		// 摇杆中心点
@@ -40,6 +41,7 @@ protected:
 	float m_fPosX, m_fPosY;
 	cocos2d::Sprite* m_pSpriteBack;
 	cocos2d::Sprite* m_pSpriteCenter;
+	bool m_bKeystate[256];
 };
 
 ///////////////////////////////////////////////////////////////////////////

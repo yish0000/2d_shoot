@@ -15,6 +15,10 @@ class SCSceneMain : public SCSceneBase
 {
 public:
     SCSceneMain();
+
+	virtual bool init();
+	CREATE_FUNC(SCSceneMain);
+
 };
 
 #endif /* defined(__ShootOnline__SCSceneMain__) */

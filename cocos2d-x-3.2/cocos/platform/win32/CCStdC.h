@@ -99,7 +99,7 @@ typedef SSIZE_T ssize_t;
 
 #include <WinSock2.h>
 
-NS_CC_BEGIN
+//NS_CC_BEGIN
 
 struct timezone
 {
@@ -109,7 +109,7 @@ struct timezone
 
 int CC_DLL gettimeofday(struct timeval *, struct timezone *);
 
-NS_CC_END
+//NS_CC_END
 
 #else
 

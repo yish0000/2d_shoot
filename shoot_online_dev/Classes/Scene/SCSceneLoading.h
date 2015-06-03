@@ -15,6 +15,8 @@ class SCSceneLoading : public SCSceneBase
 {
 public:
     SCSceneLoading();
+
+	CREATE_FUNC(SCSceneLoading);
 };
 
 #endif /* defined(__ShootOnline__SCSceneLoading__) */

@@ -22,6 +22,6 @@ bool SCSceneBattle::init()
         return false;
     
     m_pJoystick = SCJoystick::create(JOYSTICK_BACK, JOYSTICK_CENTER);
-    addChild(m_pJoystick);
+    addChild(m_pJoystick, 1000);
     return true;
 }

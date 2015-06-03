@@ -12,3 +12,11 @@ SCSceneMain::SCSceneMain()
     : SCSceneBase("Main")
 {
 }
+
+bool SCSceneMain::init()
+{
+	if( !SCSceneBase::init() )
+		return false;
+
+	return true;
+}

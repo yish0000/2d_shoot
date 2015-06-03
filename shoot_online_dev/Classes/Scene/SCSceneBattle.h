@@ -10,7 +10,7 @@
 #define __ShootOnline__SCSceneBattle__
 
 #include "SCSceneBase.h"
-#include "Game/SCJoystick.h"
+#include "Utility/SCJoystick.h"
 
 class SCSceneBattle : public SCSceneBase
 {
@@ -18,6 +18,7 @@ public:
     SCSceneBattle();
     
     virtual bool init();
+	CREATE_FUNC(SCSceneBattle);
     
 protected:
     SCJoystick* m_pJoystick;

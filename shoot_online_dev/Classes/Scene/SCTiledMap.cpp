@@ -9,7 +9,7 @@
 
 #include "SCTiledMap.h"
 #include "SCSceneBase.h"
-#include "Utility/SCConfigs.h"
+#include "Game/SCConfigs.h"
 #include "Utility/SCUtilityFunc.h"
 #include "Utility/SCGeometry.h"
 #include "cocos2d.h"
@@ -19,15 +19,39 @@ USING_NS_CC;
 SCTiledMap::SCTiledMap(int mapId)
 	: m_iMapID(mapId), m_sMapFile(""), m_fScaleFactor(1.0f), m_fEffectLayerZ(100)
 {
+	// 临时测试用的地图
+	m_sMapFile = "map/d1z_01g_z01_fenzhengcaoyuan.tmx";
 }
 
 SCTiledMap::~SCTiledMap()
 {
 }
 
+SCTiledMap* SCTiledMap::create(int mapId)
+{
+	SCTiledMap* pMap = new SCTiledMap(mapId);
+	if( pMap && pMap->init() )
+	{
+		pMap->autorelease();
+		return pMap;
+	}
+	else
+	{
+		delete pMap;
+		return NULL;
+	}
+}
+
 bool SCTiledMap::init()
 {
 	// Fixme! 取Map模板数据
+
+	// 加载TMX地图
+	if( !initWithTMXFile(m_sMapFile) )
+	{
+		CCLOG("SCTiledMap::init, failed to load the TMX file (%s)!", m_sMapFile.c_str());
+		return false;
+	}
 
 	cocos2d::Size tileSize = getTileSize();
 	cocos2d::Size tileCount = getMapSize();
@@ -128,6 +152,8 @@ void SCTiledMap::addObjectGroup(const std::string& group)
                 pOrnament->m_layer = dic["layer"].asString();
             if( dic.find("scale") != dic.end() )
                 pOrnament->m_fScale = dic["scale"].asFloat();
+			m_ornaments.push_back(pOrnament);
+			pObj = pOrnament;
 		}
         else if( group == "platform" )
         {
@@ -143,6 +169,20 @@ void SCTiledMap::addObjectGroup(const std::string& group)
             m_platforms.push_back(pPlatform);
             pObj = pPlatform;
         }
+		else if( group == "obstacle" )
+		{
+			SCTMObstacle* pObstacle = new SCTMObstacle();
+			if( dic.find("tid") == dic.end() )
+			{
+				delete pObstacle;
+				CCLOG("SCTiledMap::addObjectGroup, tid of the obstacle cannot be null!");
+				return;
+			}
+
+			pObstacle->m_iTID = dic["tid"].asInt();
+			m_obstacles.push_back(pObstacle);
+			pObj = pObstacle;
+		}
         else if( group == "player" )
         {
             SCTMPlayer* pPlayer = new SCTMPlayer();
@@ -155,9 +195,17 @@ void SCTiledMap::addObjectGroup(const std::string& group)
             m_transports.push_back(pTransport);
             pObj = pTransport;
         }
+		else
+		{
+			CCLOG("SCTiledMap::addObjectGroup, unknown object group (%s)", group.c_str());
+			return;
+		}
 
-		pObj->m_pos.set(x, y);
-		pObj->m_boundingBox.setRect(x, y, width, height);
+		if( pObj )
+		{
+			pObj->m_pos.set(x, y);
+			pObj->m_boundingBox.setRect(x, y, width, height);
+		}
 	}
 }
 

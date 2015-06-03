@@ -48,6 +48,7 @@ void SCModuleBase::update(float dt)
 
 void SCModuleBase::onEventModuleInited(SCEvent* pEvent)
 {
+	CCLOG("SCModuleBase::onEventModuleInited %d", m_iType);
 }
 
 void SCModuleBase::clearResources()

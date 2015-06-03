@@ -28,7 +28,7 @@ void SCEventDispatcher::dispatchEvent(const std::string& type)
 
 void SCEventDispatcher::addEventListener(const std::string& eventType, SCEventListener* listener, SEL_SCEventCallback callback, int priority)
 {
-	if( !listener || callback )
+	if( !listener || !callback )
 		return;
 
 	ListenerMap& listenerMap = m_eventMap[eventType][priority];

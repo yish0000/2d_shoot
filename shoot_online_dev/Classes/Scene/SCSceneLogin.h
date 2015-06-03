@@ -17,6 +17,8 @@ public:
     SCSceneLogin();
     
     virtual bool init();
+	CREATE_FUNC(SCSceneLogin);
+
     virtual void onEnter();
 };
 

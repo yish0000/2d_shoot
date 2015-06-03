@@ -9,6 +9,8 @@
 
 #include "SCGame.h"
 #include "Module/SCModuleManager.h"
+#include "Scene/SCSceneManager.h"
+#include "Scene/SCTiledMap.h"
 #include "cocos2d.h"
 
 USING_NS_CC;
@@ -48,6 +50,12 @@ void SCGame::update(float dt)
 
 }
 
+// 临时代码， DEMO
 void SCGame::changeGameState(SCGame::GAMESTATE state)
 {
+	SCSceneManager::getInstance().enterScene(SCENE_BATTLE, TRANS_FADEIN, 0.4f);
+
+	SCSceneBase* pCurScene = SCSceneManager::getInstance().getCurScene();
+	SCTiledMap* pMap = SCTiledMap::create(0);
+	pCurScene->addChild(pMap);
 }

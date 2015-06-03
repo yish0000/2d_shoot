@@ -24,7 +24,7 @@ public:
     virtual void clearResources();
 
 	float getUIScale() const { return m_fUIScale; }
-
+	
 protected:
 	float m_fUIScale;
 };
