@@ -29,6 +29,7 @@ cocos2d.cpp \
 2d/CCComponentContainer.cpp \
 2d/CCDrawNode.cpp \
 2d/CCDrawingPrimitives.cpp \
+2d/CCShapeNode.cpp \
 2d/CCFont.cpp \
 2d/CCFontAtlas.cpp \
 2d/CCFontAtlasCache.cpp \

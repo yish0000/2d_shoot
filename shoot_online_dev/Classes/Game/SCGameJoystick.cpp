@@ -24,5 +24,4 @@ void SCGameJoystick::onJoystickHandle(float xDir, float yDir)
 {
 	SCHostPlayer* pHost = glb_getHostPlayer();
 	pHost->move(xDir, yDir);
-	CCLOG("onJoystickHandle, x=%f, y=%f", xDir, yDir);
 }

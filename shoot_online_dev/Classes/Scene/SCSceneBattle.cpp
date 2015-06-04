@@ -27,17 +27,19 @@ bool SCSceneBattle::init()
     m_pJoystick = SCGameJoystick::create();
     addChild(m_pJoystick, 1000);
 
+    Size winSize = Director::getInstance()->getWinSize();
+    
 	// 加一个跳的按钮
 	MenuItem* pBtnJump = MenuItemSprite::create(
 		Sprite::create("ui/joystick/jump1.png"), Sprite::create("ui/joystick/jump2.png"), NULL,
 		CC_CALLBACK_1(SCSceneBattle::onBtnJump, this));
-	pBtnJump->setPosition(900, 100);
+	pBtnJump->setPosition(winSize.width - 60, 100);
 
 	// 攻击按钮
 	MenuItem* pBtnAttack = MenuItemSprite::create(
 		Sprite::create("ui/joystick/attack1.png"), Sprite::create("ui/joystick/attack2.png"), NULL,
 		CC_CALLBACK_1(SCSceneBattle::onBtnAttack, this));
-	pBtnAttack->setPosition(800, 100);
+	pBtnAttack->setPosition(winSize.width - 160, 100);
 
 	Menu* pMenu = Menu::create(pBtnJump, pBtnAttack, NULL);
 	pMenu->setPosition(Vec2::ZERO);

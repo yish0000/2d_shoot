@@ -25,6 +25,7 @@
 		D22AC37B1B1E1EDD000F9AA4 /* SCSceneLogin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22AC3791B1E1EDD000F9AA4 /* SCSceneLogin.cpp */; };
 		D22AC37E1B1E206B000F9AA4 /* SCSceneMain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22AC37C1B1E206B000F9AA4 /* SCSceneMain.cpp */; };
 		D22AC3811B1E20AD000F9AA4 /* SCSceneBattle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22AC37F1B1E20AD000F9AA4 /* SCSceneBattle.cpp */; };
+		D2A8C8261B20AA640073FDB7 /* ObjectManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2A8C8251B20AA640073FDB7 /* ObjectManager.cpp */; };
 		D2B5DA7B1B0CEA2200401BDF /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2B5DA641B0CEA2200401BDF /* Default-568h@2x.png */; };
 		D2B5DA7C1B0CEA2200401BDF /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = D2B5DA651B0CEA2200401BDF /* Default-Portrait~ipad.png */; };
 		D2B5DA7D1B0CEA2200401BDF /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = D2B5DA661B0CEA2200401BDF /* Default.png */; };
@@ -231,6 +232,7 @@
 		D22AC37D1B1E206B000F9AA4 /* SCSceneMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSceneMain.h; sourceTree = "<group>"; };
 		D22AC37F1B1E20AD000F9AA4 /* SCSceneBattle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SCSceneBattle.cpp; sourceTree = "<group>"; };
 		D22AC3801B1E20AD000F9AA4 /* SCSceneBattle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSceneBattle.h; sourceTree = "<group>"; };
+		D2A8C8251B20AA640073FDB7 /* ObjectManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ObjectManager.cpp; sourceTree = "<group>"; };
 		D2B5DA401B0CEA0500401BDF /* cocos2d_libs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2d_libs.xcodeproj; path = "../../cocos2d-x-3.2/build/cocos2d_libs.xcodeproj"; sourceTree = "<group>"; };
 		D2B5DA641B0CEA2200401BDF /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		D2B5DA651B0CEA2200401BDF /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
@@ -476,6 +478,7 @@
 			isa = PBXGroup;
 			children = (
 				B6F42A3F1B1C381900E23F48 /* common */,
+				D2A8C8251B20AA640073FDB7 /* ObjectManager.cpp */,
 				B6F42A421B1C381900E23F48 /* config.h */,
 				B6F42A441B1C381900E23F48 /* MessageQueue.h */,
 				B6F42A431B1C381900E23F48 /* MessageQueue.cpp */,
@@ -999,6 +1002,7 @@
 				D22AC3691B1DEC62000F9AA4 /* SCPlayerModule.cpp in Sources */,
 				D2B7BFAA1B13A0500012C51B /* HttpMan.cpp in Sources */,
 				D22AC3711B1DFB24000F9AA4 /* SCHostPlayer.cpp in Sources */,
+				D2A8C8261B20AA640073FDB7 /* ObjectManager.cpp in Sources */,
 				D2B7BF9E1B13A0500012C51B /* SCEvent.cpp in Sources */,
 				D2B7BFB91B13A0500012C51B /* SCTiledMap.cpp in Sources */,
 				D22AC37E1B1E206B000F9AA4 /* SCSceneMain.cpp in Sources */,
