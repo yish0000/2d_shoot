@@ -25,6 +25,10 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / 60);
+    
+    GLView *pEGLView = Director::getInstance()->getOpenGLView();
+    cocos2d::Size frameSize = pEGLView->getFrameSize();
+    pEGLView->setDesignResolutionSize(640 / frameSize.height * frameSize.width, 640, ResolutionPolicy::SHOW_ALL);
 
     // Start the game!!!
     SCGame::getInstance().start();

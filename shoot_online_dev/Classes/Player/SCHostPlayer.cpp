@@ -15,8 +15,8 @@ USING_NS_CC;
 SCHostPlayer::SCHostPlayer() : SCObject(0, 0)
 {
 	Rect rcBound(-32, 0, 64, 128);
-	addComponent(SC_COMPONENT_ARMATURE, "nanzhujue");
-	addComponent(SC_COMPONENT_COLLIDER, &rcBound);
+	addComponent(SC_COMPONENT_ARMATURE, (void*)"nanzhujue");
+	addComponent(SC_COMPONENT_COLLIDER, (void*)&rcBound);
 	addComponent(SC_COMPONENT_PLAYERFSM, NULL);
 	addComponent(SC_COMPONENT_PLAYERMOVE, NULL);
 }
