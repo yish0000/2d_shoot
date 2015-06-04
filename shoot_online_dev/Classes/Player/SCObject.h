@@ -1,7 +1,7 @@
-/*
+ï»¿/*
  * ------------------------------------------------------------------------
  *  Name:   SCObject.h
- *  Desc:   ÓÎÏ·¶ÔÏó
+ *  Desc:   æ¸¸æˆå¯¹è±¡
  *  Author: Yish
  *  Date:   2015/6/3
  * ------------------------------------------------------------------------
@@ -21,7 +21,7 @@ enum
 	SC_OBJECT_NPC,
 };
 
-/** ÓÎÏ·ÄÚµÄ¶ÔÏó
+/** æ¸¸æˆå†…çš„å¯¹è±¡
 */
 class SCObject : public cocos2d::Node
 {
@@ -51,13 +51,13 @@ public:
 	int64_t getID() const { return m_id; }
 
 protected:
-	int64_t m_id;				// ¶ÔÏóID
-	int m_tid;					// Ä£°åID
-	int m_iType;				// ¶ÔÏóÀàĞÍ
-	bool m_bActive;				// ¸Ã¶ÔÏóÊÇ·ñ¼¤»î
-	int m_iFaceDirection;		// ³¯Ïò
+	int64_t m_id;				// å¯¹è±¡ID
+	int m_tid;					// æ¨¡æ¿ID
+	int m_iType;				// å¯¹è±¡ç±»å‹
+	bool m_bActive;				// è¯¥å¯¹è±¡æ˜¯å¦æ¿€æ´»
+	int m_iFaceDirection;		// æœå‘
 
-	ComponentList m_components;	// ×é¼şÁĞ±í
+	ComponentList m_components;	// ç»„ä»¶åˆ—è¡¨
 };
 
 ///////////////////////////////////////////////////////////////////////////

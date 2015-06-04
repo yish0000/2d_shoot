@@ -1,7 +1,7 @@
-/*
+ï»¿/*
  * ------------------------------------------------------------------------
  *  Name:   SCComArmature.cpp
- *  Desc:   ¹Ç÷À¶¯»­×é¼þ
+ *  Desc:   éª¨éª¼åŠ¨ç”»ç»„ä»¶
  *  Author: Yish
  *  Date:   2015/6/3
  * ------------------------------------------------------------------------
@@ -34,7 +34,7 @@ bool SCComArmature::init()
 	ArmatureDataManager* pManager = ArmatureDataManager::getInstance();
 	pManager->addArmatureFileInfo(texture, plist, armature);
 
-	// ´´½¨¹Ç÷À¶¯»­
+	// åˆ›å»ºéª¨éª¼åŠ¨ç”»
 	m_pArmature = Armature::create(m_sResName);
 	if( !m_pArmature )
 	{
@@ -58,7 +58,7 @@ void SCComArmature::refreshArmature()
 	int dir = m_pGameObj->getFaceDirection();
 	CCASSERT(dir == 1 || dir == -1, "Invalid face direction value!!");
 
-	m_pArmature->setScaleX(m_pArmature->getScaleX() * dir);
+	m_pArmature->setScaleX(dir);
 }
 
 void SCComArmature::playAnimation(const char* name, bool bLoop)
@@ -82,4 +82,9 @@ void SCComArmature::resumeAnimation()
 void SCComArmature::fadeTo(int opacity, float fTime)
 {
 	m_pArmature->runAction(FadeTo::create(fTime, opacity));
+}
+
+std::string SCComArmature::getCurAnimName() const
+{
+	return m_pAnimation->getCurrentMovementID();
 }

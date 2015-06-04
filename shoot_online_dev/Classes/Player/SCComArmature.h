@@ -1,7 +1,7 @@
-/*
+ï»¿/*
  * ------------------------------------------------------------------------
  *  Name:   SCComArmature.h
- *  Desc:   ¹Ç÷À¶¯»­×é¼ş
+ *  Desc:   éª¨éª¼åŠ¨ç”»ç»„ä»¶
  *  Author: Yish
  *  Date:   2015/6/3
  * ------------------------------------------------------------------------
@@ -22,16 +22,19 @@ public:
 	virtual bool init();
 	virtual void update(float dt);
 
-	// ²¥·ÅÖ¸¶¨µÄ¶¯»­
+	// æ’­æ”¾æŒ‡å®šçš„åŠ¨ç”»
 	void playAnimation(const char* name, bool bLoop);
 	void pauseAnimation();
 	void resumeAnimation();
 
-	// Ë¢ĞÂÄ£ĞÍ
+	// åˆ·æ–°æ¨¡å‹
 	void refreshArmature();
 
-	// ÉèÖÃÍ¸Ã÷
+	// è®¾ç½®é€æ˜
 	void fadeTo(int opacity, float fTime);
+
+	// è·å–å½“å‰æ’­æ”¾çš„åŠ¨ç”»
+	std::string getCurAnimName() const;
 
 	const std::string& getResName() const { return m_sResName; }
 	cocostudio::Armature* getArmature() { return m_pArmature; }

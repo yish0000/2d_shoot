@@ -1,7 +1,7 @@
-/*
+﻿/*
  * ------------------------------------------------------------------------
  *  Name:   SCComPlayerMove.h
- *  Desc:   ����ƶ����
+ *  Desc:   玩家移动组件
  *  Author: Yish
  *  Date:   2015/6/3
  * ------------------------------------------------------------------------
@@ -11,6 +11,7 @@
 #define __SC_COMPLAYERMOVE_H__
 
 #include "SCComponentBase.h"
+#include "Scene/SCWorld.h"
 
 class SCComCollider;
 class SCComPlayerFSM;
@@ -29,6 +30,15 @@ public:
 	void setAccelerateX(float accel) { m_fXAccelerate = accel; }
 	void setAccelerateY(float accel) { m_fYAccelerate = accel; }
 
+	// For Demo,  临时函数
+	void move(float xDir, float yDir);
+	void jump();
+
+	// 获取碰撞检测结果
+	const SCWorld::CollisionResult& getCollisionResult() const { return m_collisionResult; }
+
+	void onMsg_DoFSMEvent(int state);
+
 protected:
 	float m_fMoveSpeed;
 	float m_fInitJumpHeight;
@@ -41,8 +51,11 @@ protected:
 	float m_fXAccelerate;
 	float m_fYAccelerate;
 
+	int m_iJumpCount;
+
 	SCComCollider* m_pComCollider;
 	SCComPlayerFSM* m_pComFSM;
+	SCWorld::CollisionResult m_collisionResult;
 };
 
 ///////////////////////////////////////////////////////////////////////////

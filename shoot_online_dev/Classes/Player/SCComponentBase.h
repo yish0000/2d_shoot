@@ -1,7 +1,7 @@
-/*
+ï»¿/*
  * ------------------------------------------------------------------------
  *  Name:   SCComponentBase.h
- *  Desc:   ×é¼þ»ùÀà
+ *  Desc:   ç»„ä»¶åŸºç±»
  *  Author: Yish
  *  Date:   2015/6/3
  * ------------------------------------------------------------------------
@@ -16,10 +16,10 @@ enum
 {
 	SC_COMPONENT_UNKNOWN,
 
-	SC_COMPONENT_ARMATURE,		// ¹Ç÷À¶¯»­
-	SC_COMPONENT_PLAYERFSM,		// Íæ¼Ò×´Ì¬»ú
-	SC_COMPONENT_PLAYERMOVE,	// Íæ¼ÒÒÆ¶¯¿ØÖÆ
-	SC_COMPONENT_COLLIDER,		// Åö×²¼ì²â
+	SC_COMPONENT_ARMATURE,		// éª¨éª¼åŠ¨ç”»
+	SC_COMPONENT_PLAYERFSM,		// çŽ©å®¶çŠ¶æ€æœº
+	SC_COMPONENT_PLAYERMOVE,	// çŽ©å®¶ç§»åŠ¨æŽ§åˆ¶
+	SC_COMPONENT_COLLIDER,		// ç¢°æ’žæ£€æµ‹
 };
 
 class SCObject;

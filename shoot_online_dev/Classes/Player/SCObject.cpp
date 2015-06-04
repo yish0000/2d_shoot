@@ -1,7 +1,7 @@
-/*
+ï»¿/*
  * ------------------------------------------------------------------------
  *  Name:   SCObject.cpp
- *  Desc:   ÓÎÏ·¶ÔÏó
+ *  Desc:   æ¸¸æˆå¯¹è±¡
  *  Author: Yish
  *  Date:   2015/6/3
  * ------------------------------------------------------------------------
@@ -37,7 +37,7 @@ bool SCObject::init()
 	if( !Node::init() )
 		return false;
 
-	// ³õÊ¼»¯ËùÓÐ×é¼þ
+	// åˆå§‹åŒ–æ‰€æœ‰ç»„ä»¶
 	for(ComponentList::iterator it=m_components.begin(); it!=m_components.end(); ++it)
 	{
 		if( !(*it)->init() )
@@ -52,7 +52,7 @@ bool SCObject::init()
 
 void SCObject::update(float dt)
 {
-	// ¸üÐÂ×é¼þ
+	// æ›´æ–°ç»„ä»¶
 	for(ComponentList::iterator it=m_components.begin(); it!=m_components.end(); ++it)
 	{
 		(*it)->update(dt);
@@ -80,7 +80,9 @@ void SCObject::addComponent(int comType, void* extraData)
 			if( !pBound )
 				CCLOG("SCObject::addComponent, extraData for SCComCollider must not be null!");
 			else
-				pComponent = new SCComCollider();
+			{
+				pComponent = new SCComCollider(*pBound);
+			}
 		}
 		break;
 	case SC_COMPONENT_PLAYERFSM:
@@ -109,4 +111,17 @@ SCComponentBase* SCObject::getComponent(int comType)
 	}
 
 	return NULL;
+}
+
+void SCObject::setFaceDirection(int dir)
+{
+	m_iFaceDirection = dir;
+
+	SCComArmature* pArmature = dynamic_cast<SCComArmature*>(getComponent(SC_COMPONENT_ARMATURE));
+	if( pArmature )
+		pArmature->refreshArmature();
+
+	SCComCollider* pCollider = dynamic_cast<SCComCollider*>(getComponent(SC_COMPONENT_COLLIDER));
+	if( pCollider )
+		pCollider->refreshBoundingBox();
 }

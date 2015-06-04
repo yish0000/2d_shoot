@@ -10,6 +10,7 @@
 #include "SCGame.h"
 #include "Module/SCModuleManager.h"
 #include "Scene/SCSceneManager.h"
+#include "Scene/SCWorld.h"
 #include "Scene/SCTiledMap.h"
 #include "Utility/SCUtilityFunc.h"
 #include "Player/SCPlayerModule.h"
@@ -27,6 +28,7 @@ SCGame& SCGame::getInstance()
 SCGame::SCGame()
 {
 	m_gameState = GS_NONE;
+	m_pWorld = NULL;
 }
 
 SCGame::~SCGame()
@@ -50,7 +52,8 @@ void SCGame::update(float dt)
 	// 更新各个模块
 	SCModuleManager::getInstance().update(dt);
 
-	m_pMap->update(dt);
+	// 更新世界
+	m_pWorld->update(dt);
 }
 
 // 临时代码， DEMO
@@ -59,12 +62,15 @@ void SCGame::changeGameState(SCGame::GAMESTATE state)
 	SCSceneManager::getInstance().enterScene(SCENE_BATTLE, TRANS_FADEIN, 0.4f);
 
 	SCSceneBase* pCurScene = SCSceneManager::getInstance().getCurScene();
-	m_pMap = SCTiledMap::create(0);
-	pCurScene->addChild(m_pMap);
+	m_pWorld = SCWorld::create();
+	pCurScene->addChild(m_pWorld);
 
 	// 加载主玩家
-	SCHostPlayer* pHost = get_getPlayerModule()->getHostPlayer();
-	m_pMap->addChildToLayer(pHost, "rd_add", SCENELAYER_ZORDER_HOSTPLAYER);
-	pHost->setPosition(300, 80);
+	SCHostPlayer* pHost = glb_getPlayerModule()->getHostPlayer();
+	m_pWorld->getTileMap()->addChildToLayer(pHost, "rd_add", SCENELAYER_ZORDER_HOSTPLAYER);
+	pHost->setPosition(300, 120);
 	pHost->setScale(0.7f);
+
+	// 地图跟随主角
+	m_pWorld->getTileMap()->followNode(pHost);
 }

@@ -214,8 +214,8 @@ void SCTiledMap::addObjectGroup(const std::string& group)
 void SCTiledMap::update(float dt)
 {
 	updateCamera(dt);
-	updateLayerPosition(dt);
-	updateEffectLayer(dt);
+	//updateLayerPosition(dt);
+	//updateEffectLayer(dt);
 }
 
 // 更新相机位置
@@ -750,7 +750,7 @@ bool SCTiledMap::checkBottomCollision(const cocos2d::Rect& boundingBox, float xD
 		// 只考虑位置在包围盒下面的
 		if( v->m_boundingBox.origin.y + v->m_boundingBox.size.height < boundingBox.origin.y )
 		{
-			if( SCGeometry::bbIntersects(v->m_boundingBox, boundingBox) )
+			if( SCGeometry::bbIntersects(v->m_boundingBox, rcBound) )
 			{
 				// 取最近的碰撞位置
 				if( v->m_boundingBox.origin.y + v->m_boundingBox.size.height > collisionY )
@@ -779,7 +779,7 @@ bool SCTiledMap::checkLeftCollision(const cocos2d::Rect& boundingBox, float xDis
 		// 只考虑位置在包围盒左面的
 		if( v->m_bXCollision && v->m_boundingBox.origin.x + v->m_boundingBox.size.width < boundingBox.origin.x )
 		{
-			if( SCGeometry::bbIntersects(v->m_boundingBox, boundingBox) )
+			if( SCGeometry::bbIntersects(v->m_boundingBox, rcBound) )
 			{
 				// 取最近的碰撞位置
 				if( v->m_boundingBox.origin.x + v->m_boundingBox.size.width > collisionX ) 
@@ -806,7 +806,7 @@ bool SCTiledMap::checkRightCollision(const cocos2d::Rect& boundingBox, float xDi
 	for(auto& v : m_collisions)
 	{
 		// 只考虑位置在包围盒右面的
-		if( v->m_bXCollision && v->m_boundingBox.origin.x > rcBound.origin.x + rcBound.size.width )
+		if( v->m_bXCollision && v->m_boundingBox.origin.x > rcBound.origin.x + boundingBox.size.width )
 		{
 			if( SCGeometry::bbIntersects(v->m_boundingBox, rcBound) )
 			{

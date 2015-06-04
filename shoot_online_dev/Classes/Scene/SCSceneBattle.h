@@ -19,6 +19,9 @@ public:
     
     virtual bool init();
 	CREATE_FUNC(SCSceneBattle);
+
+	void onBtnJump(cocos2d::Ref* pSender);
+	void onBtnAttack(cocos2d::Ref* pSender);
     
 protected:
     SCGameJoystick* m_pJoystick;

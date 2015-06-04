@@ -19,6 +19,7 @@ SCJoystickBase::SCJoystickBase(const std::string& back_img, const std::string& c
 	: m_sJoystickBack(back_img), m_sJoystickCenter(center_img), m_pSpriteBack(NULL), m_pSpriteCenter(NULL)
 	, m_fX(0.0f), m_fY(0.0f), m_fPosX(0.0f), m_fPosY(0.0f), m_pRootNode(NULL)
 {
+	memset(m_bKeystate, 0, sizeof(m_bKeystate));
 }
 
 SCJoystickBase::~SCJoystickBase()

@@ -1,4 +1,4 @@
-/*
+﻿/*
  * ------------------------------------------------------------------------
  *  Name:   SCHostPlayer.h
  *  Desc:   主玩家对象
@@ -12,6 +12,15 @@
 
 #include "SCObject.h"
 
+/** 主玩家的动画列表
+gongji
+benpao
+zhanli
+tiaoyue-up
+tiaoyue-xunhuan
+tiaoyue-down
+siwang
+*/
 class SCHostPlayer : public SCObject
 {
 public:
@@ -19,6 +28,10 @@ public:
 	virtual ~SCHostPlayer();
 
 	virtual bool init();
+
+	void move(float xDir, float yDir);
+	void jump();
+	void attack();
 
 protected:
 

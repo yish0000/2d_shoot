@@ -10,6 +10,7 @@
 #include "SCUtilityFunc.h"
 #include "Module/SCModuleManager.h"
 #include "Game/SCGame.h"
+#include "Player/SCPlayerModule.h"
 
 int glb_getGameState()
 {
@@ -19,4 +20,9 @@ int glb_getGameState()
 SCModuleBase* glb_getModule(int moduleType)
 {
 	return SCModuleManager::getInstance().getModule(moduleType);
+}
+
+SCHostPlayer* glb_getHostPlayer()
+{
+	return glb_getPlayerModule()->getHostPlayer();
 }

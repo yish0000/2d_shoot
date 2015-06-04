@@ -1,7 +1,7 @@
-/*
+Ôªø/*
  * ------------------------------------------------------------------------
  *  Name:   SCComPlayerFSM.h
- *  Desc:   ÷˜ÕÊº“◊¥Ã¨ª˙
+ *  Desc:   ‰∏ªÁé©ÂÆ∂Áä∂ÊÄÅÊú∫
  *  Author: Yish
  *  Date:   2015/6/3
  * ------------------------------------------------------------------------
@@ -12,14 +12,41 @@
 
 #include "SCComponentBase.h"
 
+class SCComArmature;
+
 class SCComPlayerFSM : public SCComponentBase
 {
+public:
+
+	enum
+	{
+		STATE_STAND,
+		STATE_MOVE,
+		STATE_JUMP,
+	};
+
 public:
 	SCComPlayerFSM();
 	virtual ~SCComPlayerFSM();
 
 	virtual bool init();
 	virtual void update(float dt);
+
+	void doStand(bool afterJump = false);
+	void doRun();
+	void doJump(float fInitSpeedY);
+
+	int getCurState() const { return m_iState; }
+
+protected:
+	int m_iState;
+	SCComArmature* m_pArmature;
+	float m_fCurAnimTime;
+	float m_fCurAnimTotalTime;
+
+	void update_Stand(float dt);
+	void update_Move(float dt);
+	void update_Jump(float dt);
 };
 
 ///////////////////////////////////////////////////////////////////////////
