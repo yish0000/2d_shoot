@@ -23,10 +23,17 @@ bool SCPlayerModule::init()
 {
     if( !SCModuleBase::init() )
         return false;
+
+	// 注册函数处理
+	REGISTER_PROTO_HANDLER(555, SCPlayerModule::onPrtcUserInfo);
     
 	m_pHostPlayer = new SCHostPlayer();
 	m_pHostPlayer->init();
     return true;
+}
+
+void SCPlayerModule::onPrtcUserInfo(const scnet::Protocol* p)
+{
 }
 
 void SCPlayerModule::update(float dt)

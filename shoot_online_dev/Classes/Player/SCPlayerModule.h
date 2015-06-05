@@ -32,6 +32,10 @@ public:
 protected:
     SCRoleData* m_pRole;
 	SCHostPlayer* m_pHostPlayer;
+
+protected:
+	// Protocol handler
+	void onPrtcUserInfo(const scnet::Protocol* p);
 };
 
 #endif
