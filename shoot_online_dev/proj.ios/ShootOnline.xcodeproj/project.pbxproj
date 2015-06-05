@@ -15,8 +15,8 @@
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
+		D210408B1B21F50E007AB304 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D210408A1B21F50E007AB304 /* Images.xcassets */; };
 		D22AC3541B1DD9BC000F9AA4 /* SCGeometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22AC3521B1DD9BC000F9AA4 /* SCGeometry.cpp */; };
-		D22AC3651B1DE6F4000F9AA4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D22AC3641B1DE6F4000F9AA4 /* Images.xcassets */; };
 		D22AC3691B1DEC62000F9AA4 /* SCPlayerModule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22AC3681B1DEC62000F9AA4 /* SCPlayerModule.cpp */; };
 		D22AC36E1B1DF486000F9AA4 /* SCRole.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22AC36D1B1DF486000F9AA4 /* SCRole.cpp */; };
 		D22AC3711B1DFB24000F9AA4 /* SCHostPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22AC36F1B1DFB24000F9AA4 /* SCHostPlayer.cpp */; };
@@ -26,22 +26,8 @@
 		D22AC37E1B1E206B000F9AA4 /* SCSceneMain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22AC37C1B1E206B000F9AA4 /* SCSceneMain.cpp */; };
 		D22AC3811B1E20AD000F9AA4 /* SCSceneBattle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22AC37F1B1E20AD000F9AA4 /* SCSceneBattle.cpp */; };
 		D2A8C8261B20AA640073FDB7 /* ObjectManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2A8C8251B20AA640073FDB7 /* ObjectManager.cpp */; };
-		D2B5DA7B1B0CEA2200401BDF /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2B5DA641B0CEA2200401BDF /* Default-568h@2x.png */; };
-		D2B5DA7C1B0CEA2200401BDF /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = D2B5DA651B0CEA2200401BDF /* Default-Portrait~ipad.png */; };
-		D2B5DA7D1B0CEA2200401BDF /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = D2B5DA661B0CEA2200401BDF /* Default.png */; };
-		D2B5DA7E1B0CEA2200401BDF /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2B5DA671B0CEA2200401BDF /* Default@2x.png */; };
 		D2B5DA7F1B0CEA2200401BDF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D2B5DA681B0CEA2200401BDF /* InfoPlist.strings */; };
 		D2B5DA801B0CEA2200401BDF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D2B5DA6A1B0CEA2200401BDF /* Localizable.strings */; };
-		D2B5DA811B0CEA2200401BDF /* Icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = D2B5DA6C1B0CEA2200401BDF /* Icon-40.png */; };
-		D2B5DA821B0CEA2200401BDF /* Icon-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2B5DA6D1B0CEA2200401BDF /* Icon-40@2x.png */; };
-		D2B5DA831B0CEA2200401BDF /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = D2B5DA6E1B0CEA2200401BDF /* Icon-72.png */; };
-		D2B5DA841B0CEA2200401BDF /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2B5DA6F1B0CEA2200401BDF /* Icon-72@2x.png */; };
-		D2B5DA851B0CEA2200401BDF /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = D2B5DA701B0CEA2200401BDF /* Icon-Small-50.png */; };
-		D2B5DA861B0CEA2200401BDF /* Icon-Small-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2B5DA711B0CEA2200401BDF /* Icon-Small-50@2x.png */; };
-		D2B5DA871B0CEA2200401BDF /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = D2B5DA721B0CEA2200401BDF /* Icon-Small.png */; };
-		D2B5DA881B0CEA2200401BDF /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2B5DA731B0CEA2200401BDF /* Icon-Small@2x.png */; };
-		D2B5DA891B0CEA2200401BDF /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D2B5DA741B0CEA2200401BDF /* Icon.png */; };
-		D2B5DA8A1B0CEA2200401BDF /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2B5DA751B0CEA2200401BDF /* Icon@2x.png */; };
 		D2B5DA921B0CEA4800401BDF /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D2B5DA8D1B0CEA4800401BDF /* AppController.mm */; };
 		D2B5DA931B0CEA4800401BDF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B5DA8E1B0CEA4800401BDF /* main.m */; };
 		D2B5DA941B0CEA4800401BDF /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D2B5DA911B0CEA4800401BDF /* RootViewController.mm */; };
@@ -63,11 +49,8 @@
 		D2B7BFA91B13A0500012C51B /* HttpCurl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B7BF661B13A0500012C51B /* HttpCurl.cpp */; };
 		D2B7BFAA1B13A0500012C51B /* HttpMan.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B7BF681B13A0500012C51B /* HttpMan.cpp */; };
 		D2B7BFAB1B13A0500012C51B /* HttpProtocolMan.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B7BF6A1B13A0500012C51B /* HttpProtocolMan.cpp */; };
-		D2B7BFAC1B13A0500012C51B /* json_internalarray.inl in Resources */ = {isa = PBXBuildFile; fileRef = D2B7BF771B13A0500012C51B /* json_internalarray.inl */; };
-		D2B7BFAD1B13A0500012C51B /* json_internalmap.inl in Resources */ = {isa = PBXBuildFile; fileRef = D2B7BF781B13A0500012C51B /* json_internalmap.inl */; };
 		D2B7BFAE1B13A0500012C51B /* json_reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B7BF791B13A0500012C51B /* json_reader.cpp */; };
 		D2B7BFAF1B13A0500012C51B /* json_value.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B7BF7B1B13A0500012C51B /* json_value.cpp */; };
-		D2B7BFB01B13A0500012C51B /* json_valueiterator.inl in Resources */ = {isa = PBXBuildFile; fileRef = D2B7BF7C1B13A0500012C51B /* json_valueiterator.inl */; };
 		D2B7BFB11B13A0500012C51B /* json_writer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B7BF7D1B13A0500012C51B /* json_writer.cpp */; };
 		D2B7BFB21B13A0500012C51B /* Processor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B7BF7F1B13A0500012C51B /* Processor.cpp */; };
 		D2B7BFB31B13A0500012C51B /* Protocol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B7BF811B13A0500012C51B /* Protocol.cpp */; };
@@ -212,10 +195,10 @@
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		D210408A1B21F50E007AB304 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = SOURCE_ROOT; };
 		D22AC3511B1DD9BC000F9AA4 /* SCCounter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCCounter.h; sourceTree = "<group>"; };
 		D22AC3521B1DD9BC000F9AA4 /* SCGeometry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SCGeometry.cpp; sourceTree = "<group>"; };
 		D22AC3531B1DD9BC000F9AA4 /* SCGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCGeometry.h; sourceTree = "<group>"; };
-		D22AC3641B1DE6F4000F9AA4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ShootOnline/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		D22AC3671B1DEBCC000F9AA4 /* SCPlayerModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SCPlayerModule.h; path = ../Classes/Player/SCPlayerModule.h; sourceTree = "<group>"; };
 		D22AC3681B1DEC62000F9AA4 /* SCPlayerModule.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SCPlayerModule.cpp; path = ../Classes/Player/SCPlayerModule.cpp; sourceTree = "<group>"; };
 		D22AC36A1B1DEF51000F9AA4 /* SCRole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SCRole.h; path = ../Classes/Player/SCRole.h; sourceTree = "<group>"; };
@@ -234,22 +217,8 @@
 		D22AC3801B1E20AD000F9AA4 /* SCSceneBattle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSceneBattle.h; sourceTree = "<group>"; };
 		D2A8C8251B20AA640073FDB7 /* ObjectManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ObjectManager.cpp; sourceTree = "<group>"; };
 		D2B5DA401B0CEA0500401BDF /* cocos2d_libs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2d_libs.xcodeproj; path = "../../cocos2d-x-3.2/build/cocos2d_libs.xcodeproj"; sourceTree = "<group>"; };
-		D2B5DA641B0CEA2200401BDF /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		D2B5DA651B0CEA2200401BDF /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
-		D2B5DA661B0CEA2200401BDF /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		D2B5DA671B0CEA2200401BDF /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		D2B5DA691B0CEA2200401BDF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D2B5DA6B1B0CEA2200401BDF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		D2B5DA6C1B0CEA2200401BDF /* Icon-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40.png"; sourceTree = "<group>"; };
-		D2B5DA6D1B0CEA2200401BDF /* Icon-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40@2x.png"; sourceTree = "<group>"; };
-		D2B5DA6E1B0CEA2200401BDF /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
-		D2B5DA6F1B0CEA2200401BDF /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
-		D2B5DA701B0CEA2200401BDF /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
-		D2B5DA711B0CEA2200401BDF /* Icon-Small-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50@2x.png"; sourceTree = "<group>"; };
-		D2B5DA721B0CEA2200401BDF /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
-		D2B5DA731B0CEA2200401BDF /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
-		D2B5DA741B0CEA2200401BDF /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		D2B5DA751B0CEA2200401BDF /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		D2B5DA761B0CEA2200401BDF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2B5DA771B0CEA2200401BDF /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		D2B5DA781B0CEA2200401BDF /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -386,6 +355,8 @@
 		080E96DDFE201D6D7F000001 /* ios */ = {
 			isa = PBXGroup;
 			children = (
+				D210408A1B21F50E007AB304 /* Images.xcassets */,
+				D2B5DA631B0CEA2200401BDF /* default */,
 				D2B5DA8C1B0CEA4800401BDF /* AppController.h */,
 				D2B5DA8D1B0CEA4800401BDF /* AppController.mm */,
 				D2B5DA8E1B0CEA4800401BDF /* main.m */,
@@ -464,8 +435,6 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				D22AC3641B1DE6F4000F9AA4 /* Images.xcassets */,
-				D2B5DA631B0CEA2200401BDF /* default */,
 				D2C57A401B1FCC9B008DA7E3 /* ui */,
 				D2C57A431B1FCD1A008DA7E3 /* role */,
 				D2B5DAA11B0CF58100401BDF /* map */,
@@ -557,22 +526,8 @@
 		D2B5DA631B0CEA2200401BDF /* default */ = {
 			isa = PBXGroup;
 			children = (
-				D2B5DA641B0CEA2200401BDF /* Default-568h@2x.png */,
-				D2B5DA651B0CEA2200401BDF /* Default-Portrait~ipad.png */,
-				D2B5DA661B0CEA2200401BDF /* Default.png */,
-				D2B5DA671B0CEA2200401BDF /* Default@2x.png */,
 				D2B5DA681B0CEA2200401BDF /* InfoPlist.strings */,
 				D2B5DA6A1B0CEA2200401BDF /* Localizable.strings */,
-				D2B5DA6C1B0CEA2200401BDF /* Icon-40.png */,
-				D2B5DA6D1B0CEA2200401BDF /* Icon-40@2x.png */,
-				D2B5DA6E1B0CEA2200401BDF /* Icon-72.png */,
-				D2B5DA6F1B0CEA2200401BDF /* Icon-72@2x.png */,
-				D2B5DA701B0CEA2200401BDF /* Icon-Small-50.png */,
-				D2B5DA711B0CEA2200401BDF /* Icon-Small-50@2x.png */,
-				D2B5DA721B0CEA2200401BDF /* Icon-Small.png */,
-				D2B5DA731B0CEA2200401BDF /* Icon-Small@2x.png */,
-				D2B5DA741B0CEA2200401BDF /* Icon.png */,
-				D2B5DA751B0CEA2200401BDF /* Icon@2x.png */,
 				D2B5DA761B0CEA2200401BDF /* Info.plist */,
 			);
 			path = default;
@@ -940,29 +895,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2B5DA891B0CEA2200401BDF /* Icon.png in Resources */,
+				D210408B1B21F50E007AB304 /* Images.xcassets in Resources */,
 				D2B5DA7F1B0CEA2200401BDF /* InfoPlist.strings in Resources */,
-				D2B7BFB01B13A0500012C51B /* json_valueiterator.inl in Resources */,
-				D2B5DA831B0CEA2200401BDF /* Icon-72.png in Resources */,
 				D2C57A421B1FCC9B008DA7E3 /* ui in Resources */,
-				D2B7BFAD1B13A0500012C51B /* json_internalmap.inl in Resources */,
-				D2B5DA8A1B0CEA2200401BDF /* Icon@2x.png in Resources */,
-				D2B5DA7E1B0CEA2200401BDF /* Default@2x.png in Resources */,
-				D2B5DA811B0CEA2200401BDF /* Icon-40.png in Resources */,
-				D22AC3651B1DE6F4000F9AA4 /* Images.xcassets in Resources */,
-				D2B7BFAC1B13A0500012C51B /* json_internalarray.inl in Resources */,
 				D2B5DA801B0CEA2200401BDF /* Localizable.strings in Resources */,
 				D2B5DAA21B0CF58100401BDF /* map in Resources */,
-				D2B5DA871B0CEA2200401BDF /* Icon-Small.png in Resources */,
-				D2B5DA7B1B0CEA2200401BDF /* Default-568h@2x.png in Resources */,
-				D2B5DA841B0CEA2200401BDF /* Icon-72@2x.png in Resources */,
-				D2B5DA881B0CEA2200401BDF /* Icon-Small@2x.png in Resources */,
 				D2C57A441B1FCD1A008DA7E3 /* role in Resources */,
-				D2B5DA821B0CEA2200401BDF /* Icon-40@2x.png in Resources */,
-				D2B5DA7C1B0CEA2200401BDF /* Default-Portrait~ipad.png in Resources */,
-				D2B5DA861B0CEA2200401BDF /* Icon-Small-50@2x.png in Resources */,
-				D2B5DA851B0CEA2200401BDF /* Icon-Small-50.png in Resources */,
-				D2B5DA7D1B0CEA2200401BDF /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
