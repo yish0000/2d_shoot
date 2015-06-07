@@ -214,8 +214,8 @@ void SCTiledMap::addObjectGroup(const std::string& group)
 void SCTiledMap::update(float dt)
 {
 	updateCamera(dt);
-	//updateLayerPosition(dt);
-	//updateEffectLayer(dt);
+	updateLayerPosition(dt);
+	updateEffectLayer(dt);
 }
 
 // 更新相机位置
@@ -248,8 +248,9 @@ void SCTiledMap::updateLayerPosition(float dt)
 		LayerList& layerList = it->second;
 		if( layerList.size() > 0 )
 		{
-			float baseSpeedRatioX = m_layerPropCache[layerList[0]].speedX;
-			float baseSpeedRatioY = m_layerPropCache[layerList[0]].speedY;
+			// Add层 X, Y速度
+			float baseSpeedRatioX = (m_layerPropCache[layerList[0]].mask & MASK_SPEEDX) ? m_layerPropCache[layerList[0]].speedX : 1.0f;
+			float baseSpeedRatioY = (m_layerPropCache[layerList[0]].mask & MASK_SPEEDY) ? m_layerPropCache[layerList[0]].speedY : 1.0f;
 
 			// 调整位置
 			LayerNodeList layerNodes = m_layerNodes[it->first];
@@ -266,10 +267,10 @@ void SCTiledMap::updateLayerPosition(float dt)
 				LayerProperty property = m_layerPropCache[layerList[i]];
 				
 				// X方向
-				float speedRatioX = property.speedX ? property.speedX : baseSpeedRatioX;
+				float speedRatioX = (property.mask & MASK_SPEEDX) ? property.speedX : baseSpeedRatioX;
 
 				// 按循环速度调整位置
-				if( property.loopX )
+				if( property.mask & MASK_LOOPX )
 				{
 					property.distX = property.distX + property.loopX * dt;
 					property.distLoopX = property.distLoopX + property.loopY * dt;
@@ -299,9 +300,10 @@ void SCTiledMap::updateLayerPosition(float dt)
 				}
 
 				// Y方向
-				float speedRatioY = property.speedY ? property.speedY : baseSpeedRatioY;
+				float speedRatioY = (property.mask & MASK_SPEEDY) ? property.speedY : baseSpeedRatioY;
+
 				// 按循环速度调整位置
-				if( property.loopY )
+				if( property.mask & MASK_LOOPY )
 				{
 					property.distY = property.distY + property.loopX * dt;
 					property.distLoopY = property.distLoopY + property.loopX * dt;
@@ -415,7 +417,7 @@ void SCTiledMap::addTMXLayer(const std::string& layerName)
 		// 将add层加入到表中
 		addLayerImp(pLayerAdd, layerName, "_add", count == 0);
 
-		for(int i=0; i<count; i++)
+		for(int i=1; i<=count; i++)
 		{
 			TMXLayer* pLayer = getLayer(layerName + StringUtils::toString(i));
 			if( pLayer )
@@ -452,27 +454,30 @@ void SCTiledMap::addLayerImp(cocos2d::TMXLayer* pLayer, const std::string& name,
 	LayerProperty prop = m_layerPropCache[pLayer];
 
 	// 设置颜色
-	if( prop.color.r )
+	if( prop.mask & MASK_COLOR )
 	{
 		setLayerColor(pLayer, prop.color);
 	}
 
-	if( prop.loopX || prop.loopY )
+	if( (prop.mask & MASK_LOOPX) || (prop.mask & MASK_LOOPY) )
 	{
 		std::string loopLayerName = name + suffix + "_loop";
 		TMXLayer* pLoopLayer = getLayer(loopLayerName);
 		if( !pLoopLayer )
 			CCLOG("SCTiledMap::addLayerImp, Map (%s) lost the loop layer (%s)", m_sMapFile.c_str(), loopLayerName.c_str());
-		Texture2D* pTexture = pLoopLayer->getTexture();
-		if( pTexture )
-			pTexture->setAntiAliasTexParameters();
-
-		m_loopLayers[pLayer] = pLoopLayer;
-
-		// 设置颜色
-		if( prop.color.r )
+		else
 		{
-			setLayerColor(pLoopLayer, prop.color);
+			Texture2D* pTexture = pLoopLayer->getTexture();
+			if( pTexture )
+				pTexture->setAntiAliasTexParameters();
+
+			m_loopLayers[pLayer] = pLoopLayer;
+
+			// 设置颜色
+			if( prop.mask & MASK_COLOR )
+			{
+				setLayerColor(pLoopLayer, prop.color);
+			}
 		}
 	}
 
@@ -495,6 +500,7 @@ void SCTiledMap::cacheLayerProperty(cocos2d::TMXLayer* pLayer)
 
 	if( !pLayer->getProperty("colorr").isNull() )
 	{
+		prop.mask |= MASK_COLOR;
 		prop.color.r = pLayer->getProperty("colorr").asByte();
 		prop.color.g = pLayer->getProperty("colorg").asByte();
 		prop.color.b = pLayer->getProperty("colorb").asByte();
@@ -502,6 +508,7 @@ void SCTiledMap::cacheLayerProperty(cocos2d::TMXLayer* pLayer)
 
 	if( !pLayer->getProperty("loopx").isNull() )
 	{
+		prop.mask |=  MASK_LOOPX;
 		prop.loopX = pLayer->getProperty("loopx").asInt();
 		prop.distX = 0;
 		prop.distLoopX = m_realSize.width;
@@ -509,15 +516,25 @@ void SCTiledMap::cacheLayerProperty(cocos2d::TMXLayer* pLayer)
 
 	if( !pLayer->getProperty("loopy").isNull() )
 	{
+		prop.mask |= MASK_LOOPY;
 		prop.loopY = pLayer->getProperty("loopy").asInt();
 		prop.distY = 0;
 		prop.distLoopY = m_realSize.height;
 	}
 
 	Value propSpeedX = pLayer->getProperty("speedx");
-	if( !propSpeedX.isNull() ) prop.speedX = propSpeedX.asFloat();
+	if( !propSpeedX.isNull() )
+	{
+		prop.mask |= MASK_SPEEDX;
+		prop.speedX = propSpeedX.asFloat();
+	}
+
 	Value propSpeedY = pLayer->getProperty("speedy");
-	if( !propSpeedY.isNull() ) prop.speedY = propSpeedY.asFloat();
+	if( !propSpeedY.isNull() )
+	{
+		prop.mask |= MASK_SPEEDY;
+		prop.speedY = propSpeedY.asFloat();
+	}
 
 	m_layerPropCache[pLayer] = prop;
 }

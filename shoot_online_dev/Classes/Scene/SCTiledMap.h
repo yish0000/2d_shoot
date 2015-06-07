@@ -136,9 +136,19 @@ public:
 	typedef std::vector<cocos2d::TMXLayer*> LayerList;
 	typedef std::vector<cocos2d::Node*> LayerNodeList;
 
+	enum
+	{
+		MASK_COLOR	= 1,
+		MASK_LOOPX	= 1 << 1,
+		MASK_LOOPY	= 1 << 2,
+		MASK_SPEEDX	= 1 << 3,
+		MASK_SPEEDY	= 1 << 4,
+	};
+
 	// 图层属性
 	struct LayerProperty
 	{
+		int mask;
 		cocos2d::Color3B color;
 		int loopX;
 		int distX;
@@ -150,7 +160,7 @@ public:
 		float speedY;
 
 		LayerProperty()
-			: loopX(0), distX(0), distLoopX(0), loopY(0), distY(0), distLoopY(0)
+			: mask(0), loopX(0), distX(0), distLoopX(0), loopY(0), distY(0), distLoopY(0)
 			, speedX(0), speedY(0)
 		{
 		}
