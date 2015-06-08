@@ -29,7 +29,7 @@ public:
 	SCEffectKeyframeControl(int type) : m_iType(type) {}
 	virtual ~SCEffectKeyframeControl() {}
 
-	virtual bool loadData(tinyxml2::XMLNode* xmlNode, int startFrame) = 0;
+	virtual bool loadData(tinyxml2::XMLElement* xmlNode, int startFrame) = 0;
 	virtual cocos2d::ActionInterval* getAction() const = 0;
 
 	int getType() const { return m_iType; }
@@ -46,7 +46,8 @@ public:
 	SCEffectKeyframeData();
 	virtual ~SCEffectKeyframeData();
 
-	void loadKeyframeData(tinyxml2::XMLNode* xmlNode, int startFrame);
+	void clear();
+	bool loadKeyframeData(tinyxml2::XMLElement* xmlNode, int startFrame);
 	void runKeyframeAction(SCEffectElement* pElement);
 
 protected:
