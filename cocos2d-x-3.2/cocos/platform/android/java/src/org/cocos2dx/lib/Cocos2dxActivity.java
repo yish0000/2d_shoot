@@ -29,7 +29,10 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
@@ -209,6 +212,36 @@ public abstract class Cocos2dxActivity extends Activity implements Cocos2dxHelpe
       return isEmulator;
    }
 	
+   public static void showExitDialog(Context context, 
+			String strTitle,
+			String strMessage,
+			String strOK, 
+			String strCancel) {
+
+		AlertDialog.Builder builder = new Builder(context);
+		builder.setTitle(strTitle);
+		builder.setMessage(strMessage);
+		
+		builder.setPositiveButton(strOK, new AlertDialog.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				dialog.dismiss();
+				System.exit(0);
+			}
+		});
+		
+		builder.setNegativeButton(strCancel, new AlertDialog.OnClickListener() {
+		
+			@Override
+			public void onClick(DialogInterface dialog, int whick) {
+				dialog.dismiss();
+			}
+		});
+		
+		builder.create().show();
+	}
+
 	// ===========================================================
 	// Inner and Anonymous Classes
 	// ===========================================================

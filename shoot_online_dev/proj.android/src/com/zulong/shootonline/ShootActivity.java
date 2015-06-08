@@ -29,6 +29,7 @@ package com.zulong.shootonline;
 import org.cocos2dx.lib.Cocos2dxActivity;
 
 import android.os.Bundle;
+import android.view.KeyEvent;
 
 public class ShootActivity extends Cocos2dxActivity {
 	
@@ -36,5 +37,20 @@ public class ShootActivity extends Cocos2dxActivity {
 	protected void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
+	}
+	
+	@Override
+	public boolean onKeyUp(int keyCode, KeyEvent event) {
+		super.onKeyUp(keyCode, event);
+		
+		if( keyCode == KeyEvent.KEYCODE_BACK ) {
+			showExitDialog(this,
+					getString(R.string.exit_title),
+					getString(R.string.exit_message),
+					getString(R.string.exit_yes),
+					getString(R.string.exit_no));
+		}
+		
+		return true;
 	}
 }

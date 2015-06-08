@@ -246,6 +246,9 @@
     <ClCompile Include="..\Classes\Effect\SCEffectKeyframe.cpp">
       <Filter>Classes\Effect</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Effect\SCEffectData.cpp">
+      <Filter>Classes\Effect</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -456,6 +459,9 @@
       <Filter>Classes\Effect</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Effect\SCEffectKeyframe.h">
+      <Filter>Classes\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Effect\SCEffectData.h">
       <Filter>Classes\Effect</Filter>
     </ClInclude>
   </ItemGroup>

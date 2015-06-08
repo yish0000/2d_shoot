@@ -138,6 +138,7 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClCompile Include="..\Classes\Common\SCEvent.cpp" />
     <ClCompile Include="..\Classes\Common\SCThread.cpp" />
     <ClCompile Include="..\Classes\Effect\SCEffect.cpp" />
+    <ClCompile Include="..\Classes\Effect\SCEffectData.cpp" />
     <ClCompile Include="..\Classes\Effect\SCEffectElement.cpp" />
     <ClCompile Include="..\Classes\Effect\SCEffectKeyframe.cpp" />
     <ClCompile Include="..\Classes\Game\SCConfigs.cpp" />
@@ -192,6 +193,7 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\Common\SCThread.h" />
     <ClInclude Include="..\Classes\Common\SCEvent.h" />
     <ClInclude Include="..\Classes\Effect\SCEffect.h" />
+    <ClInclude Include="..\Classes\Effect\SCEffectData.h" />
     <ClInclude Include="..\Classes\Effect\SCEffectElement.h" />
     <ClInclude Include="..\Classes\Effect\SCEffectKeyframe.h" />
     <ClInclude Include="..\Classes\Game\SCConfigs.h" />
