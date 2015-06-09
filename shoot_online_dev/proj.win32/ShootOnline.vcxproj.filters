@@ -91,6 +91,9 @@
     <Filter Include="Classes\Scene\scenes">
       <UniqueIdentifier>{d0791a78-4edc-42e8-9f16-dfe9df66b876}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\Effect\elements">
+      <UniqueIdentifier>{225dff2e-8350-4647-a171-43dd7edf54e1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -463,6 +466,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Effect\SCEffectData.h">
       <Filter>Classes\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Effect\SCAudioElement.h">
+      <Filter>Classes\Effect\elements</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -192,6 +192,7 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\Common\SCEventTypes.h" />
     <ClInclude Include="..\Classes\Common\SCThread.h" />
     <ClInclude Include="..\Classes\Common\SCEvent.h" />
+    <ClInclude Include="..\Classes\Effect\SCAudioElement.h" />
     <ClInclude Include="..\Classes\Effect\SCEffect.h" />
     <ClInclude Include="..\Classes\Effect\SCEffectData.h" />
     <ClInclude Include="..\Classes\Effect\SCEffectElement.h" />
