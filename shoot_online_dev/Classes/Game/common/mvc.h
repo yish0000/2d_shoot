@@ -9,7 +9,7 @@
 #ifndef ShootOnline_controller_h
 #define ShootOnline_controller_h
 
-#include <Logic/common/message.h>
+#include <Game/common/message.h>
 #include "SCObject.h"
 
 class GameObject;

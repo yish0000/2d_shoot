@@ -1,23 +1,23 @@
 ﻿/*
  * ------------------------------------------------------------------------
- *  Name:   SCWorld.cpp
+ *  Name:   SCStage.cpp
  *  Desc:   世界对象
  *  Author: Yish
  *  Date:   2015/5/24
  * ------------------------------------------------------------------------
  */
 
-#include "SCWorld.h"
+#include "SCStage.h"
 
-SCWorld::SCWorld() : m_iWorldID(0), m_pTileMap(NULL)
+SCStage::SCStage() : m_iWorldID(0), m_pTileMap(NULL)
 {
 }
 
-SCWorld::~SCWorld()
+SCStage::~SCStage()
 {
 }
 
-bool SCWorld::init()
+bool SCStage::init()
 {
 	if( !Node::init() )
 		return false;
@@ -27,13 +27,13 @@ bool SCWorld::init()
 	return true;
 }
 
-void SCWorld::update(float dt)
+void SCStage::update(float dt)
 {
 	// 更新地图
 	m_pTileMap->update(dt);
 }
 
-bool SCWorld::checkCollision(const cocos2d::Rect& bb, const cocos2d::Point& oldPos,
+bool SCStage::checkCollision(const cocos2d::Rect& bb, const cocos2d::Point& oldPos,
 							 const cocos2d::Point& newPos, CollisionResult& result)
 {
 	float xDist = fabs(oldPos.x - newPos.x);

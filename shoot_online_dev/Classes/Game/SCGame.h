@@ -12,7 +12,7 @@
 
 #include "cocos2d.h"
 
-class SCWorld;
+class SCStage;
 class SCTiledMap;
 
 class SCGame : public cocos2d::Ref
@@ -45,13 +45,13 @@ public:
 
 	GAMESTATE getGameState() const { return m_gameState; }
 
-	SCWorld* getWorld() { return m_pWorld; }
+	SCStage* getWorld() { return m_pWorld; }
 
 	static SCGame& getInstance();
 
 protected:
 	GAMESTATE m_gameState;
-	SCWorld* m_pWorld;
+	SCStage* m_pWorld;
 };
 
 ///////////////////////////////////////////////////////////////////////////
