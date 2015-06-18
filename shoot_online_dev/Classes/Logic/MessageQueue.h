@@ -3,7 +3,7 @@
 
 /*
 * ------------------------------------------------------------------------
-*  Name:  	MessageQueue.h
+*  Name:   MessageQueue.h
 *  Desc:   单线程消息队列
 *  Author: umiringo
 *  Date:   2015/6/1
@@ -124,12 +124,10 @@ private:
  		SendCurQueue();
  	}
 
- 	//TODO : 考虑是否继承
-	void update(); //心跳中处理
-
 public:
 	void AddMessage(const Message &msg);
 	void AddMuiltiMessage(std::vector<GID> list, const Message & msg);
+    void update(float dt); //心跳中处理
 };
 
 

@@ -25,10 +25,11 @@ private:
     OBJECT_MAP obj_map;
     
 public:
-    ObjectManager():_cur_obj(NULL), _hb_obj_count(0)
+    ObjectManager()
     {}
     
-    ~ObjectManager() {}
+    ~ObjectManager()
+    {}
     
 private:
     void Insert(int64_t gid)
@@ -41,7 +42,7 @@ private:
             obj_map.erase(oi);
         }
         T* node = new T();
-        obj_map.insert(OBJECT_MAP::pair(gid, T*));
+        obj_map.insert(std::make_pair(gid, node));
     }
     
     void Remove(int64_t gid)
@@ -56,7 +57,7 @@ private:
         obj_map.erase(oi);
     }
     
-    T* GetByID(int64_t id)
+    T* GetByID(int64_t gid)
     {
         SCScopedMutex keeper(lock);
         auto oi = obj_map.find(gid);
@@ -88,7 +89,6 @@ private:
     {
         SCScopedMutex keeper(lock);
         Message msg;
-        Message msg;
         memset(&msg, 0, sizeof(msg));
         msg.type = MSG_HEARTBEAT;
         msg.param = (int64_t) dt * 1000;
@@ -98,6 +98,7 @@ private:
             if(oi.second != NULL)
             {
                 //TODO 调用处理msg函数
+                //只做心跳用
             }
         }
     }

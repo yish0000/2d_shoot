@@ -9,6 +9,7 @@
 
 
 #include "MessageQueue.h"
+#include "world.h"
 
 /*
 	MessageQueue::GIDMultiCast
@@ -22,7 +23,7 @@ void MessageQueue::GIDMultiCast::Send()
 			continue;
 		}	
 		msg->dest = v;
-		//TODO 发送代码填入此处
+        World::GetInstance()->DispatchMessage(msg);
 	}
 }
 
@@ -33,7 +34,7 @@ void MessageQueue::GIDMultiCast::Send()
 void MessageQueue::Send()
 {
 	for(auto v : _queue){
-		//TODO 发送代码填入此处
+        World::GetInstance()->DispatchMessage(*v);
 	}
 	for(auto v : _gid_muilti_queue){
 		v->Send();
@@ -58,7 +59,7 @@ void MessageQueueList::AddMuiltiMessage(std::vector<GID> list, const Message & m
 	TrySendCurQueue();
 }
 
-void MessageQueueList::update()
+void MessageQueueList::update(float dt)
 {
 	if(_cur_queue_count > 0){
 		SCScopedMutex keeper(_lock);

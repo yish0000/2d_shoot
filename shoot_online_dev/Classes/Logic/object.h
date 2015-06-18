@@ -17,12 +17,17 @@
 #include "config.h"
 
 
-class GameObject
+class GameObject : cocos2d::CCNode
 {
 private:
 	SCMutex lock;
 	GID id;
 	cocos2d::Vec2 pos;
+    
+public:
+    //controller
+    //dispatch
+    //model
 
 public:
 	GameObject() {}

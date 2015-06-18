@@ -16,3 +16,5 @@ public:
 	NpcObject() {}
 	virtual ~NpcObject() {}
 };
+
+#endif //__LOGIC_NPC_H__
