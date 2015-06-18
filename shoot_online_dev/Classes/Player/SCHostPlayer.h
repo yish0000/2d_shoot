@@ -10,7 +10,9 @@
 #ifndef __SC_HOSTPLAYER_H__
 #define __SC_HOSTPLAYER_H__
 
-#include "SCObject.h"
+#include <Game/SCObject.h>
+#include <Game/common/message.h>
+
 
 /** 主玩家的动画列表
 gongji

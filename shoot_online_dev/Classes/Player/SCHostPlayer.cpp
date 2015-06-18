@@ -13,6 +13,7 @@
 #include "SCComPlayerFSM.h"
 #include "SCComPlayerMove.h"
 
+
 USING_NS_CC;
 
 SCHostPlayer::SCHostPlayer() : SCObject()
