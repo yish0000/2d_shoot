@@ -75,7 +75,7 @@ _fontSize(10),
 _type(FontType::SYSTEM)
 {
     setTouchEnabled(true);
-    _touchSfx = "audio/button.mp3";
+//    _touchSfx = "audio/button.mp3";
 }
 
 Button::~Button()

@@ -11,6 +11,7 @@
 #define __SC_EVENTTYPES_H__
 
 #include "SCEvent.h"
+#include "Network/netlib/protocol/Protocol.h"
 
 ///////////////////////////////////////////////////////////////////////////
 //  
@@ -27,6 +28,17 @@
 //  
 ///////////////////////////////////////////////////////////////////////////
 
+class SCEventNewProtocol : public SCEvent
+{
+public:
+	SCEventNewProtocol(const scnet::Protocol* p) : SCEvent(SC_EVENT_NEW_PROTOCOL), m_pProtocol(p) {}
+	~SCEventNewProtocol() { if( m_pProtocol ) delete m_pProtocol; }
+
+	const scnet::Protocol* getProtocol() { return m_pProtocol; }
+
+protected:
+	const scnet::Protocol* m_pProtocol;
+};
 
 ///////////////////////////////////////////////////////////////////////////
 

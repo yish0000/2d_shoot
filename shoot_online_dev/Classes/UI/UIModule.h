@@ -17,9 +17,14 @@ class UIModule : public SCModuleBase
 public:
 	UIModule();
 	virtual ~UIModule();
+    
+    virtual bool init();
+    virtual void update(float dt);
+    
+    virtual void clearResources();
 
 	float getUIScale() const { return m_fUIScale; }
-
+	
 protected:
 	float m_fUIScale;
 };

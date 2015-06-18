@@ -392,7 +392,7 @@ public class Cocos2dxHelper {
     	editor.putString(key, value);
     	editor.commit();
     }
-	
+    	
 	// ===========================================================
 	// Inner and Anonymous Classes
 	// ===========================================================

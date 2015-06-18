@@ -125,7 +125,7 @@ void HttpThread::doStop()
 int HttpThread::run()
 {
     HttpEntry *entry = NULL;
-    if( !_queue->pop(entry, 1000) )
+    if( !_queue->pop(entry, 5000) )
         return 1;
     
     entry->handler->onRequestStart(entry->req);

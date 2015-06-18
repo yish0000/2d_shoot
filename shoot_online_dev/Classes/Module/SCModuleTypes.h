@@ -10,6 +10,7 @@
 #ifndef __SC_MODULETYPES_H__
 #define __SC_MODULETYPES_H__
 
+#include <string>
 
 enum
 {
@@ -19,6 +20,7 @@ enum
 	MODULE_TYPE_GAME,
 	MODULE_TYPE_NETWORK,
 	MODULE_TYPE_UI,
+    MODULE_TYPE_PLAYER,     // 负责主玩家数据的管理
 };
 
 ///////////////////////////////////////////////////////////////////////////

@@ -1841,6 +1841,10 @@
 		B6B26344193884D60088FE25 /* CCAnimation3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B6B26341193884D60088FE25 /* CCAnimation3D.cpp */; };
 		B6B26345193884D60088FE25 /* CCAnimation3D.h in Headers */ = {isa = PBXBuildFile; fileRef = B6B26342193884D60088FE25 /* CCAnimation3D.h */; };
 		B6B26346193884D60088FE25 /* CCAnimation3D.h in Headers */ = {isa = PBXBuildFile; fileRef = B6B26342193884D60088FE25 /* CCAnimation3D.h */; };
+		D22AC3601B1DDB7F000F9AA4 /* CCShapeNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22AC35E1B1DDB7F000F9AA4 /* CCShapeNode.cpp */; };
+		D22AC3611B1DDB7F000F9AA4 /* CCShapeNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22AC35E1B1DDB7F000F9AA4 /* CCShapeNode.cpp */; };
+		D22AC3621B1DDB7F000F9AA4 /* CCShapeNode.h in Headers */ = {isa = PBXBuildFile; fileRef = D22AC35F1B1DDB7F000F9AA4 /* CCShapeNode.h */; };
+		D22AC3631B1DDB7F000F9AA4 /* CCShapeNode.h in Headers */ = {isa = PBXBuildFile; fileRef = D22AC35F1B1DDB7F000F9AA4 /* CCShapeNode.h */; };
 		ED9C6A9418599AD8000A5232 /* CCNodeGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED9C6A9218599AD8000A5232 /* CCNodeGrid.cpp */; };
 		ED9C6A9518599AD8000A5232 /* CCNodeGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED9C6A9218599AD8000A5232 /* CCNodeGrid.cpp */; };
 		ED9C6A9618599AD8000A5232 /* CCNodeGrid.h in Headers */ = {isa = PBXBuildFile; fileRef = ED9C6A9318599AD8000A5232 /* CCNodeGrid.h */; };
@@ -2914,6 +2918,8 @@
 		B6B2633C19381FBF0088FE25 /* CCAnimationCurve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCAnimationCurve.h; sourceTree = "<group>"; };
 		B6B26341193884D60088FE25 /* CCAnimation3D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCAnimation3D.cpp; sourceTree = "<group>"; };
 		B6B26342193884D60088FE25 /* CCAnimation3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCAnimation3D.h; sourceTree = "<group>"; };
+		D22AC35E1B1DDB7F000F9AA4 /* CCShapeNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCShapeNode.cpp; sourceTree = "<group>"; };
+		D22AC35F1B1DDB7F000F9AA4 /* CCShapeNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCShapeNode.h; sourceTree = "<group>"; };
 		ED9C6A9218599AD8000A5232 /* CCNodeGrid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = CCNodeGrid.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		ED9C6A9318599AD8000A5232 /* CCNodeGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCNodeGrid.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -3280,6 +3286,8 @@
 		1A570109180BC8DC0088DEC7 /* draw-nodes */ = {
 			isa = PBXGroup;
 			children = (
+				D22AC35E1B1DDB7F000F9AA4 /* CCShapeNode.cpp */,
+				D22AC35F1B1DDB7F000F9AA4 /* CCShapeNode.h */,
 				1A57010A180BC8ED0088DEC7 /* CCDrawingPrimitives.cpp */,
 				1A57010B180BC8EE0088DEC7 /* CCDrawingPrimitives.h */,
 				1A57010C180BC8EE0088DEC7 /* CCDrawNode.cpp */,
@@ -5277,6 +5285,7 @@
 				50ABBE671925AB6F00A911A9 /* CCEventListenerCustom.h in Headers */,
 				1AAF5374180E3374000584C8 /* SocketIO.h in Headers */,
 				50ABBE2F1925AB6F00A911A9 /* ccConfig.h in Headers */,
+				D22AC3621B1DDB7F000F9AA4 /* CCShapeNode.h in Headers */,
 				373B9129187891F400198F86 /* CCComBase.h in Headers */,
 				1AAF5378180E3374000584C8 /* WebSocket.h in Headers */,
 				1AAF5851180E40B9000584C8 /* LocalStorage.h in Headers */,
@@ -5681,6 +5690,7 @@
 				B375107F1823ACA100B3BA6A /* CCPhysicsContactInfo_chipmunk.h in Headers */,
 				1A57034E180BD09B0088DEC7 /* tinyxml2.h in Headers */,
 				1A570357180BD0B00088DEC7 /* ioapi.h in Headers */,
+				D22AC3631B1DDB7F000F9AA4 /* CCShapeNode.h in Headers */,
 				50ABBD4B1925AB0000A911A9 /* Mat4.h in Headers */,
 				1A01C69B18F57BE800EFE3A6 /* CCSet.h in Headers */,
 				50ABBED61925AB6F00A911A9 /* utlist.h in Headers */,
@@ -6411,6 +6421,7 @@
 				50FCEB9318C72017004AD434 /* ButtonReader.cpp in Sources */,
 				1AD71E01180E26E600808F54 /* CCScale9SpriteLoader.cpp in Sources */,
 				1AD71E05180E26E600808F54 /* CCScrollViewLoader.cpp in Sources */,
+				D22AC3601B1DDB7F000F9AA4 /* CCShapeNode.cpp in Sources */,
 				1AD71E09180E26E600808F54 /* CCSpriteLoader.cpp in Sources */,
 				50ABBD481925AB0000A911A9 /* Mat4.cpp in Sources */,
 				1AD71E95180E26E600808F54 /* Animation.cpp in Sources */,
@@ -6798,6 +6809,7 @@
 				1A57022E180BCC1A0088DEC7 /* CCParticleSystemQuad.cpp in Sources */,
 				50ABBD901925AB4100A911A9 /* CCGLProgramCache.cpp in Sources */,
 				2905FA5718CF08D100240AA3 /* UILayout.cpp in Sources */,
+				D22AC3611B1DDB7F000F9AA4 /* CCShapeNode.cpp in Sources */,
 				2905FA7D18CF08D100240AA3 /* UIText.cpp in Sources */,
 				50E6D33D18E174130051CA34 /* UIVBox.cpp in Sources */,
 				1A57027F180BCC900088DEC7 /* CCSprite.cpp in Sources */,

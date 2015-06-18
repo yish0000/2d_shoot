@@ -98,6 +98,8 @@ bool GLView::initWithEAGLView(void *eaglview)
     _screenSize.width = _designResolutionSize.width = [glview getWidth];
     _screenSize.height = _designResolutionSize.height = [glview getHeight];
 //    _scaleX = _scaleY = [glview contentScaleFactor];
+    
+    [glview setMultipleTouchEnabled:YES];
 
     return true;
 }

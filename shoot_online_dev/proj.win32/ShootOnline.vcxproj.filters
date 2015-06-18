@@ -82,6 +82,18 @@
     <Filter Include="Classes\Network\protocols\s2c">
       <UniqueIdentifier>{5a2a30c4-b3d8-4817-8d83-03cf24292c30}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\Logic">
+      <UniqueIdentifier>{741322f5-d204-4aac-b72b-64fe28e3d103}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Logic\common">
+      <UniqueIdentifier>{7f133140-eb97-4f27-92bd-8f53ef666495}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Scene\scenes">
+      <UniqueIdentifier>{d0791a78-4edc-42e8-9f16-dfe9df66b876}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Effect\elements">
+      <UniqueIdentifier>{225dff2e-8350-4647-a171-43dd7edf54e1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -119,12 +131,6 @@
     </ClCompile>
     <ClCompile Include="..\Classes\Scene\SCSceneBase.cpp">
       <Filter>Classes\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\HelloWorldScene.cpp">
-      <Filter>Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Game\SCJoystick.cpp">
-      <Filter>Classes\Game</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Effect\SCEffect.cpp">
       <Filter>Classes\Effect</Filter>
@@ -177,11 +183,74 @@
     <ClCompile Include="..\Classes\Network\netlib\http\HttpProtocolMan.cpp">
       <Filter>Classes\Network\netlib\Http</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Utility\SCConfigs.cpp">
-      <Filter>Classes\Utility</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\Utility\SCGeometry.cpp">
       <Filter>Classes\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Logic\MessageQueue.cpp">
+      <Filter>Classes\Logic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Logic\ObjectManager.cpp">
+      <Filter>Classes\Logic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Scene\SCSceneBattle.cpp">
+      <Filter>Classes\Scene\scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Scene\SCSceneLoading.cpp">
+      <Filter>Classes\Scene\scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Scene\SCSceneLogin.cpp">
+      <Filter>Classes\Scene\scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Scene\SCSceneMain.cpp">
+      <Filter>Classes\Scene\scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Scene\SCSceneManager.cpp">
+      <Filter>Classes\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Player\SCHostPlayer.cpp">
+      <Filter>Classes\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Player\SCPlayerModule.cpp">
+      <Filter>Classes\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Player\SCRole.cpp">
+      <Filter>Classes\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UI\UIModule.cpp">
+      <Filter>Classes\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\SCConfigs.cpp">
+      <Filter>Classes\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Utility\SCJoystickBase.cpp">
+      <Filter>Classes\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\SCGameJoystick.cpp">
+      <Filter>Classes\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Player\SCObject.cpp">
+      <Filter>Classes\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Player\SCComArmature.cpp">
+      <Filter>Classes\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Player\SCComCollider.cpp">
+      <Filter>Classes\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Player\SCComPlayerFSM.cpp">
+      <Filter>Classes\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Player\SCComPlayerMove.cpp">
+      <Filter>Classes\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Effect\SCEffectElement.cpp">
+      <Filter>Classes\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Effect\SCEffectKeyframe.cpp">
+      <Filter>Classes\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Effect\SCEffectData.cpp">
+      <Filter>Classes\Effect</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -226,15 +295,6 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Scene\SCSceneBase.h">
       <Filter>Classes\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\HelloWorldScene.h">
-      <Filter>Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Game\SCJoystick.h">
-      <Filter>Classes\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\UI\UIModule.cpp">
-      <Filter>Classes\UI</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Effect\SCEffect.h">
       <Filter>Classes\Effect</Filter>
@@ -323,14 +383,92 @@
     <ClInclude Include="..\Classes\Network\netlib\http\HttpProtocolMan.h">
       <Filter>Classes\Network\netlib\Http</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Utility\SCConfigs.h">
-      <Filter>Classes\Utility</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\Utility\SCGeometry.h">
       <Filter>Classes\Utility</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Utility\SCCounter.h">
       <Filter>Classes\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Logic\config.h">
+      <Filter>Classes\Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Logic\MessageQueue.h">
+      <Filter>Classes\Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Logic\object.h">
+      <Filter>Classes\Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Logic\ObjectManager.h">
+      <Filter>Classes\Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Logic\common\message.h">
+      <Filter>Classes\Logic\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Logic\common\type.h">
+      <Filter>Classes\Logic\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene\SCSceneBattle.h">
+      <Filter>Classes\Scene\scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene\SCSceneLoading.h">
+      <Filter>Classes\Scene\scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene\SCSceneLogin.h">
+      <Filter>Classes\Scene\scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene\SCSceneMain.h">
+      <Filter>Classes\Scene\scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene\SCSceneManager.h">
+      <Filter>Classes\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Player\SCHostPlayer.h">
+      <Filter>Classes\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Player\SCPlayerModule.h">
+      <Filter>Classes\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Player\SCRole.h">
+      <Filter>Classes\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\SCConfigs.h">
+      <Filter>Classes\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Utility\SCJoystickBase.h">
+      <Filter>Classes\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\SCGameJoystick.h">
+      <Filter>Classes\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Player\SCComponentBase.h">
+      <Filter>Classes\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Player\SCObject.h">
+      <Filter>Classes\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Player\SCComArmature.h">
+      <Filter>Classes\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Player\SCComCollider.h">
+      <Filter>Classes\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Player\SCComPlayerFSM.h">
+      <Filter>Classes\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Player\SCComPlayerMove.h">
+      <Filter>Classes\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Effect\SCEffectElement.h">
+      <Filter>Classes\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Effect\SCEffectKeyframe.h">
+      <Filter>Classes\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Effect\SCEffectData.h">
+      <Filter>Classes\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Effect\SCAudioElement.h">
+      <Filter>Classes\Effect\elements</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

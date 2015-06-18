@@ -91,7 +91,6 @@ public:
 	SCEventProcessQueue();
 	virtual ~SCEventProcessQueue();
 
-	bool init();
 	void addEvent(SCEventDispatcher* dispatcher, SCEvent* pEvent);
 	void update(float dt);
 

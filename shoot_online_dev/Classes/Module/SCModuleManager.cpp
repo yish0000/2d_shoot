@@ -12,6 +12,7 @@
 
 #include "Network/SCNetworkModule.h"
 #include "UI/UIModule.h"
+#include "Player/SCPlayerModule.h"
 
 USING_NS_CC;
 
@@ -51,6 +52,7 @@ bool SCModuleManager::init()
 {
 	REGISTER_MODULE(MODULE_TYPE_NETWORK, SCNetworkModule);
 	REGISTER_MODULE(MODULE_TYPE_UI, UIModule);
+    REGISTER_MODULE(MODULE_TYPE_PLAYER, SCPlayerModule);
 
 	for(ModuleMap::iterator it=m_Modules.begin(); it!=m_Modules.end(); ++it)
 	{
@@ -61,6 +63,8 @@ bool SCModuleManager::init()
 		}
 	}
 
+    // 所有模块初始化完毕
+    dispatchEvent(SC_EVENT_MODULE_INITED);
 	return true;
 }
 

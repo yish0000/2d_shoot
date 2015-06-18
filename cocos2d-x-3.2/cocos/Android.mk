@@ -29,6 +29,7 @@ cocos2d.cpp \
 2d/CCComponentContainer.cpp \
 2d/CCDrawNode.cpp \
 2d/CCDrawingPrimitives.cpp \
+2d/CCShapeNode.cpp \
 2d/CCFont.cpp \
 2d/CCFontAtlas.cpp \
 2d/CCFontAtlasCache.cpp \
@@ -184,8 +185,6 @@ physics/chipmunk/CCPhysicsWorldInfo_chipmunk.cpp \
 ../external/edtaa3func/edtaa3func.cpp \
 ../external/xxhash/xxhash.c
 
-MY_INCLUDES := $(shell $(WGE_ROOT)/scripts/android_wge_include.sh)
-
 LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH) \
                     $(LOCAL_PATH)/. \
                     $(LOCAL_PATH)/platform/android \
@@ -193,8 +192,7 @@ LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH) \
                     $(LOCAL_PATH)/../external/unzip \
                     $(LOCAL_PATH)/../external/chipmunk/include/chipmunk \
                     $(LOCAL_PATH)/../external/xxhash \
-                    $(LOCAL_PATH)/../external/nslog \
-		    $(MY_INCLUDES)
+                    $(LOCAL_PATH)/../external/nslog
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH) \
                     $(LOCAL_PATH)/. \
@@ -206,8 +204,7 @@ LOCAL_C_INCLUDES := $(LOCAL_PATH) \
                     $(LOCAL_PATH)/../external/edtaa3func \
                     $(LOCAL_PATH)/../external/xxhash \
                     $(LOCAL_PATH)/../external/ConvertUTF \
-                    $(LOCAL_PATH)/../external/nslog \
-		    $(MY_INCLUDES)
+                    $(LOCAL_PATH)/../external/nslog
 
 
 LOCAL_LDLIBS := -lGLESv2 \

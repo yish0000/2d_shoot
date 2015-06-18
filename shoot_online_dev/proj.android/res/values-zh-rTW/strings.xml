@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">魂斗羅Online</string>
+
+    <string name="exit_title">退出</string>
+    <string name="exit_message">確定要退出遊戲嗎？</string>
+    <string name="exit_yes">是</string>
+    <string name="exit_no">否</string>
+</resources>

@@ -15,6 +15,15 @@
 USING_NS_CC;
 using namespace scnet;
 
+SCNetworkModule::SCNetworkModule()
+    : SCModuleBase(MODULE_TYPE_NETWORK)
+{
+}
+
+SCNetworkModule::~SCNetworkModule()
+{
+}
+
 bool SCNetworkModule::init()
 {
 	if( !SCModuleBase::init() )
@@ -40,4 +49,5 @@ void SCNetworkModule::sendProtocol(scnet::Protocol* p)
 // 收到新协议（注意：此函数是在网络线程中运行的）
 void SCNetworkModule::onNewProtocol(const scnet::Protocol* p)
 {
+	dispatchEvent(new SCEventNewProtocol(p));
 }

@@ -23,8 +23,8 @@ public:
 	};
 
 public:
-	SCNetworkModule() {}
-	virtual ~SCNetworkModule() {}
+    SCNetworkModule();
+    virtual ~SCNetworkModule();
 
 	virtual bool init();
 	virtual void update(float dt);

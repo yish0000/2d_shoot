@@ -9,7 +9,7 @@
 
 #include "SCTiledMap.h"
 #include "SCSceneBase.h"
-#include "Utility/SCConfigs.h"
+#include "Game/SCConfigs.h"
 #include "Utility/SCUtilityFunc.h"
 #include "Utility/SCGeometry.h"
 #include "cocos2d.h"
@@ -18,16 +18,42 @@ USING_NS_CC;
 
 SCTiledMap::SCTiledMap(int mapId)
 	: m_iMapID(mapId), m_sMapFile(""), m_fScaleFactor(1.0f), m_fEffectLayerZ(100)
+	, m_pBackEffectLayer(NULL), m_pFrontEffectLayer(NULL), m_pTargetNode(NULL)
+	, m_pMoveMapAction(NULL), m_pScaleAction(NULL), m_bFocusing(false)
 {
+	// 临时测试用的地图
+	m_sMapFile = "map/d1z_01g_z01_fenzhengcaoyuan.tmx";
 }
 
 SCTiledMap::~SCTiledMap()
 {
 }
 
+SCTiledMap* SCTiledMap::create(int mapId)
+{
+	SCTiledMap* pMap = new SCTiledMap(mapId);
+	if( pMap && pMap->init() )
+	{
+		pMap->autorelease();
+		return pMap;
+	}
+	else
+	{
+		delete pMap;
+		return NULL;
+	}
+}
+
 bool SCTiledMap::init()
 {
 	// Fixme! 取Map模板数据
+
+	// 加载TMX地图
+	if( !initWithTMXFile(m_sMapFile) )
+	{
+		CCLOG("SCTiledMap::init, failed to load the TMX file (%s)!", m_sMapFile.c_str());
+		return false;
+	}
 
 	cocos2d::Size tileSize = getTileSize();
 	cocos2d::Size tileCount = getMapSize();
@@ -128,6 +154,8 @@ void SCTiledMap::addObjectGroup(const std::string& group)
                 pOrnament->m_layer = dic["layer"].asString();
             if( dic.find("scale") != dic.end() )
                 pOrnament->m_fScale = dic["scale"].asFloat();
+			m_ornaments.push_back(pOrnament);
+			pObj = pOrnament;
 		}
         else if( group == "platform" )
         {
@@ -143,6 +171,20 @@ void SCTiledMap::addObjectGroup(const std::string& group)
             m_platforms.push_back(pPlatform);
             pObj = pPlatform;
         }
+		else if( group == "obstacle" )
+		{
+			SCTMObstacle* pObstacle = new SCTMObstacle();
+			if( dic.find("tid") == dic.end() )
+			{
+				delete pObstacle;
+				CCLOG("SCTiledMap::addObjectGroup, tid of the obstacle cannot be null!");
+				return;
+			}
+
+			pObstacle->m_iTID = dic["tid"].asInt();
+			m_obstacles.push_back(pObstacle);
+			pObj = pObstacle;
+		}
         else if( group == "player" )
         {
             SCTMPlayer* pPlayer = new SCTMPlayer();
@@ -155,9 +197,17 @@ void SCTiledMap::addObjectGroup(const std::string& group)
             m_transports.push_back(pTransport);
             pObj = pTransport;
         }
+		else
+		{
+			CCLOG("SCTiledMap::addObjectGroup, unknown object group (%s)", group.c_str());
+			return;
+		}
 
-		pObj->m_pos.set(x, y);
-		pObj->m_boundingBox.setRect(x, y, width, height);
+		if( pObj )
+		{
+			pObj->m_pos.set(x, y);
+			pObj->m_boundingBox.setRect(x, y, width, height);
+		}
 	}
 }
 
@@ -198,8 +248,9 @@ void SCTiledMap::updateLayerPosition(float dt)
 		LayerList& layerList = it->second;
 		if( layerList.size() > 0 )
 		{
-			float baseSpeedRatioX = m_layerPropCache[layerList[0]].speedX;
-			float baseSpeedRatioY = m_layerPropCache[layerList[0]].speedY;
+			// Add层 X, Y速度
+			float baseSpeedRatioX = (m_layerPropCache[layerList[0]].mask & MASK_SPEEDX) ? m_layerPropCache[layerList[0]].speedX : 1.0f;
+			float baseSpeedRatioY = (m_layerPropCache[layerList[0]].mask & MASK_SPEEDY) ? m_layerPropCache[layerList[0]].speedY : 1.0f;
 
 			// 调整位置
 			LayerNodeList layerNodes = m_layerNodes[it->first];
@@ -216,10 +267,10 @@ void SCTiledMap::updateLayerPosition(float dt)
 				LayerProperty property = m_layerPropCache[layerList[i]];
 				
 				// X方向
-				float speedRatioX = property.speedX ? property.speedX : baseSpeedRatioX;
+				float speedRatioX = (property.mask & MASK_SPEEDX) ? property.speedX : baseSpeedRatioX;
 
 				// 按循环速度调整位置
-				if( property.loopX )
+				if( property.mask & MASK_LOOPX )
 				{
 					property.distX = property.distX + property.loopX * dt;
 					property.distLoopX = property.distLoopX + property.loopY * dt;
@@ -249,9 +300,10 @@ void SCTiledMap::updateLayerPosition(float dt)
 				}
 
 				// Y方向
-				float speedRatioY = property.speedY ? property.speedY : baseSpeedRatioY;
+				float speedRatioY = (property.mask & MASK_SPEEDY) ? property.speedY : baseSpeedRatioY;
+
 				// 按循环速度调整位置
-				if( property.loopY )
+				if( property.mask & MASK_LOOPY )
 				{
 					property.distY = property.distY + property.loopX * dt;
 					property.distLoopY = property.distLoopY + property.loopX * dt;
@@ -338,7 +390,7 @@ Layer* SCTiledMap::getBackEffectLayer()
 		addChild(m_pBackEffectLayer, m_fEffectLayerZ);
 	}
 
-	return m_pFrontEffectLayer;
+	return m_pBackEffectLayer;
 }
 
 void SCTiledMap::addTMXLayer(const std::string& layerName)
@@ -365,7 +417,7 @@ void SCTiledMap::addTMXLayer(const std::string& layerName)
 		// 将add层加入到表中
 		addLayerImp(pLayerAdd, layerName, "_add", count == 0);
 
-		for(int i=0; i<count; i++)
+		for(int i=1; i<=count; i++)
 		{
 			TMXLayer* pLayer = getLayer(layerName + StringUtils::toString(i));
 			if( pLayer )
@@ -402,27 +454,30 @@ void SCTiledMap::addLayerImp(cocos2d::TMXLayer* pLayer, const std::string& name,
 	LayerProperty prop = m_layerPropCache[pLayer];
 
 	// 设置颜色
-	if( prop.color.r )
+	if( prop.mask & MASK_COLOR )
 	{
 		setLayerColor(pLayer, prop.color);
 	}
 
-	if( prop.loopX || prop.loopY )
+	if( (prop.mask & MASK_LOOPX) || (prop.mask & MASK_LOOPY) )
 	{
 		std::string loopLayerName = name + suffix + "_loop";
 		TMXLayer* pLoopLayer = getLayer(loopLayerName);
 		if( !pLoopLayer )
-			CCLOG("SCTiledMap::addLayerImp, Map (%s) lost the loop layer (%s)", m_sMapFile.c_str(), loopLayerName);
-		Texture2D* pTexture = pLoopLayer->getTexture();
-		if( pTexture )
-			pTexture->setAntiAliasTexParameters();
-
-		m_loopLayers[pLayer] = pLoopLayer;
-
-		// 设置颜色
-		if( prop.color.r )
+			CCLOG("SCTiledMap::addLayerImp, Map (%s) lost the loop layer (%s)", m_sMapFile.c_str(), loopLayerName.c_str());
+		else
 		{
-			setLayerColor(pLoopLayer, prop.color);
+			Texture2D* pTexture = pLoopLayer->getTexture();
+			if( pTexture )
+				pTexture->setAntiAliasTexParameters();
+
+			m_loopLayers[pLayer] = pLoopLayer;
+
+			// 设置颜色
+			if( prop.mask & MASK_COLOR )
+			{
+				setLayerColor(pLoopLayer, prop.color);
+			}
 		}
 	}
 
@@ -445,6 +500,7 @@ void SCTiledMap::cacheLayerProperty(cocos2d::TMXLayer* pLayer)
 
 	if( !pLayer->getProperty("colorr").isNull() )
 	{
+		prop.mask |= MASK_COLOR;
 		prop.color.r = pLayer->getProperty("colorr").asByte();
 		prop.color.g = pLayer->getProperty("colorg").asByte();
 		prop.color.b = pLayer->getProperty("colorb").asByte();
@@ -452,6 +508,7 @@ void SCTiledMap::cacheLayerProperty(cocos2d::TMXLayer* pLayer)
 
 	if( !pLayer->getProperty("loopx").isNull() )
 	{
+		prop.mask |=  MASK_LOOPX;
 		prop.loopX = pLayer->getProperty("loopx").asInt();
 		prop.distX = 0;
 		prop.distLoopX = m_realSize.width;
@@ -459,15 +516,25 @@ void SCTiledMap::cacheLayerProperty(cocos2d::TMXLayer* pLayer)
 
 	if( !pLayer->getProperty("loopy").isNull() )
 	{
+		prop.mask |= MASK_LOOPY;
 		prop.loopY = pLayer->getProperty("loopy").asInt();
 		prop.distY = 0;
 		prop.distLoopY = m_realSize.height;
 	}
 
 	Value propSpeedX = pLayer->getProperty("speedx");
-	if( !propSpeedX.isNull() ) prop.speedX = propSpeedX.asFloat();
+	if( !propSpeedX.isNull() )
+	{
+		prop.mask |= MASK_SPEEDX;
+		prop.speedX = propSpeedX.asFloat();
+	}
+
 	Value propSpeedY = pLayer->getProperty("speedy");
-	if( !propSpeedY.isNull() ) prop.speedY = propSpeedY.asFloat();
+	if( !propSpeedY.isNull() )
+	{
+		prop.mask |= MASK_SPEEDY;
+		prop.speedY = propSpeedY.asFloat();
+	}
 
 	m_layerPropCache[pLayer] = prop;
 }
@@ -700,7 +767,7 @@ bool SCTiledMap::checkBottomCollision(const cocos2d::Rect& boundingBox, float xD
 		// 只考虑位置在包围盒下面的
 		if( v->m_boundingBox.origin.y + v->m_boundingBox.size.height < boundingBox.origin.y )
 		{
-			if( SCGeometry::bbIntersects(v->m_boundingBox, boundingBox) )
+			if( SCGeometry::bbIntersects(v->m_boundingBox, rcBound) )
 			{
 				// 取最近的碰撞位置
 				if( v->m_boundingBox.origin.y + v->m_boundingBox.size.height > collisionY )
@@ -729,7 +796,7 @@ bool SCTiledMap::checkLeftCollision(const cocos2d::Rect& boundingBox, float xDis
 		// 只考虑位置在包围盒左面的
 		if( v->m_bXCollision && v->m_boundingBox.origin.x + v->m_boundingBox.size.width < boundingBox.origin.x )
 		{
-			if( SCGeometry::bbIntersects(v->m_boundingBox, boundingBox) )
+			if( SCGeometry::bbIntersects(v->m_boundingBox, rcBound) )
 			{
 				// 取最近的碰撞位置
 				if( v->m_boundingBox.origin.x + v->m_boundingBox.size.width > collisionX ) 
@@ -756,7 +823,7 @@ bool SCTiledMap::checkRightCollision(const cocos2d::Rect& boundingBox, float xDi
 	for(auto& v : m_collisions)
 	{
 		// 只考虑位置在包围盒右面的
-		if( v->m_bXCollision && v->m_boundingBox.origin.x > rcBound.origin.x + rcBound.size.width )
+		if( v->m_bXCollision && v->m_boundingBox.origin.x > rcBound.origin.x + boundingBox.size.width )
 		{
 			if( SCGeometry::bbIntersects(v->m_boundingBox, rcBound) )
 			{
