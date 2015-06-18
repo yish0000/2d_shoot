@@ -32,7 +32,8 @@ public:
 	void move(float xDir, float yDir);
 	void jump();
 	void attack();
-
+    
+    virtual int DispatchMessage(const Message& msg);
 protected:
 
 };

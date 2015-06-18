@@ -15,7 +15,7 @@
 
 USING_NS_CC;
 
-SCHostPlayer::SCHostPlayer() : SCObject(0, 0)
+SCHostPlayer::SCHostPlayer() : SCObject()
 {
 	Rect rcBound(-32, 0, 64, 128);
 	addComponent(SC_COMPONENT_ARMATURE, (void*)"nanzhujue");
@@ -26,6 +26,11 @@ SCHostPlayer::SCHostPlayer() : SCObject(0, 0)
 
 SCHostPlayer::~SCHostPlayer()
 {
+}
+
+int SCHostPlayer::DispatchMessage(const Message &msg)
+{
+    return 0;
 }
 
 bool SCHostPlayer::init()

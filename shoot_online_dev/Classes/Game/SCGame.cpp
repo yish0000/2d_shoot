@@ -10,7 +10,7 @@
 #include "SCGame.h"
 #include "Module/SCModuleManager.h"
 #include "Scene/SCSceneManager.h"
-#include "Scene/SCWorld.h"
+#include "Scene/SCStage.h"
 #include "Scene/SCTiledMap.h"
 #include "Utility/SCUtilityFunc.h"
 #include "Player/SCPlayerModule.h"
@@ -62,7 +62,7 @@ void SCGame::changeGameState(SCGame::GAMESTATE state)
 	SCSceneManager::getInstance().enterScene(SCENE_BATTLE, TRANS_FADEIN, 0.4f);
 
 	SCSceneBase* pCurScene = SCSceneManager::getInstance().getCurScene();
-	m_pWorld = SCWorld::create();
+	m_pWorld = SCStage::create();
 	pCurScene->addChild(m_pWorld);
 
 	// 加载主玩家

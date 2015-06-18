@@ -13,7 +13,7 @@
 #include "2d/CCNode.h"
 #include "SCTiledMap.h"
 
-class SCWorld : public cocos2d::Node
+class SCStage : public cocos2d::Node
 {
 public:
 
@@ -38,10 +38,10 @@ public:
 	};
 
 public:
-	SCWorld();
-	virtual ~SCWorld();
+	SCStage();
+	virtual ~SCStage();
 
-	CREATE_FUNC(SCWorld);
+	CREATE_FUNC(SCStage);
 
 	virtual bool init();
 	virtual void update(float dt);
