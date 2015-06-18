@@ -137,6 +137,7 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\Common\SCEvent.cpp" />
     <ClCompile Include="..\Classes\Common\SCThread.cpp" />
+    <ClCompile Include="..\Classes\Effect\SCAudioElement.cpp" />
     <ClCompile Include="..\Classes\Effect\SCEffect.cpp" />
     <ClCompile Include="..\Classes\Effect\SCEffectData.cpp" />
     <ClCompile Include="..\Classes\Effect\SCEffectElement.cpp" />

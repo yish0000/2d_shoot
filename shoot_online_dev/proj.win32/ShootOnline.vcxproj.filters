@@ -252,6 +252,9 @@
     <ClCompile Include="..\Classes\Effect\SCEffectData.cpp">
       <Filter>Classes\Effect</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Effect\SCAudioElement.cpp">
+      <Filter>Classes\Effect\elements</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
