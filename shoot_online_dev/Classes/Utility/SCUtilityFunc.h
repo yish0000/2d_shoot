@@ -18,14 +18,14 @@ class SCNetworkModule;
 class UIModule;
 class SCHostPlayer;
 class SCTiledMap;
-class SCStage;
+class SCWorld;
 
 inline cocos2d::Scheduler* glb_getScheduler() { return cocos2d::Director::getInstance()->getScheduler(); }
 inline cocos2d::Scene* glb_getCurScene() { return cocos2d::Director::getInstance()->getRunningScene(); }
 
 int glb_getGameState();
 SCHostPlayer* glb_getHostPlayer();
-SCStage* glb_getWorld();
+SCWorld* glb_getWorld();
 SCTiledMap* glb_getTiledMap();
 
 SCModuleBase* glb_getModule(int moduleType);

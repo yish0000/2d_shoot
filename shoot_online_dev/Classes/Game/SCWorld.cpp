@@ -46,9 +46,9 @@ SCWorld::~SCWorld()
 {
 }
 
-void SCWorld::Init()
+bool SCWorld::init()
 {
-    
+    return true;
 }
 
 void SCWorld::SendMessage(const Message& msg)
@@ -73,7 +73,6 @@ void SCWorld::DispatchMessage(const Message &msg)
         if(!rst)
         {
             //TODO Assert!
-            
         }
     }
     return;

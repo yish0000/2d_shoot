@@ -17,6 +17,8 @@ public:
 public:
 	SCNpc() {}
 	virtual ~SCNpc() {}
+    
+    CREATE_FUNC(SCNpc)
 
 public:
     virtual int DispatchMessage(const Message& msg);

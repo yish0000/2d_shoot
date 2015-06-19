@@ -12,8 +12,11 @@
 #include <stdio.h>
 #include "Game/common/mvc.h"
 
+class SCNpc;
 class SCNpcController : public Controller
 {
+private:
+    SCNpc *gameObject;
 public:
     SCNpcController() {}
     virtual ~SCNpcController() {}

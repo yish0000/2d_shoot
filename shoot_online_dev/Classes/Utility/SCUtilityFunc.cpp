@@ -11,7 +11,7 @@
 #include "Module/SCModuleManager.h"
 #include "Game/SCGame.h"
 #include "Player/SCPlayerModule.h"
-#include "Scene/SCStage.h"
+#include <Game/SCWorld.h>
 
 int glb_getGameState()
 {
@@ -28,7 +28,7 @@ SCHostPlayer* glb_getHostPlayer()
 	return glb_getPlayerModule()->getHostPlayer();
 }
 
-SCStage* glb_getWorld()
+SCWorld* glb_getWorld()
 {
 	return SCGame::getInstance().getWorld();
 }

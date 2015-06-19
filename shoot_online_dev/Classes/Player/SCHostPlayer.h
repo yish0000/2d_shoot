@@ -35,6 +35,7 @@ public:
 	void jump();
 	void attack();
     
+    CREATE_FUNC(SCHostPlayer);
     virtual int DispatchMessage(const Message& msg);
 protected:
 

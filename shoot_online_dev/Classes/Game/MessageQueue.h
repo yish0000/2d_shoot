@@ -96,7 +96,6 @@ public:
 //消息队列列表
 class MessageQueueList
 {
- 	//MessageQueue * _list[MAX_MESSAGE_CACHE];
  	MessageQueue _cur_queue;
  	size_t _cur_queue_count;
     SCMutex _lock;

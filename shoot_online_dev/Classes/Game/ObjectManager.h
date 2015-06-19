@@ -87,6 +87,7 @@ public:
 
     void update(float dt)
     {
+        //TODO 此处心跳是否可以不需要，因为本身SCObject会自动心跳？
         SCScopedMutex keeper(lock);
         Message msg;
         memset(&msg, 0, sizeof(msg));
