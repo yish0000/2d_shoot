@@ -15,6 +15,7 @@
 
 class SCPlayerModule;
 class SCNetworkModule;
+class SCGameModule;
 class UIModule;
 class SCHostPlayer;
 class SCTiledMap;
@@ -32,6 +33,7 @@ SCModuleBase* glb_getModule(int moduleType);
 inline SCPlayerModule* glb_getPlayerModule() { return (SCPlayerModule*)glb_getModule(MODULE_TYPE_PLAYER); }
 inline UIModule* glb_getUIModule() { return (UIModule*)glb_getModule(MODULE_TYPE_UI); }
 inline SCNetworkModule* glb_getNetworkModule() { return (SCNetworkModule*)glb_getModule(MODULE_TYPE_NETWORK); }
+inline SCGameModule* glb_getGameModule() { return (SCGameModule*)glb_getModule(MODULE_TYPE_GAME); }
 
 ///////////////////////////////////////////////////////////////////////////
 

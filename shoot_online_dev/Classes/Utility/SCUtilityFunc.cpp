@@ -9,7 +9,7 @@
 
 #include "SCUtilityFunc.h"
 #include "Module/SCModuleManager.h"
-#include "Game/SCGame.h"
+#include "SCGame.h"
 #include "Player/SCPlayerModule.h"
 #include <Game/SCWorld.h>
 
@@ -25,12 +25,12 @@ SCModuleBase* glb_getModule(int moduleType)
 
 SCHostPlayer* glb_getHostPlayer()
 {
-	return glb_getPlayerModule()->getHostPlayer();
+	return glb_getWorld()->getHostPlayer();
 }
 
 SCWorld* glb_getWorld()
 {
-	return SCGame::getInstance().getWorld();
+	return glb_getGameModule()->getWorld();
 }
 
 SCTiledMap* glb_getTiledMap()

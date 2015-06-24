@@ -11,7 +11,6 @@
 #define __SC_PLAYERMODULE_H__
 
 #include "SCRole.h"
-#include "SCHostPlayer.h"
 #include "Module/SCModuleBase.h"
 
 class SCPlayerModule : public SCModuleBase
@@ -27,12 +26,10 @@ public:
     virtual void clearResources();
     
     SCRoleData* getRoleData() { return m_pRole; }
-	SCHostPlayer* getHostPlayer() { return m_pHostPlayer; }
-    
+	
 protected:
     SCRoleData* m_pRole;
-	SCHostPlayer* m_pHostPlayer;
-
+	
 protected:
 	// Protocol handler
 	void onPrtcUserInfo(const scnet::Protocol* p);

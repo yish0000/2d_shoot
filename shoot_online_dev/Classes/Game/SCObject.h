@@ -16,6 +16,7 @@
 #include <Game/common/message.h>
 
 class SCWorld;
+
 /** 游戏内的对象
 */
 class SCObject : public cocos2d::Node
@@ -42,7 +43,6 @@ public:
     
 	int getFaceDirection() const { return m_iFaceDirection; }
 	void setFaceDirection(int dir);
-
 
 	int getTID() const { return m_tid; }
 	int64_t getID() const { return m_id.id; }

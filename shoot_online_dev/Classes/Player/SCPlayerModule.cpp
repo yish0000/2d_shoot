@@ -10,13 +10,12 @@
 #include "SCPlayerModule.h"
 
 SCPlayerModule::SCPlayerModule()
-    : SCModuleBase(MODULE_TYPE_PLAYER), m_pHostPlayer(NULL)
+    : SCModuleBase(MODULE_TYPE_PLAYER)
 {
 }
 
 SCPlayerModule::~SCPlayerModule()
 {
-	CC_SAFE_DELETE(m_pHostPlayer);
 }
 
 bool SCPlayerModule::init()
@@ -27,8 +26,6 @@ bool SCPlayerModule::init()
 	// 注册函数处理
 	REGISTER_PROTO_HANDLER(555, SCPlayerModule::onPrtcUserInfo);
     
-	m_pHostPlayer = new SCHostPlayer();
-	m_pHostPlayer->init();
     return true;
 }
 
@@ -40,7 +37,6 @@ void SCPlayerModule::update(float dt)
 {
     SCModuleBase::update(dt);
     
-    m_pHostPlayer->update(dt);
 }
 
 void SCPlayerModule::clearResources()

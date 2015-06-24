@@ -82,17 +82,17 @@
     <Filter Include="Classes\Network\protocols\s2c">
       <UniqueIdentifier>{5a2a30c4-b3d8-4817-8d83-03cf24292c30}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Classes\Logic">
-      <UniqueIdentifier>{741322f5-d204-4aac-b72b-64fe28e3d103}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Classes\Logic\common">
-      <UniqueIdentifier>{7f133140-eb97-4f27-92bd-8f53ef666495}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Classes\Scene\scenes">
       <UniqueIdentifier>{d0791a78-4edc-42e8-9f16-dfe9df66b876}</UniqueIdentifier>
     </Filter>
     <Filter Include="Classes\Effect\elements">
       <UniqueIdentifier>{225dff2e-8350-4647-a171-43dd7edf54e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Game\common">
+      <UniqueIdentifier>{d955d627-8a6a-4473-876e-1341f11323e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Game\Components">
+      <UniqueIdentifier>{d7aaf2d9-804a-4c71-b55d-b9ff46c7dc4d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -101,9 +101,6 @@
     </ClCompile>
     <ClCompile Include="..\Classes\AppDelegate.cpp">
       <Filter>Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Scene\SCWorld.cpp">
-      <Filter>Classes\Scene</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Scene\SCTiledMap.cpp">
       <Filter>Classes\Scene</Filter>
@@ -186,12 +183,6 @@
     <ClCompile Include="..\Classes\Utility\SCGeometry.cpp">
       <Filter>Classes\Utility</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Logic\MessageQueue.cpp">
-      <Filter>Classes\Logic</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Logic\ObjectManager.cpp">
-      <Filter>Classes\Logic</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\Scene\SCSceneBattle.cpp">
       <Filter>Classes\Scene\scenes</Filter>
     </ClCompile>
@@ -206,9 +197,6 @@
     </ClCompile>
     <ClCompile Include="..\Classes\Scene\SCSceneManager.cpp">
       <Filter>Classes\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Player\SCHostPlayer.cpp">
-      <Filter>Classes\Player</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Player\SCPlayerModule.cpp">
       <Filter>Classes\Player</Filter>
@@ -228,21 +216,6 @@
     <ClCompile Include="..\Classes\Game\SCGameJoystick.cpp">
       <Filter>Classes\Game</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Player\SCObject.cpp">
-      <Filter>Classes\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Player\SCComArmature.cpp">
-      <Filter>Classes\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Player\SCComCollider.cpp">
-      <Filter>Classes\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Player\SCComPlayerFSM.cpp">
-      <Filter>Classes\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Player\SCComPlayerMove.cpp">
-      <Filter>Classes\Player</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\Effect\SCEffectElement.cpp">
       <Filter>Classes\Effect</Filter>
     </ClCompile>
@@ -255,6 +228,45 @@
     <ClCompile Include="..\Classes\Effect\SCAudioElement.cpp">
       <Filter>Classes\Effect\elements</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Game\MessageQueue.cpp">
+      <Filter>Classes\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\SCNpc.cpp">
+      <Filter>Classes\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\SCNpcController.cpp">
+      <Filter>Classes\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\SCNpcDispatcher.cpp">
+      <Filter>Classes\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\SCObject.cpp">
+      <Filter>Classes\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\SCWorld.cpp">
+      <Filter>Classes\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Player\SCHostPlayer.cpp">
+      <Filter>Classes\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Components\SCComArmature.cpp">
+      <Filter>Classes\Game\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Components\SCComCollider.cpp">
+      <Filter>Classes\Game\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Components\SCComPlayerFSM.cpp">
+      <Filter>Classes\Game\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Components\SCComPlayerMove.cpp">
+      <Filter>Classes\Game\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SCGame.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\SCGameModule.cpp">
+      <Filter>Classes\Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -262,9 +274,6 @@
     </ClInclude>
     <ClInclude Include="..\Classes\AppDelegate.h">
       <Filter>Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Scene\SCWorld.h">
-      <Filter>Classes\Scene</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Scene\SCTiledMap.h">
       <Filter>Classes\Scene</Filter>
@@ -392,24 +401,6 @@
     <ClInclude Include="..\Classes\Utility\SCCounter.h">
       <Filter>Classes\Utility</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Logic\config.h">
-      <Filter>Classes\Logic</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Logic\MessageQueue.h">
-      <Filter>Classes\Logic</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Logic\object.h">
-      <Filter>Classes\Logic</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Logic\ObjectManager.h">
-      <Filter>Classes\Logic</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Logic\common\message.h">
-      <Filter>Classes\Logic\common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Logic\common\type.h">
-      <Filter>Classes\Logic\common</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\Scene\SCSceneBattle.h">
       <Filter>Classes\Scene\scenes</Filter>
     </ClInclude>
@@ -424,9 +415,6 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Scene\SCSceneManager.h">
       <Filter>Classes\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Player\SCHostPlayer.h">
-      <Filter>Classes\Player</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Player\SCPlayerModule.h">
       <Filter>Classes\Player</Filter>
@@ -443,24 +431,6 @@
     <ClInclude Include="..\Classes\Game\SCGameJoystick.h">
       <Filter>Classes\Game</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Player\SCComponentBase.h">
-      <Filter>Classes\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Player\SCObject.h">
-      <Filter>Classes\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Player\SCComArmature.h">
-      <Filter>Classes\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Player\SCComCollider.h">
-      <Filter>Classes\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Player\SCComPlayerFSM.h">
-      <Filter>Classes\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Player\SCComPlayerMove.h">
-      <Filter>Classes\Player</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\Effect\SCEffectElement.h">
       <Filter>Classes\Effect</Filter>
     </ClInclude>
@@ -472,6 +442,66 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Effect\SCAudioElement.h">
       <Filter>Classes\Effect\elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\MessageQueue.h">
+      <Filter>Classes\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\ObjectManager.h">
+      <Filter>Classes\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\SCComponentBase.h">
+      <Filter>Classes\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\SCNpc.h">
+      <Filter>Classes\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\SCNpcController.h">
+      <Filter>Classes\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\SCNpcDispatcher.h">
+      <Filter>Classes\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\SCObject.h">
+      <Filter>Classes\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\SCWorld.h">
+      <Filter>Classes\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\common\config.h">
+      <Filter>Classes\Game\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\common\message.h">
+      <Filter>Classes\Game\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\common\mvc.h">
+      <Filter>Classes\Game\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\common\type.h">
+      <Filter>Classes\Game\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Player\SCHostPlayer.h">
+      <Filter>Classes\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Components\SCComArmature.h">
+      <Filter>Classes\Game\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Components\SCComCollider.h">
+      <Filter>Classes\Game\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Components\SCComPlayerFSM.h">
+      <Filter>Classes\Game\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Components\SCComPlayerMove.h">
+      <Filter>Classes\Game\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Components\SCComponentBase.h">
+      <Filter>Classes\Game\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SCGame.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\SCGameModule.h">
+      <Filter>Classes\Game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

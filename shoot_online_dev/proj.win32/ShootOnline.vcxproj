@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -23,6 +23,7 @@
     <PlatformToolset Condition="'$(VisualStudioVersion)' == '10.0'">v100</PlatformToolset>
     <PlatformToolset Condition="'$(VisualStudioVersion)' == '11.0'">v110</PlatformToolset>
     <PlatformToolset Condition="'$(VisualStudioVersion)' == '11.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v110_xp</PlatformToolset>
+    <PlatformToolset>v120</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -30,6 +31,7 @@
     <PlatformToolset Condition="'$(VisualStudioVersion)' == '10.0'">v100</PlatformToolset>
     <PlatformToolset Condition="'$(VisualStudioVersion)' == '11.0'">v110</PlatformToolset>
     <PlatformToolset Condition="'$(VisualStudioVersion)' == '11.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v110_xp</PlatformToolset>
+    <PlatformToolset>v120</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -142,11 +144,20 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClCompile Include="..\Classes\Effect\SCEffectData.cpp" />
     <ClCompile Include="..\Classes\Effect\SCEffectElement.cpp" />
     <ClCompile Include="..\Classes\Effect\SCEffectKeyframe.cpp" />
+    <ClCompile Include="..\Classes\Game\Components\SCComArmature.cpp" />
+    <ClCompile Include="..\Classes\Game\Components\SCComCollider.cpp" />
+    <ClCompile Include="..\Classes\Game\Components\SCComPlayerFSM.cpp" />
+    <ClCompile Include="..\Classes\Game\Components\SCComPlayerMove.cpp" />
+    <ClCompile Include="..\Classes\Game\MessageQueue.cpp" />
     <ClCompile Include="..\Classes\Game\SCConfigs.cpp" />
     <ClCompile Include="..\Classes\Game\SCGame.cpp" />
     <ClCompile Include="..\Classes\Game\SCGameJoystick.cpp" />
-    <ClCompile Include="..\Classes\Logic\MessageQueue.cpp" />
-    <ClCompile Include="..\Classes\Logic\ObjectManager.cpp" />
+    <ClCompile Include="..\Classes\Game\SCGameModule.cpp" />
+    <ClCompile Include="..\Classes\Game\SCNpc.cpp" />
+    <ClCompile Include="..\Classes\Game\SCNpcController.cpp" />
+    <ClCompile Include="..\Classes\Game\SCNpcDispatcher.cpp" />
+    <ClCompile Include="..\Classes\Game\SCObject.cpp" />
+    <ClCompile Include="..\Classes\Game\SCWorld.cpp" />
     <ClCompile Include="..\Classes\Module\SCModuleBase.cpp" />
     <ClCompile Include="..\Classes\Module\SCModuleManager.cpp" />
     <ClCompile Include="..\Classes\Network\netlib\compress\ZLibUtil.cpp" />
@@ -165,12 +176,7 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClCompile Include="..\Classes\Network\netlib\stream\JsonStreamCoder.cpp" />
     <ClCompile Include="..\Classes\Network\netlib\stream\KeyedStreamCoder.cpp" />
     <ClCompile Include="..\Classes\Network\SCNetworkModule.cpp" />
-    <ClCompile Include="..\Classes\Player\SCComArmature.cpp" />
-    <ClCompile Include="..\Classes\Player\SCComCollider.cpp" />
-    <ClCompile Include="..\Classes\Player\SCComPlayerFSM.cpp" />
-    <ClCompile Include="..\Classes\Player\SCComPlayerMove.cpp" />
     <ClCompile Include="..\Classes\Player\SCHostPlayer.cpp" />
-    <ClCompile Include="..\Classes\Player\SCObject.cpp" />
     <ClCompile Include="..\Classes\Player\SCPlayerModule.cpp" />
     <ClCompile Include="..\Classes\Player\SCRole.cpp" />
     <ClCompile Include="..\Classes\Scene\SCSceneBase.cpp" />
@@ -179,8 +185,8 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClCompile Include="..\Classes\Scene\SCSceneLogin.cpp" />
     <ClCompile Include="..\Classes\Scene\SCSceneMain.cpp" />
     <ClCompile Include="..\Classes\Scene\SCSceneManager.cpp" />
-    <ClCompile Include="..\Classes\Scene\SCWorld.cpp" />
     <ClCompile Include="..\Classes\Scene\SCTiledMap.cpp" />
+    <ClCompile Include="..\Classes\SCGame.cpp" />
     <ClCompile Include="..\Classes\UI\UIModule.cpp" />
     <ClCompile Include="..\Classes\Utility\SCGeometry.cpp" />
     <ClCompile Include="..\Classes\Utility\SCJoystickBase.cpp" />
@@ -198,15 +204,27 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\Effect\SCEffectData.h" />
     <ClInclude Include="..\Classes\Effect\SCEffectElement.h" />
     <ClInclude Include="..\Classes\Effect\SCEffectKeyframe.h" />
+    <ClInclude Include="..\Classes\Game\common\config.h" />
+    <ClInclude Include="..\Classes\Game\common\message.h" />
+    <ClInclude Include="..\Classes\Game\common\mvc.h" />
+    <ClInclude Include="..\Classes\Game\common\type.h" />
+    <ClInclude Include="..\Classes\Game\Components\SCComArmature.h" />
+    <ClInclude Include="..\Classes\Game\Components\SCComCollider.h" />
+    <ClInclude Include="..\Classes\Game\Components\SCComPlayerFSM.h" />
+    <ClInclude Include="..\Classes\Game\Components\SCComPlayerMove.h" />
+    <ClInclude Include="..\Classes\Game\Components\SCComponentBase.h" />
+    <ClInclude Include="..\Classes\Game\MessageQueue.h" />
+    <ClInclude Include="..\Classes\Game\ObjectManager.h" />
+    <ClInclude Include="..\Classes\Game\SCComponentBase.h" />
     <ClInclude Include="..\Classes\Game\SCConfigs.h" />
     <ClInclude Include="..\Classes\Game\SCGame.h" />
     <ClInclude Include="..\Classes\Game\SCGameJoystick.h" />
-    <ClInclude Include="..\Classes\Logic\common\message.h" />
-    <ClInclude Include="..\Classes\Logic\common\type.h" />
-    <ClInclude Include="..\Classes\Logic\config.h" />
-    <ClInclude Include="..\Classes\Logic\MessageQueue.h" />
-    <ClInclude Include="..\Classes\Logic\object.h" />
-    <ClInclude Include="..\Classes\Logic\ObjectManager.h" />
+    <ClInclude Include="..\Classes\Game\SCGameModule.h" />
+    <ClInclude Include="..\Classes\Game\SCNpc.h" />
+    <ClInclude Include="..\Classes\Game\SCNpcController.h" />
+    <ClInclude Include="..\Classes\Game\SCNpcDispatcher.h" />
+    <ClInclude Include="..\Classes\Game\SCObject.h" />
+    <ClInclude Include="..\Classes\Game\SCWorld.h" />
     <ClInclude Include="..\Classes\Module\SCModuleBase.h" />
     <ClInclude Include="..\Classes\Module\SCModuleManager.h" />
     <ClInclude Include="..\Classes\Module\SCModuleTypes.h" />
@@ -237,13 +255,7 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\Network\netlib\stream\KeyedStreamCoder.h" />
     <ClInclude Include="..\Classes\Network\netlib\stream\StreamCoder.h" />
     <ClInclude Include="..\Classes\Network\SCNetworkModule.h" />
-    <ClInclude Include="..\Classes\Player\SCComArmature.h" />
-    <ClInclude Include="..\Classes\Player\SCComCollider.h" />
-    <ClInclude Include="..\Classes\Player\SCComPlayerFSM.h" />
-    <ClInclude Include="..\Classes\Player\SCComPlayerMove.h" />
-    <ClInclude Include="..\Classes\Player\SCComponentBase.h" />
     <ClInclude Include="..\Classes\Player\SCHostPlayer.h" />
-    <ClInclude Include="..\Classes\Player\SCObject.h" />
     <ClInclude Include="..\Classes\Player\SCPlayerModule.h" />
     <ClInclude Include="..\Classes\Player\SCRole.h" />
     <ClInclude Include="..\Classes\Scene\SCSceneBase.h" />
@@ -252,8 +264,8 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\Scene\SCSceneLogin.h" />
     <ClInclude Include="..\Classes\Scene\SCSceneMain.h" />
     <ClInclude Include="..\Classes\Scene\SCSceneManager.h" />
-    <ClInclude Include="..\Classes\Scene\SCWorld.h" />
     <ClInclude Include="..\Classes\Scene\SCTiledMap.h" />
+    <ClInclude Include="..\Classes\SCGame.h" />
     <ClInclude Include="..\Classes\UI\UIModule.h" />
     <ClInclude Include="..\Classes\Utility\SCCounter.h" />
     <ClInclude Include="..\Classes\Utility\SCGeometry.h" />
