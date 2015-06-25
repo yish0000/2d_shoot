@@ -1,4 +1,4 @@
-//
+﻿//
 //  world.cpp
 //  ShootOnline
 //
@@ -6,8 +6,8 @@
 //
 //
 
-#include <stdio.h>
 #include "SCWorld.h"
+#include "Scene/SCSceneBase.h"
 
 //private function here:
 SCNpc * SCWorld::FindNPCByID(int64_t id)
@@ -37,7 +37,7 @@ SCObject* SCWorld::FindObjectByMsg(const Message &msg)
 }
 
 //public function here:
-SCWorld::SCWorld()
+SCWorld::SCWorld() : m_pTileMap(NULL), m_pHostPlayer(NULL)
 {
     _msg_queue = new MessageQueueList(this);
 }
@@ -53,6 +53,15 @@ bool SCWorld::init()
 
 	m_pTileMap = SCTiledMap::create(0);
 	addChild(m_pTileMap);
+
+	// 加载主玩家
+	m_pHostPlayer = SCHostPlayer::create();
+	m_pTileMap->addChildToLayer(m_pHostPlayer, "rd_add", SCENELAYER_ZORDER_HOSTPLAYER);
+	m_pHostPlayer->setPosition(300, 120);
+	m_pHostPlayer->setScale(0.5f);
+
+	// 地图跟随主角
+	m_pTileMap->followNode(m_pHostPlayer);
     return true;
 }
 
@@ -86,6 +95,7 @@ void SCWorld::DispatchMessage(const Message &msg)
 
 void SCWorld::update(float dt)
 {
+	m_pHostPlayer->update(dt);
 	m_pTileMap->update(dt);
 
     _msg_queue->update(dt);

@@ -1,15 +1,14 @@
 #ifndef __LOGIC_SCWORLD_H__
 #define __LOGIC_SCWORLD_H__
 
+#include "2d/CCNode.h"
+
 #include "ObjectManager.h"
 #include "MessageQueue.h"
-#include <vector>
-#include "SCobject.h"
+#include "SCObject.h"
 #include "SCNpc.h"
 #include "SCHostPlayer.h"
-#include "2d/CCNode.h"
 #include "Scene/SCTiledMap.h"
-
 
 class SCWorld : public cocos2d::Node
 {
@@ -37,7 +36,7 @@ public:
 
 private:
     ObjectManager<SCNpc> _npc_manager;//npc列表
-    SCHostPlayer *m_player;
+    SCHostPlayer *m_pHostPlayer;
 	MessageQueueList *_msg_queue;
     SCTiledMap* m_pTileMap;
 
@@ -52,7 +51,7 @@ private:
 
 public:
     SCTiledMap* getTileMap() { return m_pTileMap; }
-	SCHostPlayer* getHostPlayer() { return m_player; }
+	SCHostPlayer* getHostPlayer() { return m_pHostPlayer; }
     
 	void SendMessage(const Message& msg);
 	void SendMessage(const std::vector<GID>& glist, const Message& msg);
@@ -61,7 +60,7 @@ public:
     virtual void update(float dt);
 
 	bool checkCollision(const cocos2d::Rect& bb, const cocos2d::Point& oldPos,
-		const cocos2d::Point& newPos, CollisionResult& result)
+		const cocos2d::Point& newPos, CollisionResult& result);
 };
 
 #endif //__LOGIC_SCWORLD_H__

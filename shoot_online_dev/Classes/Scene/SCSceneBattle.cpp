@@ -9,9 +9,9 @@
 #include "cocos2d.h"
 #include "SCSceneBattle.h"
 #include "Game/SCGameJoystick.h"
-#include "Utility/SCUtilityFunc.h"
-#include "Player/SCHostPlayer.h"
+#include "Game/SCHostPlayer.h"
 #include "Scene/SCTiledMap.h"
+#include "Utility/SCUtilityFunc.h"
 
 USING_NS_CC;
 
@@ -56,8 +56,8 @@ void SCSceneBattle::onBtnJump(cocos2d::Ref* pSender)
 
 void SCSceneBattle::onBtnAttack(cocos2d::Ref* pSender)
 {
-//	SCHostPlayer* pHost = glb_getHostPlayer();
-//	pHost->attack();
-	SCTiledMap* pMap = glb_getTiledMap();
-	pMap->shake(0.5f);
+	SCHostPlayer* pHost = glb_getHostPlayer();
+	pHost->attack();
+//	SCTiledMap* pMap = glb_getTiledMap();
+//	pMap->shake(0.5f);
 }

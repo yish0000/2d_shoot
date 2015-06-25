@@ -7,7 +7,7 @@
  * ------------------------------------------------------------------------
  */
 
-#include "SCObject.h"
+#include "../SCObject.h"
 #include "SCComPlayerFSM.h"
 #include "SCComArmature.h"
 

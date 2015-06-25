@@ -32,15 +32,6 @@ bool SCGameModule::init()
 	SCSceneBase* pCurScene = SCSceneManager::getInstance().getCurScene();
 	m_pWorld = SCWorld::create();
 	pCurScene->addChild(m_pWorld);
-
-	// 加载主玩家
-	SCHostPlayer* pHost = glb_getPlayerModule()->getHostPlayer();
-	m_pWorld->getTileMap()->addChildToLayer(pHost, "rd_add", SCENELAYER_ZORDER_HOSTPLAYER);
-	pHost->setPosition(300, 120);
-	pHost->setScale(0.7f);
-
-	// 地图跟随主角
-	m_pWorld->getTileMap()->followNode(pHost);
 	return true;
 }
 

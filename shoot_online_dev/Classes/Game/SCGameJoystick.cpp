@@ -8,7 +8,7 @@
  */
 
 #include "SCGameJoystick.h"
-#include "Player/SCHostPlayer.h"
+#include "SCHostPlayer.h"
 #include "Utility/SCUtilityFunc.h"
 
 static const char* JOYSTICK_BACK = "ui/joystick/back.png";

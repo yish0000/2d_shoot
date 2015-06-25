@@ -1,6 +1,6 @@
 ﻿/*
  * ------------------------------------------------------------------------
- *  Name:   UIModule.h
+ *  Name:   SCUIModule.h
  *  Desc:   UI模块
  *  Author: Yish
  *  Date:   2015/5/24
@@ -12,11 +12,11 @@
 
 #include "Module/SCModuleBase.h"
 
-class UIModule : public SCModuleBase
+class SCUIModule : public SCModuleBase
 {
 public:
-	UIModule();
-	virtual ~UIModule();
+	SCUIModule();
+	virtual ~SCUIModule();
     
     virtual bool init();
     virtual void update(float dt);

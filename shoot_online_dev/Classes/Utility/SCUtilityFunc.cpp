@@ -9,9 +9,10 @@
 
 #include "SCUtilityFunc.h"
 #include "Module/SCModuleManager.h"
-#include "SCGame.h"
 #include "Player/SCPlayerModule.h"
-#include <Game/SCWorld.h>
+#include "Game/SCGameModule.h"
+#include "Game/SCWorld.h"
+#include "SCGame.h"
 
 int glb_getGameState()
 {

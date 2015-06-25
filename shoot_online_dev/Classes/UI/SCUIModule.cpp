@@ -1,24 +1,24 @@
 ﻿/*
  * ------------------------------------------------------------------------
- *  Name:   UIModule.cpp
+ *  Name:   SCUIModule.cpp
  *  Desc:   UI模块
  *  Author: Yish
  *  Date:   2015/5/24
  * ------------------------------------------------------------------------
  */
 
-#include "UIModule.h"
+#include "SCUIModule.h"
 
-UIModule::UIModule()
+SCUIModule::SCUIModule()
 	: SCModuleBase(MODULE_TYPE_UI), m_fUIScale(1.0f)
 {
 }
 
-UIModule::~UIModule()
+SCUIModule::~SCUIModule()
 {
 }
 
-bool UIModule::init()
+bool SCUIModule::init()
 {
     if( !SCModuleBase::init() )
         return false;
@@ -26,13 +26,13 @@ bool UIModule::init()
     return true;
 }
 
-void UIModule::update(float dt)
+void SCUIModule::update(float dt)
 {
     SCModuleBase::update(dt);
     
     
 }
 
-void UIModule::clearResources()
+void SCUIModule::clearResources()
 {
 }

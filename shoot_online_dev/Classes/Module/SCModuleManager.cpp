@@ -10,8 +10,9 @@
 #include "cocos2d.h"
 #include "SCModuleManager.h"
 
+#include "Game/SCGameModule.h"
 #include "Network/SCNetworkModule.h"
-#include "UI/UIModule.h"
+#include "UI/SCUIModule.h"
 #include "Player/SCPlayerModule.h"
 
 USING_NS_CC;
@@ -50,8 +51,9 @@ SCModuleManager& SCModuleManager::getInstance()
 
 bool SCModuleManager::init()
 {
+	REGISTER_MODULE(MODULE_TYPE_GAME, SCGameModule);
 	REGISTER_MODULE(MODULE_TYPE_NETWORK, SCNetworkModule);
-	REGISTER_MODULE(MODULE_TYPE_UI, UIModule);
+	REGISTER_MODULE(MODULE_TYPE_UI, SCUIModule);
     REGISTER_MODULE(MODULE_TYPE_PLAYER, SCPlayerModule);
 
 	for(ModuleMap::iterator it=m_Modules.begin(); it!=m_Modules.end(); ++it)

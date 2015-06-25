@@ -8,11 +8,11 @@
  */
 
 #include "SCObject.h"
-#include "SCComponentBase.h"
-#include "SCComArmature.h"
-#include "SCComCollider.h"
-#include "SCComPlayerMove.h"
-#include "SCComPlayerFSM.h"
+#include "Components/SCComponentBase.h"
+#include "Components/SCComArmature.h"
+#include "Components/SCComCollider.h"
+#include "Components/SCComPlayerMove.h"
+#include "Components/SCComPlayerFSM.h"
 #include "cocos2d.h"
 
 USING_NS_CC;

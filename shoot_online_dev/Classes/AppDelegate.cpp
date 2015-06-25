@@ -1,5 +1,5 @@
 ﻿#include "AppDelegate.h"
-#include "Game/SCGame.h"
+#include "SCGame.h"
 
 USING_NS_CC;
 

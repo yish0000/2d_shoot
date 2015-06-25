@@ -11,7 +11,7 @@
 #define __SC_COMPLAYERMOVE_H__
 
 #include "SCComponentBase.h"
-#include "Scene/SCStage.h"
+#include "../SCWorld.h"
 
 class SCComCollider;
 class SCComPlayerFSM;
@@ -35,7 +35,7 @@ public:
 	void jump();
 
 	// 获取碰撞检测结果
-	const SCStage::CollisionResult& getCollisionResult() const { return m_collisionResult; }
+	const SCWorld::CollisionResult& getCollisionResult() const { return m_collisionResult; }
 
 	void onMsg_DoFSMEvent(int state);
 
@@ -55,7 +55,7 @@ protected:
 
 	SCComCollider* m_pComCollider;
 	SCComPlayerFSM* m_pComFSM;
-	SCStage::CollisionResult m_collisionResult;
+	SCWorld::CollisionResult m_collisionResult;
 };
 
 ///////////////////////////////////////////////////////////////////////////

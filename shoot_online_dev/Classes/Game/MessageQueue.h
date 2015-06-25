@@ -1,4 +1,4 @@
-#ifndef __LOGIC_MESSAGEQUEUE_H__
+﻿#ifndef __LOGIC_MESSAGEQUEUE_H__
 #define __LOGIC_MESSAGEQUEUE_H__
 
 /*
@@ -14,7 +14,7 @@
 #include <Game/common/type.h>
 #include <Game/common/message.h>
 #include <Common/SCThread.h>
-#include "config.h"
+#include "common/config.h"
 
 
 class SCWorld;

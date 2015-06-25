@@ -7,12 +7,11 @@
  * ------------------------------------------------------------------------
  */
 
-#include "SCObject.h"
+#include "../SCObject.h"
 #include "SCComPlayerMove.h"
 #include "SCComCollider.h"
 #include "SCComPlayerFSM.h"
-#include "Game/SCGame.h"
-#include "Scene/SCStage.h"
+#include "Utility/SCUtilityFunc.h"
 
 USING_NS_CC;
  
@@ -49,7 +48,7 @@ void SCComPlayerMove::update(float dt)
 {
 	float fMaxSpeed = 1000.0f;
 
-	SCStage* pWorld = SCGame::getInstance().getWorld();
+	SCWorld* pWorld = glb_getWorld();
 	SCTiledMap* pMap = pWorld->getTileMap();
 
 	// 更新移动速度
@@ -62,7 +61,7 @@ void SCComPlayerMove::update(float dt)
 	float newY = clampf(posOld.y + m_fYSpeed * dt, 0, pMap->getRealHeight() + 200);
 
 	// 检测碰撞
-	SCStage::CollisionResult collision;
+	SCWorld::CollisionResult collision;
 	const cocos2d::Rect& bb = m_pComCollider->getSymmetryBoundingBox();
 	pWorld->checkCollision(bb, posOld, Point(newX, newY), collision);
 	if( collision.rightCollision )

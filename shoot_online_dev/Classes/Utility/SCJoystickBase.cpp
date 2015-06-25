@@ -8,7 +8,7 @@
  */
 
 #include "SCJoystickBase.h"
-#include "UI/UIModule.h"
+#include "UI/SCUIModule.h"
 #include "Utility/SCUtilityFunc.h"
 
 USING_NS_CC;

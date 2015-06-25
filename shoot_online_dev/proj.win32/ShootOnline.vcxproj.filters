@@ -105,9 +105,6 @@
     <ClCompile Include="..\Classes\Scene\SCTiledMap.cpp">
       <Filter>Classes\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Game\SCGame.cpp">
-      <Filter>Classes\Game</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\Module\SCModuleBase.cpp">
       <Filter>Classes\Module</Filter>
     </ClCompile>
@@ -204,9 +201,6 @@
     <ClCompile Include="..\Classes\Player\SCRole.cpp">
       <Filter>Classes\Player</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\UI\UIModule.cpp">
-      <Filter>Classes\UI</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\Game\SCConfigs.cpp">
       <Filter>Classes\Game</Filter>
     </ClCompile>
@@ -246,9 +240,6 @@
     <ClCompile Include="..\Classes\Game\SCWorld.cpp">
       <Filter>Classes\Game</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Player\SCHostPlayer.cpp">
-      <Filter>Classes\Game</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\Game\Components\SCComArmature.cpp">
       <Filter>Classes\Game\Components</Filter>
     </ClCompile>
@@ -267,6 +258,12 @@
     <ClCompile Include="..\Classes\Game\SCGameModule.cpp">
       <Filter>Classes\Game</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Game\SCHostPlayer.cpp">
+      <Filter>Classes\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UI\SCUIModule.cpp">
+      <Filter>Classes\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -277,9 +274,6 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Scene\SCTiledMap.h">
       <Filter>Classes\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Game\SCGame.h">
-      <Filter>Classes\Game</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Module\SCModuleBase.h">
       <Filter>Classes\Module</Filter>
@@ -313,9 +307,6 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Network\SCNetworkModule.h">
       <Filter>Classes\Network</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\UI\UIModule.h">
-      <Filter>Classes\UI</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Network\netlib\stream\BinaryStream.h">
       <Filter>Classes\Network\netlib\Stream</Filter>
@@ -502,6 +493,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Game\SCGameModule.h">
       <Filter>Classes\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\SCUIModule.h">
+      <Filter>Classes\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

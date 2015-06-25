@@ -1,4 +1,4 @@
-/*
+﻿/*
  * ------------------------------------------------------------------------
  *  Name:   ObjectManager.h
  *  Desc:   gameobject列表
@@ -12,8 +12,8 @@
 
 #include <set>
 #include <map>
-#include <Logic/common/message.h>
-#include <Common/SCThread.h>
+#include "Game/common/message.h"
+#include "Common/SCThread.h"
 
 template <typename T>
 class ObjectManager

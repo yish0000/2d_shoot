@@ -7,7 +7,7 @@
  * ------------------------------------------------------------------------
  */
 
-#include "SCObject.h"
+#include "../SCObject.h"
 #include "SCComCollider.h"
 
 USING_NS_CC;

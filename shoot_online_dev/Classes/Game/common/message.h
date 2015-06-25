@@ -1,4 +1,4 @@
-#ifndef __LOGIC_COMMON_MESSAGE__H
+﻿#ifndef __LOGIC_COMMON_MESSAGE__H
 #define __LOGIC_COMMON_MESSAGE__H
 /*
 * ------------------------------------------------------------------------

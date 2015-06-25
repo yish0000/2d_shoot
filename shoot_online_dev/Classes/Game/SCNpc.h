@@ -1,4 +1,4 @@
-#ifndef __LOGIC_NPC_H__
+﻿#ifndef __LOGIC_NPC_H__
 #define __LOGIC_NPC_H__
 
 #include "SCObject.h"

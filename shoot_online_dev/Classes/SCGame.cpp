@@ -8,6 +8,7 @@
  */
 
 #include "SCGame.h"
+#include "Module/SCModuleManager.h"
 
 USING_NS_CC;
 

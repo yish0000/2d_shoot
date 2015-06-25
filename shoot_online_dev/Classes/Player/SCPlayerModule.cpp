@@ -8,6 +8,7 @@
  */
 
 #include "SCPlayerModule.h"
+#include "cocos2d.h"
 
 SCPlayerModule::SCPlayerModule()
     : SCModuleBase(MODULE_TYPE_PLAYER)
