@@ -7,6 +7,7 @@
  * ------------------------------------------------------------------------
  */
 
+#include "SCUIBase.h"
 #include "SCUIModule.h"
 
 SCUIModule::SCUIModule()
@@ -30,7 +31,13 @@ void SCUIModule::update(float dt)
 {
     SCModuleBase::update(dt);
     
-    
+	UITable::const_iterator it = m_UITable.begin();
+	for (; it != m_UITable.end(); ++it)
+	{
+		SCUIBase* pFrame = it->second;
+		if (pFrame->isVisible())
+			pFrame->update(dt);
+	}
 }
 
 void SCUIModule::clearResources()

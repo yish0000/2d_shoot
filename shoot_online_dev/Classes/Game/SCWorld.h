@@ -44,23 +44,24 @@ public:
     SCWorld();
     virtual ~SCWorld();
     CREATE_FUNC(SCWorld);
-    
+
+	virtual bool init();
+	virtual void update(float dt);
+
 private:
-    SCNpc * FindNPCByID(int64_t id);
+    SCNpc* FindNPCByID(int64_t id);
     SCObject* FindObjectByMsg(const Message& msg);
 
 public:
     SCTiledMap* getTileMap() { return m_pTileMap; }
 	SCHostPlayer* getHostPlayer() { return m_pHostPlayer; }
-    
-	void SendMessage(const Message& msg);
-	void SendMessage(const std::vector<GID>& glist, const Message& msg);
-    void DispatchMessage(const Message& msg);
-    virtual bool init();
-    virtual void update(float dt);
 
 	bool checkCollision(const cocos2d::Rect& bb, const cocos2d::Point& oldPos,
 		const cocos2d::Point& newPos, CollisionResult& result);
+
+	void SendMessage(const Message& msg);
+	void SendMessage(const std::vector<GID>& glist, const Message& msg);
+    void DispatchMessage(const Message& msg);
 };
 
 #endif //__LOGIC_SCWORLD_H__

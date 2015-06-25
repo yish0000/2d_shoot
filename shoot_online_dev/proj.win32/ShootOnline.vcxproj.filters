@@ -264,6 +264,9 @@
     <ClCompile Include="..\Classes\UI\SCUIModule.cpp">
       <Filter>Classes\UI</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\UI\SCUIBase.cpp">
+      <Filter>Classes\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -440,9 +443,6 @@
     <ClInclude Include="..\Classes\Game\ObjectManager.h">
       <Filter>Classes\Game</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Game\SCComponentBase.h">
-      <Filter>Classes\Game</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\Game\SCNpc.h">
       <Filter>Classes\Game</Filter>
     </ClInclude>
@@ -495,6 +495,9 @@
       <Filter>Classes\Game</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\UI\SCUIModule.h">
+      <Filter>Classes\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\SCUIBase.h">
       <Filter>Classes\UI</Filter>
     </ClInclude>
   </ItemGroup>

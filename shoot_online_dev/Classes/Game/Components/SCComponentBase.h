@@ -37,8 +37,8 @@ public:
 
 	int getType() const { return m_iType; }
 
-	bool isActive() const { return m_bActive; }
-	void setActive(bool bActive) { m_bActive = bActive; }
+    bool isActive() const { return m_bActive; }
+    void setActive(bool bActive) { m_bActive = bActive; }
 
 	SCObject* getObject() { return m_pGameObj; }
 

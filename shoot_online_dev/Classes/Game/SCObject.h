@@ -11,9 +11,9 @@
 #define __SC_OBJECT_H__
 
 #include "2d/CCNode.h"
-#include "SCComponentBase.h"
-#include <Game/common/type.h>
-#include <Game/common/message.h>
+#include "Components/SCComponentBase.h"
+#include "Game/common/type.h"
+#include "Game/common/message.h"
 
 class SCWorld;
 
