@@ -192,6 +192,7 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClCompile Include="..\Classes\Utility\SCJoystickBase.cpp" />
     <ClCompile Include="..\Classes\Utility\SCUtilityFunc.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="SCComProperty.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\Account\AccountPlatform.h" />
@@ -271,6 +272,7 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\Utility\SCJoystickBase.h" />
     <ClInclude Include="..\Classes\Utility\SCUtilityFunc.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="SCComProperty.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\cocos2d-x-3.2\cocos\2d\cocos2d.vcxproj">
