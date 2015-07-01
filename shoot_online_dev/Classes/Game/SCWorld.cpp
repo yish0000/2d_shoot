@@ -8,6 +8,7 @@
 
 #include "SCWorld.h"
 #include "Scene/SCSceneBase.h"
+#include "Utility/SCRandomGen.h"
 
 //private function here:
 SCNpc * SCWorld::FindNPCByID(int64_t id)
@@ -50,7 +51,7 @@ bool SCWorld::init()
 {
 	if (!Node::init())
 		return false;
-
+    SCRandomGen::Init();
 	m_pTileMap = SCTiledMap::create(0);
 	addChild(m_pTileMap);
 

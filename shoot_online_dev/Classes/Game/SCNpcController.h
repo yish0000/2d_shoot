@@ -21,5 +21,7 @@ public:
     SCNpcController() {}
     virtual ~SCNpcController() {}
     virtual int MessageHandler(const Message& msg);
+
+    SCNpc* getObject() { return gameObject; }
 };
 #endif /* defined(__ShootOnline__SCNpcController__) */

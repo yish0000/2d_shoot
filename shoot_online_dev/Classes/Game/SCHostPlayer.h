@@ -12,6 +12,8 @@
 
 #include <Game/SCObject.h>
 #include <Game/common/message.h>
+#include "SCHostPlayerController.h"
+#include "SCHostPlayerDispatcher.h"
 
 
 /** 主玩家的动画列表

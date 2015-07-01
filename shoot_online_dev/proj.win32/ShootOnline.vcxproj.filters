@@ -267,8 +267,17 @@
     <ClCompile Include="..\Classes\UI\SCUIBase.cpp">
       <Filter>Classes\UI</Filter>
     </ClCompile>
-    <ClCompile Include="SCComProperty.cpp">
+    <ClCompile Include="..\Classes\Game\Components\SCComProperty.cpp">
       <Filter>Classes\Game\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Components\SCComWeapon.cpp">
+      <Filter>Classes\Game\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\SCHostPlayerController.cpp">
+      <Filter>Classes\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\SCHostPlayerDispatcher.cpp">
+      <Filter>Classes\Game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -473,9 +482,6 @@
     <ClInclude Include="..\Classes\Game\common\type.h">
       <Filter>Classes\Game\common</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Player\SCHostPlayer.h">
-      <Filter>Classes\Game</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\Game\Components\SCComArmature.h">
       <Filter>Classes\Game\Components</Filter>
     </ClInclude>
@@ -503,8 +509,23 @@
     <ClInclude Include="..\Classes\UI\SCUIBase.h">
       <Filter>Classes\UI</Filter>
     </ClInclude>
-    <ClInclude Include="SCComProperty.h">
+    <ClInclude Include="..\Classes\Game\Components\SCComProperty.h">
       <Filter>Classes\Game\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Components\SCComWeapon.h">
+      <Filter>Classes\Game\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Utility\SCRandomGen.h">
+      <Filter>Classes\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\SCHostPlayer.h">
+      <Filter>Classes\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\SCHostPlayerController.h">
+      <Filter>Classes\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\SCHostPlayerDispatcher.h">
+      <Filter>Classes\Game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
