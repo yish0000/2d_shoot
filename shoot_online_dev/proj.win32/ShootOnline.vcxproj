@@ -148,6 +148,7 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClCompile Include="..\Classes\Game\Components\SCComCollider.cpp" />
     <ClCompile Include="..\Classes\Game\Components\SCComPlayerFSM.cpp" />
     <ClCompile Include="..\Classes\Game\Components\SCComPlayerMove.cpp" />
+    <ClCompile Include="..\Classes\Game\Components\SCComProperty.cpp" />
     <ClCompile Include="..\Classes\Game\MessageQueue.cpp" />
     <ClCompile Include="..\Classes\Game\SCConfigs.cpp" />
     <ClCompile Include="..\Classes\Game\SCGameJoystick.cpp" />
@@ -192,7 +193,6 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClCompile Include="..\Classes\Utility\SCJoystickBase.cpp" />
     <ClCompile Include="..\Classes\Utility\SCUtilityFunc.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="SCComProperty.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\Account\AccountPlatform.h" />
@@ -214,6 +214,7 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\Game\Components\SCComPlayerFSM.h" />
     <ClInclude Include="..\Classes\Game\Components\SCComPlayerMove.h" />
     <ClInclude Include="..\Classes\Game\Components\SCComponentBase.h" />
+    <ClInclude Include="..\Classes\Game\Components\SCComProperty.h" />
     <ClInclude Include="..\Classes\Game\MessageQueue.h" />
     <ClInclude Include="..\Classes\Game\ObjectManager.h" />
     <ClInclude Include="..\Classes\Game\SCConfigs.h" />
@@ -272,7 +273,6 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\Utility\SCJoystickBase.h" />
     <ClInclude Include="..\Classes\Utility\SCUtilityFunc.h" />
     <ClInclude Include="main.h" />
-    <ClInclude Include="SCComProperty.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\cocos2d-x-3.2\cocos\2d\cocos2d.vcxproj">

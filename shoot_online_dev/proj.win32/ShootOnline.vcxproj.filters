@@ -267,7 +267,7 @@
     <ClCompile Include="..\Classes\UI\SCUIBase.cpp">
       <Filter>Classes\UI</Filter>
     </ClCompile>
-    <ClCompile Include="SCComProperty.cpp">
+    <ClCompile Include="..\Classes\Game\Components\SCComProperty.cpp">
       <Filter>Classes\Game\Components</Filter>
     </ClCompile>
   </ItemGroup>
@@ -503,7 +503,7 @@
     <ClInclude Include="..\Classes\UI\SCUIBase.h">
       <Filter>Classes\UI</Filter>
     </ClInclude>
-    <ClInclude Include="SCComProperty.h">
+    <ClInclude Include="..\Classes\Game\Components\SCComProperty.h">
       <Filter>Classes\Game\Components</Filter>
     </ClInclude>
   </ItemGroup>
