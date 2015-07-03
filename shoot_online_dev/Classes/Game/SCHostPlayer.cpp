@@ -26,6 +26,10 @@ SCHostPlayer::SCHostPlayer() : SCObject()
 
 SCHostPlayer::~SCHostPlayer()
 {
+    delete _controller;
+    _controller = NULL;
+    delete _dispatcher;
+    _dispatcher = NULL;
 }
 
 int SCHostPlayer::DispatchMessage(const Message &msg)
@@ -38,30 +42,12 @@ bool SCHostPlayer::init()
 	if( !SCObject::init() )
 		return false;
 
+    _controller = new SCHostPlayerController();
+    _dispatcher = new SCHostPlayerDispatcher();
 	SCComArmature* pArmature = dynamic_cast<SCComArmature*>(getComponent(SC_COMPONENT_ARMATURE));
 	pArmature->playAnimation("zhanli", true);
 	return true;
 }
 
-void SCHostPlayer::move(float xDir, float yDir)
-{
-	SCComPlayerMove* pPlayerMove = dynamic_cast<SCComPlayerMove*>(getComponent(SC_COMPONENT_PLAYERMOVE));
-	pPlayerMove->move(xDir, yDir);
 
-	if( xDir < 0.0f )
-		setFaceDirection(-1);
-	else if( xDir > 0.0f )
-		setFaceDirection(1);
-}
 
-void SCHostPlayer::jump()
-{
-	SCComPlayerMove* pPlayerMove = dynamic_cast<SCComPlayerMove*>(getComponent(SC_COMPONENT_PLAYERMOVE));
-	pPlayerMove->jump();
-}
-
-void SCHostPlayer::attack()
-{
-	SCComArmature* pArmature = dynamic_cast<SCComArmature*>(getComponent(SC_COMPONENT_ARMATURE));
-	pArmature->playAnimation("gongji", false);
-}

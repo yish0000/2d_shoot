@@ -24,6 +24,12 @@ public:
     virtual int MessageHandler(const Message& msg);
 
     SCHostPlayer* getObject() { return gameObject; }
+
+public: //被外部直接调用的函数
+    void Move(float xDir, float yDir);
+    void Jump();
+    void Attack();
+
 };
 
 #endif //__SCHOSTPLAYERCONTROLLER_H__

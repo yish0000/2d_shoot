@@ -16,7 +16,7 @@ public:
     SCNpcDispatcher* _dispatcher;
 public:
 	SCNpc() {}
-	virtual ~SCNpc() {}
+    virtual ~SCNpc();
     virtual bool init();
     CREATE_FUNC(SCNpc)
 

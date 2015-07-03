@@ -12,14 +12,18 @@
 
 #include "Utility/SCJoystickBase.h"
 
+class SCHostPlayerController;
 class SCGameJoystick : public SCJoystickBase
 {
 public:
 	SCGameJoystick();
 	CREATE_FUNC(SCGameJoystick);
 
+    virtual bool init();
 	// Ò¡¸Ë´¦Àíº¯Êý
 	virtual void onJoystickHandle(float xDir, float yDir);
+protected:
+    SCHostPlayerController *pController;
 };
 
 ///////////////////////////////////////////////////////////////////////////

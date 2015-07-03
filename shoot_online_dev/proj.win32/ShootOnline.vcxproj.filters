@@ -510,24 +510,21 @@
       <Filter>Classes\UI</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Game\Components\SCComProperty.h">
-<<<<<<< HEAD
       <Filter>Classes\Game\Components</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Game\Components\SCComWeapon.h">
-=======
->>>>>>> 5a07813e5911a7bf7787f0717fc417554ba05540
       <Filter>Classes\Game\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Utility\SCRandomGen.h">
-      <Filter>Classes\Utility</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Game\SCHostPlayer.h">
-      <Filter>Classes\Game</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Game\SCHostPlayerController.h">
       <Filter>Classes\Game</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Game\SCHostPlayerDispatcher.h">
+      <Filter>Classes\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Utility\SCRandomGen.h">
+      <Filter>Classes\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\SCHostPlayer.h">
       <Filter>Classes\Game</Filter>
     </ClInclude>
   </ItemGroup>

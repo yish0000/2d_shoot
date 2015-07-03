@@ -11,6 +11,8 @@
 #include "common/message.h"
 #include "Components/SCComponentBase.h"
 #include "Components/SCComProperty.h"
+#include "Components/SCComPlayerMove.h"
+#include "Components/SCComArmature.h"
 
 int SCHostPlayerController::MessageHandler(const Message &msg)
 {
@@ -30,4 +32,27 @@ int SCHostPlayerController::MessageHandler(const Message &msg)
         break;
     }
     return 0;
+}
+
+void SCHostPlayerController::Move(float xDir, float yDir)
+{
+    SCComPlayerMove* pPlayerMove = dynamic_cast<SCComPlayerMove*>(getObject()->getComponent(SC_COMPONENT_PLAYERMOVE));
+    pPlayerMove->move(xDir, yDir);
+
+    if (xDir < 0.0f)
+        getObject()->setFaceDirection(-1);
+    else if (xDir > 0.0f)
+        getObject()->setFaceDirection(1);
+}
+
+void SCHostPlayerController::Jump()
+{
+    SCComPlayerMove* pPlayerMove = dynamic_cast<SCComPlayerMove*>(getObject()->getComponent(SC_COMPONENT_PLAYERMOVE));
+    pPlayerMove->jump();
+}
+
+void SCHostPlayerController::Attack()
+{
+    SCComArmature* pArmature = dynamic_cast<SCComArmature*>(getObject()->getComponent(SC_COMPONENT_ARMATURE));
+    pArmature->playAnimation("gongji", false);
 }
