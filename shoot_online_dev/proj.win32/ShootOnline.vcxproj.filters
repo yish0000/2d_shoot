@@ -267,6 +267,15 @@
     <ClCompile Include="..\Classes\Game\Components\SCComProperty.cpp">
       <Filter>Classes\Game\Components</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Game\Components\SCComWeapon.cpp">
+      <Filter>Classes\Game\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\SCHostPlayerController.cpp">
+      <Filter>Classes\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\SCHostPlayerDispatcher.cpp">
+      <Filter>Classes\Game</Filter>
+    </ClCompile>
     <ClCompile Include="..\Classes\Data\SCDataModule.cpp">
       <Filter>Classes\Data</Filter>
     </ClCompile>
@@ -506,6 +515,18 @@
     <ClInclude Include="..\Classes\Game\Components\SCComProperty.h">
       <Filter>Classes\Game\Components</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\Game\Components\SCComWeapon.h">
+      <Filter>Classes\Game\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\SCHostPlayerController.h">
+      <Filter>Classes\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\SCHostPlayerDispatcher.h">
+      <Filter>Classes\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Utility\SCRandomGen.h">
+      <Filter>Classes\Utility</Filter>
+    </ClInclude>
     <ClInclude Include="..\Classes\Data\SCDataModule.h">
       <Filter>Classes\Data</Filter>
     </ClInclude>
@@ -517,8 +538,7 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Utility\SCConfigs.h">
       <Filter>Classes\Utility</Filter>
-    </ClInclude>
-  </ItemGroup>
+    </ClInclude>  </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">
       <Filter>resource</Filter>

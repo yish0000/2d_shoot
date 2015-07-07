@@ -11,9 +11,10 @@
 #define __SC_OBJECT_H__
 
 #include "2d/CCNode.h"
-#include "Components/SCComponentBase.h"
 #include "Game/common/type.h"
 #include "Game/common/message.h"
+#include "Components/SCComponentBase.h"
+
 
 class SCWorld;
 
@@ -53,7 +54,7 @@ public:
     
 protected:
     GID m_id;                   // 对象ID, 游戏内id＋类型
-	int m_tid;					// 模板ID
+	int m_tid;					// 模板ID, 玩家此项为-1
 	bool m_bActive;				// 该对象是否激活
 	int m_iFaceDirection;		// 朝向
     SCWorld* _world;            // 世界指针

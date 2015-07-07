@@ -8,12 +8,13 @@
  */
 
 #include "SCObject.h"
+#include "cocos2d.h"
 #include "Components/SCComponentBase.h"
 #include "Components/SCComArmature.h"
 #include "Components/SCComCollider.h"
 #include "Components/SCComPlayerMove.h"
 #include "Components/SCComPlayerFSM.h"
-#include "cocos2d.h"
+#include "Components/SCComProperty.h"
 
 USING_NS_CC;
 
@@ -69,7 +70,7 @@ void SCObject::addComponent(int comType, void* extraData)
 		{
 			const char* filename = (const char*)extraData;
 			if( !filename )
-				CCLOG("SCObject::addComponent, extraData for SCComArmature must not be null!");
+				CCLOG("SCObject::addComponent , extraData for SCComArmature must not be null! comType: " + comType);
 			else
 				pComponent = new SCComArmature(filename);
 		}
@@ -78,7 +79,7 @@ void SCObject::addComponent(int comType, void* extraData)
 		{
 			Rect* pBound = (Rect*)extraData;
 			if( !pBound )
-				CCLOG("SCObject::addComponent, extraData for SCComCollider must not be null!");
+				CCLOG("SCObject::addComponent, extraData for SCComCollider must not be null! comType: " + comType);
 			else
 			{
 				pComponent = new SCComCollider(*pBound);

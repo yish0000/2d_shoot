@@ -19,9 +19,13 @@ SCGameJoystick::SCGameJoystick()
 {
 }
 
+bool SCGameJoystick::init()
+{
+    pController = glb_getHostPlayer()->GetController();
+    return true;
+}
 // 这里处理游戏手柄逻辑
 void SCGameJoystick::onJoystickHandle(float xDir, float yDir)
 {
-	SCHostPlayer* pHost = glb_getHostPlayer();
-	pHost->move(xDir, yDir);
+	pController->Move(xDir, yDir);
 }

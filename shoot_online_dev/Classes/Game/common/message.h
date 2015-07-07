@@ -77,8 +77,17 @@ enum
 {
 	MSG_NULL = 0,
 	MSG_HEARTBEAT = 1, //心跳
+    MSG_ATTACK = 2,     //攻击
 };
 
 //下面是消息pack结构体定义（不一定所有消息都有，注释请写清楚对应的消息的enum
-
+//命名风格为xxxx_msg
+struct attack_msg
+{
+    GID attacker; //区别于发送的src，因为攻击消息可能是子弹发出，而攻击者不是子弹
+    int damage_low;
+    int damage_high;
+    int crit_ratio; //百分比
+    float crit_rate;
+};
 #endif //__LOGIC_COMMON_MESSAGE__H

@@ -1,0 +1,5 @@
+2d_shoot/shoot_online_dev/Resources/*
+2d_shoot/shoot_online_dev/proj.win32/Debug.win32/*
+*.sdf
+Debug.win32
+*.suo

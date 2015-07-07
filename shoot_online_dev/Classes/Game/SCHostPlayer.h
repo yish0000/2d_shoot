@@ -12,6 +12,8 @@
 
 #include <Game/SCObject.h>
 #include <Game/common/message.h>
+#include "SCHostPlayerController.h"
+#include "SCHostPlayerDispatcher.h"
 
 
 /** 主玩家的动画列表
@@ -31,14 +33,14 @@ public:
 
 	virtual bool init();
 
-	void move(float xDir, float yDir);
-	void jump();
-	void attack();
-    
+
     CREATE_FUNC(SCHostPlayer);
     virtual int DispatchMessage(const Message& msg);
-protected:
 
+    SCHostPlayerController* GetController() { return _controller; }
+protected:
+    SCHostPlayerController* _controller;
+    SCHostPlayerDispatcher* _dispatcher;
 };
 
 #endif

@@ -151,10 +151,13 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClCompile Include="..\Classes\Game\Components\SCComPlayerFSM.cpp" />
     <ClCompile Include="..\Classes\Game\Components\SCComPlayerMove.cpp" />
     <ClCompile Include="..\Classes\Game\Components\SCComProperty.cpp" />
+    <ClCompile Include="..\Classes\Game\Components\SCComWeapon.cpp" />
     <ClCompile Include="..\Classes\Game\MessageQueue.cpp" />
     <ClCompile Include="..\Classes\Game\SCGameJoystick.cpp" />
     <ClCompile Include="..\Classes\Game\SCGameModule.cpp" />
     <ClCompile Include="..\Classes\Game\SCHostPlayer.cpp" />
+    <ClCompile Include="..\Classes\Game\SCHostPlayerController.cpp" />
+    <ClCompile Include="..\Classes\Game\SCHostPlayerDispatcher.cpp" />
     <ClCompile Include="..\Classes\Game\SCNpc.cpp" />
     <ClCompile Include="..\Classes\Game\SCNpcController.cpp" />
     <ClCompile Include="..\Classes\Game\SCNpcDispatcher.cpp" />
@@ -219,11 +222,14 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\Game\Components\SCComPlayerMove.h" />
     <ClInclude Include="..\Classes\Game\Components\SCComponentBase.h" />
     <ClInclude Include="..\Classes\Game\Components\SCComProperty.h" />
+    <ClInclude Include="..\Classes\Game\Components\SCComWeapon.h" />
     <ClInclude Include="..\Classes\Game\MessageQueue.h" />
     <ClInclude Include="..\Classes\Game\ObjectManager.h" />
     <ClInclude Include="..\Classes\Game\SCGameJoystick.h" />
     <ClInclude Include="..\Classes\Game\SCGameModule.h" />
     <ClInclude Include="..\Classes\Game\SCHostPlayer.h" />
+    <ClInclude Include="..\Classes\Game\SCHostPlayerController.h" />
+    <ClInclude Include="..\Classes\Game\SCHostPlayerDispatcher.h" />
     <ClInclude Include="..\Classes\Game\SCNpc.h" />
     <ClInclude Include="..\Classes\Game\SCNpcController.h" />
     <ClInclude Include="..\Classes\Game\SCNpcDispatcher.h" />
@@ -275,6 +281,7 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\Utility\SCCounter.h" />
     <ClInclude Include="..\Classes\Utility\SCGeometry.h" />
     <ClInclude Include="..\Classes\Utility\SCJoystickBase.h" />
+    <ClInclude Include="..\Classes\Utility\SCRandomGen.h" />
     <ClInclude Include="..\Classes\Utility\SCUtilityFunc.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>

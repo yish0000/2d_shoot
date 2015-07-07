@@ -1,5 +1,5 @@
-﻿#ifndef __LOGIC_NPC_H__
-#define __LOGIC_NPC_H__
+﻿#ifndef __SCNPC_H__
+#define __SCNPC_H__
 
 #include "SCObject.h"
 #include <string>
@@ -16,8 +16,8 @@ public:
     SCNpcDispatcher* _dispatcher;
 public:
 	SCNpc() {}
-	virtual ~SCNpc() {}
-    
+    virtual ~SCNpc();
+    virtual bool init();
     CREATE_FUNC(SCNpc)
 
 public:
@@ -25,4 +25,4 @@ public:
 };
 
 
-#endif //__LOGIC_NPC_H__
+#endif //__SCNPC_H__
