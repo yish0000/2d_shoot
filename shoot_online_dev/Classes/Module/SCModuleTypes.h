@@ -21,6 +21,7 @@ enum
 	MODULE_TYPE_NETWORK,
 	MODULE_TYPE_UI,
     MODULE_TYPE_PLAYER,     // 负责主玩家数据的管理
+	MODULE_TYPE_DATA,		// 负责模板数据的管理
 };
 
 ///////////////////////////////////////////////////////////////////////////

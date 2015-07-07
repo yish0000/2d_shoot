@@ -201,9 +201,6 @@
     <ClCompile Include="..\Classes\Player\SCRole.cpp">
       <Filter>Classes\Player</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Game\SCConfigs.cpp">
-      <Filter>Classes\Game</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\Utility\SCJoystickBase.cpp">
       <Filter>Classes\Utility</Filter>
     </ClCompile>
@@ -269,6 +266,15 @@
     </ClCompile>
     <ClCompile Include="..\Classes\Game\Components\SCComProperty.cpp">
       <Filter>Classes\Game\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Data\SCDataModule.cpp">
+      <Filter>Classes\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Utility\SCConfigs.cpp">
+      <Filter>Classes\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Data\SCDataTypes.cpp">
+      <Filter>Classes\Data</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -419,9 +425,6 @@
     <ClInclude Include="..\Classes\Player\SCRole.h">
       <Filter>Classes\Player</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Game\SCConfigs.h">
-      <Filter>Classes\Game</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\Utility\SCJoystickBase.h">
       <Filter>Classes\Utility</Filter>
     </ClInclude>
@@ -473,9 +476,6 @@
     <ClInclude Include="..\Classes\Game\common\type.h">
       <Filter>Classes\Game\common</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Player\SCHostPlayer.h">
-      <Filter>Classes\Game</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\Game\Components\SCComArmature.h">
       <Filter>Classes\Game\Components</Filter>
     </ClInclude>
@@ -505,6 +505,18 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Game\Components\SCComProperty.h">
       <Filter>Classes\Game\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Data\SCDataModule.h">
+      <Filter>Classes\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Data\SCDataTypes.h">
+      <Filter>Classes\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\SCHostPlayer.h">
+      <Filter>Classes\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Utility\SCConfigs.h">
+      <Filter>Classes\Utility</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

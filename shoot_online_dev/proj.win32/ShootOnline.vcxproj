@@ -139,6 +139,8 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\Common\SCEvent.cpp" />
     <ClCompile Include="..\Classes\Common\SCThread.cpp" />
+    <ClCompile Include="..\Classes\Data\SCDataModule.cpp" />
+    <ClCompile Include="..\Classes\Data\SCDataTypes.cpp" />
     <ClCompile Include="..\Classes\Effect\SCAudioElement.cpp" />
     <ClCompile Include="..\Classes\Effect\SCEffect.cpp" />
     <ClCompile Include="..\Classes\Effect\SCEffectData.cpp" />
@@ -150,7 +152,6 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClCompile Include="..\Classes\Game\Components\SCComPlayerMove.cpp" />
     <ClCompile Include="..\Classes\Game\Components\SCComProperty.cpp" />
     <ClCompile Include="..\Classes\Game\MessageQueue.cpp" />
-    <ClCompile Include="..\Classes\Game\SCConfigs.cpp" />
     <ClCompile Include="..\Classes\Game\SCGameJoystick.cpp" />
     <ClCompile Include="..\Classes\Game\SCGameModule.cpp" />
     <ClCompile Include="..\Classes\Game\SCHostPlayer.cpp" />
@@ -189,6 +190,7 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClCompile Include="..\Classes\SCGame.cpp" />
     <ClCompile Include="..\Classes\UI\SCUIBase.cpp" />
     <ClCompile Include="..\Classes\UI\SCUIModule.cpp" />
+    <ClCompile Include="..\Classes\Utility\SCConfigs.cpp" />
     <ClCompile Include="..\Classes\Utility\SCGeometry.cpp" />
     <ClCompile Include="..\Classes\Utility\SCJoystickBase.cpp" />
     <ClCompile Include="..\Classes\Utility\SCUtilityFunc.cpp" />
@@ -200,6 +202,8 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\Common\SCEventTypes.h" />
     <ClInclude Include="..\Classes\Common\SCThread.h" />
     <ClInclude Include="..\Classes\Common\SCEvent.h" />
+    <ClInclude Include="..\Classes\Data\SCDataModule.h" />
+    <ClInclude Include="..\Classes\Data\SCDataTypes.h" />
     <ClInclude Include="..\Classes\Effect\SCAudioElement.h" />
     <ClInclude Include="..\Classes\Effect\SCEffect.h" />
     <ClInclude Include="..\Classes\Effect\SCEffectData.h" />
@@ -217,9 +221,9 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\Game\Components\SCComProperty.h" />
     <ClInclude Include="..\Classes\Game\MessageQueue.h" />
     <ClInclude Include="..\Classes\Game\ObjectManager.h" />
-    <ClInclude Include="..\Classes\Game\SCConfigs.h" />
     <ClInclude Include="..\Classes\Game\SCGameJoystick.h" />
     <ClInclude Include="..\Classes\Game\SCGameModule.h" />
+    <ClInclude Include="..\Classes\Game\SCHostPlayer.h" />
     <ClInclude Include="..\Classes\Game\SCNpc.h" />
     <ClInclude Include="..\Classes\Game\SCNpcController.h" />
     <ClInclude Include="..\Classes\Game\SCNpcDispatcher.h" />
@@ -255,7 +259,6 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\Network\netlib\stream\KeyedStreamCoder.h" />
     <ClInclude Include="..\Classes\Network\netlib\stream\StreamCoder.h" />
     <ClInclude Include="..\Classes\Network\SCNetworkModule.h" />
-    <ClInclude Include="..\Classes\Player\SCHostPlayer.h" />
     <ClInclude Include="..\Classes\Player\SCPlayerModule.h" />
     <ClInclude Include="..\Classes\Player\SCRole.h" />
     <ClInclude Include="..\Classes\Scene\SCSceneBase.h" />
@@ -268,6 +271,7 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\SCGame.h" />
     <ClInclude Include="..\Classes\UI\SCUIBase.h" />
     <ClInclude Include="..\Classes\UI\SCUIModule.h" />
+    <ClInclude Include="..\Classes\Utility\SCConfigs.h" />
     <ClInclude Include="..\Classes\Utility\SCCounter.h" />
     <ClInclude Include="..\Classes\Utility\SCGeometry.h" />
     <ClInclude Include="..\Classes\Utility\SCJoystickBase.h" />

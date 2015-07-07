@@ -1,7 +1,7 @@
 ﻿/*
  * ------------------------------------------------------------------------
  *  Name:   SCConfigs.cpp
- *  Desc:   APP配置数据
+ *  Desc:   游戏全局配置数据
  *  Author: Yish
  *  Date:   2015/5/28
  * ------------------------------------------------------------------------
@@ -29,9 +29,17 @@ bool SCConfigs::load(const char* filename)
 {
 	Json::Value rootNode;
 	Json::Reader json;
-	if( !json.parse(filename, rootNode) )
+
+	if (!FileUtils::getInstance()->isFileExist(filename))
 	{
 		CCLOG("SCConfigs::load, load the config file failed! (%s)", filename);
+		return false;
+	}
+
+	std::string content = FileUtils::getInstance()->getStringFromFile(filename);
+	if( !json.parse(content, rootNode) )
+	{
+		CCLOG("SCConfigs::load, parse the file content failed! (%s)", filename);
 		return false;
 	}
 

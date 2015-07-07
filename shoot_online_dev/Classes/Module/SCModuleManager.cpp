@@ -14,6 +14,7 @@
 #include "Network/SCNetworkModule.h"
 #include "UI/SCUIModule.h"
 #include "Player/SCPlayerModule.h"
+#include "Data/SCDataModule.h"
 
 USING_NS_CC;
 
@@ -55,6 +56,7 @@ bool SCModuleManager::init()
 	REGISTER_MODULE(MODULE_TYPE_NETWORK, SCNetworkModule);
 	REGISTER_MODULE(MODULE_TYPE_UI, SCUIModule);
     REGISTER_MODULE(MODULE_TYPE_PLAYER, SCPlayerModule);
+	REGISTER_MODULE(MODULE_TYPE_DATA, SCDataModule);
 
 	for(ModuleMap::iterator it=m_Modules.begin(); it!=m_Modules.end(); ++it)
 	{
