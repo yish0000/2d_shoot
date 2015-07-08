@@ -56,7 +56,7 @@ void SCDataModule::garbageCollect()
 	{
 		if (it->second.refCount <= 0)
 		{
-			deleteTemplate(it->second.pData->tid, it->second.dt);
+			deleteTemplate(it->second.tid);
 			it = m_refs.erase(it);
 		}
 		else
@@ -68,16 +68,22 @@ void SCDataModule::clearResources()
 {
 	SCScopedMutex lock(m_mutex);
 
-	for (std::unordered_map<int, NPC_ESSENCE*>::iterator it = m_npcs.begin(); it != m_npcs.end(); ++it) delete it->second;
-	for (std::unordered_map<int, WORLD_ESSENCE*>::iterator it = m_worlds.begin(); it != m_worlds.end(); ++it) delete it->second;
+	std::unordered_map<int, DATA_TEMPL_BASE*>::iterator it = m_templs.begin();
+	for (; it != m_templs.end(); ++it) delete it->second;
 
-	m_npcs.clear();
-	m_worlds.clear();
+	m_templs.clear();
 	m_refs.clear();
 }
 
-const void* SCDataModule::getTemplate(SC_DATA_TYPE dt, int tid)
+const void* SCDataModule::getTemplate(int tid, SC_DATA_TYPE dt)
 {
+	std::unordered_map<int, DATA_TEMPL_BASE*>::iterator it = m_templs.find(tid);
+	if (it != m_templs.end())
+	{
+		m_refs[it->second].refCount++;
+		return it->second;
+	}
+
 	switch (dt)
 	{
 	case DT_NPC_ESSENCE:
@@ -116,13 +122,6 @@ static bool loadTemplateFromFile(DATA_TEMPL_BASE* pTempl, const char* filename)
 
 NPC_ESSENCE* SCDataModule::getNPCEssence(int tid)
 {
-	std::unordered_map<int, NPC_ESSENCE*>::iterator it = m_npcs.find(tid);
-	if (it != m_npcs.end())
-	{
-		m_refs[it->second].refCount++;
-		return it->second;
-	}
-
 	char szFile[260];
 	sprintf(szFile, "Data/npc/%d.json", tid);
 
@@ -139,13 +138,6 @@ NPC_ESSENCE* SCDataModule::getNPCEssence(int tid)
 
 WORLD_ESSENCE* SCDataModule::getWorldEssence(int tid)
 {
-	std::unordered_map<int, WORLD_ESSENCE*>::iterator it = m_worlds.find(tid);
-	if (it != m_worlds.end())
-	{
-		m_refs[it->second].refCount++;
-		return it->second;
-	}
-
 	char szFile[260];
 	sprintf(szFile, "Data/world/%d.json", szFile);
 
@@ -160,28 +152,18 @@ WORLD_ESSENCE* SCDataModule::getWorldEssence(int tid)
 	return pTempl;
 }
 
-void SCDataModule::deleteTemplate(int tid, SC_DATA_TYPE dt)
+void SCDataModule::deleteTemplate(int tid)
 {
 	SCScopedMutex lock(m_mutex);
 
-	switch (dt)
+	if (m_templs.find(tid) != m_templs.end())
 	{
-	case DT_NPC_ESSENCE:
-		if (m_npcs.find(tid) != m_npcs.end())
-		{
-			delete m_npcs[tid];
-			m_npcs.erase(tid);
-		}
-		break;
-	case DT_WORLD_ESSENCE:
-		if (m_worlds.find(tid) != m_worlds.end())
-		{
-			delete m_worlds[tid];
-			m_worlds.erase(tid);
-		}
-		break;
-	default:
-		CCLOG("SCDataModule::deleteTemplate, unknown data type (%d, %d)!", (int)dt, tid);
+		delete m_templs[tid];
+		m_templs.erase(tid);
+	}
+	else
+	{
+		CCLOG("SCDataModule::deleteTemplate, template (%d) not exists!", tid);
 	}
 }
 
@@ -206,36 +188,19 @@ void SCDataModule::releaseTemplate(DATA_TEMPL_BASE* ptr)
 	it->second.refCount--;
 }
 
-void SCDataModule::addTemplate(int tid, NPC_ESSENCE* data)
+void SCDataModule::addTemplate(int tid, DATA_TEMPL_BASE* data)
 {
 	SCScopedMutex lock(m_mutex);
 
-	if (m_npcs.find(tid) == m_npcs.end())
+	if (m_templs.find(tid) == m_templs.end())
 	{
-		CCLOG("SCDataModule::addTemplate, NPC_ESSENCE duplicated(%d)!", tid);
+		CCLOG("SCDataModule::addTemplate, Template duplicated(%d)!", tid);
 		return;
 	}
 
 	TemplStub stub;
-	stub.pData = data;
+	stub.tid = tid;
 	stub.refCount = 1;
 	m_refs[data] = stub;
-	m_npcs[tid] = data;
-}
-
-void SCDataModule::addTemplate(int tid, WORLD_ESSENCE* data)
-{
-	SCScopedMutex lock(m_mutex);
-
-	if (m_worlds.find(tid) == m_worlds.end())
-	{
-		CCLOG("SCDataModule::addTemplate, WORLD_ESSENCE duplicated(%d)!", tid);
-		return;
-	}
-
-	TemplStub stub;
-	stub.pData = data;
-	stub.refCount = 1;
-	m_refs[data] = stub;
-	m_worlds[tid] = data;
+	m_templs[tid] = data;
 }

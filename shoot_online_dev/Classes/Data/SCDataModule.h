@@ -21,7 +21,7 @@ class SCDataModule : public SCModuleBase
 	struct TemplStub
 	{
 		int refCount;
-		const DATA_TEMPL_BASE* pData;
+		int tid;
 		SC_DATA_TYPE dt;
 	};
 	typedef std::unordered_map<const void*, TemplStub> TemplRefMap;
@@ -36,28 +36,26 @@ public:
 	void clearResources();
 
 	// 获取模板数据
-	const void* getTemplate(SC_DATA_TYPE dt, int tid);
+	const void* getTemplate(int tid, SC_DATA_TYPE dt);
 
 	// 释放指定模板的引用
 	void releaseTemplate(DATA_TEMPL_BASE* ptr);
 
 protected:
 	SCMutex m_mutex;
-	std::unordered_map<int, NPC_ESSENCE*> m_npcs;
-	std::unordered_map<int, WORLD_ESSENCE*> m_worlds;
+	std::unordered_map<int, DATA_TEMPL_BASE*> m_templs;
 	TemplRefMap m_refs;		// 引用管理
 	SCCounter m_cntGC;		// 垃圾处理
 
 	// 添加模板数据
-	void addTemplate(int tid, NPC_ESSENCE* data);
-	void addTemplate(int tid, WORLD_ESSENCE* data);
+	void addTemplate(int tid, DATA_TEMPL_BASE* data);
 
 	// 获取指定类型的模板
 	NPC_ESSENCE* getNPCEssence(int tid);
 	WORLD_ESSENCE* getWorldEssence(int tid);
 
 	// 删除模板数据
-	void deleteTemplate(int tid, SC_DATA_TYPE dt);
+	void deleteTemplate(int tid);
 
 	void garbageCollect();
 };
