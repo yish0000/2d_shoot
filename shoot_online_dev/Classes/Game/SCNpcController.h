@@ -13,15 +13,14 @@
 #include "Game/common/mvc.h"
 
 class SCNpc;
+
 class SCNpcController : public Controller
 {
-private:
-    SCNpc *gameObject;
 public:
-    SCNpcController() {}
+	SCNpcController(SCObject* pObj) : Controller(pObj) {}
     virtual ~SCNpcController() {}
-    virtual int MessageHandler(const Message& msg);
 
-    SCNpc* getObject() { return gameObject; }
+	virtual int MessageHandler(const Message& msg);
 };
+
 #endif /* defined(__ShootOnline__SCNpcController__) */

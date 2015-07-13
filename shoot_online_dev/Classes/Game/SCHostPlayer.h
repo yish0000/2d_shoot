@@ -32,12 +32,14 @@ public:
 	virtual ~SCHostPlayer();
 
 	virtual bool init();
-
+	virtual void update(float dt);
 
     CREATE_FUNC(SCHostPlayer);
     virtual int DispatchMessage(const Message& msg);
 
-    SCHostPlayerController* GetController() { return _controller; }
+	SCHostPlayerController* GetController() { return _controller; }
+	SCHostPlayerDispatcher* GetDispatcher() { return _dispatcher; }
+
 protected:
     SCHostPlayerController* _controller;
     SCHostPlayerDispatcher* _dispatcher;

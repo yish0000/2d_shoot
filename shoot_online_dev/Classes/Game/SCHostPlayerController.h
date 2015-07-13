@@ -14,16 +14,14 @@
 #include "Game/common/mvc.h"
 
 class SCHostPlayer;
+
 class SCHostPlayerController : public Controller
 {
-private:
-    SCHostPlayer *gameObject;
 public:
-    SCHostPlayerController() {}
+    SCHostPlayerController(SCObject* pObj) : Controller(pObj) {}
     virtual ~SCHostPlayerController() {}
-    virtual int MessageHandler(const Message& msg);
 
-    SCHostPlayer* getObject() { return gameObject; }
+	virtual int MessageHandler(const Message& msg);
 
 public: //被外部直接调用的函数
     void Move(float xDir, float yDir);

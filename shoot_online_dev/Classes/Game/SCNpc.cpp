@@ -2,8 +2,8 @@
 
 bool SCNpc::init()
 {
-    _controller = new SCNpcController();
-    _dispatcher = new SCNpcDispatcher();
+    _controller = new SCNpcController(this);
+    _dispatcher = new SCNpcDispatcher(this);
     return true;
 }
 

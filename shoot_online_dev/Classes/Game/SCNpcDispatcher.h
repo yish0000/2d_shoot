@@ -15,7 +15,7 @@
 class SCNpcDispatcher : public Dispatcher
 {
 public:
-    SCNpcDispatcher() {}
+    SCNpcDispatcher(SCObject* pObj) : Dispatcher(pObj) {}
     virtual ~SCNpcDispatcher() {}
 };
 

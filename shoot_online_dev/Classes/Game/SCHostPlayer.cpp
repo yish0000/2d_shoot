@@ -42,12 +42,16 @@ bool SCHostPlayer::init()
 	if( !SCObject::init() )
 		return false;
 
-    _controller = new SCHostPlayerController();
-    _dispatcher = new SCHostPlayerDispatcher();
+    _controller = new SCHostPlayerController(this);
+    _dispatcher = new SCHostPlayerDispatcher(this);
 	SCComArmature* pArmature = dynamic_cast<SCComArmature*>(getComponent(SC_COMPONENT_ARMATURE));
 	pArmature->playAnimation("zhanli", true);
 	return true;
 }
 
+void SCHostPlayer::update(float dt)
+{
+	SCObject::update(dt);
 
 
+}

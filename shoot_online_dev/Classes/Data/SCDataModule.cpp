@@ -1,7 +1,7 @@
-/*
+ï»¿/*
  * ------------------------------------------------------------------------
  *  Name:   SCDataModule.cpp
- *  Desc:   Ä£°åÊı¾İ¹ÜÀíÄ£¿é
+ *  Desc:   æ¨¡æ¿æ•°æ®ç®¡ç†æ¨¡å—
  *  Author: Yish
  *  Date:   2015/7/1
  * ------------------------------------------------------------------------
@@ -16,7 +16,7 @@ SCDataModule* g_pDataModule = NULL;
 
 SCDataModule::SCDataModule() : SCModuleBase(MODULE_TYPE_DATA)
 {
-	m_cntGC.setPeriod(30.0f);	// 30ÃëÇåÀíÒ»´ÎÀ¬»ø
+	m_cntGC.setPeriod(30.0f);	// 30ç§’æ¸…ç†ä¸€æ¬¡åƒåœ¾
 	m_cntGC.reset();
 
 	g_pDataModule = this;
@@ -114,7 +114,7 @@ static bool loadTemplateFromFile(DATA_TEMPL_BASE* pTempl, const char* filename)
 		return false;
 	}
 
-	// Ìí¼ÓĞÂÄ£°å
+	// æ·»åŠ æ–°æ¨¡æ¿
 	scnet::JsonStream stream(rootNode);
 	stream.popRootObject(*pTempl);
 	return true;

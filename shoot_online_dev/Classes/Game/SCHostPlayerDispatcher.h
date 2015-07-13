@@ -16,7 +16,7 @@
 class SCHostPlayerDispatcher : public Dispatcher
 {
 public:
-    SCHostPlayerDispatcher() {}
+    SCHostPlayerDispatcher(SCObject* pObj) : Dispatcher(pObj) {}
     virtual ~SCHostPlayerDispatcher() {}
 };
 

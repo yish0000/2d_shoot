@@ -1,7 +1,7 @@
-/*
+ï»¿/*
  * ------------------------------------------------------------------------
  *  Name:   SCDataTypes.h
- *  Desc:   Êı¾İÄ£°åÀàĞÍ
+ *  Desc:   æ•°æ®æ¨¡æ¿ç±»å‹
  *  Author: Yish
  *  Date:   2015/7/1
  * ------------------------------------------------------------------------
@@ -13,12 +13,12 @@
 #include "base/ccTypes.h"
 #include "Network/netlib/stream/JsonStream.h"
 
-/** Êı¾İÄ£°å»ùÀà
+/** æ•°æ®æ¨¡æ¿åŸºç±»
 */
 struct DATA_TEMPL_BASE : public scnet::JsonStreamObj
 {
-	int tid;			// Ä£°åID
-	std::string name;	// Ä£°åÃû×Ö
+	int tid;			// æ¨¡æ¿ID
+	std::string name;	// æ¨¡æ¿åå­—
 
 	DATA_TEMPL_BASE() : tid(0) {}
 
@@ -34,7 +34,7 @@ struct DATA_TEMPL_BASE : public scnet::JsonStreamObj
 		stream.pop("name", name);
 	}
 
-	// ÊÍ·ÅÒıÓÃ
+	// é‡Šæ”¾å¼•ç”¨
 	void release();
 };
 
@@ -48,18 +48,18 @@ struct DATA_TEMPL_BASE : public scnet::JsonStreamObj
 
 ///////////////////////////////////////////////////////////////////////////
 
-/** Êı¾İÄ£°åÀàĞÍ
+/** æ•°æ®æ¨¡æ¿ç±»å‹
 */
 enum SC_DATA_TYPE
 {
 	DT_INVALID = 0,
 
-	DT_NPC_ESSENCE,				// NPCÄ£°å
-	DT_WORLD_ESSENCE,			// ÊÀ½çÄ£°å
+	DT_NPC_ESSENCE,				// NPCæ¨¡æ¿
+	DT_WORLD_ESSENCE,			// ä¸–ç•Œæ¨¡æ¿
 };
 
 ///////////////////////////////////////////////////////////////////////////
-// NPCÄ£°å
+// NPCæ¨¡æ¿
 
 DEFINE_TEMPL(NPC_ESSENCE)
 {
@@ -117,7 +117,7 @@ DEFINE_TEMPL(NPC_ESSENCE)
 };
 
 ///////////////////////////////////////////////////////////////////////////
-// ÊÀ½çÄ£°å
+// ä¸–ç•Œæ¨¡æ¿
 
 DEFINE_TEMPL(WORLD_ESSENCE)
 {

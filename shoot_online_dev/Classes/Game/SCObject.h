@@ -25,7 +25,7 @@ class SCObject : public cocos2d::Node
 	typedef std::vector<SCComponentBase*> ComponentList;
 
 public:
-    SCObject():m_tid(0), m_bActive(false){}
+    SCObject() : m_tid(0), m_bActive(false){}
 	SCObject(GID gid, int tid);
 	virtual ~SCObject();
 

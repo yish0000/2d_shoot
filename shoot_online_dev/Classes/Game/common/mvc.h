@@ -10,34 +10,34 @@
 #define ShootOnline_controller_h
 
 #include <Game/common/message.h>
-#include "SCObject.h"
-
-class GameObject;
+#include "../SCObject.h"
 
 //处理消息以及分发
 class Controller
 {
 private:
-    SCObject *obj;
+    SCObject *m_pObject;
 public:
-    Controller():obj(nullptr)
+    Controller(SCObject* pObj) : m_pObject(pObj)
     {}
-    virtual ~Controller(){}
+    virtual ~Controller() {}
     
     virtual int MessageHandler(const Message& msg) = 0;
-    
-    
+
+	SCObject* getObject() const { return m_pObject; }
 };
 
 //发送消息模块函数打包处
 class Dispatcher
 {
 private:
-    SCObject *obj;
+    SCObject *m_pObject;
 public:
-    Dispatcher():obj(nullptr)
+    Dispatcher(SCObject* pObj) : m_pObject(pObj)
     {}
     virtual ~Dispatcher(){}
+
+	SCObject* getObject() const { return m_pObject; }
 };
 
 

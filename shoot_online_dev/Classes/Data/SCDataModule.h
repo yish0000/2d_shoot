@@ -1,7 +1,7 @@
-/*
+ï»¿/*
  * ------------------------------------------------------------------------
  *  Name:   SCDataModule.h
- *  Desc:   Êı¾İÄ£°å¹ÜÀíÆ÷
+ *  Desc:   æ•°æ®æ¨¡æ¿ç®¡ç†å™¨
  *  Author: Yish
  *  Date:   2015/7/1
  * ------------------------------------------------------------------------
@@ -35,26 +35,26 @@ public:
 
 	void clearResources();
 
-	// »ñÈ¡Ä£°åÊı¾İ
+	// è·å–æ¨¡æ¿æ•°æ®
 	const void* getTemplate(int tid, SC_DATA_TYPE dt);
 
-	// ÊÍ·ÅÖ¸¶¨Ä£°åµÄÒıÓÃ
+	// é‡Šæ”¾æŒ‡å®šæ¨¡æ¿çš„å¼•ç”¨
 	void releaseTemplate(DATA_TEMPL_BASE* ptr);
 
 protected:
 	SCMutex m_mutex;
 	std::unordered_map<int, DATA_TEMPL_BASE*> m_templs;
-	TemplRefMap m_refs;		// ÒıÓÃ¹ÜÀí
-	SCCounter m_cntGC;		// À¬»ø´¦Àí
+	TemplRefMap m_refs;		// å¼•ç”¨ç®¡ç†
+	SCCounter m_cntGC;		// åƒåœ¾å¤„ç†
 
-	// Ìí¼ÓÄ£°åÊı¾İ
+	// æ·»åŠ æ¨¡æ¿æ•°æ®
 	void addTemplate(int tid, DATA_TEMPL_BASE* data);
 
-	// »ñÈ¡Ö¸¶¨ÀàĞÍµÄÄ£°å
+	// è·å–æŒ‡å®šç±»å‹çš„æ¨¡æ¿
 	NPC_ESSENCE* getNPCEssence(int tid);
 	WORLD_ESSENCE* getWorldEssence(int tid);
 
-	// É¾³ıÄ£°åÊı¾İ
+	// åˆ é™¤æ¨¡æ¿æ•°æ®
 	void deleteTemplate(int tid);
 
 	void garbageCollect();
