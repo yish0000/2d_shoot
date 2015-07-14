@@ -12,13 +12,27 @@
 
 #include <unordered_map>
 #include "Module/SCModuleBase.h"
+#include "SCUITypes.h"
 
 class SCUIBase;
 
+/** UI模块
+*/
 class SCUIModule : public SCModuleBase
 {
 public:
 
+	struct UIMetaInfo
+	{
+		std::string name;
+		std::string filename;
+		UIFrameType type;
+		bool visible;				// 初始时是否显示
+		std::string parent_name;	// 父界面
+		int zOrder;					// z值
+	};
+
+	typedef std::unordered_map<std::string, UIMetaInfo> UIMetaInfoTable;
 	typedef std::unordered_map<std::string, SCUIBase*> UITable;
 
 public:

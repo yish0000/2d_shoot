@@ -12,6 +12,7 @@
 
 #include "2d/CCNode.h"
 #include "ui/CocosGUI.h"
+#include "SCUITypes.h"
 
 class SCUIBase : public cocos2d::Node
 {
@@ -22,8 +23,13 @@ public:
 	virtual bool init();
 	virtual void update(float dt);
 
+	// 对齐方式
+	void setAlign(UIAlignType align);
+	UIAlignType getAlign() const { return m_alignType; }
+
 protected:
 	cocos2d::ui::Widget* m_pRootWidget;		// 本界面的节点树
+	UIAlignType m_alignType;
 };
 
 ///////////////////////////////////////////////////////////////////////////

@@ -538,7 +538,11 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Utility\SCConfigs.h">
       <Filter>Classes\Utility</Filter>
-    </ClInclude>  </ItemGroup>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\SCUITypes.h">
+      <Filter>Classes\UI</Filter>
+    </ClInclude>
+  </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">
       <Filter>resource</Filter>

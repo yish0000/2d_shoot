@@ -31,3 +31,12 @@ void SCUIBase::update(float dt)
 	Node::update(dt);
 
 }
+
+void SCUIBase::setAlign(UIAlignType align)
+{
+	if (m_alignType != align)
+	{
+
+		m_alignType = align;
+	}
+}

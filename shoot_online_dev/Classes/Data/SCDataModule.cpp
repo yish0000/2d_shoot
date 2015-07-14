@@ -123,7 +123,7 @@ static bool loadTemplateFromFile(DATA_TEMPL_BASE* pTempl, const char* filename)
 NPC_ESSENCE* SCDataModule::getNPCEssence(int tid)
 {
 	char szFile[260];
-	sprintf(szFile, "Data/npc/%d.json", tid);
+	sprintf(szFile, "data/npc/%d.json", tid);
 
 	NPC_ESSENCE* pTempl = new NPC_ESSENCE();
 	if (!loadTemplateFromFile(pTempl, szFile))
@@ -139,7 +139,7 @@ NPC_ESSENCE* SCDataModule::getNPCEssence(int tid)
 WORLD_ESSENCE* SCDataModule::getWorldEssence(int tid)
 {
 	char szFile[260];
-	sprintf(szFile, "Data/world/%d.json", szFile);
+	sprintf(szFile, "data/world/%d.json", szFile);
 
 	WORLD_ESSENCE* pTempl = new WORLD_ESSENCE();
 	if (!loadTemplateFromFile(pTempl, szFile))
