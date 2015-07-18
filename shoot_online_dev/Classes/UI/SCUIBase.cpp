@@ -9,7 +9,7 @@
 
 #include "SCUIBase.h"
 
-SCUIBase::SCUIBase()
+SCUIBase::SCUIBase(const std::string& filename) : m_sFilename(filename)
 {
 }
 

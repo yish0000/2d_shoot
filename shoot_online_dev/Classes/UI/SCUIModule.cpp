@@ -102,13 +102,33 @@ void SCUIModule::clearResources()
 
 SCUIBase* SCUIModule::getUIFrame(const std::string& name)
 {
-	UIMetaInfoTable::iterator it = m_UIMetas.find(name);
-	if (it == m_UIMetas.end())
+	UITable::iterator it = m_UITable.find(name);
+	if (it != m_UITable.end())
+		return it->second;
+
+	UIMetaInfoTable::iterator mit = m_UIMetas.find(name);
+	if (mit == m_UIMetas.end())
 	{
 		CCLOG("SCUIModule::getUIFrame, cannot find the frame (%s)!", name.c_str());
 		return NULL;
 	}
+	else
+	{
+		if (mit->second.type != m_iCurType)
+		{
+			CCLOG("SCUIModule::getUIFrame, this frame is not active in this ui type! (%d)", m_iCurType);
+			return NULL;
+		}
+	}
 
-	UIMetaInfo& info = it->second;
-	return NULL;
+	UIMetaInfo& info = mit->second;
+	SCUIBase* pUI = createUIFrame(info.name, info.filename);
+	if (!pUI) return NULL;
+
+	m_UITable[info.name] = pUI;
+	return pUI;
+}
+
+SCUIBase* SCUIModule::createUIFrame(const std::string& name, const std::string& filename)
+{
 }

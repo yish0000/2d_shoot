@@ -17,7 +17,7 @@
 class SCUIBase : public cocos2d::Node
 {
 public:
-	SCUIBase();
+	SCUIBase(const std::string& filename);
 	virtual ~SCUIBase();
 
 	virtual bool init();
@@ -28,6 +28,7 @@ public:
 	UIAlignType getAlign() const { return m_alignType; }
 
 protected:
+	std::string m_sFilename;				// 本界面的文件路径
 	cocos2d::ui::Widget* m_pRootWidget;		// 本界面的节点树
 	UIAlignType m_alignType;
 };

@@ -53,11 +53,14 @@ public:
 	float getUIScale() const { return m_fUIScale; }
 	
 protected:
+	UIFrameType m_iCurType;
 	float m_fUIScale;
 	UIMetaInfoTable m_UIMetas;
 	UITable m_UITable;
 
 	bool loadUIMetaData();
+	void initUICreateFunc();
+	SCUIBase* createUIFrame(const std::string& name, const std::string& filename);
 
 protected:	// Event handlers.
 	
