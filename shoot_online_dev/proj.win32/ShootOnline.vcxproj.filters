@@ -285,6 +285,10 @@
     <ClCompile Include="..\Classes\Data\SCDataTypes.cpp">
       <Filter>Classes\Data</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\UI\SCUISkill.cpp" />
+    <ClCompile Include="..\Classes\UI\SCUIModuleFrames.cpp">
+      <Filter>Classes\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -542,6 +546,7 @@
     <ClInclude Include="..\Classes\UI\SCUITypes.h">
       <Filter>Classes\UI</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\UI\SCUISkill.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">

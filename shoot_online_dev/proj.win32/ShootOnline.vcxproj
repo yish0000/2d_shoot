@@ -193,6 +193,7 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClCompile Include="..\Classes\SCGame.cpp" />
     <ClCompile Include="..\Classes\UI\SCUIBase.cpp" />
     <ClCompile Include="..\Classes\UI\SCUIModule.cpp" />
+    <ClCompile Include="..\Classes\UI\SCUIModuleFrames.cpp" />
     <ClCompile Include="..\Classes\UI\SCUISkill.cpp" />
     <ClCompile Include="..\Classes\Utility\SCConfigs.cpp" />
     <ClCompile Include="..\Classes\Utility\SCGeometry.cpp" />
