@@ -24,9 +24,9 @@ public:
 
 	struct UIMetaInfo
 	{
-		std::string name;
-		std::string filename;
-		UIFrameType type;
+		std::string name;			// 界面名称
+		std::string filename;		// 界面文件
+		UIFrameType type;			// 界面类型
 		bool visible;				// 初始时是否显示
 		std::string parent_name;	// 父界面
 		int zOrder;					// z值
@@ -44,17 +44,24 @@ public:
     
     virtual void clearResources();
 
+	// 切换界面类型
+	void changeUIType(UIFrameType type);
+
 	// 获取指定的界面
 	SCUIBase* getUIFrame(const std::string& name);
 
 	float getUIScale() const { return m_fUIScale; }
 	
 protected:
-	UITable m_UITable;
 	float m_fUIScale;
+	UIMetaInfoTable m_UIMetas;
+	UITable m_UITable;
 
-protected:
-	// Event handlers.
+	bool loadUIMetaData();
+
+protected:	// Event handlers.
+	
+protected:	// Protocol handlers.
 };
 
 ///////////////////////////////////////////////////////////////////////////
