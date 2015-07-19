@@ -60,7 +60,7 @@ protected:
 
 	bool loadUIMetaData();
 	void initUICreateFunc();
-	SCUIBase* createUIFrame(const std::string& name, const std::string& filename);
+	SCUIBase* createUIFrame(const std::string& name);
 
 protected:	// Event handlers.
 	

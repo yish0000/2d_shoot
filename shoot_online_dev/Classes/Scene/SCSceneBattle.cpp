@@ -51,13 +51,11 @@ bool SCSceneBattle::init()
 void SCSceneBattle::onBtnJump(cocos2d::Ref* pSender)
 {
 	SCHostPlayer* pHost = glb_getHostPlayer();
-//	pHost->jump();
+	pHost->GetController()->Jump();
 }
 
 void SCSceneBattle::onBtnAttack(cocos2d::Ref* pSender)
 {
 	SCHostPlayer* pHost = glb_getHostPlayer();
-//	pHost->attack();
-//	SCTiledMap* pMap = glb_getTiledMap();
-//	pMap->shake(0.5f);
+	pHost->GetController()->Attack();
 }

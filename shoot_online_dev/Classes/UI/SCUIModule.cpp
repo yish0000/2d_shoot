@@ -122,13 +122,9 @@ SCUIBase* SCUIModule::getUIFrame(const std::string& name)
 	}
 
 	UIMetaInfo& info = mit->second;
-	SCUIBase* pUI = createUIFrame(info.name, info.filename);
+	SCUIBase* pUI = createUIFrame(info.name);
 	if (!pUI) return NULL;
 
 	m_UITable[info.name] = pUI;
 	return pUI;
-}
-
-SCUIBase* SCUIModule::createUIFrame(const std::string& name, const std::string& filename)
-{
 }

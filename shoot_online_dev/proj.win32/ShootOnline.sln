@@ -18,6 +18,13 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "liblua", "..\..\cocos2d-x-3
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libGUI", "..\..\cocos2d-x-3.2\cocos\ui\proj.win32\libGUI.vcxproj", "{7E06E92C-537A-442B-9E4A-4761C84F8A1A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F764024F-7F1B-453F-B37A-04AD053EADFC}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\cocos2d-x-3.2\extensions\proj.win32\libExtensions.vcxproj = ..\..\cocos2d-x-3.2\extensions\proj.win32\libExtensions.vcxproj
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libExtensions", "..\..\cocos2d-x-3.2\extensions\proj.win32\libExtensions.vcxproj", "{21B2C324-891F-48EA-AD1A-5AE13DE12E28}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -52,6 +59,10 @@ Global
 		{7E06E92C-537A-442B-9E4A-4761C84F8A1A}.Debug|Win32.Build.0 = Debug|Win32
 		{7E06E92C-537A-442B-9E4A-4761C84F8A1A}.Release|Win32.ActiveCfg = Release|Win32
 		{7E06E92C-537A-442B-9E4A-4761C84F8A1A}.Release|Win32.Build.0 = Release|Win32
+		{21B2C324-891F-48EA-AD1A-5AE13DE12E28}.Debug|Win32.ActiveCfg = Debug|Win32
+		{21B2C324-891F-48EA-AD1A-5AE13DE12E28}.Debug|Win32.Build.0 = Debug|Win32
+		{21B2C324-891F-48EA-AD1A-5AE13DE12E28}.Release|Win32.ActiveCfg = Release|Win32
+		{21B2C324-891F-48EA-AD1A-5AE13DE12E28}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
