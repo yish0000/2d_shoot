@@ -304,7 +304,7 @@
       <Filter>Classes\UI</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\UI\SCUISkill.cpp">
-      <Filter>Classes\UI</Filter>
+      <Filter>Classes\UI\Battle</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -564,7 +564,7 @@
       <Filter>Classes\UI</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\UI\SCUISkill.h">
-      <Filter>Classes\UI</Filter>
+      <Filter>Classes\UI\Battle</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

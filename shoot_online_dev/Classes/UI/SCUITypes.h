@@ -14,6 +14,8 @@
 */
 enum UIFrameType
 {
+	FRAME_UNKNOWN,
+
 	FRAME_COMMON,
 	FRAME_LOGIN,
 	FRAME_LOADING,

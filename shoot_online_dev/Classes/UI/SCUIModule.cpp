@@ -9,6 +9,8 @@
 
 #include "SCUIBase.h"
 #include "SCUIModule.h"
+#include "Scene/SCSceneBase.h"
+#include "Utility/SCUtilityFunc.h"
 #include "tinyxml2/tinyxml2.h"
 #include "cocos2d.h"
 
@@ -17,12 +19,13 @@ USING_NS_CC;
 ///////////////////////////////////////////////////////////////////////////
 
 SCUIModule::SCUIModule()
-	: SCModuleBase(MODULE_TYPE_UI), m_fUIScale(1.0f)
+	: SCModuleBase(MODULE_TYPE_UI), m_fUIScale(1.0f), m_iCurType(FRAME_UNKNOWN)
 {
 }
 
 SCUIModule::~SCUIModule()
 {
+	clearResources();
 }
 
 bool SCUIModule::init()
@@ -37,6 +40,9 @@ bool SCUIModule::init()
 		return false;
 	}
 
+	initUICreateFunc();
+
+	changeUIType(FRAME_BATTLE);
     return true;
 }
 
@@ -73,8 +79,10 @@ bool SCUIModule::loadUIMetaData()
 		info.filename = pFrame->Attribute("filename");
 		info.type = (UIFrameType)pFrame->IntAttribute("type");
 		info.visible = pFrame->BoolAttribute("visible");
-		info.parent_name = pFrame->Attribute("parent");
-		info.zOrder = pFrame->IntAttribute("z");
+		if (pFrame->Attribute("parent"))
+			info.parent_name = pFrame->Attribute("parent");
+		if (pFrame->Attribute("z"))
+			info.zOrder = pFrame->IntAttribute("z");
 		m_UIMetas[info.name] = info;
 
 		pFrame = pFrame->NextSiblingElement("frame");
@@ -98,6 +106,19 @@ void SCUIModule::update(float dt)
 
 void SCUIModule::clearResources()
 {
+	// 销毁旧的界面
+	for (UITable::iterator it = m_UITable.begin(); it != m_UITable.end(); ++it)
+	{
+		SCUIBase* pUI = it->second;
+		if (pUI)
+		{
+			if( pUI->getParent() )
+				pUI->removeFromParent();
+			CC_SAFE_RELEASE(pUI);
+		}
+	}
+
+	m_UITable.clear();
 }
 
 SCUIBase* SCUIModule::getUIFrame(const std::string& name)
@@ -125,6 +146,52 @@ SCUIBase* SCUIModule::getUIFrame(const std::string& name)
 	SCUIBase* pUI = createUIFrame(info.name);
 	if (!pUI) return NULL;
 
+	if (!pUI->init())
+	{
+		delete pUI;
+		return NULL;
+	}
+
 	m_UITable[info.name] = pUI;
 	return pUI;
+}
+
+void SCUIModule::changeUIType(UIFrameType type)
+{
+	if (m_iCurType == type)
+		return;
+
+	// 销毁旧的界面
+	for (UITable::iterator it = m_UITable.begin(); it != m_UITable.end(); ++it)
+	{
+		SCUIBase* pUI = it->second;
+		if (pUI)
+		{
+			if( pUI->getParent() )
+				pUI->removeFromParent();
+			CC_SAFE_RELEASE(pUI);
+		}
+	}
+
+	m_UITable.clear();
+
+	m_iCurType = type;
+
+	// 加载本类型中活动的界面
+	for (UIMetaInfoTable::iterator nit = m_UIMetas.begin(); nit != m_UIMetas.end(); ++nit)
+	{
+		UIMetaInfo& info = nit->second;
+		if (info.visible)
+		{
+			SCUIBase* pNewUI = getUIFrame(info.name);
+			if (pNewUI)
+				getUILayer()->addChild(pNewUI);
+		}
+	}
+}
+
+cocos2d::Layer* SCUIModule::getUILayer()
+{
+	SCSceneBase* pCurScene = dynamic_cast<SCSceneBase*>(glb_getCurScene());
+	return pCurScene ? pCurScene->getUILayer() : NULL;
 }

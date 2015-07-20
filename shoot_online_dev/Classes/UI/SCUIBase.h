@@ -14,6 +14,8 @@
 #include "ui/CocosGUI.h"
 #include "SCUITypes.h"
 
+class SCUIModule;
+
 class SCUIBase : public cocos2d::Node
 {
 public:
@@ -36,6 +38,7 @@ public:
 
 protected:
 	std::string m_sFilename;				// 本界面的文件路径
+	SCUIModule* m_pUIModule;				// UI模块的指针
 	cocos2d::ui::Widget* m_pRootWidget;		// 本界面的节点树
 	UIAlignType m_alignType;
 

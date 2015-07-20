@@ -11,6 +11,7 @@
 #define __SC_UIMODULE_H__
 
 #include <unordered_map>
+#include <2d/CCLayer.h>
 #include "Module/SCModuleBase.h"
 #include "SCUITypes.h"
 
@@ -30,6 +31,8 @@ public:
 		bool visible;				// 初始时是否显示
 		std::string parent_name;	// 父界面
 		int zOrder;					// z值
+
+		UIMetaInfo() : type(FRAME_COMMON), visible(false), zOrder(0) {}
 	};
 
 	typedef std::unordered_map<std::string, UIMetaInfo> UIMetaInfoTable;
@@ -51,6 +54,9 @@ public:
 	SCUIBase* getUIFrame(const std::string& name);
 
 	float getUIScale() const { return m_fUIScale; }
+
+	// 获取UI层
+	cocos2d::Layer* getUILayer();
 	
 protected:
 	UIFrameType m_iCurType;
