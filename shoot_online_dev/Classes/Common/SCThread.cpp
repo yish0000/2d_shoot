@@ -81,7 +81,11 @@ void SCCondition::wait(SCMutex& m, int timeoutInMillis)
  		spec.tv_nsec = (nowInMicroSeconds-1000000*spec.tv_sec)*1000;
 
 		int retcode = pthread_cond_timedwait(&m_cond, &m.m_mutex, &spec);
+#if CC_TARGET_PLATFORM == CC_PLATFORM_WIN32
+		if( retcode != 0 && retcode != 10060 )
+#else
 		if( retcode != 0 && retcode != ETIMEDOUT )
+#endif
 		{
 			CCLOG("pthread_cond_timedwait failed");            
 		}

@@ -13,6 +13,7 @@
 #include "Components/SCComProperty.h"
 #include "Components/SCComPlayerMove.h"
 #include "Components/SCComArmature.h"
+#include "Components/SCComPlayerFSM.h"
 
 int SCHostPlayerController::MessageHandler(const Message &msg)
 {
@@ -53,6 +54,6 @@ void SCHostPlayerController::Jump()
 
 void SCHostPlayerController::Attack()
 {
-    SCComArmature* pArmature = dynamic_cast<SCComArmature*>(getObject()->getComponent(SC_COMPONENT_ARMATURE));
-    pArmature->playAnimation("gongji", false);
+	SCComPlayerFSM* pPlayerFSM = dynamic_cast<SCComPlayerFSM*>(getObject()->getComponent(SC_COMPONENT_PLAYERFSM));
+	pPlayerFSM->doAttack();
 }

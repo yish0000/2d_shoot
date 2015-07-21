@@ -23,12 +23,17 @@ public:
 	virtual void update(float dt);
 
 	// 播放指定的动画
-	void playAnimation(const char* name, bool bLoop);
+	void playAnimation(const char* name, bool bLoop, bool bRestart = true);
 	void pauseAnimation();
 	void resumeAnimation();
 
 	// 刷新模型
 	void refreshArmature();
+
+	// 设置缩放
+	void setScaleX(float x);
+	void setScaleY(float y);
+	void setScale(float x, float y);
 
 	// 设置透明
 	void fadeTo(int opacity, float fTime);

@@ -18,7 +18,7 @@ USING_NS_CC;
 SCHostPlayer::SCHostPlayer() : SCObject()
 {
 	Rect rcBound(-32, 0, 64, 128);
-	addComponent(SC_COMPONENT_ARMATURE, (void*)"nanzhujue");
+	addComponent(SC_COMPONENT_ARMATURE, (void*)"zhujuenan");
 	addComponent(SC_COMPONENT_COLLIDER, (void*)&rcBound);
 	addComponent(SC_COMPONENT_PLAYERFSM, NULL);
 	addComponent(SC_COMPONENT_PLAYERMOVE, NULL);
@@ -46,6 +46,7 @@ bool SCHostPlayer::init()
     _dispatcher = new SCHostPlayerDispatcher(this);
 	SCComArmature* pArmature = dynamic_cast<SCComArmature*>(getComponent(SC_COMPONENT_ARMATURE));
 	pArmature->playAnimation("zhanli", true);
+	pArmature->setScaleX(-1.0f);
 	return true;
 }
 

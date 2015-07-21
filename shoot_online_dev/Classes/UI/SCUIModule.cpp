@@ -11,6 +11,7 @@
 #include "SCUIModule.h"
 #include "Scene/SCSceneBase.h"
 #include "Utility/SCUtilityFunc.h"
+#include "Scene/SCSceneManager.h"
 #include "tinyxml2/tinyxml2.h"
 #include "cocos2d.h"
 
@@ -41,8 +42,6 @@ bool SCUIModule::init()
 	}
 
 	initUICreateFunc();
-
-	changeUIType(FRAME_BATTLE);
     return true;
 }
 
@@ -192,6 +191,12 @@ void SCUIModule::changeUIType(UIFrameType type)
 
 cocos2d::Layer* SCUIModule::getUILayer()
 {
-	SCSceneBase* pCurScene = dynamic_cast<SCSceneBase*>(glb_getCurScene());
+	SCSceneBase* pCurScene = SCSceneManager::getInstance().getCurScene();
 	return pCurScene ? pCurScene->getUILayer() : NULL;
+}
+
+void SCUIModule::onEventModuleInited(SCEvent* pEvent)
+{
+	// 切换UI风格
+	glb_getUIModule()->changeUIType(FRAME_BATTLE);
 }

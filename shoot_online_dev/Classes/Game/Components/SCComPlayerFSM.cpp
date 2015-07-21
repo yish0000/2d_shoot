@@ -49,7 +49,7 @@ void SCComPlayerFSM::doStand(bool afterJump /* = false */)
 {
 	if( afterJump )
 	{
-		m_pArmature->playAnimation("tiaoyue-down", false);
+		m_pArmature->playAnimation("luodi", false);
 		m_fCurAnimTime = 0.0f;
 		m_fCurAnimTotalTime = 0.5f;
 	}
@@ -68,16 +68,29 @@ void SCComPlayerFSM::doJump(float fInitSpeedY)
 {
 	m_iState = STATE_JUMP;
 	if( fInitSpeedY == 0.0f )
-		m_pArmature->playAnimation("tiaoyue-xunhuan", true);
+		m_pArmature->playAnimation("xunhuan", true);
 	else
-		m_pArmature->playAnimation("tiaoyue-up", false);
+		m_pArmature->playAnimation("qitiao", false);
+	m_fCurAnimTime = 0.0f;
+	m_fCurAnimTotalTime = 0.5f;
+}
+
+void SCComPlayerFSM::doAttack()
+{
+	if (m_iState == STATE_STAND)
+		m_pArmature->playAnimation("jiguanqiang", false, false);
+	else if (m_iState == STATE_MOVE)
+		m_pArmature->playAnimation("yidonggongji", false, false);
+	else if (m_iState == STATE_JUMP)
+		m_pArmature->playAnimation("tiaoyuekaiqiang", false, false);
 	m_fCurAnimTime = 0.0f;
 	m_fCurAnimTotalTime = 0.5f;
 }
 
 void SCComPlayerFSM::update_Stand(float dt)
 {
-	if( m_pArmature->getCurAnimName() == "tiaoyue-down" )
+	if( m_pArmature->getCurAnimName() == "luodi" ||
+		m_pArmature->getCurAnimName() == "jiguanqiang" )
 	{
 		m_fCurAnimTime += dt;
 		if( m_fCurAnimTime >= m_fCurAnimTotalTime )
@@ -93,16 +106,25 @@ void SCComPlayerFSM::update_Stand(float dt)
 
 void SCComPlayerFSM::update_Move(float dt)
 {
-	if( m_pArmature->getCurAnimName().empty() )
+	if (m_pArmature->getCurAnimName() == "yidonggongji")
+	{
+		m_fCurAnimTime += dt;
+		if (m_fCurAnimTime >= m_fCurAnimTotalTime)
+		{
+			m_pArmature->playAnimation("benpao", true);
+		}
+	}
+	else if( m_pArmature->getCurAnimName().empty() )
 		m_pArmature->playAnimation("benpao", true);
 }
 
 void SCComPlayerFSM::update_Jump(float dt)
 {
-	if( m_pArmature->getCurAnimName() == "tiaoyue-up" )
+	if( m_pArmature->getCurAnimName() == "qitiao" ||
+		m_pArmature->getCurAnimName() == "tiaoyuekaiqiang" )
 	{
 		m_fCurAnimTime += dt;
 		if( m_fCurAnimTime >= m_fCurAnimTotalTime )
-			m_pArmature->playAnimation("tiaoyue-xunhuan", true);
+			m_pArmature->playAnimation("xunhuan", true);
 	}
 }

@@ -17,13 +17,14 @@
 
 
 /** 主玩家的动画列表
-gongji
 benpao
 zhanli
-tiaoyue-up
-tiaoyue-xunhuan
-tiaoyue-down
-siwang
+jiguanqiang
+yidonggongji
+qitiao
+tiaoyuekaiqiang
+xunhuan
+luodi
 */
 class SCHostPlayer : public SCObject
 {

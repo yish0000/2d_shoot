@@ -69,6 +69,7 @@ protected:
 	SCUIBase* createUIFrame(const std::string& name);
 
 protected:	// Event handlers.
+	void onEventModuleInited(SCEvent* pEvent);
 	
 protected:	// Protocol handlers.
 };

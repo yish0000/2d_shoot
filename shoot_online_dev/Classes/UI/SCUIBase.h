@@ -14,6 +14,20 @@
 #include "ui/CocosGUI.h"
 #include "SCUITypes.h"
 
+///////////////////////////////////////////////////////////////////////////
+
+#define REGISTER_BUTTON_EVENT(name, selector) \
+	{ \
+		cocos2d::ui::Widget* pNode = getControlByPath(name); \
+		if (pNode) \
+			pNode->addTouchEventListener(CC_CALLBACK_2(selector, this)); \
+		else \
+			CCLOG("REGISTER_BUTTON_EVENT: Can't find the control for name(%s)", name); \
+	}
+
+
+///////////////////////////////////////////////////////////////////////////
+
 class SCUIModule;
 
 class SCUIBase : public cocos2d::Node
@@ -36,6 +50,10 @@ public:
 	// 根据tag获取子控件
 	cocos2d::ui::Widget* getControlByTag(int tag);
 
+	// 显示界面
+	void showUI();
+	void hideUI();
+
 protected:
 	std::string m_sFilename;				// 本界面的文件路径
 	SCUIModule* m_pUIModule;				// UI模块的指针
@@ -45,6 +63,9 @@ protected:
 	// Get the pointer of specified control
 	template <class T>
 	void DDX_Control(T*& pControl, const char* szName, bool bRetain = false);
+
+	virtual void onShowUI() {}
+	virtual void onHideUI() {}
 };
 
 ///////////////////////////////////////////////////////////////////////////
