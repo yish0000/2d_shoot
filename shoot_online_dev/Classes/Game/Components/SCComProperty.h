@@ -16,7 +16,8 @@
 class SCComProperty : public SCComponentBase
 {
 public:
-    SCComProperty() : SCComponentBase(SC_COMPONENT_PROPERTY) {}
+    SCComProperty() : SCComponentBase(SC_COMPONENT_PROPERTY), hp(1), isZombie(false) {}
+    SCComProperty(scComPropertyData &data);
     virtual ~SCComProperty() {}
 
     virtual bool init();
@@ -26,7 +27,7 @@ public:
 
     void HandleAttackMsg(attack_msg &msg);
 protected:
-    int hp;
+    int hp; // ÉúÃüÖµ
     bool isZombie;
 
 private:

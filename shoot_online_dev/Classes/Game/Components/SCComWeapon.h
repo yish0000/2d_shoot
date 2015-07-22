@@ -22,6 +22,9 @@ public:
 
     virtual bool init();
     virtual void update(float dt);
+private:
+    int bullet_id;
+    int atk_interval;
 };
 
 #endif

@@ -306,6 +306,15 @@
     <ClCompile Include="..\Classes\UI\SCUISkill.cpp">
       <Filter>Classes\UI\Battle</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Game\SCBullet.cpp">
+      <Filter>Classes\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\SCBulletController.cpp">
+      <Filter>Classes\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\SCBulletDispatcher.cpp">
+      <Filter>Classes\Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -565,6 +574,15 @@
     </ClInclude>
     <ClInclude Include="..\Classes\UI\SCUISkill.h">
       <Filter>Classes\UI\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\SCBullet.h">
+      <Filter>Classes\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\SCBulletController.h">
+      <Filter>Classes\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\SCBulletDispatcher.h">
+      <Filter>Classes\Game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

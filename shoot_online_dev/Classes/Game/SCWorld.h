@@ -9,6 +9,7 @@
 #include "SCNpc.h"
 #include "SCHostPlayer.h"
 #include "Scene/SCTiledMap.h"
+#include "SCBullet.h"
 
 class SCWorld : public cocos2d::Node
 {
@@ -36,9 +37,14 @@ public:
 
 private:
     ObjectManager<SCNpc> _npc_manager;//npc列表
+    ObjectManager<SCBullet> _bullet_manager; //子弹列表
+
     SCHostPlayer *m_pHostPlayer;
 	MessageQueueList *_msg_queue;
     SCTiledMap* m_pTileMap;
+
+    int64_t npcOriginID;
+    int64_t bulletOriginID;
 
 public:
     SCWorld();
@@ -51,6 +57,9 @@ public:
 private:
     SCNpc* FindNPCByID(int64_t id);
     SCObject* FindObjectByMsg(const Message& msg);
+
+    bool GenerateNpc(int64_t id, cocos2d::Point birthPos);
+    bool GenerateBullet(int64_t id, cocos2d::Point birthPos);
 
 public:
     SCTiledMap* getTileMap() { return m_pTileMap; }

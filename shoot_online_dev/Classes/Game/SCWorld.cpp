@@ -9,6 +9,7 @@
 #include "SCWorld.h"
 #include "Scene/SCSceneBase.h"
 #include "Utility/SCRandomGen.h"
+#include "Data/SCDataModule.h"
 
 //private function here:
 SCNpc * SCWorld::FindNPCByID(int64_t id)
@@ -63,6 +64,9 @@ bool SCWorld::init()
 
 	// 地图跟随主角
 	m_pTileMap->followNode(m_pHostPlayer);
+
+    npcOriginID = 10000;
+    bulletOriginID = 80000;
     return true;
 }
 
@@ -136,4 +140,42 @@ bool SCWorld::checkCollision(const cocos2d::Rect& bb, const cocos2d::Point& oldP
 		return true;
 	else
 		return false;
+}
+
+bool SCWorld::GenerateNpc(int id, cocos2d::Point birthPos)
+{
+    //获取npc的模板数据
+    NPC_ESSENCE *npcData = (NPC_ESSENCE *)SCDataModule::glb_getDataModule()->getTemplate(id, DT_NPC_ESSENCE);
+    if (!npcData)
+    {
+        CCLOG("GenerateNpc err! not found Essense! id : " + id);
+        return false;
+    }
+
+    //初始化一个npc
+    SCNpc * npc = new SCNpc(GID(SC_OBJECT_NPC, npcOriginID++), id);
+    npc->init();
+
+    //组装npc数据
+    //property
+    scComPropertyData data;
+    data.max_hp = npcData->max_hp;
+    npc->addComponent(SC_COMPONENT_PROPERTY, (void *)(&data));
+
+    //加入objlist
+    _npc_manager.Insert(npc, npc->getID());
+
+    return true;
+}
+
+bool GenerateBullet(int64_t id, cocos2d::Point birthPos)
+{
+    //获取子弹的模板数据
+
+    //初始化一个子弹
+
+    //组装子弹数据
+
+    //加入子弹list
+    return true;
 }

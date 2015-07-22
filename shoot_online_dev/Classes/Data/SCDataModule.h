@@ -41,6 +41,13 @@ public:
 	// 释放指定模板的引用
 	void releaseTemplate(DATA_TEMPL_BASE* ptr);
 
+    static SCDataModule* glb_getDataModule()
+    {
+        //随便鸡巴写了个
+        static SCDataModule instance;
+        return &instance;
+    }
+
 protected:
 	SCMutex m_mutex;
 	std::unordered_map<int, DATA_TEMPL_BASE*> m_templs;
@@ -58,6 +65,8 @@ protected:
 	void deleteTemplate(int tid);
 
 	void garbageCollect();
+
+
 };
 
 extern SCDataModule* g_pDataModule;
