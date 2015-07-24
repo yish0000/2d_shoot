@@ -153,6 +153,9 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClCompile Include="..\Classes\Game\Components\SCComProperty.cpp" />
     <ClCompile Include="..\Classes\Game\Components\SCComWeapon.cpp" />
     <ClCompile Include="..\Classes\Game\MessageQueue.cpp" />
+    <ClCompile Include="..\Classes\Game\SCBullet.cpp" />
+    <ClCompile Include="..\Classes\Game\SCBulletController.cpp" />
+    <ClCompile Include="..\Classes\Game\SCBulletDispatcher.cpp" />
     <ClCompile Include="..\Classes\Game\SCGameJoystick.cpp" />
     <ClCompile Include="..\Classes\Game\SCGameModule.cpp" />
     <ClCompile Include="..\Classes\Game\SCHostPlayer.cpp" />
@@ -227,6 +230,9 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\Game\Components\SCComWeapon.h" />
     <ClInclude Include="..\Classes\Game\MessageQueue.h" />
     <ClInclude Include="..\Classes\Game\ObjectManager.h" />
+    <ClInclude Include="..\Classes\Game\SCBullet.h" />
+    <ClInclude Include="..\Classes\Game\SCBulletController.h" />
+    <ClInclude Include="..\Classes\Game\SCBulletDispatcher.h" />
     <ClInclude Include="..\Classes\Game\SCGameJoystick.h" />
     <ClInclude Include="..\Classes\Game\SCGameModule.h" />
     <ClInclude Include="..\Classes\Game\SCHostPlayer.h" />

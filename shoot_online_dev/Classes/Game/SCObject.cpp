@@ -93,7 +93,8 @@ void SCObject::addComponent(int comType, void* extraData)
 		pComponent = new SCComPlayerMove();
 		break;
     case SC_COMPONENT_PROPERTY:
-        //TODO :  获取玩家数据
+        scComPropertyData *propertyData = (scComPropertyData *)extraData;
+        pComponent = new SCComProperty(propertyData);
 	default:
 		CCLOG("SCObject::addComponent, unknown component type!");
 	}

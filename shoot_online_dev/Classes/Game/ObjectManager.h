@@ -36,13 +36,25 @@ public:
     {
         SCScopedMutex keeper(lock);
         auto oi = obj_map.find(id);
-        if(oi != obj_map)
+        if(oi != obj_map.end())
         {
             delete oi->second;
             obj_map.erase(oi);
         }
         T* node = new T();
         obj_map.insert(std::make_pair(id, node));
+    }
+
+    void Insert(T * node, int64_t id)
+    {
+        SCScopedMutex keeper(lock);
+        auto oi = obj_map.find(id);
+        if (oi != obj_map.end())
+        {
+            delete oi->second;
+            obj_map.erase(oi)
+        }
+        obj_map.insert(std::make_pair(id, node))
     }
     
     void Remove(int64_t id)
