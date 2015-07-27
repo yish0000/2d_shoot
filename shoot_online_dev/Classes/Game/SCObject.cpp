@@ -92,9 +92,11 @@ void SCObject::addComponent(int comType, void* extraData)
 	case SC_COMPONENT_PLAYERMOVE:
 		pComponent = new SCComPlayerMove();
 		break;
-    case SC_COMPONENT_PROPERTY:
-        scComPropertyData *propertyData = (scComPropertyData *)extraData;
-        pComponent = new SCComProperty(propertyData);
+	case SC_COMPONENT_PROPERTY:
+	{
+		scComPropertyData *propertyData = (scComPropertyData *)extraData;
+		pComponent = new SCComProperty(*propertyData);
+	}
 	default:
 		CCLOG("SCObject::addComponent, unknown component type!");
 	}

@@ -38,15 +38,10 @@ public:
 	// 获取模板数据
 	const void* getTemplate(int tid, SC_DATA_TYPE dt);
 
+	// 添加指定模板的引用
+	void retainTemplate(DATA_TEMPL_BASE* ptr);
 	// 释放指定模板的引用
 	void releaseTemplate(DATA_TEMPL_BASE* ptr);
-
-    static SCDataModule* glb_getDataModule()
-    {
-        //随便鸡巴写了个
-        static SCDataModule instance;
-        return &instance;
-    }
 
 protected:
 	SCMutex m_mutex;
@@ -65,8 +60,6 @@ protected:
 	void deleteTemplate(int tid);
 
 	void garbageCollect();
-
-
 };
 
 extern SCDataModule* g_pDataModule;

@@ -9,8 +9,15 @@
 
 #include "SCGame.h"
 #include "Module/SCModuleManager.h"
+#include "Utility/SCConfigs.h"
 
 USING_NS_CC;
+
+///////////////////////////////////////////////////////////////////////////
+
+static const char* APP_CONFIG_FILE = "config/app_config.json";
+
+///////////////////////////////////////////////////////////////////////////
 
 SCGame& SCGame::getInstance()
 {
@@ -30,6 +37,9 @@ SCGame::~SCGame()
 
 void SCGame::start()
 {
+	// 加载全局配置信息
+	SCConfigs::getInstance().load(APP_CONFIG_FILE);
+
     // 注册游戏心跳函数
     Director::getInstance()->getScheduler()->scheduleUpdate(this, 0, false);
 	

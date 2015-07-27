@@ -5,6 +5,7 @@
 
 #include "ObjectManager.h"
 #include "MessageQueue.h"
+#include "Data/SCDataTypes.h"
 #include "SCObject.h"
 #include "SCNpc.h"
 #include "SCHostPlayer.h"
@@ -36,6 +37,8 @@ public:
 	};
 
 private:
+	int m_iWorldID;
+	WORLD_ESSENCE* m_pEssence;		// 模板数据
     ObjectManager<SCNpc> _npc_manager;//npc列表
     ObjectManager<SCBullet> _bullet_manager; //子弹列表
 
@@ -47,19 +50,23 @@ private:
     int64_t bulletOriginID;
 
 public:
-    SCWorld();
+    SCWorld(int tid);
     virtual ~SCWorld();
-    CREATE_FUNC(SCWorld);
+
+	static SCWorld* create(int worldId);
 
 	virtual bool init();
 	virtual void update(float dt);
+
+	// 获取模板数据
+	const WORLD_ESSENCE* getEssence() const { return m_pEssence; }
 
 private:
     SCNpc* FindNPCByID(int64_t id);
     SCObject* FindObjectByMsg(const Message& msg);
 
-    bool GenerateNpc(int64_t id, cocos2d::Point birthPos);
-    bool GenerateBullet(int64_t id, cocos2d::Point birthPos);
+    bool GenerateNpc(int64_t id, const cocos2d::Point& birthPos);
+    bool GenerateBullet(int64_t id, const cocos2d::Point& birthPos);
 
 public:
     SCTiledMap* getTileMap() { return m_pTileMap; }

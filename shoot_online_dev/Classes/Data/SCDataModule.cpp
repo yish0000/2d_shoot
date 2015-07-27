@@ -139,7 +139,7 @@ NPC_ESSENCE* SCDataModule::getNPCEssence(int tid)
 WORLD_ESSENCE* SCDataModule::getWorldEssence(int tid)
 {
 	char szFile[260];
-	sprintf(szFile, "data/world/%d.json", szFile);
+	sprintf(szFile, "data/world/%d.json", tid);
 
 	WORLD_ESSENCE* pTempl = new WORLD_ESSENCE();
 	if (!loadTemplateFromFile(pTempl, szFile))
@@ -167,6 +167,21 @@ void SCDataModule::deleteTemplate(int tid)
 	}
 }
 
+void SCDataModule::retainTemplate(DATA_TEMPL_BASE* ptr)
+{
+	SCScopedMutex lock(m_mutex);
+
+	TemplRefMap::iterator it = m_refs.find(ptr);
+	if (it == m_refs.end())
+	{
+		CCASSERT(0, "SCDataModule::retainTemplate");
+		CCLOG("SCDataModule::releaseTemplate, can't find the specified template pointer!");
+		return;
+	}
+
+	it->second.refCount++;
+}
+
 void SCDataModule::releaseTemplate(DATA_TEMPL_BASE* ptr)
 {
 	SCScopedMutex lock(m_mutex);
@@ -192,7 +207,7 @@ void SCDataModule::addTemplate(int tid, DATA_TEMPL_BASE* data)
 {
 	SCScopedMutex lock(m_mutex);
 
-	if (m_templs.find(tid) == m_templs.end())
+	if (m_templs.find(tid) != m_templs.end())
 	{
 		CCLOG("SCDataModule::addTemplate, Template duplicated(%d)!", tid);
 		return;
@@ -200,7 +215,7 @@ void SCDataModule::addTemplate(int tid, DATA_TEMPL_BASE* data)
 
 	TemplStub stub;
 	stub.tid = tid;
-	stub.refCount = 1;
+	stub.refCount = 0;
 	m_refs[data] = stub;
 	m_templs[tid] = data;
 }

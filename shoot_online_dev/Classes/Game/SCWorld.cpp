@@ -9,6 +9,7 @@
 #include "SCWorld.h"
 #include "Scene/SCSceneBase.h"
 #include "Utility/SCRandomGen.h"
+#include "Utility/SCUtilityFunc.h"
 #include "Data/SCDataModule.h"
 
 //private function here:
@@ -39,13 +40,29 @@ SCObject* SCWorld::FindObjectByMsg(const Message &msg)
 }
 
 //public function here:
-SCWorld::SCWorld() : m_pTileMap(NULL), m_pHostPlayer(NULL)
+SCWorld::SCWorld(int tid) : m_iWorldID(tid), m_pEssence(NULL), m_pTileMap(NULL), m_pHostPlayer(NULL)
 {
     _msg_queue = new MessageQueueList(this);
 }
 
 SCWorld::~SCWorld()
 {
+	CC_SAFE_RELEASE(m_pEssence);
+}
+
+SCWorld* SCWorld::create(int worldID)
+{
+	SCWorld* pWorld = new SCWorld(worldID);
+	if (pWorld && pWorld->init())
+	{
+		pWorld->autorelease();
+		return pWorld;
+	}
+	else
+	{
+		delete pWorld;
+		return NULL;
+	}
 }
 
 bool SCWorld::init()
@@ -53,8 +70,12 @@ bool SCWorld::init()
 	if (!Node::init())
 		return false;
 
+	// 读取模板
+	m_pEssence = (WORLD_ESSENCE*)glb_getDataModule()->getTemplate(m_iWorldID, DT_WORLD_ESSENCE);
+	m_pEssence->retain();
+
     SCRandomGen::Init();
-	m_pTileMap = SCTiledMap::create(0);
+	m_pTileMap = SCTiledMap::create(m_iWorldID);
 	addChild(m_pTileMap);
 
 	// 加载主玩家
@@ -142,10 +163,10 @@ bool SCWorld::checkCollision(const cocos2d::Rect& bb, const cocos2d::Point& oldP
 		return false;
 }
 
-bool SCWorld::GenerateNpc(int id, cocos2d::Point birthPos)
+bool SCWorld::GenerateNpc(int64_t id, const cocos2d::Point& birthPos)
 {
     //获取npc的模板数据
-    NPC_ESSENCE *npcData = (NPC_ESSENCE *)SCDataModule::glb_getDataModule()->getTemplate(id, DT_NPC_ESSENCE);
+    NPC_ESSENCE *npcData = (NPC_ESSENCE*)glb_getDataModule()->getTemplate(id, DT_NPC_ESSENCE);
     if (!npcData)
     {
         CCLOG("GenerateNpc err! not found Essense! id : " + id);
@@ -163,12 +184,12 @@ bool SCWorld::GenerateNpc(int id, cocos2d::Point birthPos)
     npc->addComponent(SC_COMPONENT_PROPERTY, (void *)(&data));
 
     //加入objlist
-    _npc_manager.Insert(npc, npc->getID());
+	_npc_manager.Insert(npc, npc->getID());
 
     return true;
 }
 
-bool GenerateBullet(int64_t id, cocos2d::Point birthPos)
+bool SCWorld::GenerateBullet(int64_t id, const cocos2d::Point& birthPos)
 {
     //获取子弹的模板数据
 
