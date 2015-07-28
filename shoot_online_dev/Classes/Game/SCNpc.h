@@ -15,6 +15,7 @@ public:
     SCNpcController* _controller;
     SCNpcDispatcher* _dispatcher;
 public:
+    SCNpc(GID gid, int tid) :SCObject(gid, tid) {}
 	SCNpc() {}
     virtual ~SCNpc();
     virtual bool init();

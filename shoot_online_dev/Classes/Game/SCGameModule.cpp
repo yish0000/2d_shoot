@@ -31,7 +31,7 @@ bool SCGameModule::init()
 	SCSceneManager::getInstance().enterScene(SCENE_BATTLE, TRANS_FADEIN, 0.4f);
 
 	SCSceneBase* pCurScene = SCSceneManager::getInstance().getCurScene();
-	m_pWorld = SCWorld::create();
+	m_pWorld = SCWorld::create(1);
 	pCurScene->addChild(m_pWorld);
 	return true;
 }

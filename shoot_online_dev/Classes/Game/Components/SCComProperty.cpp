@@ -9,7 +9,12 @@
 #include "SCComProperty.h"
 #include "Utility/SCRandomGen.h"
 
-
+SCComProperty::SCComProperty(scComPropertyData &data)
+	: SCComponentBase(SC_COMPONENT_PROPERTY)
+{
+	hp = data.max_hp;
+	isZombie = false;
+}
 
 bool SCComProperty::init()
 {

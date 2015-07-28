@@ -9,6 +9,7 @@
 
 #include "SCTiledMap.h"
 #include "SCSceneBase.h"
+#include "Data/SCDataModule.h"
 #include "Utility/SCConfigs.h"
 #include "Utility/SCUtilityFunc.h"
 #include "Utility/SCGeometry.h"
@@ -21,8 +22,6 @@ SCTiledMap::SCTiledMap(int mapId)
 	, m_pBackEffectLayer(NULL), m_pFrontEffectLayer(NULL), m_pTargetNode(NULL)
 	, m_pMoveMapAction(NULL), m_pScaleAction(NULL), m_bFocusing(false)
 {
-	// 临时测试用的地图
-	m_sMapFile = "map/d1z_01g_z01_fenzhengcaoyuan.tmx";
 }
 
 SCTiledMap::~SCTiledMap()
@@ -46,7 +45,15 @@ SCTiledMap* SCTiledMap::create(int mapId)
 
 bool SCTiledMap::init()
 {
-	// Fixme! 取Map模板数据
+	// 取Map模板数据
+	WORLD_ESSENCE* pTempl = (WORLD_ESSENCE*)glb_getDataModule()->getTemplate(m_iMapID, DT_WORLD_ESSENCE);
+	if (!pTempl)
+	{
+		CCLOG("SCTiledMap::init, unknown world id(%d)", m_iMapID);
+		return false;
+	}
+
+	m_sMapFile = pTempl->map_path;
 
 	// 加载TMX地图
 	if( !initWithTMXFile(m_sMapFile) )

@@ -9,6 +9,8 @@
 #include "SCWorld.h"
 #include "Scene/SCSceneBase.h"
 #include "Utility/SCRandomGen.h"
+#include "Utility/SCUtilityFunc.h"
+#include "Data/SCDataModule.h"
 
 //private function here:
 SCNpc * SCWorld::FindNPCByID(int64_t id)
@@ -38,13 +40,29 @@ SCObject* SCWorld::FindObjectByMsg(const Message &msg)
 }
 
 //public function here:
-SCWorld::SCWorld() : m_pTileMap(NULL), m_pHostPlayer(NULL)
+SCWorld::SCWorld(int tid) : m_iWorldID(tid), m_pEssence(NULL), m_pTileMap(NULL), m_pHostPlayer(NULL)
 {
     _msg_queue = new MessageQueueList(this);
 }
 
 SCWorld::~SCWorld()
 {
+	CC_SAFE_RELEASE(m_pEssence);
+}
+
+SCWorld* SCWorld::create(int worldID)
+{
+	SCWorld* pWorld = new SCWorld(worldID);
+	if (pWorld && pWorld->init())
+	{
+		pWorld->autorelease();
+		return pWorld;
+	}
+	else
+	{
+		delete pWorld;
+		return NULL;
+	}
 }
 
 bool SCWorld::init()
@@ -52,8 +70,12 @@ bool SCWorld::init()
 	if (!Node::init())
 		return false;
 
+	// 读取模板
+	m_pEssence = (WORLD_ESSENCE*)glb_getDataModule()->getTemplate(m_iWorldID, DT_WORLD_ESSENCE);
+	m_pEssence->retain();
+
     SCRandomGen::Init();
-	m_pTileMap = SCTiledMap::create(0);
+	m_pTileMap = SCTiledMap::create(m_iWorldID);
 	addChild(m_pTileMap);
 
 	// 加载主玩家
@@ -63,6 +85,9 @@ bool SCWorld::init()
 
 	// 地图跟随主角
 	m_pTileMap->followNode(m_pHostPlayer);
+
+    npcOriginID = 10000;
+    bulletOriginID = 80000;
     return true;
 }
 
@@ -136,4 +161,42 @@ bool SCWorld::checkCollision(const cocos2d::Rect& bb, const cocos2d::Point& oldP
 		return true;
 	else
 		return false;
+}
+
+bool SCWorld::GenerateNpc(int64_t id, const cocos2d::Point& birthPos)
+{
+    //获取npc的模板数据
+    NPC_ESSENCE *npcData = (NPC_ESSENCE*)glb_getDataModule()->getTemplate(id, DT_NPC_ESSENCE);
+    if (!npcData)
+    {
+        CCLOG("GenerateNpc err! not found Essense! id : " + id);
+        return false;
+    }
+
+    //初始化一个npc
+    SCNpc * npc = new SCNpc(GID(SC_OBJECT_NPC, npcOriginID++), id);
+    npc->init();
+
+    //组装npc数据
+    //property
+    scComPropertyData data;
+    data.max_hp = npcData->max_hp;
+    npc->addComponent(SC_COMPONENT_PROPERTY, (void *)(&data));
+
+    //加入objlist
+	_npc_manager.Insert(npc, npc->getID());
+
+    return true;
+}
+
+bool SCWorld::GenerateBullet(int64_t id, const cocos2d::Point& birthPos)
+{
+    //获取子弹的模板数据
+
+    //初始化一个子弹
+
+    //组装子弹数据
+
+    //加入子弹list
+    return true;
 }

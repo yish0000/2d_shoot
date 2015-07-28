@@ -34,6 +34,8 @@ struct DATA_TEMPL_BASE : public scnet::JsonStreamObj
 		stream.pop("name", name);
 	}
 
+	// 添加引用
+	void retain();
 	// 释放引用
 	void release();
 };
@@ -84,35 +86,34 @@ DEFINE_TEMPL(NPC_ESSENCE)
 	};
 
 	int max_hp;
-	int min_dc;
-	int max_dc;
-	int min_ac;
-	int max_ac;
+	int move_speed;
+	int jump_heigh;
+	int atk_mode;
+	int atk_interval;
+    int bullet_id;
 
-	equip_info equip_data;
-
-	NPC_ESSENCE() : max_hp(100), min_dc(0), max_dc(100), min_ac(0), max_ac(100) {}
+	NPC_ESSENCE() : max_hp(100), move_speed(0), jump_heigh(100),atk_mode(1), atk_interval(1000), bullet_id(-1) {}
 
 	void encode(scnet::JsonStream &stream) const
 	{
 		DATA_TEMPL_BASE::encode(stream);
 		TEMPL_ENCODE(max_hp);
-		TEMPL_ENCODE(min_dc);
-		TEMPL_ENCODE(max_dc);
-		TEMPL_ENCODE(min_ac);
-		TEMPL_ENCODE(max_dc);
-		TEMPL_ENCODE(equip_data);
+		TEMPL_ENCODE(move_speed);
+		TEMPL_ENCODE(jump_heigh);
+		TEMPL_ENCODE(atk_mode);
+		TEMPL_ENCODE(atk_interval);
+		TEMPL_ENCODE(bullet_id);
 	}
 
 	void decode(const scnet::JsonStream &stream)
 	{
 		DATA_TEMPL_BASE::decode(stream);
 		TEMPL_DECODE(max_hp);
-		TEMPL_DECODE(min_dc);
-		TEMPL_DECODE(max_dc);
-		TEMPL_DECODE(min_ac);
-		TEMPL_DECODE(max_dc);
-		TEMPL_DECODE(equip_data);
+		TEMPL_DECODE(move_speed);
+		TEMPL_DECODE(jump_heigh);
+		TEMPL_DECODE(atk_mode);
+		TEMPL_DECODE(atk_interval);
+		TEMPL_DECODE(bullet_id);
 	}
 };
 
@@ -122,6 +123,7 @@ DEFINE_TEMPL(NPC_ESSENCE)
 DEFINE_TEMPL(WORLD_ESSENCE)
 {
 	std::string map_path;
+	std::string back_music;
 
 	WORLD_ESSENCE() {}
 
@@ -130,6 +132,7 @@ DEFINE_TEMPL(WORLD_ESSENCE)
 		DATA_TEMPL_BASE::encode(stream);
 
 		TEMPL_ENCODE(map_path);
+		TEMPL_ENCODE(back_music);
 	}
 
 	void decode(const scnet::JsonStream &stream)
@@ -137,6 +140,7 @@ DEFINE_TEMPL(WORLD_ESSENCE)
 		DATA_TEMPL_BASE::decode(stream);
 
 		TEMPL_DECODE(map_path);
+		TEMPL_DECODE(back_music);
 	}
 };
 
