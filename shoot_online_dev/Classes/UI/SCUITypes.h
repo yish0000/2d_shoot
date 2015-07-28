@@ -1,18 +1,3 @@
-<<<<<<< HEAD
-//
-//  SCUITypes.h
-//  ShootOnline
-//
-//  Created by Yish on 15/7/16.
-//
-//
-
-#ifndef ShootOnline_SCUITypes_h
-#define ShootOnline_SCUITypes_h
-
-
-#endif
-=======
 /*
  * ------------------------------------------------------------------------
  *  Name:   SCUITypes.h
@@ -56,4 +41,3 @@ enum UIAlignType
 ///////////////////////////////////////////////////////////////////////////
 
 #endif	//#ifndef __SC_UITYPES_H__
->>>>>>> 442231aa11e608e8cc4de6b92a1dfdd1c4b3da72

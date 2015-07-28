@@ -169,7 +169,7 @@ bool SCWorld::GenerateNpc(int64_t id, const cocos2d::Point& birthPos)
     NPC_ESSENCE *npcData = (NPC_ESSENCE*)glb_getDataModule()->getTemplate(id, DT_NPC_ESSENCE);
     if (!npcData)
     {
-        CCLOG("GenerateNpc err! not found Essense! id : " + id);
+        CCLOG("GenerateNpc err! not found Essense! id : %lld", id);
         return false;
     }
 

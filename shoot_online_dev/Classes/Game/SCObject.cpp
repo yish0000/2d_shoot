@@ -70,7 +70,7 @@ void SCObject::addComponent(int comType, void* extraData)
 		{
 			const char* filename = (const char*)extraData;
 			if( !filename )
-				CCLOG("SCObject::addComponent , extraData for SCComArmature must not be null! comType: " + comType);
+				CCLOG("SCObject::addComponent , extraData for SCComArmature must not be null! comType: %d", comType);
 			else
 				pComponent = new SCComArmature(filename);
 		}
@@ -79,7 +79,7 @@ void SCObject::addComponent(int comType, void* extraData)
 		{
 			Rect* pBound = (Rect*)extraData;
 			if( !pBound )
-				CCLOG("SCObject::addComponent, extraData for SCComCollider must not be null! comType: " + comType);
+				CCLOG("SCObject::addComponent, extraData for SCComCollider must not be null! comType: %d", comType);
 			else
 			{
 				pComponent = new SCComCollider(*pBound);

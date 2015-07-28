@@ -22,7 +22,7 @@ int SCNpcController::MessageHandler(const Message &msg)
         SCComProperty *pCom = dynamic_cast<SCComProperty *>(getObject()->getComponent(SC_COMPONENT_PROPERTY));
         if (!pCom)
         {
-            CCLOG("SCNpcController Component not found ! msg type : " + msg.type);
+            CCLOG("SCNpcController Component not found ! msg type : %d", msg.type);
             return 0;
         }
         pCom->HandleAttackMsg(atk_msg);
