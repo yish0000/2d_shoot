@@ -58,11 +58,32 @@ void SCComArmature::refreshArmature()
 	int dir = m_pGameObj->getFaceDirection();
 	CCASSERT(dir == 1 || dir == -1, "Invalid face direction value!!");
 
-	m_pArmature->setScaleX(dir);
+	m_pArmature->setScaleX(m_pArmature->getScaleX() * dir);
 }
 
-void SCComArmature::playAnimation(const char* name, bool bLoop)
+void SCComArmature::setScale(float x, float y)
 {
+	m_pArmature->setScale(x, y);
+}
+
+void SCComArmature::setScaleX(float x)
+{
+	m_pArmature->setScaleX(x);
+}
+
+void SCComArmature::setScaleY(float y)
+{
+	m_pArmature->setScaleY(y);
+}
+
+void SCComArmature::playAnimation(const char* name, bool bLoop, bool bRestart)
+{
+	if (!bRestart)
+	{
+		if (m_pAnimation->getCurrentMovementID() == name)
+			return;
+	}
+
 	if( bLoop )
 		m_pAnimation->play(name, -1);
 	else

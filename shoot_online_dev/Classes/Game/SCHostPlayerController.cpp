@@ -13,6 +13,7 @@
 #include "Components/SCComProperty.h"
 #include "Components/SCComPlayerMove.h"
 #include "Components/SCComArmature.h"
+#include "Components/SCComPlayerFSM.h"
 
 USING_NS_CC;
 
@@ -55,6 +56,12 @@ void SCHostPlayerController::Jump()
 
 void SCHostPlayerController::Attack()
 {
+<<<<<<< HEAD
     SCComArmature* pArmature = dynamic_cast<SCComArmature*>(getObject()->getComponent(SC_COMPONENT_ARMATURE));
     pArmature->playAnimation("gongji", false);
 }
+=======
+	SCComPlayerFSM* pPlayerFSM = dynamic_cast<SCComPlayerFSM*>(getObject()->getComponent(SC_COMPONENT_PLAYERFSM));
+	pPlayerFSM->doAttack();
+}
+>>>>>>> 442231aa11e608e8cc4de6b92a1dfdd1c4b3da72

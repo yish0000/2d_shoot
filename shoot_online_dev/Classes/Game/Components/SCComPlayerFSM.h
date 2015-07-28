@@ -35,6 +35,7 @@ public:
 	void doStand(bool afterJump = false);
 	void doRun();
 	void doJump(float fInitSpeedY);
+	void doAttack();
 
 	int getCurState() const { return m_iState; }
 

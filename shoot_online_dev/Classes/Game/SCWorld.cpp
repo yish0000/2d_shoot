@@ -51,6 +51,7 @@ bool SCWorld::init()
 {
 	if (!Node::init())
 		return false;
+
     SCRandomGen::Init();
 	m_pTileMap = SCTiledMap::create(0);
 	addChild(m_pTileMap);
@@ -59,7 +60,6 @@ bool SCWorld::init()
 	m_pHostPlayer = SCHostPlayer::create();
 	m_pTileMap->addChildToLayer(m_pHostPlayer, "rd_add", SCENELAYER_ZORDER_HOSTPLAYER);
 	m_pHostPlayer->setPosition(300, 120);
-	m_pHostPlayer->setScale(0.5f);
 
 	// 地图跟随主角
 	m_pTileMap->followNode(m_pHostPlayer);

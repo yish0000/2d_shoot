@@ -94,6 +94,21 @@
     <Filter Include="Classes\Game\Components">
       <UniqueIdentifier>{d7aaf2d9-804a-4c71-b55d-b9ff46c7dc4d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\UI\Common">
+      <UniqueIdentifier>{12263a55-faff-4d7b-982f-13cacd6e5379}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\UI\Loading">
+      <UniqueIdentifier>{3b144567-b1ae-4e33-9253-bf59f615a303}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\UI\Login">
+      <UniqueIdentifier>{91091360-92fb-4d7c-8368-ff3ba81ef7f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\UI\Main">
+      <UniqueIdentifier>{24296525-cb33-43a7-b1fd-2a4cebcce170}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\UI\Battle">
+      <UniqueIdentifier>{c4490283-4904-4a25-8b24-99850703dd16}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -284,6 +299,12 @@
     </ClCompile>
     <ClCompile Include="..\Classes\Data\SCDataTypes.cpp">
       <Filter>Classes\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UI\SCUIModuleFrames.cpp">
+      <Filter>Classes\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UI\SCUISkill.cpp">
+      <Filter>Classes\UI\Battle</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -541,6 +562,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\UI\SCUITypes.h">
       <Filter>Classes\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\SCUISkill.h">
+      <Filter>Classes\UI\Battle</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

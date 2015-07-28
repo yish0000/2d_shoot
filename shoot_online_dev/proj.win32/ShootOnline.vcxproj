@@ -92,8 +92,8 @@
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
     <PostBuildEvent>
-      <Command>
-      </Command>
+      <Command>copy $(OutDir)\*.dll ..\Resources
+copy $(TargetPath) ..\Resources</Command>
     </PostBuildEvent>
     <PreLinkEvent>
       <Command>if not exist "$(OutDir)" mkdir "$(OutDir)"
@@ -193,6 +193,8 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClCompile Include="..\Classes\SCGame.cpp" />
     <ClCompile Include="..\Classes\UI\SCUIBase.cpp" />
     <ClCompile Include="..\Classes\UI\SCUIModule.cpp" />
+    <ClCompile Include="..\Classes\UI\SCUIModuleFrames.cpp" />
+    <ClCompile Include="..\Classes\UI\SCUISkill.cpp" />
     <ClCompile Include="..\Classes\Utility\SCConfigs.cpp" />
     <ClCompile Include="..\Classes\Utility\SCGeometry.cpp" />
     <ClCompile Include="..\Classes\Utility\SCJoystickBase.cpp" />
@@ -277,6 +279,7 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\SCGame.h" />
     <ClInclude Include="..\Classes\UI\SCUIBase.h" />
     <ClInclude Include="..\Classes\UI\SCUIModule.h" />
+    <ClInclude Include="..\Classes\UI\SCUISkill.h" />
     <ClInclude Include="..\Classes\UI\SCUITypes.h" />
     <ClInclude Include="..\Classes\Utility\SCConfigs.h" />
     <ClInclude Include="..\Classes\Utility\SCCounter.h" />
@@ -296,6 +299,12 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     </ProjectReference>
     <ProjectReference Include="..\..\cocos2d-x-3.2\cocos\editor-support\cocostudio\proj.win32\libCocosStudio.vcxproj">
       <Project>{b57cf53f-2e49-4031-9822-047cc0e6bde2}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\cocos2d-x-3.2\cocos\ui\proj.win32\libGUI.vcxproj">
+      <Project>{7e06e92c-537a-442b-9e4a-4761c84f8a1a}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\cocos2d-x-3.2\extensions\proj.win32\libExtensions.vcxproj">
+      <Project>{21b2c324-891f-48ea-ad1a-5ae13de12e28}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\cocos2d-x-3.2\external\chipmunk\proj.win32\chipmunk.vcxproj">
       <Project>{207bc7a9-ccf1-4f2f-a04d-45f72242ae25}</Project>

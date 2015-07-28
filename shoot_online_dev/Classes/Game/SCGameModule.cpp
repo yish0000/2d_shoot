@@ -12,6 +12,7 @@
 #include "Scene/SCSceneBase.h"
 #include "SCHostPlayer.h"
 #include "Utility/SCUtilityFunc.h"
+#include "UI/SCUIModule.h"
 
 SCGameModule::SCGameModule()
 	: SCModuleBase(MODULE_TYPE_GAME), m_pWorld(NULL)
