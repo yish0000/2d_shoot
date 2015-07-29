@@ -318,6 +318,9 @@
     <ClCompile Include="..\Classes\Game\Components\SCComBulletAtk.cpp">
       <Filter>Classes\Game\Components</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Game\Components\SCComBulletMove.cpp">
+      <Filter>Classes\Game\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -588,6 +591,9 @@
       <Filter>Classes\Game</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Game\Components\SCComBulletAtk.h">
+      <Filter>Classes\Game\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Components\SCComBulletMove.h">
       <Filter>Classes\Game\Components</Filter>
     </ClInclude>
   </ItemGroup>

@@ -17,6 +17,7 @@ enum
     
     SC_OBJECT_HOSTPLAYER,
     SC_OBJECT_NPC,
+    SC_OBJECT_BULLET,
 };
 
 

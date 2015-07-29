@@ -3,4 +3,5 @@
 
 #define MAX_MESSAGE_CACHE 64
 
+#define BULLET_MAX_DISTANCE 500
 #endif //__LOGIC_CONFIG_H__

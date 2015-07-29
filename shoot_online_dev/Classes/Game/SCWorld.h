@@ -65,10 +65,9 @@ private:
     SCNpc* FindNPCByID(int64_t id);
     SCObject* FindObjectByMsg(const Message& msg);
 
+public:
     bool GenerateNpc(int64_t id, const cocos2d::Point& birthPos);
     bool GenerateBullet(int64_t id, const cocos2d::Point& birthPos);
-
-public:
     SCTiledMap* getTileMap() { return m_pTileMap; }
 	SCHostPlayer* getHostPlayer() { return m_pHostPlayer; }
 

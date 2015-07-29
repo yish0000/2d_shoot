@@ -40,7 +40,7 @@ SCObject* SCWorld::FindObjectByMsg(const Message &msg)
 }
 
 //public function here:
-SCWorld::SCWorld(int tid) : m_iWorldID(tid), m_pEssence(NULL), m_pTileMap(NULL), m_pHostPlayer(NULL)
+SCWorld::SCWorld(int tid) : m_iWorldID(tid), m_pEssence(NULL), m_pTileMap(NULL), m_pHostPlayer(NULL), npcOriginID(0), bulletOriginID(0)
 {
     _msg_queue = new MessageQueueList(this);
 }
@@ -126,6 +126,7 @@ void SCWorld::update(float dt)
 
     _msg_queue->update(dt);
     _npc_manager.update(dt);
+    _bullet_manager.update(dt);
 }
 
 bool SCWorld::checkCollision(const cocos2d::Rect& bb, const cocos2d::Point& oldPos,
@@ -163,11 +164,7 @@ bool SCWorld::checkCollision(const cocos2d::Rect& bb, const cocos2d::Point& oldP
 		return false;
 }
 
-<<<<<<< HEAD
-bool SCWorld::GenerateNpc(int64_t id, cocos2d::Point birthPos)
-=======
 bool SCWorld::GenerateNpc(int64_t id, const cocos2d::Point& birthPos)
->>>>>>> 66e9e3204c05639f1b72e0086f4db8a6e45bb41d
 {
     //获取npc的模板数据
     NPC_ESSENCE *npcData = (NPC_ESSENCE*)glb_getDataModule()->getTemplate(id, DT_NPC_ESSENCE);
@@ -184,11 +181,15 @@ bool SCWorld::GenerateNpc(int64_t id, const cocos2d::Point& birthPos)
     //组装npc数据
     //property
     scComPropertyData data;
+    data.atk_mode = npcData->atk_mode;
+    data.atk_interval = npcData->atk_interval;
+    data.bullet_id = npcData->bullet_id;
+    data.name = npcData->name;
     data.max_hp = npcData->max_hp;
     npc->addComponent(SC_COMPONENT_PROPERTY, (void *)(&data));
 
     //动画
-    npc->addComponent((SC_COMPONENT_ARMATURE, (void *)(npcData->res_path));
+    npc->addComponent(SC_COMPONENT_ARMATURE, (void *)(&(npcData->res_path)));
     //碰撞
     //TODO 包围盒数据不知道从何处获取
     //坐标
@@ -203,11 +204,29 @@ bool SCWorld::GenerateNpc(int64_t id, const cocos2d::Point& birthPos)
 bool SCWorld::GenerateBullet(int64_t id, const cocos2d::Point& birthPos)
 {
     //获取子弹的模板数据
+    BULLET_ESSENCE *bulletData = (BULLET_ESSENCE*)glb_getDataModule()->getTemplate(id, DT_BULLET_ESSENCE);
+    if (!bulletData)
+    {
+        CCLOG("GenerateBullet err! not found Essense! id : %lld", id);
+        return false;
+    }
 
     //初始化一个子弹
+    SCBullet *bullet = new SCBullet(GID(SC_OBJECT_BULLET, bulletOriginID++), id);
+    bullet->init();
 
     //组装子弹数据
-
+    //攻击属性
+    scComBulletAtkData data;
+    data.atk_max = bulletData->atk_max;
+    data.atk_min = bulletData->atk_min;
+    bullet->addComponent(SC_COMPONENT_BULLET_ATK, (void *)(&data));
+    //动画
+    bullet->addComponent(SC_COMPONENT_ARMATURE, (void *)(&(bulletData->res_path)));
+    //碰撞
+    //TODO 包围盒数据不知道从何处获取
+    //坐标
+    bullet->setPosition(birthPos);
     //加入子弹list
     return true;
 }

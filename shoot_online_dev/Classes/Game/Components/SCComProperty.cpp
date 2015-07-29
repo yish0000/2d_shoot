@@ -12,18 +12,14 @@
 SCComProperty::SCComProperty(scComPropertyData &data)
 	: SCComponentBase(SC_COMPONENT_PROPERTY)
 {
-<<<<<<< HEAD
     max_hp = data.max_hp;
     atk_mode = data.atk_mode;
     atk_interval = data.atk_mode;
     bullet_id = data.bullet_id;
-
+    name = data.name;
+    
     hp = max_hp;
     isZombie = false;
-=======
-	hp = data.max_hp;
-	isZombie = false;
->>>>>>> 66e9e3204c05639f1b72e0086f4db8a6e45bb41d
 }
 
 bool SCComProperty::init()
@@ -39,6 +35,13 @@ void SCComProperty::update(float dt)
         OnDeath();
         return;
     }
+    heartbeatCount += dt;
+    if (heartbeatCount > atk_interval)
+    {
+        AIAttack();
+        heartbeatCount = 0;
+    }
+
 }
 
 void SCComProperty::HandleAttackMsg(attack_msg& atk_msg)
@@ -65,4 +68,10 @@ void SCComProperty::OnDeath()
 {
     isZombie = true;
     //À¿Õˆ∂Øª≠
+}
+
+void SCComProperty::AIAttack()
+{
+    SCNpc *object = dynamic_cast<SCNpc *>(m_pGameObj);
+    object->getWorld()->GenerateBullet(bullet_id, fire_pos);
 }
