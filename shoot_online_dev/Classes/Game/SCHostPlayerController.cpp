@@ -15,6 +15,8 @@
 #include "Components/SCComArmature.h"
 #include "Components/SCComPlayerFSM.h"
 
+USING_NS_CC;
+
 int SCHostPlayerController::MessageHandler(const Message &msg)
 {
     //此处解析msg，分发给相应的组件处理
@@ -26,7 +28,7 @@ int SCHostPlayerController::MessageHandler(const Message &msg)
         SCComProperty *pCom = dynamic_cast<SCComProperty *>(getObject()->getComponent(SC_COMPONENT_PROPERTY));
         if (!pCom)
         {
-            CCLOG("SCHostPlayerController Component not found ! msg type : " + msg.type);
+            CCLOG("SCHostPlayerController Component not found ! msg type : %d", msg.type);
             return 0;
         }
         pCom->HandleAttackMsg(atk_msg);

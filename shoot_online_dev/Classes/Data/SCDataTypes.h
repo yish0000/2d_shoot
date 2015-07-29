@@ -34,6 +34,8 @@ struct DATA_TEMPL_BASE : public scnet::JsonStreamObj
 		stream.pop("name", name);
 	}
 
+	// 添加引用
+	void retain();
 	// 释放引用
 	void release();
 };
@@ -139,6 +141,7 @@ DEFINE_TEMPL(BULLET_ESSENCE)
 DEFINE_TEMPL(WORLD_ESSENCE)
 {
 	std::string map_path;
+	std::string back_music;
 
 	WORLD_ESSENCE() {}
 
@@ -147,6 +150,7 @@ DEFINE_TEMPL(WORLD_ESSENCE)
 		DATA_TEMPL_BASE::encode(stream);
 
 		TEMPL_ENCODE(map_path);
+		TEMPL_ENCODE(back_music);
 	}
 
 	void decode(const scnet::JsonStream &stream)
@@ -154,6 +158,7 @@ DEFINE_TEMPL(WORLD_ESSENCE)
 		DATA_TEMPL_BASE::decode(stream);
 
 		TEMPL_DECODE(map_path);
+		TEMPL_DECODE(back_music);
 	}
 };
 

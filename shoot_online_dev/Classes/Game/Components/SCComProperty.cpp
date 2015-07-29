@@ -10,7 +10,9 @@
 #include "Utility/SCRandomGen.h"
 
 SCComProperty::SCComProperty(scComPropertyData &data)
+	: SCComponentBase(SC_COMPONENT_PROPERTY)
 {
+<<<<<<< HEAD
     max_hp = data.max_hp;
     atk_mode = data.atk_mode;
     atk_interval = data.atk_mode;
@@ -18,6 +20,10 @@ SCComProperty::SCComProperty(scComPropertyData &data)
 
     hp = max_hp;
     isZombie = false;
+=======
+	hp = data.max_hp;
+	isZombie = false;
+>>>>>>> 66e9e3204c05639f1b72e0086f4db8a6e45bb41d
 }
 
 bool SCComProperty::init()

@@ -10,6 +10,11 @@
 #include "SCDataTypes.h"
 #include "SCDataModule.h"
 
+void DATA_TEMPL_BASE::retain()
+{
+	g_pDataModule->retainTemplate(this);
+}
+
 void DATA_TEMPL_BASE::release()
 {
 	g_pDataModule->releaseTemplate(this);

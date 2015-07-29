@@ -52,9 +52,9 @@ public:
         if (oi != obj_map.end())
         {
             delete oi->second;
-            obj_map.erase(oi)
+			obj_map.erase(oi);
         }
-        obj_map.insert(std::make_pair(id, node))
+		obj_map.insert(std::make_pair(id, node));
     }
     
     void Remove(int64_t id)
