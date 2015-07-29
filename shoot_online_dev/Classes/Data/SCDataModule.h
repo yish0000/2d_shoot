@@ -22,7 +22,6 @@ class SCDataModule : public SCModuleBase
 	{
 		int refCount;
 		int tid;
-		SC_DATA_TYPE dt;
 	};
 	typedef std::unordered_map<const void*, TemplStub> TemplRefMap;
 

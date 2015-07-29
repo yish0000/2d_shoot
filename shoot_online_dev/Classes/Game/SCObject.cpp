@@ -15,6 +15,7 @@
 #include "Components/SCComPlayerMove.h"
 #include "Components/SCComPlayerFSM.h"
 #include "Components/SCComProperty.h"
+#include "Components/SCComSprite.h"
 
 USING_NS_CC;
 
@@ -93,10 +94,20 @@ void SCObject::addComponent(int comType, void* extraData)
 		pComponent = new SCComPlayerMove();
 		break;
 	case SC_COMPONENT_PROPERTY:
-	{
-		scComPropertyData *propertyData = (scComPropertyData *)extraData;
-		pComponent = new SCComProperty(*propertyData);
-	}
+		{
+			scComPropertyData *propertyData = (scComPropertyData *)extraData;
+			pComponent = new SCComProperty(*propertyData);
+		}
+		break;
+	case SC_COMPONENT_SPRITE:
+		{
+			const char* filename = (const char*)extraData;
+			if( !filename )
+				CCLOG("SCObject::addComponent, extraData for SCComSprite must not be null! comType: %d", comType);
+			else
+				pComponent = new SCComSprite(filename);
+		}
+		break;
 	default:
 		CCLOG("SCObject::addComponent, unknown component type!");
 	}

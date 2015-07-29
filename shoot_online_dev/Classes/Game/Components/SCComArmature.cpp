@@ -8,7 +8,7 @@
  */
 
 #include "SCComArmature.h"
-#include "../SCHostPlayer.h"
+#include "../SCObject.h"
 #include "cocostudio/CocoStudio.h"
 
 USING_NS_CC;

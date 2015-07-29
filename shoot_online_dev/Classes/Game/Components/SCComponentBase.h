@@ -25,6 +25,7 @@ enum
     SC_COMPONENT_WEAPON,        //  武器
     SC_COMPONENT_BULLET_ATK,    // 子弹伤害
     SC_COMPONENT_BULLET_MOVE,   // 子弹移动
+	SC_COMPONENT_SPRITE,		// 2D精灵
 };
 
 struct scComPropertyData

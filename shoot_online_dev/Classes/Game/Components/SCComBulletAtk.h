@@ -1,5 +1,5 @@
 #ifndef __SC_COMBULLETATK_H__
-#define __SC_COMPBULLETATK_H__
+#define __SC_COMBULLETATK_H__
 
 #include "SCComponentBase.h"
 #include "../SCWorld.h"
