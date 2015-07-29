@@ -87,7 +87,7 @@ struct attack_msg
     GID attacker; //区别于发送的src，因为攻击消息可能是子弹发出，而攻击者不是子弹
     int damage_low;
     int damage_high;
-    int crit_ratio; //百分比
-    float crit_rate;
+  //  int crit_ratio; //百分比
+   // float crit_rate;
 };
 #endif //__LOGIC_COMMON_MESSAGE__H

@@ -27,6 +27,11 @@ public:
 
     void HandleAttackMsg(attack_msg &msg);
 protected:
+    int max_hp; // 最大生命
+    int atk_mode;
+    int atk_interval;
+    int bullet_id;
+   
     int hp; // 生命值
     bool isZombie;
 

@@ -142,7 +142,7 @@ bool SCWorld::checkCollision(const cocos2d::Rect& bb, const cocos2d::Point& oldP
 		return false;
 }
 
-bool SCWorld::GenerateNpc(int id, cocos2d::Point birthPos)
+bool SCWorld::GenerateNpc(int64_t id, cocos2d::Point birthPos)
 {
     //获取npc的模板数据
     NPC_ESSENCE *npcData = (NPC_ESSENCE *)SCDataModule::glb_getDataModule()->getTemplate(id, DT_NPC_ESSENCE);
@@ -155,12 +155,19 @@ bool SCWorld::GenerateNpc(int id, cocos2d::Point birthPos)
     //初始化一个npc
     SCNpc * npc = new SCNpc(GID(SC_OBJECT_NPC, npcOriginID++), id);
     npc->init();
-
+   
     //组装npc数据
     //property
     scComPropertyData data;
     data.max_hp = npcData->max_hp;
     npc->addComponent(SC_COMPONENT_PROPERTY, (void *)(&data));
+
+    //动画
+    npc->addComponent((SC_COMPONENT_ARMATURE, (void *)(npcData->res_path));
+    //碰撞
+    //TODO 包围盒数据不知道从何处获取
+    //坐标
+    npc->setPosition(birthPos);
 
     //加入objlist
     _npc_manager.Insert(npc, npc->getID());

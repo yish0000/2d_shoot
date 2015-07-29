@@ -10,6 +10,9 @@ class SCBulletDispatcher : public Dispatcher
 public:
     SCBulletDispatcher(SCObject* pObj) : Dispatcher(pObj) {}
     virtual ~SCBulletDispatcher() {}
+
+public:
+    void SendAttackMessage(int64_t target, int atk_max, int atk_min);
 };
 
 #endif

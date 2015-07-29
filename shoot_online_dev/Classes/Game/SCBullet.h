@@ -17,7 +17,7 @@ public:
 public:
     SCBullet(GID gid, int tid) :SCObject(gid, tid) {}
     SCBullet() {}
-    virtual ~SCNpc();
+    virtual ~SCBullet();
     virtual bool init();
     CREATE_FUNC(SCBullet)
 

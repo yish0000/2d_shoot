@@ -11,7 +11,12 @@
 
 SCComProperty::SCComProperty(scComPropertyData &data)
 {
-    hp = data.max_hp;
+    max_hp = data.max_hp;
+    atk_mode = data.atk_mode;
+    atk_interval = data.atk_mode;
+    bullet_id = data.bullet_id;
+
+    hp = max_hp;
     isZombie = false;
 }
 
@@ -34,10 +39,10 @@ void SCComProperty::HandleAttackMsg(attack_msg& atk_msg)
 {
     if (isZombie) return;
     int damage = SCRandomGen::RandomInt(atk_msg.damage_low, atk_msg.damage_high);
-    if (SCRandomGen::RandomUniform() < atk_msg.crit_rate)
-    {
-        damage = damage * atk_msg.crit_ratio / 100;
-    }
+  //  if (SCRandomGen::RandomUniform() < atk_msg.crit_rate)
+   // {
+   //     damage = damage * atk_msg.crit_ratio / 100;
+  //  }
 
     OnDamage(damage);
 }

@@ -315,6 +315,9 @@
     <ClCompile Include="..\Classes\Game\SCBulletDispatcher.cpp">
       <Filter>Classes\Game</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Game\Components\SCComBulletAtk.cpp">
+      <Filter>Classes\Game\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -583,6 +586,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Game\SCBulletDispatcher.h">
       <Filter>Classes\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Components\SCComBulletAtk.h">
+      <Filter>Classes\Game\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

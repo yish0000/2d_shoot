@@ -22,11 +22,21 @@ enum
     SC_COMPONENT_COLLIDER,		// 碰撞检测
     SC_COMPONENT_PROPERTY,      //  属性 
     SC_COMPONENT_WEAPON,        //  武器
+    SC_COMPONENT_BULLET_ATK,    // 子弹伤害
 };
 
 struct scComPropertyData
 {
     int max_hp;
+    int atk_mode;
+    int atk_interval;
+    int bullet_id;
+};
+
+struct scComBulletAtkData
+{
+    int atk_max;
+    int atk_min;
 };
 
 class SCObject;

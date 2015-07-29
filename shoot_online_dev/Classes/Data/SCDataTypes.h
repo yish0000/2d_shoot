@@ -54,8 +54,10 @@ enum SC_DATA_TYPE
 {
 	DT_INVALID = 0,
 
+    DT_WORLD_ESSENCE,			// 世界模板
 	DT_NPC_ESSENCE,				// NPC模板
-	DT_WORLD_ESSENCE,			// 世界模板
+    DT_BULLET_ESSENCE,          // 子弹模板
+	
 };
 
 ///////////////////////////////////////////////////////////////////////////
@@ -63,26 +65,8 @@ enum SC_DATA_TYPE
 
 DEFINE_TEMPL(NPC_ESSENCE)
 {
-	DEFINE_SUB_TEMPL(equip_info)
-	{
-		std::string res_path;
-		float scale;
-
-		equip_info() : scale(1.0f) {}
-
-		void encode(scnet::JsonStream &stream) const
-		{
-			TEMPL_ENCODE(res_path);
-			TEMPL_ENCODE(scale);
-		}
-
-		void decode(const scnet::JsonStream &stream)
-		{
-			TEMPL_DECODE(res_path);
-			TEMPL_DECODE(scale);
-		}
-	};
-
+    std::string res_path;
+    float scale;
 	int max_hp;
 	int move_speed;
 	int jump_heigh;
@@ -90,11 +74,13 @@ DEFINE_TEMPL(NPC_ESSENCE)
 	int atk_interval;
     int bullet_id;
 
-	NPC_ESSENCE() : max_hp(100), move_speed(0), jump_heigh(100),atk_mode(1), atk_interval(1000), bullet_id(-1) {}
+	NPC_ESSENCE() : scale(1.0),max_hp(100), move_speed(0), jump_heigh(100),atk_mode(1), atk_interval(1000), bullet_id(-1) {}
 
 	void encode(scnet::JsonStream &stream) const
 	{
 		DATA_TEMPL_BASE::encode(stream);
+        TEMPL_ENCODE(res_path);
+        TEMPL_ENCODE(scale);
 		TEMPL_ENCODE(max_hp);
 		TEMPL_ENCODE(move_speed);
 		TEMPL_ENCODE(jump_heigh);
@@ -106,6 +92,8 @@ DEFINE_TEMPL(NPC_ESSENCE)
 	void decode(const scnet::JsonStream &stream)
 	{
 		DATA_TEMPL_BASE::decode(stream);
+        TEMPL_DECODE(res_path);
+        TEMPL_DECODE(scale);
 		TEMPL_DECODE(max_hp);
 		TEMPL_DECODE(move_speed);
 		TEMPL_DECODE(jump_heigh);
@@ -115,6 +103,36 @@ DEFINE_TEMPL(NPC_ESSENCE)
 	}
 };
 
+DEFINE_TEMPL(BULLET_ESSENCE)
+{
+    std::string res_path;
+    float scale;
+    int move_speed;
+    int atk_max;
+    int atk_min;
+
+    BULLET_ESSENCE() : scale(1.0), move_speed(0), atk_min(0), atk_max(0) {}
+
+    void encode(scnet::JsonStream &stream) const
+    {
+        DATA_TEMPL_BASE::encode(stream);
+        TEMPL_ENCODE(res_path);
+        TEMPL_ENCODE(scale);
+        TEMPL_ENCODE(move_speed);
+        TEMPL_ENCODE(atk_max);
+        TEMPL_ENCODE(atk_min);
+    }
+
+    void decode(const scnet::JsonStream &stream)
+    {
+        DATA_TEMPL_BASE::decode(stream);
+        TEMPL_DECODE(res_path);
+        TEMPL_DECODE(scale);
+        TEMPL_DECODE(move_speed);
+        TEMPL_DECODE(atk_max);
+        TEMPL_DECODE(atk_min);
+    }
+};
 ///////////////////////////////////////////////////////////////////////////
 // 世界模板
 
