@@ -3,23 +3,25 @@
 
 #include "SCObject.h"
 #include <string>
+#include "Data/SCDataTypes.h"
 #include "SCBulletController.h"
 #include "SCBulletDispatcher.h"
 
 class SCBullet : public SCObject
 {
 private:
-    //此处定义基本属性
+	BULLET_ESSENCE* m_pEssence;		// 子弹模板
 
 public:
     SCBulletController* _controller;
     SCBulletDispatcher* _dispatcher;
+
 public:
-    SCBullet(GID gid, int tid) :SCObject(gid, tid) {}
-    SCBullet() {}
+	SCBullet(GID gid, int tid);
     virtual ~SCBullet();
+
     virtual bool init();
-    CREATE_FUNC(SCBullet)
+	virtual void update(float dt);
 
 public:
     virtual int DispatchMessage(const Message& msg);

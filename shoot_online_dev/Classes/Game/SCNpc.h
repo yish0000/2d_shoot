@@ -5,21 +5,27 @@
 #include <string>
 #include "SCNpcController.h"
 #include "SCNpcDispatcher.h"
+#include "Data/SCDataTypes.h"
 
 class SCNpc : public SCObject
 {
 private:
-	//此处定义基本属性
+	NPC_ESSENCE* m_pEssence;	// NPC模板
+
+	int m_iCurHP;				// 当前血量
 
 public:
     SCNpcController* _controller;
     SCNpcDispatcher* _dispatcher;
+
 public:
-    SCNpc(GID gid, int tid) :SCObject(gid, tid) {}
-	SCNpc() {}
+	SCNpc(GID gid, int tid);
     virtual ~SCNpc();
+
     virtual bool init();
-    CREATE_FUNC(SCNpc)
+	virtual void update(float dt);
+
+	int getCurHP() const { return m_iCurHP; }
 
 public:
     virtual int DispatchMessage(const Message& msg);

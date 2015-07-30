@@ -39,16 +39,6 @@ bool SCObject::init()
 	if( !Node::init() )
 		return false;
 
-	// 初始化所有组件
-	for(ComponentList::iterator it=m_components.begin(); it!=m_components.end(); ++it)
-	{
-		if( !(*it)->init() )
-		{
-			CCLOG("SCObject::init, initialize the component (%d) failed!", (*it)->getType());
-			return false;
-		}
-	}
-
 	return true;
 }
 
@@ -115,7 +105,10 @@ void SCObject::addComponent(int comType, void* extraData)
 	if( pComponent )
 	{
 		pComponent->setObject(this);
-		m_components.push_back(pComponent);
+		if (pComponent->init())
+			m_components.push_back(pComponent);
+		else
+			CCLOG("SCObject::addComponent, initialize the component (%d) failed!", comType);
 	}
 }
 

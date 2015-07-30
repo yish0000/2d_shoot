@@ -5,6 +5,12 @@
 #include "../SCWorld.h"
 #include "../common/message.h"
 
+struct scComBulletAtkData
+{
+	int atk_max;
+	int atk_min;
+};
+
 class SCComBulletAtk : public SCComponentBase
 {
 public:

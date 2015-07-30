@@ -4,6 +4,12 @@
 #include "SCComponentBase.h"
 #include "../SCWorld.h"
 
+struct scComBulletAtkMoveData
+{
+	int speed;
+	cocos2d::Point birthPos;
+};
+
 class SCComCollider;
 
 class SCComBulletMove : public SCComponentBase

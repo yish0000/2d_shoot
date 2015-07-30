@@ -13,6 +13,15 @@
 #include "../SCWorld.h"
 #include "../common/message.h"
 
+struct scComPropertyData
+{
+	std::string name;
+	int max_hp;
+	int atk_mode;
+	int atk_interval;
+	int bullet_id;
+};
+
 class SCComProperty : public SCComponentBase
 {
 public:

@@ -164,69 +164,40 @@ bool SCWorld::checkCollision(const cocos2d::Rect& bb, const cocos2d::Point& oldP
 		return false;
 }
 
-bool SCWorld::GenerateNpc(int64_t id, const cocos2d::Point& birthPos)
+bool SCWorld::GenerateNpc(int tid, const cocos2d::Point& birthPos)
 {
-    //获取npc的模板数据
-    NPC_ESSENCE *npcData = (NPC_ESSENCE*)glb_getDataModule()->getTemplate(id, DT_NPC_ESSENCE);
-    if (!npcData)
-    {
-        CCLOG("GenerateNpc err! not found Essense! id : %lld", id);
-        return false;
-    }
-
     //初始化一个npc
-    SCNpc * npc = new SCNpc(GID(SC_OBJECT_NPC, npcOriginID++), id);
-    npc->init();
-   
-    //组装npc数据
-    //property
-    scComPropertyData data;
-    data.atk_mode = npcData->atk_mode;
-    data.atk_interval = npcData->atk_interval;
-    data.bullet_id = npcData->bullet_id;
-    data.name = npcData->name;
-    data.max_hp = npcData->max_hp;
-    npc->addComponent(SC_COMPONENT_PROPERTY, (void *)(&data));
+    SCNpc* npc = new SCNpc(GID(SC_OBJECT_NPC, npcOriginID++), tid);
+	if (!npc->init())
+	{
+		delete npc;
+		CCLOG("SCWorld::GenerateNpc, initialize the npc failed! (tid=%d)", tid);
+		return false;
+	}
 
-    //动画
-    npc->addComponent(SC_COMPONENT_ARMATURE, (void *)(&(npcData->res_path)));
-    //碰撞
-    //TODO 包围盒数据不知道从何处获取
-    //坐标
     npc->setPosition(birthPos);
+	m_pTileMap->addChildToLayer(npc, "rd_add", SCENELAYER_ZORDER_NPC);
 
     //加入objlist
 	_npc_manager.Insert(npc, npc->getID());
-
     return true;
 }
 
-bool SCWorld::GenerateBullet(int64_t id, const cocos2d::Point& birthPos)
+bool SCWorld::GenerateBullet(int tid, const cocos2d::Point& birthPos)
 {
-    //获取子弹的模板数据
-    BULLET_ESSENCE *bulletData = (BULLET_ESSENCE*)glb_getDataModule()->getTemplate(id, DT_BULLET_ESSENCE);
-    if (!bulletData)
-    {
-        CCLOG("GenerateBullet err! not found Essense! id : %lld", id);
-        return false;
-    }
-
     //初始化一个子弹
-    SCBullet *bullet = new SCBullet(GID(SC_OBJECT_BULLET, bulletOriginID++), id);
-    bullet->init();
+    SCBullet *bullet = new SCBullet(GID(SC_OBJECT_BULLET, bulletOriginID++), tid);
+	if (!bullet->init())
+	{
+		delete bullet;
+		CCLOG("SCWorld::GenerateBullet, initialize the bullet failed! (tid=%d)", tid);
+		return false;
+	}
 
-    //组装子弹数据
-    //攻击属性
-    scComBulletAtkData data;
-    data.atk_max = bulletData->atk_max;
-    data.atk_min = bulletData->atk_min;
-    bullet->addComponent(SC_COMPONENT_BULLET_ATK, (void *)(&data));
-    //动画
-    bullet->addComponent(SC_COMPONENT_ARMATURE, (void *)(&(bulletData->res_path)));
-    //碰撞
-    //TODO 包围盒数据不知道从何处获取
     //坐标
     bullet->setPosition(birthPos);
-    //加入子弹list
+	m_pTileMap->addChildToLayer(bullet, "rd_add", SCENELAYER_ZORDER_SUBOBJECT);
+
+	_bullet_manager.Insert(bullet, bullet->getID());
     return true;
 }

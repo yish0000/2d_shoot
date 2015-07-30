@@ -15,21 +15,16 @@
 
 USING_NS_CC;
 
-SCHostPlayer::SCHostPlayer() : SCObject()
+SCHostPlayer::SCHostPlayer() : SCObject(GID(SC_OBJECT_HOSTPLAYER, 0), 1)
 {
-	Rect rcBound(-32, 0, 64, 128);
-	addComponent(SC_COMPONENT_ARMATURE, (void*)"zhujuenan");
-	addComponent(SC_COMPONENT_COLLIDER, (void*)&rcBound);
-	addComponent(SC_COMPONENT_PLAYERFSM, NULL);
-	addComponent(SC_COMPONENT_PLAYERMOVE, NULL);
+	_controller = new SCHostPlayerController(this);
+	_dispatcher = new SCHostPlayerDispatcher(this);
 }
 
 SCHostPlayer::~SCHostPlayer()
 {
-    delete _controller;
-    _controller = NULL;
-    delete _dispatcher;
-    _dispatcher = NULL;
+	CC_SAFE_DELETE(_controller);
+	CC_SAFE_DELETE(_dispatcher);
 }
 
 int SCHostPlayer::DispatchMessage(const Message &msg)
@@ -42,8 +37,13 @@ bool SCHostPlayer::init()
 	if( !SCObject::init() )
 		return false;
 
-    _controller = new SCHostPlayerController(this);
-    _dispatcher = new SCHostPlayerDispatcher(this);
+	// 初始化组件
+	Rect rcBound(-32, 0, 64, 128);
+	addComponent(SC_COMPONENT_ARMATURE, (void*)"zhujuenan");
+	addComponent(SC_COMPONENT_COLLIDER, (void*)&rcBound);
+	addComponent(SC_COMPONENT_PLAYERFSM, NULL);
+	addComponent(SC_COMPONENT_PLAYERMOVE, NULL);
+
 	SCComArmature* pArmature = dynamic_cast<SCComArmature*>(getComponent(SC_COMPONENT_ARMATURE));
 	pArmature->playAnimation("zhanli", true);
 	pArmature->setScaleX(-1.0f);

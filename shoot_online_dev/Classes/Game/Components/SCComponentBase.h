@@ -28,27 +28,6 @@ enum
 	SC_COMPONENT_SPRITE,		// 2D精灵
 };
 
-struct scComPropertyData
-{
-    std::string name;
-    int max_hp;
-    int atk_mode;
-    int atk_interval;
-    int bullet_id;
-};
-
-struct scComBulletAtkData
-{
-    int atk_max;
-    int atk_min;
-};
-
-struct scComBulletAtkMoveData
-{
-    int speed;
-    cocos2d::Point birthPos;
-};
-
 class SCObject;
 
 class SCComponentBase
