@@ -84,6 +84,12 @@ void SCComArmature::playAnimation(const char* name, bool bLoop, bool bRestart)
 			return;
 	}
 
+	if( !m_pAnimation->getAnimationData()->getMovement(name) )
+	{
+		CCLOG("SCComArmature::playAnimation, cannot find the specified animation! (%s)", name);
+		return;
+	}
+
 	if( bLoop )
 		m_pAnimation->play(name, -1);
 	else

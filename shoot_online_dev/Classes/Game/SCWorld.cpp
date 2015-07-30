@@ -72,7 +72,13 @@ bool SCWorld::init()
 
 	// 读取模板
 	m_pEssence = (WORLD_ESSENCE*)glb_getDataModule()->getTemplate(m_iWorldID, DT_WORLD_ESSENCE);
-	m_pEssence->retain();
+	if( m_pEssence )
+		m_pEssence->retain();
+	else
+	{
+		CCLOG("SCWorld::init, create the world failed! (tid=%d)", m_iWorldID);
+		return false;
+	}
 
     SCRandomGen::Init();
 	m_pTileMap = SCTiledMap::create(m_iWorldID);
