@@ -34,11 +34,14 @@ bool SCBullet::init()
 	}
 
 	//¹¥»÷ÊôĞÔ
-	scComBulletAtkData data;
-	data.atk_max = m_pEssence->atk_max;
-	data.atk_min = m_pEssence->atk_min;
-	addComponent(SC_COMPONENT_BULLET_ATK, (void *)(&data));
+	scComBulletAtkData atkData;
+	atkData.atk_max = m_pEssence->atk_max;
+	atkData.atk_min = m_pEssence->atk_min;
+	addComponent(SC_COMPONENT_BULLET_ATK, (void *)(&atkData));
 
+    scComBulletMoveData moveData;
+    moveData.speed = m_pEssence->move_speed;
+    addComponent(SC_COMPONENT_BULLET_MOVE, (void *)(&moveData));
 	// Í¼Æ¬×é¼ş
 	addComponent(SC_COMPONENT_SPRITE, (void*)m_pEssence->res_path.c_str());
 

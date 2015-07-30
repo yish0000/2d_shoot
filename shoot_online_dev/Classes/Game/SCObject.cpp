@@ -16,6 +16,8 @@
 #include "Components/SCComPlayerFSM.h"
 #include "Components/SCComProperty.h"
 #include "Components/SCComSprite.h"
+#include "Components/SCComBulletMove.h"
+#include "Components/SCComBulletAtk.h"
 
 USING_NS_CC;
 
@@ -98,6 +100,23 @@ void SCObject::addComponent(int comType, void* extraData)
 				pComponent = new SCComSprite(filename);
 		}
 		break;
+    case SC_COMPONENT_BULLET_ATK:
+        {
+            scComBulletAtkData *data = (scComBulletAtkData *)extraData;
+            if (!data)
+                CCLOG("SCObject::addComponent, extraData for SCComBulletAtk must not be null! comType: %d", comType);
+            else
+                pComponent = new SCComBulletAtk(*data);
+        }
+        break;
+    case SC_COMPONENT_BULLET_MOVE:
+        {
+            scComBulletMoveData *data = (scComBulletMoveData *)extraData;
+            if (!data)
+                CCLOG("SCObject::addComponent, extraData for SCComBulletMove must not be null! comType: %d", comType);
+            else
+                pComponent = new SCComBulletMove(*data);
+        }
 	default:
 		CCLOG("SCObject::addComponent, unknown component type!");
 	}

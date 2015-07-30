@@ -4,7 +4,7 @@
 #include "SCComponentBase.h"
 #include "../SCWorld.h"
 
-struct scComBulletAtkMoveData
+struct scComBulletMoveData
 {
 	int speed;
 	cocos2d::Point birthPos;
@@ -16,7 +16,7 @@ class SCComBulletMove : public SCComponentBase
 {
 public:
     SCComBulletMove() : SCComponentBase(SC_COMPONENT_BULLET_MOVE) {}
-    SCComBulletMove(scComBulletAtkMoveData& data);
+    SCComBulletMove(scComBulletMoveData& data);
     virtual ~SCComBulletMove() {}
     virtual bool init();
     virtual void update(float dt);

@@ -1,6 +1,6 @@
 #include "SCComBulletMove.h"
 
-SCComBulletMove::SCComBulletMove(scComBulletAtkMoveData& data)
+SCComBulletMove::SCComBulletMove(scComBulletMoveData& data)
     :SCComponentBase(SC_COMPONENT_BULLET_MOVE)
 {
     speed = data.speed;
