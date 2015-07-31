@@ -39,10 +39,6 @@ public:
 	virtual bool init();
 	virtual void update(float dt);
 
-	// 对齐方式
-	void setAlign(UIAlignType align);
-	UIAlignType getAlign() const { return m_alignType; }
-
 	// 根据路径取一个界面的子控件
 	cocos2d::ui::Widget* getControlByPath(const char* path);
 	// 获取一个指定节点的子控件
@@ -52,13 +48,19 @@ public:
 
 	// 显示界面
 	void showUI();
+	// 隐藏界面
 	void hideUI();
+
+	// 设置控件对齐方式
+	// path: 指定控件的路径
+	// align: 对齐方式
+	// pos: 相对位置
+	void setWidgetAlign(const char* path, UIAlignType align, const cocos2d::Point& pos);
 
 protected:
 	std::string m_sFilename;				// 本界面的文件路径
 	SCUIModule* m_pUIModule;				// UI模块的指针
 	cocos2d::ui::Widget* m_pRootWidget;		// 本界面的节点树
-	UIAlignType m_alignType;
 
 	// Get the pointer of specified control
 	template <class T>

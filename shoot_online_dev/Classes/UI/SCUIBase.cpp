@@ -102,15 +102,6 @@ void SCUIBase::update(float dt)
 
 }
 
-void SCUIBase::setAlign(UIAlignType align)
-{
-	if (m_alignType != align)
-	{
-
-		m_alignType = align;
-	}
-}
-
 void SCUIBase::showUI()
 {
 	if (isVisible())
@@ -127,4 +118,56 @@ void SCUIBase::hideUI()
 
 	setVisible(false);
 	onHideUI();
+}
+
+void SCUIBase::setWidgetAlign(const char* path, UIAlignType align, const cocos2d::Point& pos)
+{
+	Widget* pWidget = getControlByPath(path);
+	if( !pWidget ) return;
+
+	Point realPos(0, 0);
+	Size winSize = Director::getInstance()->getWinSize();
+	switch(align)
+	{
+	case UI_ALIGN_CENTER:
+		realPos.setPoint(winSize.width / 2, winSize.height / 2);
+		break;
+	case UI_ALIGN_LEFT_BOTTOM:
+		realPos.setPoint(0, 0);
+		break;
+	case UI_ALIGN_LEFT_MIDDLE:
+		realPos.setPoint(0, winSize.height / 2);
+		break;
+	case UI_ALIGN_LEFT_TOP:
+		realPos.setPoint(0, winSize.height);
+		break;
+	case UI_ALIGN_MIDDLE_TOP:
+		realPos.setPoint(winSize.width / 2, winSize.height);
+		break;
+	case UI_ALIGN_MIDDLE_BOTTOM:
+		realPos.setPoint(winSize.width / 2, 0);
+		break;
+	case UI_ALIGN_RIGHT_BOTTOM:
+		realPos.setPoint(winSize.width, 0);
+		break;
+	case UI_ALIGN_RIGHT_MIDDLE:
+		realPos.setPoint(winSize.width, winSize.height / 2);
+		break;
+	case UI_ALIGN_RIGHT_TOP:
+		realPos.setPoint(winSize.width, winSize.height);
+		break;
+	}
+
+	realPos += pos;
+
+	if( pWidget->getParent() == m_pRootWidget )
+		pWidget->setPosition(realPos);
+	else
+	{
+		Node* pParent = pWidget->getParent();
+
+		// 转换到父节点的空间
+		Point posInParent = pParent->convertToNodeSpace(realPos);
+		pWidget->setPosition(posInParent);
+	}
 }

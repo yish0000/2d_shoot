@@ -31,8 +31,9 @@ public:
 		bool visible;				// 初始时是否显示
 		std::string parent_name;	// 父界面
 		int zOrder;					// z值
+		bool modalDlg;				// 是否是模态对话框
 
-		UIMetaInfo() : type(FRAME_COMMON), visible(false), zOrder(0) {}
+		UIMetaInfo() : type(FRAME_COMMON), visible(false), zOrder(0), modalDlg(false) {}
 	};
 
 	typedef std::unordered_map<std::string, UIMetaInfo> UIMetaInfoTable;
