@@ -11,6 +11,7 @@
 #define __SC_COMSPRITE_H__
 
 #include "SCComponentBase.h"
+#include "2d/CCSprite.h"
 
 class SCComSprite : public SCComponentBase
 {

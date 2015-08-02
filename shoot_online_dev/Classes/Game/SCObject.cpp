@@ -80,10 +80,16 @@ void SCObject::addComponent(int comType, void* extraData)
 		}
 		break;
 	case SC_COMPONENT_PLAYERFSM:
-		pComponent = new SCComPlayerFSM();
+		if( isHostPlayer() )
+			pComponent = new SCComPlayerFSM();
+		else
+			CCLOG("SCObject::addComponent, This component(SC_COMPONENT_PLAYERFSM) can only be used by SCHostPlayer!");
 		break;
 	case SC_COMPONENT_PLAYERMOVE:
-		pComponent = new SCComPlayerMove();
+		if( isHostPlayer() )
+			pComponent = new SCComPlayerMove();
+		else
+			CCLOG("SCObject::addComponent, This component(SC_COMPONENT_PLAYERMOVE) can only be used by SCHostPlayer!");
 		break;
 	case SC_COMPONENT_PROPERTY:
 		{
@@ -149,6 +155,10 @@ void SCObject::setFaceDirection(int dir)
 	SCComArmature* pArmature = dynamic_cast<SCComArmature*>(getComponent(SC_COMPONENT_ARMATURE));
 	if( pArmature )
 		pArmature->refreshArmature();
+
+	SCComSprite* pSprite = dynamic_cast<SCComSprite*>(getComponent(SC_COMPONENT_SPRITE));
+	if( pSprite )
+		pSprite->refreshSprite();
 
 	SCComCollider* pCollider = dynamic_cast<SCComCollider*>(getComponent(SC_COMPONENT_COLLIDER));
 	if( pCollider )

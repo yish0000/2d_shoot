@@ -11,7 +11,6 @@
 #define __SC_COMPONENTBASE_H__
 
 #include <string>
-#include "cocos2d.h"
 
 enum
 {

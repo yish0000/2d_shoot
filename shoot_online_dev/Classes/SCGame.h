@@ -34,6 +34,9 @@ public:
 
 	virtual void start();
 	virtual void update(float dt);
+
+	void onEnterBackground();
+	void onEnterForeground();
     
     // 从本地加载数据
     bool loadData();

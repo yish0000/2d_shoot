@@ -33,7 +33,7 @@ class SCUIModule;
 class SCUIBase : public cocos2d::Node
 {
 public:
-	SCUIBase(const std::string& filename);
+	SCUIBase(const std::string& name, const std::string& filename);
 	virtual ~SCUIBase();
 
 	virtual bool init();
@@ -57,6 +57,12 @@ public:
 	// pos: 相对位置
 	void setWidgetAlign(const char* path, UIAlignType align, const cocos2d::Point& pos);
 
+	// 是否模态对话框
+	bool isModalDialog() const;
+
+	// 获取界面文件路径
+	const std::string& getFileName() const { return m_sFilename; }
+
 protected:
 	std::string m_sFilename;				// 本界面的文件路径
 	SCUIModule* m_pUIModule;				// UI模块的指针
@@ -65,6 +71,9 @@ protected:
 	// Get the pointer of specified control
 	template <class T>
 	void DDX_Control(T*& pControl, const char* szName, bool bRetain = false);
+
+	// 对齐控件
+	void alignControls();
 
 	virtual void onShowUI() {}
 	virtual void onHideUI() {}

@@ -16,6 +16,7 @@ using namespace cocostudio;
 
 SCComArmature::SCComArmature(const std::string& res_name)
 	: SCComponentBase(SC_COMPONENT_ARMATURE), m_sResName(res_name), m_pArmature(NULL), m_pAnimation(NULL)
+	, m_iInitFaceDir(1)
 {
 }
 
@@ -53,12 +54,18 @@ void SCComArmature::update(float dt)
 {
 }
 
+void SCComArmature::setInitFaceDir(int dir)
+{
+	m_iInitFaceDir = dir;
+	m_pArmature->setScaleX(m_iInitFaceDir);
+}
+
 void SCComArmature::refreshArmature()
 {
-	int dir = m_pGameObj->getFaceDirection();
+	int dir = m_pGameObj->getFaceDirection() * m_iInitFaceDir;
 	CCASSERT(dir == 1 || dir == -1, "Invalid face direction value!!");
 
-	m_pArmature->setScaleX(m_pArmature->getScaleX() * dir);
+	m_pArmature->setScaleX(fabs(m_pArmature->getScaleX()) * dir);
 }
 
 void SCComArmature::setScale(float x, float y)

@@ -42,6 +42,7 @@ bool SCBullet::init()
     scComBulletMoveData moveData;
     moveData.speed = m_pEssence->move_speed;
     addComponent(SC_COMPONENT_BULLET_MOVE, (void *)(&moveData));
+
 	// Í¼Æ¬×é¼ş
 	addComponent(SC_COMPONENT_SPRITE, (void*)m_pEssence->res_path.c_str());
 

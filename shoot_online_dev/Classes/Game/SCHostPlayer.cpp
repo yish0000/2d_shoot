@@ -46,7 +46,7 @@ bool SCHostPlayer::init()
 
 	SCComArmature* pArmature = dynamic_cast<SCComArmature*>(getComponent(SC_COMPONENT_ARMATURE));
 	pArmature->playAnimation("zhanli", true);
-	pArmature->setScaleX(-1.0f);
+	pArmature->setInitFaceDir(-1);
 	return true;
 }
 

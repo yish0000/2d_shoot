@@ -57,6 +57,16 @@ void SCGame::update(float dt)
 
 }
 
+void SCGame::onEnterForeground()
+{
+	SCModuleManager::getInstance().dispatchEvent(SC_EVENT_APP_ENTERFRONT);
+}
+
+void SCGame::onEnterBackground()
+{
+	SCModuleManager::getInstance().dispatchEvent(SC_EVENT_APP_ENTERBACK);
+}
+
 // 临时代码， DEMO
 void SCGame::changeGameState(SCGame::GAMESTATE state)
 {

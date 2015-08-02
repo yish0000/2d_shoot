@@ -94,6 +94,15 @@ bool SCWorld::init()
 
     npcOriginID = 10000;
     bulletOriginID = 80000;
+
+	// 创建NPC
+	const SCTiledMap::NPCList& npcList = m_pTileMap->getNpcPointList();
+	for(SCTiledMap::NPCList::const_iterator it=npcList.begin(); it!=npcList.end(); ++it)
+	{
+		SCTMNPC* pNPC = *it;
+		GenerateNpc(pNPC->m_iTID, pNPC->m_pos);
+	}
+
     return true;
 }
 

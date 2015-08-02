@@ -9,13 +9,14 @@
 
 #include "SCUIModule.h"
 
+// 这里包含界面的头文件
 #include "SCUISkill.h"
 
 typedef std::function<SCUIBase*()> UI_CREATE_FUNC;
 static std::unordered_map<std::string, UI_CREATE_FUNC> l_UICreateFuncMap;
 
 #define DECLARE_UI_CREATE_FUNC(name, cls) { \
-	auto funcPtr = [&]() -> SCUIBase* { return new cls(m_UIMetas[name].filename); }; \
+	auto funcPtr = [&]() -> SCUIBase* { return new cls(name, m_UIMetas[name].filename); }; \
 	l_UICreateFuncMap[name] = funcPtr; \
 }
 

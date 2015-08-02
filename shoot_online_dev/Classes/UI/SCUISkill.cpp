@@ -14,8 +14,8 @@
 USING_NS_CC;
 using namespace ui;
 
-SCUISkill::SCUISkill(const std::string& filename)
-	: SCUIBase(filename)
+SCUISkill::SCUISkill(const std::string& name, const std::string& filename)
+	: SCUIBase(name, filename)
 {
 }
 

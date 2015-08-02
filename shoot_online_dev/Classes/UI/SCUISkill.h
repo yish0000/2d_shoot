@@ -15,7 +15,7 @@
 class SCUISkill : public SCUIBase
 {
 public:
-	SCUISkill(const std::string& filename);
+	SCUISkill(const std::string& name, const std::string& filename);
 	virtual ~SCUISkill();
 
 	virtual bool init();

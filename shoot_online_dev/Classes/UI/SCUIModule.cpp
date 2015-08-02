@@ -41,6 +41,13 @@ bool SCUIModule::init()
 		return false;
 	}
 
+	// 加载UI对齐数据
+	if( !loadUIAlignData() )
+	{
+		CCLOG("SCUIModule::init, load the align data failed!");
+		return false;
+	}
+
 	initUICreateFunc();
     return true;
 }
@@ -82,7 +89,92 @@ bool SCUIModule::loadUIMetaData()
 			info.parent_name = pFrame->Attribute("parent");
 		if (pFrame->Attribute("z"))
 			info.zOrder = pFrame->IntAttribute("z");
+		if( pFrame->Attribute("modal") )
+			info.modalDlg = pFrame->BoolAttribute("modal");
 		m_UIMetas[info.name] = info;
+
+		pFrame = pFrame->NextSiblingElement("frame");
+	}
+
+	return true;
+}
+
+static UIAlignType str2AlignType(const char* str)
+{
+	if( !strcmp(str, "left") )
+		return UI_ALIGN_LEFT;
+	else if( !strcmp(str, "top") )
+		return UI_ALIGN_TOP;
+	else if( !strcmp(str, "right") )
+		return UI_ALIGN_RIGHT;
+	else if( !strcmp(str, "bottom") )
+		return UI_ALIGN_BOTTOM;
+	else if( !strcmp(str, "left_top") )
+		return UI_ALIGN_LEFT_TOP;
+	else if( !strcmp(str, "left_middle") )
+		return UI_ALIGN_LEFT_MIDDLE;
+	else if( !strcmp(str, "left_bottom") )
+		return UI_ALIGN_LEFT_BOTTOM;
+	else if( !strcmp(str, "middle_top") )
+		return UI_ALIGN_MIDDLE_TOP;
+	else if( !strcmp(str, "center") )
+		return UI_ALIGN_CENTER;
+	else if( !strcmp(str, "middle_bottom") )
+		return UI_ALIGN_MIDDLE_BOTTOM;
+	else if( !strcmp(str, "right_top") )
+		return UI_ALIGN_RIGHT_TOP;
+	else if( !strcmp(str, "right_middle") )
+		return UI_ALIGN_RIGHT_MIDDLE;
+	else if( !strcmp(str, "right_bottom") )
+		return UI_ALIGN_RIGHT_BOTTOM;
+	else
+		return UI_ALIGN_NONE;
+}
+
+bool SCUIModule::loadUIAlignData()
+{
+	std::string fileData = FileUtils::getInstance()->getStringFromFile("ui/uialign.xml");
+
+	tinyxml2::XMLDocument xmlDoc;
+	if (xmlDoc.Parse(fileData.c_str()) != tinyxml2::XML_SUCCESS)
+	{
+		CCLOG("SCUIModule::loadUIAlignData, parse the ui align data failed!");
+		return false;
+	}
+
+	tinyxml2::XMLElement* pRoot = xmlDoc.FirstChildElement();
+	if (!pRoot)
+	{
+		CCLOG("SCUIModule, failed to get the root node of this document!");
+		return false;
+	}
+
+	tinyxml2::XMLElement* pFrame = pRoot->FirstChildElement("frame");
+	while (pFrame)
+	{
+		std::string frameName = pFrame->Attribute("name");
+
+		if (m_UIAligns.find(frameName) != m_UIAligns.end())
+		{
+			CCLOG("SCUIModule, frame name duplicated! (%s)", frameName.c_str());
+			return false;
+		}
+
+		m_UIAligns[frameName] = UIAlignList();
+
+		tinyxml2::XMLElement* pObject = pFrame->FirstChildElement("object");
+		while(pObject)
+		{
+			UIAlignInfo align;
+			align.obj_path = pObject->Attribute("name");
+			align.align = str2AlignType(pObject->Attribute("align"));
+			if( pObject->Attribute("x") )
+				align.pos.x = pObject->IntAttribute("x");
+			if( pObject->Attribute("y") )
+				align.pos.y = pObject->IntAttribute("y");
+			m_UIAligns[frameName].push_back(align);
+			pObject = pObject->NextSiblingElement("object");
+		}
 
 		pFrame = pFrame->NextSiblingElement("frame");
 	}
@@ -193,6 +285,37 @@ cocos2d::Layer* SCUIModule::getUILayer()
 {
 	SCSceneBase* pCurScene = SCSceneManager::getInstance().getCurScene();
 	return pCurScene ? pCurScene->getUILayer() : NULL;
+}
+
+bool SCUIModule::isModalDialog(const std::string& name) const
+{
+	UIMetaInfoTable::const_iterator it = m_UIMetas.find(name);
+	if( it != m_UIMetas.end() )
+		return it->second.modalDlg;
+	else
+		return false;
+}
+
+const SCUIModule::UIAlignList* SCUIModule::getUIAlignList(const std::string& frameName) const
+{
+	UIAlignMap::const_iterator it = m_UIAligns.find(frameName);
+	return it != m_UIAligns.end() ? &it->second : NULL;
+}
+
+const SCUIModule::UIAlignInfo* SCUIModule::getUIAlignInfo(const std::string& frameName, const std::string& obj_path) const
+{
+	UIAlignMap::const_iterator it = m_UIAligns.find(frameName);
+	if( it != m_UIAligns.end() )
+	{
+		const UIAlignList& lst = it->second;
+		for(size_t i=0; i<lst.size(); ++i)
+		{
+			if( lst[i].obj_path == obj_path )
+				return &lst[i];
+		}
+	}
+
+	return NULL;
 }
 
 void SCUIModule::onEventModuleInited(SCEvent* pEvent)

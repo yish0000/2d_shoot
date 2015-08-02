@@ -8,14 +8,18 @@
  */
 
 #include "SCUIBase.h"
+#include "SCUIModule.h"
 #include "cocostudio/CocoStudio.h"
+#include "Utility/SCUtilityFunc.h"
 
 USING_NS_CC;
 using namespace ui;
 
-SCUIBase::SCUIBase(const std::string& filename)
-	: m_sFilename(filename), m_pRootWidget(NULL), m_alignType(UI_ALIGN_CENTER)
+SCUIBase::SCUIBase(const std::string& name, const std::string& filename)
+	: m_sFilename(filename), m_pRootWidget(NULL)
 {
+	setName(name);
+	m_pUIModule = glb_getUIModule();
 }
 
 SCUIBase::~SCUIBase()
@@ -37,9 +41,23 @@ bool SCUIBase::init()
 
 	Size winSize = Director::getInstance()->getWinSize();
 	m_pRootWidget->setContentSize(winSize);
-	m_pRootWidget->setTouchEnabled(false);
+	alignControls();
+	if( !m_pUIModule->isModalDialog(getName()) )
+		m_pRootWidget->setTouchEnabled(false);
 	addChild(m_pRootWidget);
 	return true;
+}
+
+void SCUIBase::alignControls()
+{
+	const SCUIModule::UIAlignList* pAlignList = m_pUIModule->getUIAlignList(getName());
+	if( !pAlignList ) return;
+
+	SCUIModule::UIAlignList::const_iterator it = pAlignList->begin();
+	for(; it != pAlignList->end(); ++it)
+	{
+		setWidgetAlign(it->obj_path.c_str(), it->align, it->pos);
+	}
 }
 
 // Split the string
@@ -122,11 +140,12 @@ void SCUIBase::hideUI()
 
 void SCUIBase::setWidgetAlign(const char* path, UIAlignType align, const cocos2d::Point& pos)
 {
+	if( align == UI_ALIGN_NONE ) return;
 	Widget* pWidget = getControlByPath(path);
 	if( !pWidget ) return;
 
-	Point realPos(0, 0);
-	Size winSize = Director::getInstance()->getWinSize();
+	Point realPos = pWidget->getPosition();
+	Size winSize = m_pRootWidget->getContentSize();
 	switch(align)
 	{
 	case UI_ALIGN_CENTER:
@@ -156,6 +175,18 @@ void SCUIBase::setWidgetAlign(const char* path, UIAlignType align, const cocos2d
 	case UI_ALIGN_RIGHT_TOP:
 		realPos.setPoint(winSize.width, winSize.height);
 		break;
+	case UI_ALIGN_TOP:
+		realPos.y = winSize.height;
+		break;
+	case UI_ALIGN_LEFT:
+		realPos.x = 0;
+		break;
+	case UI_ALIGN_BOTTOM:
+		realPos.y = 0;
+		break;
+	case UI_ALIGN_RIGHT:
+		realPos.x = winSize.width;
+		break;
 	}
 
 	realPos += pos;
@@ -170,4 +201,9 @@ void SCUIBase::setWidgetAlign(const char* path, UIAlignType align, const cocos2d
 		Point posInParent = pParent->convertToNodeSpace(realPos);
 		pWidget->setPosition(posInParent);
 	}
+}
+
+bool SCUIBase::isModalDialog() const
+{
+	return m_pRootWidget->isTouchEnabled();
 }

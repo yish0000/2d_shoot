@@ -38,6 +38,11 @@ public:
 	// 设置透明
 	void fadeTo(int opacity, float fTime);
 
+	// 设置模型的初始朝向
+	void setInitFaceDir(int dir);
+	// 获取模型的初始朝向
+	int getInitFaceDir() const { return m_iInitFaceDir; }
+
 	// 获取当前播放的动画
 	std::string getCurAnimName() const;
 
@@ -48,6 +53,7 @@ protected:
 	std::string m_sResName;
 	cocostudio::Armature* m_pArmature;
 	cocostudio::ArmatureAnimation* m_pAnimation;
+	int m_iInitFaceDir;		// 初始朝向
 };
 
 ///////////////////////////////////////////////////////////////////////////

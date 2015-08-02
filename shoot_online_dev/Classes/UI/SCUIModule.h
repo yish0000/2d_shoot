@@ -39,6 +39,19 @@ public:
 	typedef std::unordered_map<std::string, UIMetaInfo> UIMetaInfoTable;
 	typedef std::unordered_map<std::string, SCUIBase*> UITable;
 
+	// UI对齐配置
+	struct UIAlignInfo
+	{
+		std::string obj_path;
+		UIAlignType align;
+		cocos2d::Point pos;
+
+		UIAlignInfo() : align(UI_ALIGN_NONE), pos(0, 0) {}
+	};
+
+	typedef std::vector<UIAlignInfo> UIAlignList;
+	typedef std::map<std::string, UIAlignList> UIAlignMap;
+
 public:
 	SCUIModule();
 	virtual ~SCUIModule();
@@ -54,18 +67,29 @@ public:
 	// 获取指定的界面
 	SCUIBase* getUIFrame(const std::string& name);
 
+	// 指定界面是否一个模态对话框
+	bool isModalDialog(const std::string& name) const;
+
+	// 获取UI缩放
 	float getUIScale() const { return m_fUIScale; }
 
 	// 获取UI层
 	cocos2d::Layer* getUILayer();
+
+	// 获取指定UI元素的对齐信息
+	const UIAlignInfo* getUIAlignInfo(const std::string& frameName, const std::string& obj_path) const;
+	// 获取指定UI界面的对齐信息列表
+	const UIAlignList* getUIAlignList(const std::string& frameName) const;
 	
 protected:
 	UIFrameType m_iCurType;
 	float m_fUIScale;
 	UIMetaInfoTable m_UIMetas;
+	UIAlignMap m_UIAligns;
 	UITable m_UITable;
 
 	bool loadUIMetaData();
+	bool loadUIAlignData();
 	void initUICreateFunc();
 	SCUIBase* createUIFrame(const std::string& name);
 

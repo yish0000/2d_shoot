@@ -46,6 +46,8 @@ void AppDelegate::applicationDidEnterBackground() {
 
     // if you use SimpleAudioEngine, it must be pause
     // SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
+
+	SCGame::getInstance().onEnterBackground();
 }
 
 // this function will be called when the app is active again
@@ -54,4 +56,6 @@ void AppDelegate::applicationWillEnterForeground() {
 
     // if you use SimpleAudioEngine, it must resume here
     // SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
+
+	SCGame::getInstance().onEnterForeground();
 }
