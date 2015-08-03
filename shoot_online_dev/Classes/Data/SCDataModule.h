@@ -54,6 +54,7 @@ protected:
 	// 获取指定类型的模板
 	NPC_ESSENCE* getNPCEssence(int tid);
 	WORLD_ESSENCE* getWorldEssence(int tid);
+	BULLET_ESSENCE* getBulletEssence(int tid);
 
 	// 删除模板数据
 	void deleteTemplate(int tid);

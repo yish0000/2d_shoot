@@ -110,7 +110,7 @@ static bool loadTemplateFromFile(DATA_TEMPL_BASE* pTempl, const char* filename)
 	std::string content = FileUtils::getInstance()->getStringFromFile(filename);
 	if (!json.parse(content, rootNode))
 	{
-		CCLOG("SCConfigs::load, parse the file content failed! (%s)", filename);
+		CCLOG("SCConfigs::load, parse the file(%s) content failed! Reason=%s", filename, json.getFormattedErrorMessages().c_str());
 		return false;
 	}
 
@@ -132,7 +132,7 @@ NPC_ESSENCE* SCDataModule::getNPCEssence(int tid)
 		return NULL;
 	}
 
-	addTemplate(pTempl->tid, pTempl);
+	addTemplate(tid, pTempl);
 	return pTempl;
 }
 
@@ -148,7 +148,23 @@ WORLD_ESSENCE* SCDataModule::getWorldEssence(int tid)
 		return NULL;
 	}
 
-	addTemplate(pTempl->tid, pTempl);
+	addTemplate(tid, pTempl);
+	return pTempl;
+}
+
+BULLET_ESSENCE* SCDataModule::getBulletEssence(int tid)
+{
+	char szFile[260];
+	sprintf(szFile, "data/bullet/%d.json", tid);
+
+	BULLET_ESSENCE* pTempl = new BULLET_ESSENCE();
+	if (!loadTemplateFromFile(pTempl, szFile))
+	{
+		delete pTempl;
+		return NULL;
+	}
+
+	addTemplate(tid, pTempl);
 	return pTempl;
 }
 

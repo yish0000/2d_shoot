@@ -120,7 +120,6 @@ void SCComPlayerMove::move(float xDir, float yDir)
 
 	// 更新移动速度
 	setSpeedX(m_fMoveSpeed * m_fXDirection);
-//	m_iJumpCount = 0;
 }
 
 void SCComPlayerMove::jump()

@@ -43,7 +43,7 @@ bool SCNpc::init()
 	data.atk_mode = m_pEssence->atk_mode;
 	data.atk_interval = m_pEssence->atk_interval;
 	data.bullet_id = m_pEssence->bullet_id;
-	data.name = m_pEssence->name;
+//	data.name = m_pEssence->name;
 	data.max_hp = m_pEssence->max_hp;
 	addComponent(SC_COMPONENT_PROPERTY, (void*)(&data));
 
@@ -53,7 +53,7 @@ bool SCNpc::init()
 
 	SCComArmature* pArmature = dynamic_cast<SCComArmature*>(getComponent(SC_COMPONENT_ARMATURE));
 	pArmature->playAnimation("zhanli", true);
-	pArmature->setScaleX(-1.0f);
+	pArmature->setInitFaceDir(1);
     return true;
 }
 

@@ -17,23 +17,6 @@
 */
 struct DATA_TEMPL_BASE : public scnet::JsonStreamObj
 {
-	int tid;			// 模板ID
-	std::string name;	// 模板名字
-
-	DATA_TEMPL_BASE() : tid(0) {}
-
-	virtual void encode(scnet::JsonStream &stream) const
-	{
-		stream.push("tid", tid);
-		stream.push("name", name);
-	}
-
-	virtual void decode(const scnet::JsonStream &stream)
-	{
-		stream.pop("tid", tid);
-		stream.pop("name", name);
-	}
-
 	// 添加引用
 	void retain();
 	// 释放引用
@@ -44,7 +27,6 @@ struct DATA_TEMPL_BASE : public scnet::JsonStreamObj
 // SOME MACROS
 
 #define DEFINE_TEMPL(tmpl) struct tmpl : public DATA_TEMPL_BASE
-#define DEFINE_SUB_TEMPL(tmpl) struct tmpl : public scnet::JsonStreamObj
 #define TEMPL_ENCODE(attrib) stream.push(#attrib, attrib)
 #define TEMPL_DECODE(attrib) stream.pop(#attrib, attrib)
 
@@ -59,7 +41,6 @@ enum SC_DATA_TYPE
     DT_WORLD_ESSENCE,			// 世界模板
 	DT_NPC_ESSENCE,				// NPC模板
     DT_BULLET_ESSENCE,          // 子弹模板
-	
 };
 
 ///////////////////////////////////////////////////////////////////////////
@@ -80,7 +61,6 @@ DEFINE_TEMPL(NPC_ESSENCE)
 
 	void encode(scnet::JsonStream &stream) const
 	{
-		DATA_TEMPL_BASE::encode(stream);
         TEMPL_ENCODE(res_path);
         TEMPL_ENCODE(scale);
 		TEMPL_ENCODE(max_hp);
@@ -93,7 +73,6 @@ DEFINE_TEMPL(NPC_ESSENCE)
 
 	void decode(const scnet::JsonStream &stream)
 	{
-		DATA_TEMPL_BASE::decode(stream);
         TEMPL_DECODE(res_path);
         TEMPL_DECODE(scale);
 		TEMPL_DECODE(max_hp);
@@ -117,7 +96,6 @@ DEFINE_TEMPL(BULLET_ESSENCE)
 
     void encode(scnet::JsonStream &stream) const
     {
-        DATA_TEMPL_BASE::encode(stream);
         TEMPL_ENCODE(res_path);
         TEMPL_ENCODE(scale);
         TEMPL_ENCODE(move_speed);
@@ -127,7 +105,6 @@ DEFINE_TEMPL(BULLET_ESSENCE)
 
     void decode(const scnet::JsonStream &stream)
     {
-        DATA_TEMPL_BASE::decode(stream);
         TEMPL_DECODE(res_path);
         TEMPL_DECODE(scale);
         TEMPL_DECODE(move_speed);
@@ -147,16 +124,12 @@ DEFINE_TEMPL(WORLD_ESSENCE)
 
 	void encode(scnet::JsonStream &stream) const
 	{
-		DATA_TEMPL_BASE::encode(stream);
-
 		TEMPL_ENCODE(map_path);
 		TEMPL_ENCODE(back_music);
 	}
 
 	void decode(const scnet::JsonStream &stream)
 	{
-		DATA_TEMPL_BASE::decode(stream);
-
 		TEMPL_DECODE(map_path);
 		TEMPL_DECODE(back_music);
 	}

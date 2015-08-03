@@ -54,5 +54,4 @@ void SCHostPlayer::update(float dt)
 {
 	SCObject::update(dt);
 
-
 }

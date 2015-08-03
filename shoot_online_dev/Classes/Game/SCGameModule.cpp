@@ -13,6 +13,9 @@
 #include "SCHostPlayer.h"
 #include "Utility/SCUtilityFunc.h"
 #include "UI/SCUIModule.h"
+#include "2d/CCShapeNode.h"
+
+USING_NS_CC;
 
 SCGameModule::SCGameModule()
 	: SCModuleBase(MODULE_TYPE_GAME), m_pWorld(NULL)
@@ -32,6 +35,12 @@ bool SCGameModule::init()
 
 	SCSceneBase* pCurScene = SCSceneManager::getInstance().getCurScene();
 	m_pWorld = SCWorld::create(101);
+	if (!m_pWorld)
+	{
+		CCLOG("SCGameModule::init, create the world (%d) failed!", 101);
+		return false;
+	}
+
 	pCurScene->addChild(m_pWorld);
 	return true;
 }

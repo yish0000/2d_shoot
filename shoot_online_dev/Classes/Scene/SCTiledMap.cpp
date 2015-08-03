@@ -552,6 +552,7 @@ void SCTiledMap::showBoundingBox()
 	for(auto& col : m_collisions)
 	{
 		RectShape* pRect = RectShape::create(col->m_boundingBox.size);
+		pRect->setContentSize(col->m_boundingBox.size);
 		pRect->setAnchorPoint(Point(0, 0));
 		pRect->setPosition(col->m_boundingBox.origin.x, col->m_boundingBox.origin.y);
 		pRect->setLineColor(Color4F(1.0, 0.0, 0.0, 1.0));
@@ -561,6 +562,7 @@ void SCTiledMap::showBoundingBox()
 	for(auto& climb : m_climbs)
 	{
 		RectShape* pRect = RectShape::create(climb->m_boundingBox.size);
+		pRect->setContentSize(climb->m_boundingBox.size);
 		pRect->setAnchorPoint(Point(0, 0));
 		pRect->setPosition(climb->m_boundingBox.origin.x, climb->m_boundingBox.origin.y);
 		pRect->setLineColor(Color4F(1.0f, 0.0f, 0.0f, 1.0f));

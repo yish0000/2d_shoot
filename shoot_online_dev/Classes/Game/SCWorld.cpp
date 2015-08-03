@@ -136,8 +136,11 @@ void SCWorld::DispatchMessage(const Message &msg)
 
 void SCWorld::update(float dt)
 {
-	m_pHostPlayer->update(dt);
-	m_pTileMap->update(dt);
+	if (m_pTileMap)
+		m_pTileMap->update(dt);
+
+	if (m_pHostPlayer)
+		m_pHostPlayer->update(dt);
 
     _msg_queue->update(dt);
     _npc_manager.update(dt);
