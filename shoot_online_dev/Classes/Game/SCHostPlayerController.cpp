@@ -58,4 +58,11 @@ void SCHostPlayerController::Attack()
 {
 	SCComPlayerFSM* pPlayerFSM = dynamic_cast<SCComPlayerFSM*>(getObject()->getComponent(SC_COMPONENT_PLAYERFSM));
 	pPlayerFSM->doAttack();
+
+	Point bulletPos;
+	SCComArmature* pArmature = dynamic_cast<SCComArmature*>(getObject()->getComponent(SC_COMPONENT_ARMATURE));
+	if( pArmature )
+	{
+		//pArmature->getArmature()->getBone("")->getNodeToWorldTransform();
+	}
 }

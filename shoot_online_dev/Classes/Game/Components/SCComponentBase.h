@@ -25,6 +25,8 @@ enum
     SC_COMPONENT_BULLET_ATK,    // 子弹伤害
     SC_COMPONENT_BULLET_MOVE,   // 子弹移动
 	SC_COMPONENT_SPRITE,		// 2D精灵
+	SC_COMPONENT_NPCMOVE,		// NPC移动
+	SC_COMPONENT_NPCFSM,		// NPC状态机
 };
 
 class SCObject;

@@ -51,6 +51,11 @@ bool SCNpc::init()
 	Rect rcBound(-32, 0, 64, 128);
 	addComponent(SC_COMPONENT_COLLIDER, (void*)&rcBound);
 
+	// 状态机组件
+	addComponent(SC_COMPONENT_NPCFSM, NULL);
+	// 移动组件
+	addComponent(SC_COMPONENT_NPCMOVE, NULL);
+
 	SCComArmature* pArmature = dynamic_cast<SCComArmature*>(getComponent(SC_COMPONENT_ARMATURE));
 	pArmature->playAnimation("zhanli", true);
 	pArmature->setInitFaceDir(1);

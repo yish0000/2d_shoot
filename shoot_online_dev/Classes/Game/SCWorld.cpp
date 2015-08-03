@@ -193,7 +193,7 @@ bool SCWorld::GenerateNpc(int tid, const cocos2d::Point& birthPos)
 		return false;
 	}
 
-    npc->setPosition(birthPos);
+    npc->setPosition(birthPos.x, birthPos.y);
 	m_pTileMap->addChildToLayer(npc, "rd_add", SCENELAYER_ZORDER_NPC);
 
     //加入objlist

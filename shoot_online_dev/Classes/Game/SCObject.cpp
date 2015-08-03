@@ -18,6 +18,8 @@
 #include "Components/SCComSprite.h"
 #include "Components/SCComBulletMove.h"
 #include "Components/SCComBulletAtk.h"
+#include "Components/SCComNPCMove.h"
+#include "Components/SCComNPCFSM.h"
 
 USING_NS_CC;
 
@@ -123,6 +125,19 @@ void SCObject::addComponent(int comType, void* extraData)
             else
                 pComponent = new SCComBulletMove(*data);
         }
+		break;
+	case SC_COMPONENT_NPCMOVE:
+		if( isNPC() )
+			pComponent = new SCComNPCMove();
+		else
+			CCLOG("SCObject::addComponent, This component(SC_COMPONENT_NPCMOVE) can only be used by SCNpc!");
+		break;
+	case SC_COMPONENT_NPCFSM:
+		if( isNPC() )
+			pComponent = new SCComNPCFSM();
+		else
+			CCLOG("SCObject::addComponent, This component(SC_COMPONENT_NPCFSM) can only be used by SCNpc!");
+		break;
 	default:
 		CCLOG("SCObject::addComponent, unknown component type!");
 	}

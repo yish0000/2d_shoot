@@ -99,20 +99,11 @@ public:
 
     void update(float dt)
     {
-        //TODO 此处心跳是否可以不需要，因为本身SCObject会自动心跳？
-        SCScopedMutex keeper(lock);
-        Message msg;
-        memset(&msg, 0, sizeof(msg));
-        msg.type = MSG_HEARTBEAT;
-        msg.param = (int64_t) dt * 1000;
- 
-        for(auto oi : obj_map)
-        {
-            if(oi.second != NULL)
-            {
-                oi.second->DispatchMessage(msg);
-            }
-        }
+		for(auto oi : obj_map)
+		{
+			if( oi.second != NULL )
+				oi.second->update(dt);
+		}
     }
 
 };
