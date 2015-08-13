@@ -50,6 +50,7 @@ bool SCBullet::init()
 	Rect rcBound(-5, -5, 10, 10);
 	addComponent(SC_COMPONENT_COLLIDER, (void*)&rcBound);
 
+	setScale(m_pEssence->scale);
     return true;
 }
 
@@ -62,4 +63,12 @@ void SCBullet::update(float dt)
 int SCBullet::DispatchMessage(const Message &msg)
 {
     return _controller->MessageHandler(msg);
+}
+
+void SCBullet::setBirthPos(const cocos2d::Point& pos)
+{
+	SCComBulletMove* pMove = dynamic_cast<SCComBulletMove*>(getComponent(SC_COMPONENT_BULLET_MOVE));
+	if (pMove)
+		pMove->setBirthPos(pos);
+	setPosition(pos);
 }

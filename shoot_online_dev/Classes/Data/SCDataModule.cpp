@@ -90,6 +90,8 @@ const void* SCDataModule::getTemplate(int tid, SC_DATA_TYPE dt)
 		return getNPCEssence(tid);
 	case DT_WORLD_ESSENCE:
 		return getWorldEssence(tid);
+	case DT_BULLET_ESSENCE:
+		return getBulletEssence(tid);
 	default:
 		CCLOG("SCDataModule::getTemplate, unknown data type (%d, %d)!", (int)dt, tid);
 		return NULL;

@@ -28,7 +28,8 @@ void SCUIModule::initUICreateFunc()
 	if( l_UICreateFuncMap.size() )
 		return;
 
-	DECLARE_UI_CREATE_FUNC("Skill", SCUISkill);
+//	DECLARE_UI_CREATE_FUNC("Skill", SCUISkill);
+	DECLARE_UI_CREATE_FUNC("Battlemain", SCUISkill);
 }
 
 // 创建指定的界面

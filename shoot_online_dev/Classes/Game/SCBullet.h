@@ -23,6 +23,8 @@ public:
     virtual bool init();
 	virtual void update(float dt);
 
+	void setBirthPos(const cocos2d::Point& pos);
+
 public:
     virtual int DispatchMessage(const Message& msg);
 };

@@ -99,10 +99,24 @@ public:
 
     void update(float dt)
     {
-		for(auto oi : obj_map)
+		OBJECT_MAP::iterator it = obj_map.begin();
+		while (it != obj_map.end())
 		{
-			if( oi.second != NULL )
-				oi.second->update(dt);
+			if (it->second != NULL)
+			{
+				if (it->second->getReferenceCount() == 1)
+				{
+					it->second->release();
+					it = obj_map.erase(it);
+					continue;
+				}
+				else
+				{
+					it->second->update(dt);
+				}
+			}
+
+			++it;
 		}
     }
 

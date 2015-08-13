@@ -28,8 +28,8 @@ bool SCUISkill::init()
 	if( !SCUIBase::init() )
 		return false;
 
-	REGISTER_BUTTON_EVENT("Button_Attack", SCUISkill::onBtnAttack);
-	REGISTER_BUTTON_EVENT("Button_Jump", SCUISkill::onBtnJump);
+	REGISTER_BUTTON_EVENT("Button_attack", SCUISkill::onBtnAttack);
+	REGISTER_BUTTON_EVENT("Button_jump", SCUISkill::onBtnJump);
 	return true;
 }
 

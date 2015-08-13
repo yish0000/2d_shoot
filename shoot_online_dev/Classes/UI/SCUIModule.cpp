@@ -272,7 +272,7 @@ void SCUIModule::changeUIType(UIFrameType type)
 	for (UIMetaInfoTable::iterator nit = m_UIMetas.begin(); nit != m_UIMetas.end(); ++nit)
 	{
 		UIMetaInfo& info = nit->second;
-		if (info.visible)
+		if (info.type == m_iCurType && info.visible)
 		{
 			SCUIBase* pNewUI = getUIFrame(info.name);
 			if (pNewUI)

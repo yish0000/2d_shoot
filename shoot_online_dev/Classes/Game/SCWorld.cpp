@@ -213,7 +213,8 @@ bool SCWorld::GenerateBullet(int tid, const cocos2d::Point& birthPos)
 	}
 
     //坐标
-    bullet->setPosition(birthPos);
+    bullet->setBirthPos(birthPos);
+	bullet->setFaceDirection(m_pHostPlayer->getFaceDirection());
 	m_pTileMap->addChildToLayer(bullet, "rd_add", SCENELAYER_ZORDER_SUBOBJECT);
 
 	_bullet_manager.Insert(bullet, bullet->getID());

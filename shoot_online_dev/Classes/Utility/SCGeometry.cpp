@@ -10,6 +10,8 @@
 #include "SCGeometry.h"
 #include <algorithm>
 
+USING_NS_CC;
+
 // 检测两个包围盒的碰撞
 bool SCGeometry::bbIntersects(const cocos2d::Rect& a, const cocos2d::Rect& b)
 {

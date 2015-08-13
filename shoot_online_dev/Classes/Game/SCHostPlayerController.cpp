@@ -14,6 +14,8 @@
 #include "Components/SCComPlayerMove.h"
 #include "Components/SCComArmature.h"
 #include "Components/SCComPlayerFSM.h"
+#include "Utility/SCUtilityFunc.h"
+#include "Game/SCWorld.h"
 
 USING_NS_CC;
 
@@ -63,6 +65,21 @@ void SCHostPlayerController::Attack()
 	SCComArmature* pArmature = dynamic_cast<SCComArmature*>(getObject()->getComponent(SC_COMPONENT_ARMATURE));
 	if( pArmature )
 	{
-		//pArmature->getArmature()->getBone("")->getNodeToWorldTransform();
+		Point vBulletPos;
+		cocostudio::Bone* pBone = pArmature->getArmature()->getBone("qiangkou");
+		if (pBone)
+		{
+			vBulletPos = pBone->convertToWorldSpace(Point(0, 0));
+		}
+		else
+		{
+			vBulletPos = getObject()->getPosition();
+			if (getObject()->getFaceDirection() > 0)
+				vBulletPos += Point(80, 40);
+			else
+				vBulletPos += Point(-80, 40);
+		}
+
+		glb_getWorld()->GenerateBullet(1, vBulletPos);
 	}
 }
