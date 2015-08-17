@@ -37,6 +37,8 @@ SCGame::~SCGame()
 
 void SCGame::start()
 {
+	int * p = NULL;
+	*p = 5;
 	// 加载全局配置信息
 	SCConfigs::getInstance().load(APP_CONFIG_FILE);
 

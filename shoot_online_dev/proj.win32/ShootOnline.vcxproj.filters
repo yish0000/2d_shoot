@@ -614,6 +614,9 @@
     <ClInclude Include="..\Classes\Game\Components\SCComNPCFSM.h">
       <Filter>Classes\Game\Components</Filter>
     </ClInclude>
+    <ClInclude Include="minidump.h">
+      <Filter>win32</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">
