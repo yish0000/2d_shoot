@@ -60,6 +60,9 @@ public:
 	// 是否模态对话框
 	bool isModalDialog() const;
 
+	// 获取指定窗口
+	SCUIBase* getUIFrame(const char* name);
+
 	// 获取界面文件路径
 	const std::string& getFileName() const { return m_sFilename; }
 

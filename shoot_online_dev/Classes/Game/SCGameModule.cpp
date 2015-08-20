@@ -14,6 +14,7 @@
 #include "Utility/SCUtilityFunc.h"
 #include "UI/SCUIModule.h"
 #include "2d/CCShapeNode.h"
+#include "SCGame.h"
 
 USING_NS_CC;
 
@@ -24,6 +25,7 @@ SCGameModule::SCGameModule()
 
 SCGameModule::~SCGameModule()
 {
+	CC_SAFE_RELEASE(m_pWorld);
 }
 
 bool SCGameModule::init()
@@ -31,18 +33,13 @@ bool SCGameModule::init()
 	if (!SCModuleBase::init())
 		return false;
 
-	SCSceneManager::getInstance().enterScene(SCENE_BATTLE, TRANS_FADEIN, 0.4f);
-
-	SCSceneBase* pCurScene = SCSceneManager::getInstance().getCurScene();
-	m_pWorld = SCWorld::create(101);
-	if (!m_pWorld)
-	{
-		CCLOG("SCGameModule::init, create the world (%d) failed!", 101);
-		return false;
-	}
-
-	pCurScene->addChild(m_pWorld);
+	initEventHandlers();
 	return true;
+}
+
+void SCGameModule::initEventHandlers()
+{
+	addEventListener(SC_EVENT_SWITCH_GAMESTATE, sceventcallback_selector(SCGameModule::onEventSwitchGameState));
 }
 
 void SCGameModule::update(float dt)
@@ -51,4 +48,27 @@ void SCGameModule::update(float dt)
 
 	if (m_pWorld)
 		m_pWorld->update(dt);
+}
+
+void SCGameModule::onEventSwitchGameState(SCEvent* pEvent)
+{
+	SCEventSwitchGameState* pState = dynamic_cast<SCEventSwitchGameState*>(pEvent);
+	if (pState->m_iNewState != SCGame::GS_BATTLE)
+		CC_SAFE_RELEASE(m_pWorld);
+	else
+	{
+		CCASSERT(m_pWorld == NULL, "m_pWorld is not null!");
+
+		SCSceneBase* pCurScene = SCSceneManager::getInstance().getCurScene();
+		m_pWorld = SCWorld::create(101);
+		if (!m_pWorld)
+		{
+			CCLOG("SCGameModule::init, create the world (%d) failed!", 101);
+		}
+		else
+		{
+			m_pWorld->retain();
+			pCurScene->addChild(m_pWorld);
+		}
+	}
 }

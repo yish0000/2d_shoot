@@ -73,5 +73,9 @@ void SCComProperty::OnDeath()
 void SCComProperty::AIAttack()
 {
     SCNpc *object = dynamic_cast<SCNpc *>(m_pGameObj);
-    object->getWorld()->GenerateBullet(bullet_id, fire_pos);
+	if (object)
+	{
+		SCWorld* pWorld = object->getWorld();
+		if (pWorld) pWorld->GenerateBullet(bullet_id, fire_pos);
+	}
 }

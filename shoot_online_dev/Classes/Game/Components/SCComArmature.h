@@ -45,6 +45,8 @@ public:
 
 	// 获取当前播放的动画
 	std::string getCurAnimName() const;
+	// 当前动画是否播放完毕
+	bool isCurAnimComplete() const;
 
 	const std::string& getResName() const { return m_sResName; }
 	cocostudio::Armature* getArmature() { return m_pArmature; }

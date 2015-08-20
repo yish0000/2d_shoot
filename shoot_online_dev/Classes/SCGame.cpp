@@ -9,7 +9,9 @@
 
 #include "SCGame.h"
 #include "Module/SCModuleManager.h"
+#include "Scene/SCSceneManager.h"
 #include "Utility/SCConfigs.h"
+#include "cocos2d.h"
 
 USING_NS_CC;
 
@@ -37,8 +39,6 @@ SCGame::~SCGame()
 
 void SCGame::start()
 {
-	int * p = NULL;
-	*p = 5;
 	// 加载全局配置信息
 	SCConfigs::getInstance().load(APP_CONFIG_FILE);
 
@@ -48,8 +48,8 @@ void SCGame::start()
     // 初始化各个模块
 	SCModuleManager::getInstance().init();
 
-    // 进入游戏场景（DEMO）
-    changeGameState(GS_BATTLE);
+    // 进入游戏登陆状态
+    changeGameState(GS_LOGIN);
 }
 
 void SCGame::update(float dt)
@@ -69,8 +69,24 @@ void SCGame::onEnterBackground()
 	SCModuleManager::getInstance().dispatchEvent(SC_EVENT_APP_ENTERBACK);
 }
 
-// 临时代码， DEMO
+// 切换游戏状态
 void SCGame::changeGameState(SCGame::GAMESTATE state)
 {
+	GAMESTATE oldState = m_gameState;
+	m_gameState = state;
 
+	switch (m_gameState)
+	{
+	case GS_LOGIN:
+		SCSceneManager::getInstance().enterScene(SCENE_LOGIN, TRANS_FADEIN, 0.5f);
+		break;
+	case GS_MAIN:
+		SCSceneManager::getInstance().enterScene(SCENE_MAIN, TRANS_FADEIN, 0.5f);
+		break;
+	case GS_BATTLE:
+		SCSceneManager::getInstance().enterScene(SCENE_BATTLE, TRANS_FADEIN, 0.5f);
+		break;
+	}
+
+	SCModuleManager::getInstance().dispatchEvent(new SCEventSwitchGameState((int)oldState, (int)state));
 }

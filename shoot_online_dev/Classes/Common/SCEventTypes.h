@@ -19,10 +19,11 @@
 //  
 ///////////////////////////////////////////////////////////////////////////
 
-#define SC_EVENT_MODULE_INITED "module_inited"
-#define SC_EVENT_APP_ENTERBACK "app_enterback"
-#define SC_EVENT_APP_ENTERFRONT "app_enterfront"
-#define SC_EVENT_NEW_PROTOCOL "new_protocol"
+#define SC_EVENT_MODULE_INITED "sc_event_module_inited"
+#define SC_EVENT_APP_ENTERBACK "sc_event_app_enterback"
+#define SC_EVENT_APP_ENTERFRONT "sc_event_app_enterfront"
+#define SC_EVENT_NEW_PROTOCOL "sc_event_new_protocol"
+#define SC_EVENT_SWITCH_GAMESTATE "sc_event_switch_gamestate"
 
 ///////////////////////////////////////////////////////////////////////////
 //  
@@ -40,6 +41,16 @@ public:
 
 protected:
 	const scnet::Protocol* m_pProtocol;
+};
+
+class SCEventSwitchGameState : public SCEvent
+{
+public:
+	SCEventSwitchGameState(int oldState, int newState)
+		: SCEvent(SC_EVENT_SWITCH_GAMESTATE), m_iOldState(oldState), m_iNewState(newState) {}
+
+public:
+	int m_iOldState, m_iNewState;
 };
 
 ///////////////////////////////////////////////////////////////////////////

@@ -330,6 +330,21 @@
     <ClCompile Include="..\Classes\Game\Components\SCComNPCFSM.cpp">
       <Filter>Classes\Game\Components</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\UI\SCUIOption.cpp">
+      <Filter>Classes\UI\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UI\SCUIStart.cpp">
+      <Filter>Classes\UI\Login</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UI\SCUICustom.cpp">
+      <Filter>Classes\UI\Login</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UI\SCUIStage.cpp">
+      <Filter>Classes\UI\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UI\SCUIChapter.cpp">
+      <Filter>Classes\UI\Main</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -616,6 +631,21 @@
     </ClInclude>
     <ClInclude Include="minidump.h">
       <Filter>win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\SCUIOption.h">
+      <Filter>Classes\UI\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\SCUIStart.h">
+      <Filter>Classes\UI\Login</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\SCUICustom.h">
+      <Filter>Classes\UI\Login</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\SCUIStage.h">
+      <Filter>Classes\UI\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\SCUIChapter.h">
+      <Filter>Classes\UI\Main</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

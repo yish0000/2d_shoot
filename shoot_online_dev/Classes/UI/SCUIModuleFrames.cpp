@@ -11,6 +11,11 @@
 
 // 这里包含界面的头文件
 #include "SCUISkill.h"
+#include "SCUIOption.h"
+#include "SCUIStart.h"
+#include "SCUICustom.h"
+#include "SCUIStage.h"
+#include "SCUIChapter.h"
 
 typedef std::function<SCUIBase*()> UI_CREATE_FUNC;
 static std::unordered_map<std::string, UI_CREATE_FUNC> l_UICreateFuncMap;
@@ -28,8 +33,12 @@ void SCUIModule::initUICreateFunc()
 	if( l_UICreateFuncMap.size() )
 		return;
 
-//	DECLARE_UI_CREATE_FUNC("Skill", SCUISkill);
 	DECLARE_UI_CREATE_FUNC("Battlemain", SCUISkill);
+	DECLARE_UI_CREATE_FUNC("Option", SCUIOption);
+	DECLARE_UI_CREATE_FUNC("Start", SCUIStart);
+	DECLARE_UI_CREATE_FUNC("Custom", SCUICustom);
+	DECLARE_UI_CREATE_FUNC("Stage", SCUIStage);
+	DECLARE_UI_CREATE_FUNC("Chapter", SCUIChapter);
 }
 
 // 创建指定的界面

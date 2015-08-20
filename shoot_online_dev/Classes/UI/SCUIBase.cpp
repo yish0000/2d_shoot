@@ -207,3 +207,8 @@ bool SCUIBase::isModalDialog() const
 {
 	return m_pRootWidget->isTouchEnabled();
 }
+
+SCUIBase* SCUIBase::getUIFrame(const char* name)
+{
+	return m_pUIModule->getUIFrame(name);
+}

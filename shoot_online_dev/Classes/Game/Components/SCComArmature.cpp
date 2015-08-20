@@ -97,6 +97,8 @@ void SCComArmature::playAnimation(const char* name, bool bLoop, bool bRestart)
 		return;
 	}
 
+	CCLOG("playAnimation %s", name);
+
 	if( bLoop )
 		m_pAnimation->play(name, -1);
 	else
@@ -121,4 +123,9 @@ void SCComArmature::fadeTo(int opacity, float fTime)
 std::string SCComArmature::getCurAnimName() const
 {
 	return m_pAnimation->getCurrentMovementID();
+}
+
+bool SCComArmature::isCurAnimComplete() const
+{
+	return m_pAnimation->isComplete();
 }

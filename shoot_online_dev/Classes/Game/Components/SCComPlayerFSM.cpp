@@ -108,13 +108,16 @@ void SCComPlayerFSM::update_Move(float dt)
 {
 	if (m_pArmature->getCurAnimName() == "yidonggongji")
 	{
-		m_fCurAnimTime += dt;
-		if (m_fCurAnimTime >= m_fCurAnimTotalTime)
-		{
+// 		m_fCurAnimTime += dt;
+// 		if (m_fCurAnimTime >= m_fCurAnimTotalTime)
+// 		{
+// 			m_pArmature->playAnimation("benpao", true);
+// 		}
+		if (m_pArmature->isCurAnimComplete())
 			m_pArmature->playAnimation("benpao", true);
-		}
 	}
-	else if( m_pArmature->getCurAnimName().empty() )
+
+	if (m_pArmature->isCurAnimComplete())
 		m_pArmature->playAnimation("benpao", true);
 }
 

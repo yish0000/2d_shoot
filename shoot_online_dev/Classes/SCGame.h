@@ -10,7 +10,7 @@
 #ifndef __SC_GAME_H__
 #define __SC_GAME_H__
 
-#include "cocos2d.h"
+#include "base/CCRef.h"
 
 class SCWorld;
 class SCTiledMap;

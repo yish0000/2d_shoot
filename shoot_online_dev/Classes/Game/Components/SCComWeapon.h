@@ -17,7 +17,7 @@
 class SCComWeapon : public SCComponentBase
 {
 public:
-    SCComWeapon() : SCComponentBase(SC_COMPONENT_PROPERTY) {}
+    SCComWeapon() : SCComponentBase(SC_COMPONENT_WEAPON) {}
     virtual ~SCComWeapon() {}
 
     virtual bool init();

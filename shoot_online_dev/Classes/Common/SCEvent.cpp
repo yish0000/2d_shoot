@@ -185,6 +185,7 @@ void SCEventProcessQueue::update(float delta)
 		m_dispatchQueue.pop();
 		entry.pDispatcher->onEvent(entry.pEvent);
 
-		m_bQueueEmpty = true;
+		if (m_dispatchQueue.empty())
+			m_bQueueEmpty = true;
 	}
 }

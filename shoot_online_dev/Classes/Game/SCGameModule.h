@@ -26,6 +26,12 @@ public:
 
 protected:
 	SCWorld* m_pWorld;
+
+protected:
+	void initEventHandlers();
+
+	// Event handlers
+	void onEventSwitchGameState(SCEvent* pEvent);
 };
 
 ///////////////////////////////////////////////////////////////////////////

@@ -14,7 +14,7 @@ struct scComBulletAtkData
 class SCComBulletAtk : public SCComponentBase
 {
 public:
-    SCComBulletAtk() : SCComponentBase(SC_COMPONENT_PROPERTY),atk_min(0), atk_max(0) {}
+	SCComBulletAtk() : SCComponentBase(SC_COMPONENT_BULLET_ATK), atk_min(0), atk_max(0) {}
     SCComBulletAtk(scComBulletAtkData &data);
     virtual ~SCComBulletAtk() {}
 

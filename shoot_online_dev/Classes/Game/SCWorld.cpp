@@ -47,6 +47,7 @@ SCWorld::SCWorld(int tid) : m_iWorldID(tid), m_pEssence(NULL), m_pTileMap(NULL),
 
 SCWorld::~SCWorld()
 {
+	CC_SAFE_DELETE(_msg_queue);
 	CC_SAFE_RELEASE(m_pEssence);
 }
 

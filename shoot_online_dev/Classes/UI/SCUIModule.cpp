@@ -13,6 +13,7 @@
 #include "Utility/SCUtilityFunc.h"
 #include "Scene/SCSceneManager.h"
 #include "tinyxml2/tinyxml2.h"
+#include "SCGame.h"
 #include "cocos2d.h"
 
 USING_NS_CC;
@@ -49,7 +50,13 @@ bool SCUIModule::init()
 	}
 
 	initUICreateFunc();
+	initEventHandlers();
     return true;
+}
+
+void SCUIModule::initEventHandlers()
+{
+	addEventListener(SC_EVENT_SWITCH_GAMESTATE, sceventcallback_selector(SCUIModule::onEventSwitchGameState));
 }
 
 bool SCUIModule::loadUIMetaData()
@@ -226,7 +233,7 @@ SCUIBase* SCUIModule::getUIFrame(const std::string& name)
 	}
 	else
 	{
-		if (mit->second.type != m_iCurType)
+		if (mit->second.type != m_iCurType && mit->second.type != FRAME_COMMON)
 		{
 			CCLOG("SCUIModule::getUIFrame, this frame is not active in this ui type! (%d)", m_iCurType);
 			return NULL;
@@ -272,11 +279,14 @@ void SCUIModule::changeUIType(UIFrameType type)
 	for (UIMetaInfoTable::iterator nit = m_UIMetas.begin(); nit != m_UIMetas.end(); ++nit)
 	{
 		UIMetaInfo& info = nit->second;
-		if (info.type == m_iCurType && info.visible)
+		if (info.type == m_iCurType || info.type == FRAME_COMMON)
 		{
 			SCUIBase* pNewUI = getUIFrame(info.name);
 			if (pNewUI)
+			{
 				getUILayer()->addChild(pNewUI);
+				pNewUI->setVisible(info.visible);
+			}
 		}
 	}
 }
@@ -318,8 +328,15 @@ const SCUIModule::UIAlignInfo* SCUIModule::getUIAlignInfo(const std::string& fra
 	return NULL;
 }
 
-void SCUIModule::onEventModuleInited(SCEvent* pEvent)
+void SCUIModule::onEventSwitchGameState(SCEvent* pEvent)
 {
-	// 切换UI风格
-	glb_getUIModule()->changeUIType(FRAME_BATTLE);
+	SCEventSwitchGameState* pSwitchState = dynamic_cast<SCEventSwitchGameState*>(pEvent);
+	if (pSwitchState->m_iNewState == SCGame::GS_LOADING)
+		changeUIType(FRAME_LOADING);
+	else if (pSwitchState->m_iNewState == SCGame::GS_LOGIN)
+		changeUIType(FRAME_LOGIN);
+	else if (pSwitchState->m_iNewState == SCGame::GS_MAIN)
+		changeUIType(FRAME_MAIN);
+	else if (pSwitchState->m_iNewState == SCGame::GS_BATTLE)
+		changeUIType(FRAME_BATTLE);
 }

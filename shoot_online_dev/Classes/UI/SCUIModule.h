@@ -94,7 +94,8 @@ protected:
 	SCUIBase* createUIFrame(const std::string& name);
 
 protected:	// Event handlers.
-	void onEventModuleInited(SCEvent* pEvent);
+	void initEventHandlers();
+	void onEventSwitchGameState(SCEvent* pEvent);
 	
 protected:	// Protocol handlers.
 };
