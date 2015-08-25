@@ -10,6 +10,7 @@
 #include "common/message.h"
 #include "Components/SCComponentBase.h"
 #include "Components/SCComProperty.h"
+#include "Components/SCComArmature.h"
 
 int SCNpcController::MessageHandler(const Message &msg)
 {

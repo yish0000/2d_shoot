@@ -74,9 +74,13 @@ public:
 	bool checkCollision(const cocos2d::Rect& bb, const cocos2d::Point& oldPos,
 		const cocos2d::Point& newPos, CollisionResult& result);
 
-	void SendMessage(const Message& msg);
-	void SendMessage(const std::vector<GID>& glist, const Message& msg);
-    void DispatchMessage(const Message& msg);
+	// 获取碰撞到的NPC
+	bool checkNPCCollision(const cocos2d::Rect& bb, const cocos2d::Point& oldPos,
+		const cocos2d::Point& newPos, std::vector<int64_t>& npcList);
+
+	void sendMessage(const Message& msg);
+	void sendMessage(const std::vector<GID>& glist, const Message& msg);
+    void dispatchMessage(const Message& msg);
 };
 
 #endif //__LOGIC_SCWORLD_H__

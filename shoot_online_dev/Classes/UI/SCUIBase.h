@@ -39,6 +39,8 @@ public:
 	virtual bool init();
 	virtual void update(float dt);
 
+	virtual void onEnterTransitionDidFinish();
+	
 	// 根据路径取一个界面的子控件
 	cocos2d::ui::Widget* getControlByPath(const char* path);
 	// 获取一个指定节点的子控件

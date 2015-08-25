@@ -60,6 +60,13 @@ void SCUIBase::alignControls()
 	}
 }
 
+void SCUIBase::onEnterTransitionDidFinish()
+{
+	Node::onEnterTransitionDidFinish();
+
+
+}
+
 // Split the string
 static void SplitString(const char* str, const char* sep, std::vector<std::string>& strList)
 {
@@ -124,6 +131,24 @@ void SCUIBase::showUI()
 {
 	if (isVisible())
 		return;
+
+	if (!getParent())
+	{
+		const SCUIModule::UIMetaInfo* pMeta = m_pUIModule->getUIMetaInfo(getName());
+		if (pMeta->parent_name.empty())
+		{
+			if (pMeta->zOrder == 0)
+				m_pUIModule->getUILayer()->addChild(this);
+			else
+				m_pUIModule->getUILayer()->addChild(this, pMeta->zOrder);
+		}
+		else
+		{
+			SCUIBase* pParentUI = getUIFrame(pMeta->parent_name.c_str());
+			if (pParentUI)
+				pParentUI->addChild(this, pMeta->zOrder);
+		}
+	}
 
 	setVisible(true);
 	onShowUI();

@@ -23,7 +23,7 @@ void MessageQueue::GIDMultiCast::Send(SCWorld *world)
 			continue;
 		}	
 		msg->dest = e;
-        world->DispatchMessage(*msg);
+        world->dispatchMessage(*msg);
 	}
 }
 
@@ -34,7 +34,7 @@ void MessageQueue::GIDMultiCast::Send(SCWorld *world)
 void MessageQueue::Send(SCWorld *world)
 {
 	for(auto e : _queue){
-        world->DispatchMessage(*e);
+        world->dispatchMessage(*e);
 	}
 	for(auto e : _gid_muilti_queue){
         e->Send(world);

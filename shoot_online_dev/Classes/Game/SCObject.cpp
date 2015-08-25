@@ -7,8 +7,9 @@
  * ------------------------------------------------------------------------
  */
 
-#include "SCObject.h"
 #include "cocos2d.h"
+#include "SCObject.h"
+#include "Utility/SCUtilityFunc.h"
 #include "Components/SCComponentBase.h"
 #include "Components/SCComArmature.h"
 #include "Components/SCComCollider.h"
@@ -24,8 +25,9 @@
 USING_NS_CC;
 
 SCObject::SCObject(GID gid, int tid)
-	: m_id(gid), m_tid(tid), m_bActive(false), m_iFaceDirection(1), _world(NULL)
+	: m_id(gid), m_tid(tid), m_bActive(false), m_iFaceDirection(1)
 {
+	_world = glb_getWorld();
 }
 
 SCObject::~SCObject()
@@ -178,4 +180,10 @@ void SCObject::setFaceDirection(int dir)
 	SCComCollider* pCollider = dynamic_cast<SCComCollider*>(getComponent(SC_COMPONENT_COLLIDER));
 	if( pCollider )
 		pCollider->refreshBoundingBox();
+}
+
+void SCObject::sendMessage(const Message& msg)
+{
+	if (_world)
+		_world->sendMessage(msg);
 }

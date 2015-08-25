@@ -27,6 +27,9 @@ public:
 
 	int getCurHP() const { return m_iCurHP; }
 
+	// 获取NPC的包围盒
+	cocos2d::Rect getBoundingBox();
+
 public:
     virtual int DispatchMessage(const Message& msg);
 };

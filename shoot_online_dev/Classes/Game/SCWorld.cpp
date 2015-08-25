@@ -11,6 +11,9 @@
 #include "Utility/SCRandomGen.h"
 #include "Utility/SCUtilityFunc.h"
 #include "Data/SCDataModule.h"
+#include "Utility/SCGeometry.h"
+
+USING_NS_CC;
 
 //private function here:
 SCNpc * SCWorld::FindNPCByID(int64_t id)
@@ -107,18 +110,18 @@ bool SCWorld::init()
     return true;
 }
 
-void SCWorld::SendMessage(const Message& msg)
+void SCWorld::sendMessage(const Message& msg)
 {
     _msg_queue->AddMessage(msg);
 }
 
-void SCWorld::SendMessage(const std::vector<GID> &glist, const Message& msg)
+void SCWorld::sendMessage(const std::vector<GID> &glist, const Message& msg)
 {
     _msg_queue->AddMuiltiMessage(glist,msg);
 }
 
 
-void SCWorld::DispatchMessage(const Message &msg)
+void SCWorld::dispatchMessage(const Message &msg)
 {
     SCObject *obj = FindObjectByMsg(msg);
     if(obj == nullptr) return;
@@ -181,6 +184,32 @@ bool SCWorld::checkCollision(const cocos2d::Rect& bb, const cocos2d::Point& oldP
 		return true;
 	else
 		return false;
+}
+
+
+
+bool SCWorld::checkNPCCollision(const cocos2d::Rect& bb, const cocos2d::Point& oldPos, const cocos2d::Point& newPos,
+	std::vector<int64_t>& npcList)
+{
+	float xDist = fabs(oldPos.x - newPos.x);
+	float yDist = fabs(oldPos.y - newPos.y);
+	if (xDist < 10.0f) xDist = 10.0f;
+	if (yDist < 10.0f) yDist = 10.0f;
+
+	cocos2d::Rect rcBound = bb;
+	rcBound.origin.x += xDist;
+	rcBound.origin.y -= yDist;
+
+	std::vector<SCNpc*> npcs;
+	_npc_manager.EnumObjects(npcs);
+	for (size_t i = 0; i < npcs.size(); ++i)
+	{
+		SCNpc* pNPC = npcs[i];
+		if (SCGeometry::bbIntersects(rcBound, pNPC->getBoundingBox()))
+			npcList.push_back(pNPC->getGID().id);
+	}
+
+	return !npcList.empty();
 }
 
 bool SCWorld::GenerateNpc(int tid, const cocos2d::Point& birthPos)

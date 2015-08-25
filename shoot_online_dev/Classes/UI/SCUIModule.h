@@ -80,6 +80,9 @@ public:
 	const UIAlignInfo* getUIAlignInfo(const std::string& frameName, const std::string& obj_path) const;
 	// 获取指定UI界面的对齐信息列表
 	const UIAlignList* getUIAlignList(const std::string& frameName) const;
+
+	// 获取UI界面的元数据
+	const UIMetaInfo* getUIMetaInfo(const std::string& name) const;
 	
 protected:
 	UIFrameType m_iCurType;

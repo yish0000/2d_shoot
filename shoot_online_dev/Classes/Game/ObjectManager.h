@@ -85,6 +85,19 @@ public:
         return oi->second;
     }
 
+	typedef std::vector<T*> ObjectList;
+	void EnumObjects(ObjectList& objs)
+	{
+		SCScopedMutex keeper(lock);
+		for (auto oi : obj_map)
+		{
+			if (oi.second != NULL)
+			{
+				objs.push_back(oi.second);
+			}
+		}
+	}
+
     void Destory()
     {
         SCScopedMutex keeper(lock);

@@ -48,7 +48,12 @@ public:
 	int getTID() const { return m_tid; }
 	int64_t getID() const { return m_id.id; }
     GID getGID() const { return m_id; }
+
     SCWorld* getWorld() const { return _world; }
+	void setWorld(SCWorld* pWorld) { _world = pWorld; }
+
+	// 发送消息
+	virtual void sendMessage(const Message& msg);
     
     virtual int DispatchMessage(const Message& msg) = 0;
     

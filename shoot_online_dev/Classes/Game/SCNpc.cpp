@@ -73,3 +73,15 @@ int SCNpc::DispatchMessage(const Message &msg)
 {
     return _controller->MessageHandler(msg);
 }
+
+cocos2d::Rect SCNpc::getBoundingBox()
+{
+	SCComCollider* pCollider = dynamic_cast<SCComCollider*>(getComponent(SC_COMPONENT_COLLIDER));
+	if (pCollider)
+		return pCollider->getBoundingBox();
+	else
+	{
+		CCASSERT(0, "Cannot find the collider component!");
+		return Rect(0, 0, 0, 0);
+	}
+}

@@ -7,6 +7,7 @@
 * ------------------------------------------------------------------------
 */
 #include "SCComProperty.h"
+#include "SCComArmature.h"
 #include "Utility/SCRandomGen.h"
 
 SCComProperty::SCComProperty(scComPropertyData &data)
@@ -61,6 +62,15 @@ void SCComProperty::OnDamage(int damage)
     if (damage > 0)
     {
         hp -= damage;
+
+		if (hp <= 0)
+			OnDeath();
+		else
+		{
+			SCComArmature* pArmature = dynamic_cast<SCComArmature*>(getObject()->getComponent(SC_COMPONENT_ARMATURE));
+			if (pArmature)
+				pArmature->playAnimation("shoushang", false);
+		}
     }
 }
 
@@ -68,6 +78,10 @@ void SCComProperty::OnDeath()
 {
     isZombie = true;
     //À¿Õˆ∂Øª≠
+
+	SCComArmature* pArmature = dynamic_cast<SCComArmature*>(m_pGameObj->getComponent(SC_COMPONENT_ARMATURE));
+	if (pArmature)
+		pArmature->playAnimation("siwang", false);
 }
 
 void SCComProperty::AIAttack()

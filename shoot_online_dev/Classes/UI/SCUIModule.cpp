@@ -284,7 +284,18 @@ void SCUIModule::changeUIType(UIFrameType type)
 			SCUIBase* pNewUI = getUIFrame(info.name);
 			if (pNewUI)
 			{
-				getUILayer()->addChild(pNewUI);
+				if (info.visible)
+				{
+					if (!info.parent_name.empty())
+					{
+						SCUIBase* pParentUI = getUIFrame(info.parent_name);
+						if (pParentUI)
+							pParentUI->addChild(pNewUI, info.zOrder);
+					}
+					else
+						getUILayer()->addChild(pNewUI, info.zOrder);
+				}
+
 				pNewUI->setVisible(info.visible);
 			}
 		}
@@ -326,6 +337,12 @@ const SCUIModule::UIAlignInfo* SCUIModule::getUIAlignInfo(const std::string& fra
 	}
 
 	return NULL;
+}
+
+const SCUIModule::UIMetaInfo* SCUIModule::getUIMetaInfo(const std::string& name) const
+{
+	UIMetaInfoTable::const_iterator it = m_UIMetas.find(name);
+	return it != m_UIMetas.end() ? &it->second : NULL;
 }
 
 void SCUIModule::onEventSwitchGameState(SCEvent* pEvent)
