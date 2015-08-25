@@ -49,6 +49,8 @@ bool SCNpc::init()
 
 	// 包围盒组件
 	Rect rcBound(-32, 0, 64, 128);
+	if (m_tid == 726)
+		rcBound.setRect(-256, 0, 512, 512);
 	addComponent(SC_COMPONENT_COLLIDER, (void*)&rcBound);
 
 	// 状态机组件

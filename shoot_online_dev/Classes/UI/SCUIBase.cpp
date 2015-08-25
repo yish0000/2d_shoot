@@ -15,8 +15,16 @@
 USING_NS_CC;
 using namespace ui;
 
+///////////////////////////////////////////////////////////////////////////
+// 一些常量
+
+static const float MODAL_LAYER_ENTER_TIME = 0.4f;
+static const Color4B MODAL_LAYER_COLOR(0, 0, 0, 60);
+
+///////////////////////////////////////////////////////////////////////////
+
 SCUIBase::SCUIBase(const std::string& name, const std::string& filename)
-	: m_sFilename(filename), m_pRootWidget(NULL)
+	: m_sFilename(filename), m_pRootWidget(NULL), m_pLayerColor(NULL)
 {
 	setName(name);
 	m_pUIModule = glb_getUIModule();
@@ -44,6 +52,12 @@ bool SCUIBase::init()
 	alignControls();
 	if( !m_pUIModule->isModalDialog(getName()) )
 		m_pRootWidget->setTouchEnabled(false);
+	else
+	{
+		m_pLayerColor = LayerColor::create(MODAL_LAYER_COLOR);
+		addChild(m_pLayerColor);
+	}
+
 	addChild(m_pRootWidget);
 	return true;
 }
@@ -64,7 +78,13 @@ void SCUIBase::onEnterTransitionDidFinish()
 {
 	Node::onEnterTransitionDidFinish();
 
-
+	if (isModalDialog())
+	{
+		int opacity = m_pLayerColor->getOpacity();
+		m_pLayerColor->setOpacity(0);
+		Action* darken = FadeTo::create(MODAL_LAYER_ENTER_TIME, opacity);
+		m_pLayerColor->runAction(darken);
+	}	
 }
 
 // Split the string
@@ -158,6 +178,9 @@ void SCUIBase::hideUI()
 {
 	if (!isVisible())
 		return;
+
+	if (getParent())
+		removeFromParent();
 
 	setVisible(false);
 	onHideUI();

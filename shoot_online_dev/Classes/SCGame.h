@@ -12,9 +12,6 @@
 
 #include "base/CCRef.h"
 
-class SCWorld;
-class SCTiledMap;
-
 class SCGame : public cocos2d::Ref
 {
 public:
@@ -48,13 +45,10 @@ public:
 
 	GAMESTATE getGameState() const { return m_gameState; }
 
-	SCWorld* getWorld() { return m_pWorld; }
-
 	static SCGame& getInstance();
 
 protected:
 	GAMESTATE m_gameState;
-	SCWorld* m_pWorld;
 };
 
 ///////////////////////////////////////////////////////////////////////////

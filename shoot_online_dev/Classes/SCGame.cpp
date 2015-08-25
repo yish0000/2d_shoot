@@ -30,7 +30,6 @@ SCGame& SCGame::getInstance()
 SCGame::SCGame()
 {
 	m_gameState = GS_NONE;
-	m_pWorld = NULL;
 }
 
 SCGame::~SCGame()

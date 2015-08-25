@@ -32,7 +32,7 @@ public:
 
 	// For Demo,  临时函数
 	void move(float xDir, float yDir);
-	void jump();
+	void jump(bool bDown = false);
 
 	// 获取碰撞检测结果
 	const SCWorld::CollisionResult& getCollisionResult() const { return m_collisionResult; }

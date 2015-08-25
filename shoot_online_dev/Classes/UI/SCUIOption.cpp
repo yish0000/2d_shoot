@@ -8,6 +8,10 @@
  */
 
 #include "SCUIOption.h"
+#include "cocos2d.h"
+
+USING_NS_CC;
+using namespace ui;
 
 SCUIOption::SCUIOption(const std::string& name, const std::string& filename)
 	: SCUIBase(name, filename)
@@ -22,6 +26,9 @@ bool SCUIOption::init()
 {
 	if (!SCUIBase::init())
 		return false;
+	m_pRootWidget->addTouchEventListener(std::bind([&] {
+		hideUI();
+	}));
 
 	return true;
 }

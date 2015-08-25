@@ -72,6 +72,7 @@ protected:
 	std::string m_sFilename;				// 本界面的文件路径
 	SCUIModule* m_pUIModule;				// UI模块的指针
 	cocos2d::ui::Widget* m_pRootWidget;		// 本界面的节点树
+	cocos2d::LayerColor* m_pLayerColor;		// 模态对话框专用
 
 	// Get the pointer of specified control
 	template <class T>

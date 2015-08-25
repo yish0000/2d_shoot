@@ -16,6 +16,8 @@
 #include "Components/SCComPlayerFSM.h"
 #include "Utility/SCUtilityFunc.h"
 #include "Game/SCWorld.h"
+#include "Game/SCGameJoystick.h"
+#include "Scene/SCSceneBattle.h"
 
 USING_NS_CC;
 
@@ -52,8 +54,13 @@ void SCHostPlayerController::Move(float xDir, float yDir)
 
 void SCHostPlayerController::Jump()
 {
-    SCComPlayerMove* pPlayerMove = dynamic_cast<SCComPlayerMove*>(getObject()->getComponent(SC_COMPONENT_PLAYERMOVE));
-    pPlayerMove->jump();
+	SCSceneBattle* pScene = dynamic_cast<SCSceneBattle*>(glb_getCurScene());
+	if (!pScene) return;
+	SCGameJoystick* pJoystick = pScene->getJoystick();
+	if (!pJoystick) return;
+
+	SCComPlayerMove* pPlayerMove = dynamic_cast<SCComPlayerMove*>(getObject()->getComponent(SC_COMPONENT_PLAYERMOVE));
+	pPlayerMove->jump(pJoystick->getYDir() < -0.5f);
 }
 
 void SCHostPlayerController::Attack()
@@ -66,12 +73,7 @@ void SCHostPlayerController::Attack()
 	if( pArmature )
 	{
 		Point vBulletPos;
-		cocostudio::Bone* pBone = pArmature->getArmature()->getBone("qiangkou");
-		if (pBone)
-		{
-			vBulletPos = pBone->convertToWorldSpace(Point(0, 0));
-		}
-		else
+		if (!pArmature->getBoneWorldPos("qiang", vBulletPos))
 		{
 			vBulletPos = getObject()->getPosition();
 			if (getObject()->getFaceDirection() > 0)

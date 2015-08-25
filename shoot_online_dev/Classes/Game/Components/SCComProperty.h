@@ -35,6 +35,7 @@ public:
     bool IsZombie() { return isZombie; }
 
     void HandleAttackMsg(attack_msg &msg);
+
 protected:
     std::string name;
     int max_hp; // ×î´óÉúÃü

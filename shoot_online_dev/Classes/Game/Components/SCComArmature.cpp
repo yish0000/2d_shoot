@@ -52,6 +52,14 @@ bool SCComArmature::init()
 
 void SCComArmature::update(float dt)
 {
+	if (!m_sRestoreAnim.empty())
+	{
+		if (m_pAnimation->isComplete())
+		{
+			m_pAnimation->play(m_sRestoreAnim);
+			m_sRestoreAnim = "";
+		}
+	}
 }
 
 void SCComArmature::setInitFaceDir(int dir)
@@ -83,7 +91,7 @@ void SCComArmature::setScaleY(float y)
 	m_pArmature->setScaleY(y);
 }
 
-void SCComArmature::playAnimation(const char* name, bool bLoop, bool bRestart)
+void SCComArmature::playAnimation(const char* name, bool bLoop, bool bRestart, const std::string& restoreAnim)
 {
 	if (!bRestart)
 	{
@@ -97,12 +105,12 @@ void SCComArmature::playAnimation(const char* name, bool bLoop, bool bRestart)
 		return;
 	}
 
-	CCLOG("playAnimation %s", name);
-
 	if( bLoop )
 		m_pAnimation->play(name, -1);
 	else
 		m_pAnimation->play(name, -1, 0);
+
+	m_sRestoreAnim = restoreAnim;
 }
 
 void SCComArmature::pauseAnimation()
@@ -128,4 +136,25 @@ std::string SCComArmature::getCurAnimName() const
 bool SCComArmature::isCurAnimComplete() const
 {
 	return m_pAnimation->isComplete();
+}
+
+bool SCComArmature::getBoneWorldPos(const char* name, cocos2d::Point& pos)
+{
+	Bone* pBone = m_pArmature->getBone(name);
+	if (pBone)
+	{
+		Mat4 matArmature = m_pArmature->getNodeToWorldTransform();
+		Mat4 matTransform = pBone->getNodeToArmatureTransform();
+		Mat4 matFinal = TransformConcat(matArmature, matTransform);
+
+		Vec3 vec3(0, 0, 0);
+		Vec3 ret;
+		matFinal.transformPoint(vec3, &ret);
+		pos.x = ret.x;
+		pos.y = ret.y;
+		pos = m_pGameObj->getParent()->convertToNodeSpace(pos);
+		return true;
+	}
+
+	return false;
 }

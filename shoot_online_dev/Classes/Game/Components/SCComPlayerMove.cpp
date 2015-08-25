@@ -122,7 +122,7 @@ void SCComPlayerMove::move(float xDir, float yDir)
 	setSpeedX(m_fMoveSpeed * m_fXDirection);
 }
 
-void SCComPlayerMove::jump()
+void SCComPlayerMove::jump(bool bDown)
 {
 	if( m_iJumpCount > 1 )
 		return;

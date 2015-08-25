@@ -14,17 +14,21 @@ struct scComBulletAtkData
 class SCComBulletAtk : public SCComponentBase
 {
 public:
-	SCComBulletAtk() : SCComponentBase(SC_COMPONENT_BULLET_ATK), atk_min(0), atk_max(0) {}
+	SCComBulletAtk() : SCComponentBase(SC_COMPONENT_BULLET_ATK), m_atk_min(0), m_atk_max(0) {}
     SCComBulletAtk(scComBulletAtkData &data);
     virtual ~SCComBulletAtk() {}
 
     virtual bool init();
     virtual void update(float dt);
 
-    int atk_min;
-    int atk_max;
+	int getAttackMin() const { return m_atk_min; }
+	int getAttackMax() const { return m_atk_max; }
+
+	void DoAttack(int64_t target);
+
 protected:
-    void DoAttack(int64_t target);
+	int m_atk_min;
+	int m_atk_max;
 
 private:
     void BuildAttackMessage(Message& msg);

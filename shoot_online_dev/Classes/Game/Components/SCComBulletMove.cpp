@@ -1,5 +1,6 @@
 #include "SCComBulletMove.h"
 #include "SCComCollider.h"
+#include "SCComBulletAtk.h"
 #include "../SCWorld.h"
 #include "Utility/SCUtilityFunc.h"
 
@@ -47,14 +48,9 @@ void SCComBulletMove::update(float dt)
 		// ƒø±Í ‹…À
 		for (size_t i = 0; i < npcList.size(); ++i)
 		{
-			attack_msg data;
-			data.attacker = glb_getHostPlayer()->getGID();
-			data.damage_high = 5;
-			data.damage_low = 3;
-			Message msg;
-			Message::BuildMessage(msg, MSG_ATTACK, GID(SC_OBJECT_NPC, npcList[i]), m_pGameObj->getGID(), m_pGameObj->getPosition(), 0, 0,
-				&data, sizeof(data));
-			m_pGameObj->sendMessage(msg);
+			SCComBulletAtk* pAttack = dynamic_cast<SCComBulletAtk*>(m_pGameObj->getComponent(SC_COMPONENT_BULLET_ATK));
+			if (pAttack)
+				pAttack->DoAttack(npcList[i]);
 		}
 	}
 }

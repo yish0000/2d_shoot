@@ -23,7 +23,7 @@ public:
 	virtual void update(float dt);
 
 	// 播放指定的动画
-	void playAnimation(const char* name, bool bLoop, bool bRestart = true);
+	void playAnimation(const char* name, bool bLoop, bool bRestart = true, const std::string& restoreAnim="");
 	void pauseAnimation();
 	void resumeAnimation();
 
@@ -48,6 +48,9 @@ public:
 	// 当前动画是否播放完毕
 	bool isCurAnimComplete() const;
 
+	// 获取指定骨骼的世界坐标
+	bool getBoneWorldPos(const char* name, cocos2d::Point& pos);
+
 	const std::string& getResName() const { return m_sResName; }
 	cocostudio::Armature* getArmature() { return m_pArmature; }
 
@@ -56,6 +59,7 @@ protected:
 	cocostudio::Armature* m_pArmature;
 	cocostudio::ArmatureAnimation* m_pAnimation;
 	int m_iInitFaceDir;		// 初始朝向
+	std::string m_sRestoreAnim;
 };
 
 ///////////////////////////////////////////////////////////////////////////

@@ -69,7 +69,12 @@ void SCComProperty::OnDamage(int damage)
 		{
 			SCComArmature* pArmature = dynamic_cast<SCComArmature*>(getObject()->getComponent(SC_COMPONENT_ARMATURE));
 			if (pArmature)
-				pArmature->playAnimation("shoushang", false);
+			{
+				if (getObject()->getTID() == 726)
+					pArmature->playAnimation("shoushang1", false, true, "zhanli");
+				else
+					pArmature->playAnimation("shoushang", false, true, "zhanli");
+			}
 		}
     }
 }

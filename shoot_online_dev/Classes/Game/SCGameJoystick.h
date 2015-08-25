@@ -25,8 +25,12 @@ public:
 
 	void setHostPlayerController(SCHostPlayerController* pController) { m_pController = pController; }
 
+	float getXDir() const { return m_fXDir; }
+	float getYDir() const { return m_fYDir; }
+
 protected:
     SCHostPlayerController *m_pController;
+	float m_fXDir, m_fYDir;
 };
 
 ///////////////////////////////////////////////////////////////////////////
