@@ -17,15 +17,12 @@ struct scComPropertyData
 {
 	std::string name;
 	int max_hp;
-	int atk_mode;
-	int atk_interval;
-	int bullet_id;
 };
 
 class SCComProperty : public SCComponentBase
 {
 public:
-    SCComProperty() : SCComponentBase(SC_COMPONENT_PROPERTY), hp(1), isZombie(false),heartbeatCount(0) {}
+    SCComProperty() : SCComponentBase(SC_COMPONENT_PROPERTY), hp(1), isZombie(false) {}
     SCComProperty(scComPropertyData &data);
     virtual ~SCComProperty() {}
 
@@ -38,20 +35,13 @@ public:
 protected:
     std::string name;
     int max_hp; // 最大生命
-    int atk_mode;
-    int atk_interval;
-    int bullet_id;
-   
+
     int hp; // 生命值
     bool isZombie;
-    cocos2d::Point fire_pos;
 
 private:
     void OnDamage(int damage);
     void OnDeath();
-    void AIAttack();
-
-    float heartbeatCount;
 };
 
 #endif

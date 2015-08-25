@@ -109,6 +109,9 @@
     <Filter Include="Classes\UI\Battle">
       <UniqueIdentifier>{c4490283-4904-4a25-8b24-99850703dd16}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\Game\Components\NPCAI">
+      <UniqueIdentifier>{53bf71b8-3027-444f-a169-e6274df81712}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -344,6 +347,9 @@
     </ClCompile>
     <ClCompile Include="..\Classes\UI\SCUIChapter.cpp">
       <Filter>Classes\UI\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Components\NPCAI\SCComNPCAI.cpp">
+      <Filter>Classes\Game\Components\NPCAI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -646,6 +652,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\UI\SCUIChapter.h">
       <Filter>Classes\UI\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Components\NPCAI\SCComNPCAI.h">
+      <Filter>Classes\Game\Components\NPCAI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

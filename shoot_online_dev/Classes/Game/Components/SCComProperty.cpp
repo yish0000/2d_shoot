@@ -14,9 +14,6 @@ SCComProperty::SCComProperty(scComPropertyData &data)
 	: SCComponentBase(SC_COMPONENT_PROPERTY)
 {
     max_hp = data.max_hp;
-    atk_mode = data.atk_mode;
-    atk_interval = data.atk_mode;
-    bullet_id = data.bullet_id;
     name = data.name;
     
     hp = max_hp;
@@ -36,24 +33,12 @@ void SCComProperty::update(float dt)
         OnDeath();
         return;
     }
-    heartbeatCount += dt;
-    if (heartbeatCount > atk_interval)
-    {
-        AIAttack();
-        heartbeatCount = 0;
-    }
-
 }
 
 void SCComProperty::HandleAttackMsg(attack_msg& atk_msg)
 {
     if (isZombie) return;
     int damage = SCRandomGen::RandomInt(atk_msg.damage_low, atk_msg.damage_high);
-  //  if (SCRandomGen::RandomUniform() < atk_msg.crit_rate)
-   // {
-   //     damage = damage * atk_msg.crit_ratio / 100;
-  //  }
-
     OnDamage(damage);
 }
 
@@ -77,19 +62,12 @@ void SCComProperty::OnDamage(int damage)
 void SCComProperty::OnDeath()
 {
     isZombie = true;
-    //死亡动画
 
+    //死亡动画
 	SCComArmature* pArmature = dynamic_cast<SCComArmature*>(m_pGameObj->getComponent(SC_COMPONENT_ARMATURE));
 	if (pArmature)
 		pArmature->playAnimation("siwang", false);
-}
 
-void SCComProperty::AIAttack()
-{
-    SCNpc *object = dynamic_cast<SCNpc *>(m_pGameObj);
-	if (object)
-	{
-		SCWorld* pWorld = object->getWorld();
-		if (pWorld) pWorld->GenerateBullet(bullet_id, fire_pos);
-	}
+    //调用AI的死亡接口，消失代码应该写在AI中
+
 }

@@ -27,6 +27,7 @@ enum
 	SC_COMPONENT_SPRITE,		// 2D精灵
 	SC_COMPONENT_NPCMOVE,		// NPC移动
 	SC_COMPONENT_NPCFSM,		// NPC状态机
+    SC_COMPONENT_NPCAI,         // NPC AI
 };
 
 class SCObject;
