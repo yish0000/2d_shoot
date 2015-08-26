@@ -40,9 +40,6 @@ bool SCNpc::init()
 	addComponent(SC_COMPONENT_ARMATURE, (void*)m_pEssence->res_path.c_str());
 
 	scComPropertyData data;
-	data.atk_mode = m_pEssence->atk_mode;
-	data.atk_interval = m_pEssence->atk_interval;
-	data.bullet_id = m_pEssence->bullet_id;
 //	data.name = m_pEssence->name;
 	data.max_hp = m_pEssence->max_hp;
 	addComponent(SC_COMPONENT_PROPERTY, (void*)(&data));
