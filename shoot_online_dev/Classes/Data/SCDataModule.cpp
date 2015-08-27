@@ -92,6 +92,8 @@ const void* SCDataModule::getTemplate(int tid, SC_DATA_TYPE dt)
 		return getWorldEssence(tid);
 	case DT_BULLET_ESSENCE:
 		return getBulletEssence(tid);
+    case DT_NPCAI_ESSENCE:
+        return getNPCAIEssence(tid);
 	default:
 		CCLOG("SCDataModule::getTemplate, unknown data type (%d, %d)!", (int)dt, tid);
 		return NULL;
@@ -170,6 +172,21 @@ BULLET_ESSENCE* SCDataModule::getBulletEssence(int tid)
 	return pTempl;
 }
 
+NPCAI_ESSENCE* SCDataModule::getNPCAIEssence(int tid)
+{
+    char szFile[260];
+    sprintf(szFile, "data/bullet/%d.json", tid);
+
+    NPCAI_ESSENCE* pTempl = new NPCAI_ESSENCE();
+    if (!loadTemplateFromFile(pTempl, szFile))
+    {
+        delete pTempl;
+        return NULL;
+    }
+
+    addTemplate(tid, pTempl);
+    return pTempl;
+}
 void SCDataModule::deleteTemplate(int tid)
 {
 	SCScopedMutex lock(m_mutex);

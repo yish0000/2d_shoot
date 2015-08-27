@@ -80,7 +80,7 @@ void SCComPlayerFSM::doAttack()
 	if (m_iState == STATE_STAND)
 		m_pArmature->playAnimation("jiguanqiang", false, false);
 	else if (m_iState == STATE_MOVE)
-		m_pArmature->playAnimation("yidonggongji", false, false);
+		m_pArmature->playAnimation("benpao", false, false);
 	else if (m_iState == STATE_JUMP)
 		m_pArmature->playAnimation("tiaoyuekaiqiang", false, false);
 	m_fCurAnimTime = 0.0f;

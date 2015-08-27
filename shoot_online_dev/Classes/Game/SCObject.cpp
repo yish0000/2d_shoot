@@ -25,7 +25,7 @@
 USING_NS_CC;
 
 SCObject::SCObject(GID gid, int tid)
-	: m_id(gid), m_tid(tid), m_bActive(false), m_iFaceDirection(1)
+: m_id(gid), m_tid(tid), m_bActive(false), m_iFaceDirection(1)
 {
 	_world = glb_getWorld();
 }

@@ -25,7 +25,7 @@ class SCObject : public cocos2d::Node
 	typedef std::vector<SCComponentBase*> ComponentList;
 
 public:
-    SCObject() : m_tid(0), m_bActive(false){}
+    SCObject() : m_tid(0), m_bActive(false) {}
 	SCObject(GID gid, int tid);
 	virtual ~SCObject();
 
@@ -51,7 +51,6 @@ public:
 
     SCWorld* getWorld() const { return _world; }
 	void setWorld(SCWorld* pWorld) { _world = pWorld; }
-
 	// 发送消息
 	virtual void sendMessage(const Message& msg);
     

@@ -8,10 +8,11 @@
 */
 #include "SCComProperty.h"
 #include "SCComArmature.h"
+#include "SCComNPCAI.h"
 #include "Utility/SCRandomGen.h"
 
 SCComProperty::SCComProperty(scComPropertyData &data)
-	: SCComponentBase(SC_COMPONENT_PROPERTY)
+: SCComponentBase(SC_COMPONENT_PROPERTY), removeCount(-1.0f), isDispear(true)
 {
     max_hp = data.max_hp;
     name = data.name;
@@ -27,7 +28,21 @@ bool SCComProperty::init()
 
 void SCComProperty::update(float dt)
 {
-    if (isZombie) return;
+    if (isZombie)
+    {
+        if (removeCount < 0.00001)
+            return;
+        else if (removeCount >= NPC_REMOVE_COUNTDOWN)
+        {
+            m_pGameObj->removeFromParent();
+            removeCount = -1.0f;
+        }
+        else
+        {
+            removeCount += dt;
+        }
+        return;
+    }
     if (hp <= 0)
     {
         OnDeath();
@@ -44,7 +59,7 @@ void SCComProperty::HandleAttackMsg(attack_msg& atk_msg)
 
 void SCComProperty::OnDamage(int damage)
 {
-    if (damage > 0)
+    if (damage > 0 && hp > 0)
     {
         hp -= damage;
 
@@ -55,7 +70,7 @@ void SCComProperty::OnDamage(int damage)
 			SCComArmature* pArmature = dynamic_cast<SCComArmature*>(getObject()->getComponent(SC_COMPONENT_ARMATURE));
 			if (pArmature)
 			{
-				if (getObject()->getTID() == 726)
+				if (getObject()->getTID() == 726) //? by cy
 					pArmature->playAnimation("shoushang1", false, true, "zhanli");
 				else
 					pArmature->playAnimation("shoushang", false, true, "zhanli");
@@ -67,12 +82,23 @@ void SCComProperty::OnDamage(int damage)
 void SCComProperty::OnDeath()
 {
     isZombie = true;
+    if (isDispear)
+    {
+        removeCount = 0.0001f;
+    }
 
     //死亡动画
 	SCComArmature* pArmature = dynamic_cast<SCComArmature*>(m_pGameObj->getComponent(SC_COMPONENT_ARMATURE));
 	if (pArmature)
 		pArmature->playAnimation("siwang", false);
 
-    //调用AI的死亡接口，消失代码应该写在AI中
+    //调用AI的死亡接口
+    /*
+    SCComNPCAI* pNPCAI = dynamic_cast<SCComNPCAI*>(m_pGameObj->getComponent(SC_COMPONENT_NPCAI));
+    if (pNPCAI)
+        pNPCAI->onDeath();
+    */
+    m_pGameObj->setActive(false);
+
 
 }

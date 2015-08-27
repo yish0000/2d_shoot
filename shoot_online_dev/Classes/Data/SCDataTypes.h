@@ -41,6 +41,7 @@ enum SC_DATA_TYPE
     DT_WORLD_ESSENCE,			// 世界模板
 	DT_NPC_ESSENCE,				// NPC模板
     DT_BULLET_ESSENCE,          // 子弹模板
+    DT_NPCAI_ESSENCE,              // NPC AI模板
 };
 
 ///////////////////////////////////////////////////////////////////////////
@@ -53,11 +54,9 @@ DEFINE_TEMPL(NPC_ESSENCE)
 	int max_hp;
 	int move_speed;
 	int jump_heigh;
-	int atk_mode;
-	int atk_interval;
-    int bullet_id;
+    int ai_mode;
 
-	NPC_ESSENCE() : scale(1.0),max_hp(100), move_speed(0), jump_heigh(100),atk_mode(1), atk_interval(1000), bullet_id(-1) {}
+	NPC_ESSENCE() : scale(1.0),max_hp(100), move_speed(0), jump_heigh(100),ai_mode(1) {}
 
 	void encode(scnet::JsonStream &stream) const
 	{
@@ -66,9 +65,7 @@ DEFINE_TEMPL(NPC_ESSENCE)
 		TEMPL_ENCODE(max_hp);
 		TEMPL_ENCODE(move_speed);
 		TEMPL_ENCODE(jump_heigh);
-		TEMPL_ENCODE(atk_mode);
-		TEMPL_ENCODE(atk_interval);
-		TEMPL_ENCODE(bullet_id);
+		TEMPL_ENCODE(ai_mode);
 	}
 
 	void decode(const scnet::JsonStream &stream)
@@ -78,9 +75,7 @@ DEFINE_TEMPL(NPC_ESSENCE)
 		TEMPL_DECODE(max_hp);
 		TEMPL_DECODE(move_speed);
 		TEMPL_DECODE(jump_heigh);
-		TEMPL_DECODE(atk_mode);
-		TEMPL_DECODE(atk_interval);
-		TEMPL_DECODE(bullet_id);
+		TEMPL_DECODE(ai_mode);
 	}
 };
 
@@ -110,6 +105,32 @@ DEFINE_TEMPL(BULLET_ESSENCE)
         TEMPL_DECODE(move_speed);
         TEMPL_DECODE(atk_max);
         TEMPL_DECODE(atk_min);
+    }
+};
+
+///////////////////////////////////////////////////////////////////////////
+// NPC AI 模板
+
+DEFINE_TEMPL(NPCAI_ESSENCE)
+{
+    int mode;
+    int bullet_id;
+    int atk_interval;
+
+    NPCAI_ESSENCE() {}
+
+    void encode(scnet::JsonStream &stream) const
+    {
+        TEMPL_ENCODE(mode);
+        TEMPL_ENCODE(bullet_id);
+        TEMPL_ENCODE(atk_interval);
+    }
+
+    void decode(const scnet::JsonStream &stream)
+    {
+        TEMPL_DECODE(mode);
+        TEMPL_DECODE(bullet_id);
+        TEMPL_DECODE(atk_interval);
     }
 };
 ///////////////////////////////////////////////////////////////////////////

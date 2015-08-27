@@ -205,6 +205,7 @@ bool SCWorld::checkNPCCollision(const cocos2d::Rect& bb, const cocos2d::Point& o
 	for (size_t i = 0; i < npcs.size(); ++i)
 	{
 		SCNpc* pNPC = npcs[i];
+        if (!pNPC->isActive()) continue;
 		if (SCGeometry::bbIntersects(rcBound, pNPC->getBoundingBox()))
 			npcList.push_back(pNPC->getGID().id);
 	}
@@ -249,4 +250,9 @@ bool SCWorld::GenerateBullet(int tid, const cocos2d::Point& birthPos)
 
 	_bullet_manager.Insert(bullet, bullet->getID());
     return true;
+}
+
+void SCWorld::RemoveNPC(SCNpc *pNpc)
+{
+    _npc_manager.Remove(pNpc->getID());
 }

@@ -17,12 +17,13 @@ struct scComPropertyData
 {
 	std::string name;
 	int max_hp;
+    bool isDispear;
 };
 
 class SCComProperty : public SCComponentBase
 {
 public:
-    SCComProperty() : SCComponentBase(SC_COMPONENT_PROPERTY), hp(1), isZombie(false) {}
+    SCComProperty() : SCComponentBase(SC_COMPONENT_PROPERTY), hp(1), isZombie(false), removeCount(-1.0f), isDispear(true) {}
     SCComProperty(scComPropertyData &data);
     virtual ~SCComProperty() {}
 
@@ -39,6 +40,8 @@ protected:
 
     int hp; // ÉúÃüÖµ
     bool isZombie;
+    float removeCount;
+    bool isDispear;
 
 private:
     void OnDamage(int damage);

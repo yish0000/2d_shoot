@@ -58,6 +58,7 @@ bool SCNpc::init()
 	SCComArmature* pArmature = dynamic_cast<SCComArmature*>(getComponent(SC_COMPONENT_ARMATURE));
 	pArmature->playAnimation("zhanli", true);
 	pArmature->setInitFaceDir(1);
+    setActive(true);
     return true;
 }
 
@@ -83,4 +84,10 @@ cocos2d::Rect SCNpc::getBoundingBox()
 		CCASSERT(0, "Cannot find the collider component!");
 		return Rect(0, 0, 0, 0);
 	}
+}
+
+void SCNpc::removeSelf()
+{
+    getWorld()->RemoveNPC(this);
+    removeFromParent();
 }

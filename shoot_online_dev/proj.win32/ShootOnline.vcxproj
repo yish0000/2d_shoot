@@ -147,11 +147,11 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClCompile Include="..\Classes\Effect\SCEffectData.cpp" />
     <ClCompile Include="..\Classes\Effect\SCEffectElement.cpp" />
     <ClCompile Include="..\Classes\Effect\SCEffectKeyframe.cpp" />
-    <ClCompile Include="..\Classes\Game\Components\NPCAI\SCComNPCAI.cpp" />
     <ClCompile Include="..\Classes\Game\Components\SCComArmature.cpp" />
     <ClCompile Include="..\Classes\Game\Components\SCComBulletAtk.cpp" />
     <ClCompile Include="..\Classes\Game\Components\SCComBulletMove.cpp" />
     <ClCompile Include="..\Classes\Game\Components\SCComCollider.cpp" />
+    <ClCompile Include="..\Classes\Game\Components\SCComNPCAI.cpp" />
     <ClCompile Include="..\Classes\Game\Components\SCComNPCFSM.cpp" />
     <ClCompile Include="..\Classes\Game\Components\SCComPlayerFSM.cpp" />
     <ClCompile Include="..\Classes\Game\Components\SCComPlayerMove.cpp" />
@@ -233,11 +233,11 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\Game\common\message.h" />
     <ClInclude Include="..\Classes\Game\common\mvc.h" />
     <ClInclude Include="..\Classes\Game\common\type.h" />
-    <ClInclude Include="..\Classes\Game\Components\NPCAI\SCComNPCAI.h" />
     <ClInclude Include="..\Classes\Game\Components\SCComArmature.h" />
     <ClInclude Include="..\Classes\Game\Components\SCComBulletAtk.h" />
     <ClInclude Include="..\Classes\Game\Components\SCComBulletMove.h" />
     <ClInclude Include="..\Classes\Game\Components\SCComCollider.h" />
+    <ClInclude Include="..\Classes\Game\Components\SCComNPCAI.h" />
     <ClInclude Include="..\Classes\Game\Components\SCComNPCFSM.h" />
     <ClInclude Include="..\Classes\Game\Components\SCComNPCMove.h" />
     <ClInclude Include="..\Classes\Game\Components\SCComPlayerFSM.h" />

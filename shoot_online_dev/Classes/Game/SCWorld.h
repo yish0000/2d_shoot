@@ -81,6 +81,9 @@ public:
 	void sendMessage(const Message& msg);
 	void sendMessage(const std::vector<GID>& glist, const Message& msg);
     void dispatchMessage(const Message& msg);
+    void RemoveNPC(SCNpc *pNpc);
+
+    
 };
 
 #endif //__LOGIC_SCWORLD_H__
