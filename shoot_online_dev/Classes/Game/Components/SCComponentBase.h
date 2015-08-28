@@ -20,7 +20,7 @@ enum
     SC_COMPONENT_PLAYERFSM,		// 玩家状态机
     SC_COMPONENT_PLAYERMOVE,	// 玩家移动控制
     SC_COMPONENT_COLLIDER,		// 碰撞检测
-    SC_COMPONENT_PROPERTY,      //  属性 
+    SC_COMPONENT_NPC_PROPERTY,      //  npc属性 
     SC_COMPONENT_WEAPON,        //  武器
     SC_COMPONENT_BULLET_ATK,    // 子弹伤害
     SC_COMPONENT_BULLET_MOVE,   // 子弹移动
@@ -28,6 +28,7 @@ enum
 	SC_COMPONENT_NPCMOVE,		// NPC移动
 	SC_COMPONENT_NPCFSM,		// NPC状态机
     SC_COMPONENT_NPCAI,         // NPC AI
+    SC_COMPONENT_PLAYER_PROPERTY,   //玩家属性
 };
 
 class SCObject;

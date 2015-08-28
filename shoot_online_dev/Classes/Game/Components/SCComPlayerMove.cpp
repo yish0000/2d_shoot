@@ -46,6 +46,8 @@ bool SCComPlayerMove::init()
 
 void SCComPlayerMove::update(float dt)
 {
+    if (m_pComFSM->getCurState() == SCComPlayerFSM::STATE_DIE)
+        return;
 	float fMaxSpeed = 1000.0f;
 
 	SCWorld* pWorld = glb_getWorld();
@@ -137,6 +139,12 @@ void SCComPlayerMove::jump(bool bDown)
 	setSpeedY(speed);
 	setAccelerateY(m_fGravity);
 }
+
+void SCComPlayerMove::die()
+{
+    m_pComFSM->doDie();
+}
+
 
 void SCComPlayerMove::onMsg_DoFSMEvent(int state)
 {

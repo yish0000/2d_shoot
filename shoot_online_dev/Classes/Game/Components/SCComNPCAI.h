@@ -5,17 +5,23 @@
 #include "../SCWorld.h"
 #include "../common/message.h"
 
-enum 
+enum IDLE_MODE
 {
-    NPC_AI_INVALID  =   -1,
-    NPC_AI_STAKE    =   0,
-    NPC_AI_TURRET   =   1,
+    IDLE_AI_INVALID =   0,
+    IDLE_AI_STAY    =   1,
+    //TODO IDLE_AI_WANDER  =   1,
+};
+enum ATK_MODE
+{
+    ATK_AI_INVALID  =   0,
+    ATK_AI_STAKE    =   1,
+    ATK_AI_TURRET   =   2,
 };
 
 class SCComNPCAI : public SCComponentBase
 {
 public:
-    SCComNPCAI() : SCComponentBase(SC_COMPONENT_NPCAI), mode(NPC_AI_INVALID), updateCount(0),inBattle(false) {}
+    SCComNPCAI() : SCComponentBase(SC_COMPONENT_NPCAI), idle_mode(IDLE_AI_INVALID), atk_mode(ATK_AI_STAKE),updateCount(0.f),inBattle(false) {}
     SCComNPCAI(int ai_id);
     virtual ~SCComNPCAI() {}
 
@@ -23,11 +29,12 @@ public:
 
 public:
     int tid;
-    int mode;
+    int idle_mode;
+    int atk_mode;
     int bullet_id;
     int atk_interval;
 
-    int updateCount;
+    float updateCount;
     bool inBattle;
 public:
     virtual bool init();

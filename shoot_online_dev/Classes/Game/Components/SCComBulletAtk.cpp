@@ -18,7 +18,7 @@ void SCComBulletAtk::update(float dt)
 {
 }
 
-void SCComBulletAtk::DoAttack(int64_t target)
+void SCComBulletAtk::DoAttack(GID target)
 {
     SCBullet *object = dynamic_cast<SCBullet*>(m_pGameObj);
     object->_dispatcher->SendAttackMessage(target, m_atk_max, m_atk_min);

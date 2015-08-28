@@ -279,9 +279,6 @@
     <ClCompile Include="..\Classes\UI\SCUIBase.cpp">
       <Filter>Classes\UI</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Game\Components\SCComProperty.cpp">
-      <Filter>Classes\Game\Components</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\Game\Components\SCComWeapon.cpp">
       <Filter>Classes\Game\Components</Filter>
     </ClCompile>
@@ -346,6 +343,12 @@
       <Filter>Classes\UI\Main</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Game\Components\SCComNPCAI.cpp">
+      <Filter>Classes\Game\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Components\SCComNPCProperty.cpp">
+      <Filter>Classes\Game\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Components\SCComPlayerProperty.cpp">
       <Filter>Classes\Game\Components</Filter>
     </ClCompile>
   </ItemGroup>
@@ -575,9 +578,6 @@
     <ClInclude Include="..\Classes\UI\SCUIBase.h">
       <Filter>Classes\UI</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Game\Components\SCComProperty.h">
-      <Filter>Classes\Game\Components</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\Game\Components\SCComWeapon.h">
       <Filter>Classes\Game\Components</Filter>
     </ClInclude>
@@ -651,6 +651,12 @@
       <Filter>Classes\UI\Main</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Game\Components\SCComNPCAI.h">
+      <Filter>Classes\Game\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Components\SCComNPCProperty.h">
+      <Filter>Classes\Game\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Components\SCComPlayerProperty.h">
       <Filter>Classes\Game\Components</Filter>
     </ClInclude>
   </ItemGroup>

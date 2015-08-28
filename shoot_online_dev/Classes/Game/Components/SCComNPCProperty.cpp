@@ -1,32 +1,33 @@
 /*
 * ------------------------------------------------------------------------
-*  Name:   SCComProperty.cpp
+*  Name:   SCComNPCProperty.cpp
 *  Desc:   Íæ¼Ò»òNPCÊôÐÔ
 *  Author: umiringo
 *  Date:   2015/6/30
 * ------------------------------------------------------------------------
 */
-#include "SCComProperty.h"
+#include "SCComNPCProperty.h"
 #include "SCComArmature.h"
 #include "SCComNPCAI.h"
 #include "Utility/SCRandomGen.h"
 
-SCComProperty::SCComProperty(scComPropertyData &data)
-: SCComponentBase(SC_COMPONENT_PROPERTY), removeCount(-1.0f), isDispear(true)
+SCComNPCProperty::SCComNPCProperty(scComNPCPropertyData &data)
+: SCComponentBase(SC_COMPONENT_NPC_PROPERTY), removeCount(-1.0f), isDispear(true)
 {
     max_hp = data.max_hp;
     name = data.name;
-    
+    isDispear = data.isDispear;
+
     hp = max_hp;
     isZombie = false;
 }
 
-bool SCComProperty::init()
+bool SCComNPCProperty::init()
 {
     return true;
 }
 
-void SCComProperty::update(float dt)
+void SCComNPCProperty::update(float dt)
 {
     if (isZombie)
     {
@@ -50,14 +51,14 @@ void SCComProperty::update(float dt)
     }
 }
 
-void SCComProperty::HandleAttackMsg(attack_msg& atk_msg)
+void SCComNPCProperty::HandleAttackMsg(attack_msg& atk_msg)
 {
     if (isZombie) return;
     int damage = SCRandomGen::RandomInt(atk_msg.damage_low, atk_msg.damage_high);
     OnDamage(damage);
 }
 
-void SCComProperty::OnDamage(int damage)
+void SCComNPCProperty::OnDamage(int damage)
 {
     if (damage > 0 && hp > 0)
     {
@@ -79,7 +80,7 @@ void SCComProperty::OnDamage(int damage)
     }
 }
 
-void SCComProperty::OnDeath()
+void SCComNPCProperty::OnDeath()
 {
     isZombie = true;
     if (isDispear)

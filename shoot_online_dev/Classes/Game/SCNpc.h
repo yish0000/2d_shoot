@@ -26,7 +26,6 @@ public:
 	virtual void update(float dt);
 
 	int getCurHP() const { return m_iCurHP; }
-    void removeSelf();
 	// 获取NPC的包围盒
 	cocos2d::Rect getBoundingBox();
 

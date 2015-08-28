@@ -54,7 +54,7 @@ public:
 	// 发送消息
 	virtual void sendMessage(const Message& msg);
     
-    virtual int DispatchMessage(const Message& msg) = 0;
+    virtual int DispatchMessage(const Message& msg) = 0; 
     
 protected:
     GID m_id;                   // 对象ID, 游戏内id＋类型

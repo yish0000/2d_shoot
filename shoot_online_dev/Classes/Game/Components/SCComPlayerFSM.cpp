@@ -87,6 +87,12 @@ void SCComPlayerFSM::doAttack()
 	m_fCurAnimTotalTime = 0.5f;
 }
 
+void SCComPlayerFSM::doDie()
+{
+    m_iState = STATE_DIE;
+    m_pArmature->playAnimation("zhanli", true);
+}
+
 void SCComPlayerFSM::update_Stand(float dt)
 {
 	if( m_pArmature->getCurAnimName() == "luodi" ||
@@ -130,4 +136,8 @@ void SCComPlayerFSM::update_Jump(float dt)
 		if( m_fCurAnimTime >= m_fCurAnimTotalTime )
 			m_pArmature->playAnimation("xunhuan", true);
 	}
+}
+
+void SCComPlayerFSM::update_Die(float dt)
+{
 }

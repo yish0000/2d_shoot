@@ -24,7 +24,7 @@ public:
 	int getAttackMin() const { return m_atk_min; }
 	int getAttackMax() const { return m_atk_max; }
 
-	void DoAttack(int64_t target);
+	void DoAttack(GID target);
 
 protected:
 	int m_atk_min;

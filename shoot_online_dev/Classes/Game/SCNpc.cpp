@@ -1,7 +1,7 @@
 #include "SCNpc.h"
 #include "Components/SCComArmature.h"
 #include "Components/SCComCollider.h"
-#include "Components/SCComProperty.h"
+#include "Components/SCComNPCProperty.h"
 #include "Data/SCDataModule.h"
 #include "Utility/SCUtilityFunc.h"
 
@@ -39,10 +39,11 @@ bool SCNpc::init()
 	// 初始化组件
 	addComponent(SC_COMPONENT_ARMATURE, (void*)m_pEssence->res_path.c_str());
 
-	scComPropertyData data;
+	scComNPCPropertyData data;
 //	data.name = m_pEssence->name;
 	data.max_hp = m_pEssence->max_hp;
-	addComponent(SC_COMPONENT_PROPERTY, (void*)(&data));
+    data.isDispear = m_pEssence->is_dispear;
+	addComponent(SC_COMPONENT_NPC_PROPERTY, (void*)(&data));
 
 	// 包围盒组件
 	Rect rcBound(-32, 0, 64, 128);
@@ -55,9 +56,12 @@ bool SCNpc::init()
 	// 移动组件
 	addComponent(SC_COMPONENT_NPCMOVE, NULL);
 
+    //AI 组件
+    addComponent(SC_COMPONENT_NPCAI, (void*)&(m_pEssence->ai_mode));
+
 	SCComArmature* pArmature = dynamic_cast<SCComArmature*>(getComponent(SC_COMPONENT_ARMATURE));
 	pArmature->playAnimation("zhanli", true);
-	pArmature->setInitFaceDir(1);
+	pArmature->setInitFaceDir(-1);
     setActive(true);
     return true;
 }
@@ -65,7 +69,6 @@ bool SCNpc::init()
 void SCNpc::update(float dt)
 {
 	SCObject::update(dt);
-
 
 }
 
@@ -84,10 +87,4 @@ cocos2d::Rect SCNpc::getBoundingBox()
 		CCASSERT(0, "Cannot find the collider component!");
 		return Rect(0, 0, 0, 0);
 	}
-}
-
-void SCNpc::removeSelf()
-{
-    getWorld()->RemoveNPC(this);
-    removeFromParent();
 }

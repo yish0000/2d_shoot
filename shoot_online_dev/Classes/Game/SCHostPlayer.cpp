@@ -12,6 +12,7 @@
 #include "Components/SCComCollider.h"
 #include "Components/SCComPlayerFSM.h"
 #include "Components/SCComPlayerMove.h"
+#include "Components/SCComPlayerProperty.h"
 
 USING_NS_CC;
 
@@ -29,7 +30,7 @@ SCHostPlayer::~SCHostPlayer()
 
 int SCHostPlayer::DispatchMessage(const Message &msg)
 {
-    return 0;
+    return _controller->MessageHandler(msg);
 }
 
 bool SCHostPlayer::init()
@@ -44,6 +45,12 @@ bool SCHostPlayer::init()
 	addComponent(SC_COMPONENT_PLAYERFSM, NULL);
 	addComponent(SC_COMPONENT_PLAYERMOVE, NULL);
 
+    //测试用代码，实际应该从存档中读取数据
+    scComPlayerPropertyData propertyData;
+    propertyData.name = "test";
+    propertyData.max_hp = 500;
+    addComponent(SC_COMPONENT_PLAYER_PROPERTY, (void*)&propertyData);
+
 	SCComArmature* pArmature = dynamic_cast<SCComArmature*>(getComponent(SC_COMPONENT_ARMATURE));
 	pArmature->playAnimation("zhanli", true);
 	pArmature->setInitFaceDir(-1);
@@ -54,4 +61,16 @@ void SCHostPlayer::update(float dt)
 {
 	SCObject::update(dt);
 
+}
+
+cocos2d::Rect SCHostPlayer::getBoundingBox()
+{
+    SCComCollider* pCollider = dynamic_cast<SCComCollider*>(getComponent(SC_COMPONENT_COLLIDER));
+    if (pCollider)
+        return pCollider->getBoundingBox();
+    else
+    {
+        CCASSERT(0, "Cannot find the collider component!");
+        return Rect(0, 0, 0, 0);
+    }
 }

@@ -49,7 +49,7 @@ void SCDataModule::update(float dt)
 
 void SCDataModule::garbageCollect()
 {
-	SCScopedMutex lock(m_mutex);
+//	SCScopedMutex lock(m_mutex);
 
 	TemplRefMap::iterator it = m_refs.begin();
 	while (it != m_refs.end())
@@ -175,7 +175,7 @@ BULLET_ESSENCE* SCDataModule::getBulletEssence(int tid)
 NPCAI_ESSENCE* SCDataModule::getNPCAIEssence(int tid)
 {
     char szFile[260];
-    sprintf(szFile, "data/bullet/%d.json", tid);
+    sprintf(szFile, "data/ai/%d.json", tid);
 
     NPCAI_ESSENCE* pTempl = new NPCAI_ESSENCE();
     if (!loadTemplateFromFile(pTempl, szFile))

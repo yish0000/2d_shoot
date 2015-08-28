@@ -67,7 +67,7 @@ private:
 
 public:
     bool GenerateNpc(int tid, const cocos2d::Point& birthPos);
-    bool GenerateBullet(int tid, const cocos2d::Point& birthPos);
+    bool GenerateBullet(int tid, const cocos2d::Point& birthPos,SCObject* owner);
     SCTiledMap* getTileMap() { return m_pTileMap; }
 	SCHostPlayer* getHostPlayer() { return m_pHostPlayer; }
 
@@ -77,6 +77,8 @@ public:
 	// 获取碰撞到的NPC
 	bool checkNPCCollision(const cocos2d::Rect& bb, const cocos2d::Point& oldPos,
 		const cocos2d::Point& newPos, std::vector<int64_t>& npcList);
+    bool checkPlayerCollision(const cocos2d::Rect& bb, const cocos2d::Point& oldPos,
+        const cocos2d::Point& newPos);
 
 	void sendMessage(const Message& msg);
 	void sendMessage(const std::vector<GID>& glist, const Message& msg);

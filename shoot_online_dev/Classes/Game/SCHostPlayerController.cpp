@@ -10,7 +10,7 @@
 #include "SCHostPlayerController.h"
 #include "common/message.h"
 #include "Components/SCComponentBase.h"
-#include "Components/SCComProperty.h"
+#include "Components/SCComPlayerProperty.h"
 #include "Components/SCComPlayerMove.h"
 #include "Components/SCComArmature.h"
 #include "Components/SCComPlayerFSM.h"
@@ -23,13 +23,14 @@ USING_NS_CC;
 
 int SCHostPlayerController::MessageHandler(const Message &msg)
 {
+
     //此处解析msg，分发给相应的组件处理
     switch (msg.type)
     {
     case MSG_ATTACK:
         CCASSERT(msg.pack_length >= sizeof(attack_msg), "MSG_ATTACK length not fit!");
         attack_msg atk_msg = *(attack_msg*)msg.pack;
-        SCComProperty *pCom = dynamic_cast<SCComProperty *>(getObject()->getComponent(SC_COMPONENT_PROPERTY));
+        SCComPlayerProperty *pCom = dynamic_cast<SCComPlayerProperty *>(getObject()->getComponent(SC_COMPONENT_PLAYER_PROPERTY));
         if (!pCom)
         {
             CCLOG("SCHostPlayerController Component not found ! msg type : %d", msg.type);
@@ -43,6 +44,8 @@ int SCHostPlayerController::MessageHandler(const Message &msg)
 
 void SCHostPlayerController::Move(float xDir, float yDir)
 {
+    if (!getObject()->isActive())
+        return;
     SCComPlayerMove* pPlayerMove = dynamic_cast<SCComPlayerMove*>(getObject()->getComponent(SC_COMPONENT_PLAYERMOVE));
     pPlayerMove->move(xDir, yDir);
 
@@ -54,6 +57,8 @@ void SCHostPlayerController::Move(float xDir, float yDir)
 
 void SCHostPlayerController::Jump()
 {
+    if (!getObject()->isActive())
+        return;
 	SCSceneBattle* pScene = dynamic_cast<SCSceneBattle*>(glb_getCurScene());
 	if (!pScene) return;
 	SCGameJoystick* pJoystick = pScene->getJoystick();
@@ -65,6 +70,8 @@ void SCHostPlayerController::Jump()
 
 void SCHostPlayerController::Attack()
 {
+    if (!getObject()->isActive())
+        return;
 	SCComPlayerFSM* pPlayerFSM = dynamic_cast<SCComPlayerFSM*>(getObject()->getComponent(SC_COMPONENT_PLAYERFSM));
 	pPlayerFSM->doAttack();
 
@@ -82,6 +89,6 @@ void SCHostPlayerController::Attack()
 				vBulletPos += Point(-80, 40);
 		}
 
-		glb_getWorld()->GenerateBullet(1, vBulletPos);
+        glb_getWorld()->GenerateBullet(1, vBulletPos, getObject());
 	}
 }

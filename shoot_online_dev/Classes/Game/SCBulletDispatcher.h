@@ -12,7 +12,7 @@ public:
     virtual ~SCBulletDispatcher() {}
 
 public:
-    void SendAttackMessage(int64_t target, int atk_max, int atk_min);
+    void SendAttackMessage(GID target, int atk_max, int atk_min);
 };
 
 #endif

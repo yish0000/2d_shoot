@@ -8,6 +8,7 @@ struct scComBulletMoveData
 {
 	int speed;
 	cocos2d::Point birthPos;
+    int owner_type;
 };
 
 class SCComCollider;
@@ -25,15 +26,18 @@ public:
 	void setSpeed(float fSpeed) { m_speed = fSpeed; }
 	void setLiveTime(int liveTime) { m_live_time = liveTime; }
 	void setBirthPos(const cocos2d::Point& pos) { m_birth_pos = pos; }
+    void setOwnerType(int type) { m_owner_type = type; }
 
 	int getSpeed() const { return m_speed; }
 	int getLiveTime() const { return m_live_time; }
 	const cocos2d::Point& getBirthPos() const { return m_birth_pos; }
+    const int getOwnerType() const { return m_owner_type; }
 
 public:
     int m_speed;
     int m_live_time;
     cocos2d::Point m_birth_pos;
+    int m_owner_type;
 };
 
 #endif

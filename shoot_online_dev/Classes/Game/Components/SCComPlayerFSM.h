@@ -23,6 +23,7 @@ public:
 		STATE_STAND,
 		STATE_MOVE,
 		STATE_JUMP,
+        STATE_DIE,
 	};
 
 public:
@@ -36,6 +37,7 @@ public:
 	void doRun();
 	void doJump(float fInitSpeedY);
 	void doAttack();
+    void doDie();
 
 	int getCurState() const { return m_iState; }
 
@@ -48,6 +50,7 @@ protected:
 	void update_Stand(float dt);
 	void update_Move(float dt);
 	void update_Jump(float dt);
+    void update_Die(float dt);
 };
 
 ///////////////////////////////////////////////////////////////////////////

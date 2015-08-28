@@ -41,6 +41,8 @@ public:
 	SCHostPlayerController* GetController() { return _controller; }
 	SCHostPlayerDispatcher* GetDispatcher() { return _dispatcher; }
 
+    cocos2d::Rect getBoundingBox();
+
 protected:
     SCHostPlayerController* _controller;
     SCHostPlayerDispatcher* _dispatcher;

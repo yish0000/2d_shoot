@@ -1,31 +1,31 @@
 /*
 * ------------------------------------------------------------------------
-*  Name:   SCComProperty.h
+*  Name:   SCComNPCProperty.h
 *  Desc:   ÕÊº“ªÚNPC Ù–‘
 *  Author: umiringo
 *  Date:   2015/6/30
 * ------------------------------------------------------------------------
 */
-#ifndef __SC_COMPROPERTY_H__
-#define __SC_COMPROPERTY_H__
+#ifndef __SC_COMNPCPROPERTY_H__
+#define __SC_COMNPCPROPERTY_H__
 
 #include "SCComponentBase.h"
 #include "../SCWorld.h"
 #include "../common/message.h"
 
-struct scComPropertyData
+struct scComNPCPropertyData
 {
 	std::string name;
 	int max_hp;
     bool isDispear;
 };
 
-class SCComProperty : public SCComponentBase
+class SCComNPCProperty : public SCComponentBase
 {
 public:
-    SCComProperty() : SCComponentBase(SC_COMPONENT_PROPERTY), hp(1), isZombie(false), removeCount(-1.0f), isDispear(true) {}
-    SCComProperty(scComPropertyData &data);
-    virtual ~SCComProperty() {}
+    SCComNPCProperty() : SCComponentBase(SC_COMPONENT_NPC_PROPERTY), hp(1), isZombie(false), removeCount(-1.0f), isDispear(true) {}
+    SCComNPCProperty(scComNPCPropertyData &data);
+    virtual ~SCComNPCProperty() {}
 
     virtual bool init();
     virtual void update(float dt);

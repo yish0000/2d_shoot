@@ -72,3 +72,11 @@ void SCBullet::setBirthPos(const cocos2d::Point& pos)
 		pMove->setBirthPos(pos);
 	setPosition(pos);
 }
+
+void SCBullet::setOwnerType(int type)
+{
+    SCComBulletMove* pMove = dynamic_cast<SCComBulletMove*>(getComponent(SC_COMPONENT_BULLET_MOVE));
+    if (pMove)
+        pMove->setOwnerType(type);
+        
+}

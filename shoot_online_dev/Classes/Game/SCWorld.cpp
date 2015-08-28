@@ -28,8 +28,7 @@ SCObject* SCWorld::FindObjectByMsg(const Message &msg)
     {
         case SC_OBJECT_HOSTPLAYER:
         {
-            //TODO :
-            return nullptr;
+            return m_pHostPlayer;
         }
         break;
         case SC_OBJECT_NPC:
@@ -92,6 +91,7 @@ bool SCWorld::init()
 	m_pHostPlayer = SCHostPlayer::create();
 	m_pTileMap->addChildToLayer(m_pHostPlayer, "rd_add", SCENELAYER_ZORDER_HOSTPLAYER);
 	m_pHostPlayer->setPosition(300, 120);
+    m_pHostPlayer->setActive(true);
 
 	// 地图跟随主角
 	m_pTileMap->followNode(m_pHostPlayer);
@@ -213,6 +213,22 @@ bool SCWorld::checkNPCCollision(const cocos2d::Rect& bb, const cocos2d::Point& o
 	return !npcList.empty();
 }
 
+bool SCWorld::checkPlayerCollision(const cocos2d::Rect& bb, const cocos2d::Point& oldPos, const cocos2d::Point& newPos)
+{
+    float xDist = fabs(oldPos.x - newPos.x);
+    float yDist = fabs(oldPos.y - newPos.y);
+    if (xDist < 10.0f) xDist = 10.0f;
+    if (yDist < 10.0f) yDist = 10.0f;
+
+    cocos2d::Rect rcBound = bb;
+    rcBound.origin.x += xDist;
+    rcBound.origin.y -= yDist;
+
+    if (!m_pHostPlayer->isActive()) return false;
+
+    return SCGeometry::bbIntersects(rcBound, m_pHostPlayer->getBoundingBox());
+}
+
 bool SCWorld::GenerateNpc(int tid, const cocos2d::Point& birthPos)
 {
     //初始化一个npc
@@ -226,13 +242,13 @@ bool SCWorld::GenerateNpc(int tid, const cocos2d::Point& birthPos)
 
     npc->setPosition(birthPos.x, birthPos.y);
 	m_pTileMap->addChildToLayer(npc, "rd_add", SCENELAYER_ZORDER_NPC);
-
+    npc->setWorld(this);
     //加入objlist
 	_npc_manager.Insert(npc, npc->getID());
     return true;
 }
 
-bool SCWorld::GenerateBullet(int tid, const cocos2d::Point& birthPos)
+bool SCWorld::GenerateBullet(int tid, const cocos2d::Point& birthPos, SCObject* owner)
 {
     //初始化一个子弹
     SCBullet *bullet = new SCBullet(GID(SC_OBJECT_BULLET, bulletOriginID++), tid);
@@ -245,9 +261,11 @@ bool SCWorld::GenerateBullet(int tid, const cocos2d::Point& birthPos)
 
     //坐标
     bullet->setBirthPos(birthPos);
-	bullet->setFaceDirection(m_pHostPlayer->getFaceDirection());
+    bullet->setOwnerType(owner->getType());
+	//bullet->setFaceDirection(m_pHostPlayer->getFaceDirection());
+    bullet->setFaceDirection(owner->getFaceDirection());
 	m_pTileMap->addChildToLayer(bullet, "rd_add", SCENELAYER_ZORDER_SUBOBJECT);
-
+    bullet->setWorld(this);
 	_bullet_manager.Insert(bullet, bullet->getID());
     return true;
 }

@@ -1,5 +1,5 @@
 #include "SCComNPCAI.h"
-#include "SCComProperty.h"
+#include "SCComNPCProperty.h"
 #include "SCComArmature.h"
 #include "Data/SCDataModule.h"
 #include "Utility/SCUtilityFunc.h"
@@ -7,28 +7,38 @@
 USING_NS_CC;
 
 SCComNPCAI::SCComNPCAI(int ai_id)
-: SCComponentBase(SC_COMPONENT_NPCAI), updateCount(0), inBattle(false)
+: SCComponentBase(SC_COMPONENT_NPCAI), updateCount(0.f), inBattle(false)
 {
     tid = ai_id;
 }
 
 bool SCComNPCAI::init()
 {
-    NPCAI_ESSENCE* m_pEssence = (NPCAI_ESSENCE*)glb_getDataModule()->getTemplate(tid, DT_NPC_ESSENCE);
+    NPCAI_ESSENCE* m_pEssence = (NPCAI_ESSENCE*)glb_getDataModule()->getTemplate(tid, DT_NPCAI_ESSENCE);
     if (m_pEssence)
     {
-        mode = m_pEssence->mode;
-        switch (mode)
+        idle_mode = m_pEssence->idle_mode;
+        switch (idle_mode)
         {
-        case NPC_AI_STAKE:
+        case IDLE_AI_STAY:
             break;
-        case NPC_AI_TURRET:
+        default:
+            break;
+        }
+        atk_mode = m_pEssence->atk_mode;
+        switch (atk_mode)
+        {
+        case ATK_AI_STAKE:
+            break;
+        case ATK_AI_TURRET:
             bullet_id = m_pEssence->bullet_id;
             atk_interval = m_pEssence->atk_interval;
             break;
         default:
             break;
         }
+
+        m_pGameObj->setFaceDirection(-1);
     }
     else
     {
@@ -44,20 +54,40 @@ void SCComNPCAI::update(float dt)
     //³¬³ö¾àÀëÔòÐÝÃß
     if (glb_getHostPlayer()->getPosition().getDistance(m_pGameObj->getPosition()) > NPC_TRIGGER_DISTANCE)
         return;
+    
     if (IsZombie())
         return;
 
-    updateCount += dt;
-    switch (mode)
+    if (inBattle)
     {
-    case NPC_AI_STAKE:
-        break;
-    case NPC_AI_TURRET:
-        DoTurretAttack();
-        break;
-    default:
-        break;
+       
+        switch (atk_mode)
+        {
+        case ATK_AI_STAKE:
+            break;
+        case ATK_AI_TURRET:
+            updateCount += dt;
+            DoTurretAttack();
+            break;
+        default:
+            break;
+        }
     }
+    else
+    {
+        if (glb_getHostPlayer()->getPosition().getDistance(m_pGameObj->getPosition()) <= NPC_COMBAT_DISTANCE)
+        {
+            inBattle = true;
+            return;
+        }
+        switch (idle_mode)
+        {
+        case ATK_AI_TURRET:
+        default:
+            break;
+        }
+    }
+    return;
 }
 
 void SCComNPCAI::beAttack()
@@ -67,35 +97,35 @@ void SCComNPCAI::beAttack()
 
 void SCComNPCAI::onDeath()
 {
-    switch (mode)
-    {
-    case NPC_AI_STAKE:
-        break;
-    case NPC_AI_TURRET:
-        DoTurretAttack();
-        break;
-    default:
-        break;
-    }
+
 }
 
 bool SCComNPCAI::IsZombie()
 {
-    SCComProperty* pProperty = dynamic_cast<SCComProperty*>(m_pGameObj->getComponent(SC_COMPONENT_PROPERTY));
+    SCComNPCProperty* pProperty = dynamic_cast<SCComNPCProperty*>(m_pGameObj->getComponent(SC_COMPONENT_NPC_PROPERTY));
     return pProperty->IsZombie();
 }
 
 void SCComNPCAI::DoTurretAttack()
 {
+    //ÅÐ¶ÏÍæ¼Ò·½Ïò
+    if (glb_getHostPlayer()->getPosition().x - m_pGameObj->getPosition().x > 0)
+    {
+        m_pGameObj->setFaceDirection(1);
+    }
+    else
+    {
+        m_pGameObj->setFaceDirection(-1);
+    }
     if (updateCount >= atk_interval)
     {
         SCComArmature* pArmature = dynamic_cast<SCComArmature*>(m_pGameObj->getComponent(SC_COMPONENT_ARMATURE));
         if (pArmature)
         {
             Point vBulletPos;
-            if (!pArmature->getBoneWorldPos("tou", vBulletPos))
+            if (pArmature->getBoneWorldPos("tou", vBulletPos))
             {
-                m_pGameObj->getWorld()->GenerateBullet(bullet_id, vBulletPos);
+                m_pGameObj->getWorld()->GenerateBullet(bullet_id, vBulletPos, m_pGameObj);
                 updateCount = 0;
             }
         }

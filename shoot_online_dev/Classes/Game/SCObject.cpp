@@ -15,12 +15,14 @@
 #include "Components/SCComCollider.h"
 #include "Components/SCComPlayerMove.h"
 #include "Components/SCComPlayerFSM.h"
-#include "Components/SCComProperty.h"
+#include "Components/SCComNPCProperty.h"
 #include "Components/SCComSprite.h"
 #include "Components/SCComBulletMove.h"
 #include "Components/SCComBulletAtk.h"
 #include "Components/SCComNPCMove.h"
 #include "Components/SCComNPCFSM.h"
+#include "Components/SCComNPCAI.h"
+#include "Components/SCComPlayerProperty.h"
 
 USING_NS_CC;
 
@@ -95,10 +97,10 @@ void SCObject::addComponent(int comType, void* extraData)
 		else
 			CCLOG("SCObject::addComponent, This component(SC_COMPONENT_PLAYERMOVE) can only be used by SCHostPlayer!");
 		break;
-	case SC_COMPONENT_PROPERTY:
+	case SC_COMPONENT_NPC_PROPERTY:
 		{
-			scComPropertyData *propertyData = (scComPropertyData *)extraData;
-			pComponent = new SCComProperty(*propertyData);
+			scComNPCPropertyData *propertyData = (scComNPCPropertyData *)extraData;
+			pComponent = new SCComNPCProperty(*propertyData);
 		}
 		break;
 	case SC_COMPONENT_SPRITE:
@@ -140,8 +142,27 @@ void SCObject::addComponent(int comType, void* extraData)
 		else
 			CCLOG("SCObject::addComponent, This component(SC_COMPONENT_NPCFSM) can only be used by SCNpc!");
 		break;
+    case SC_COMPONENT_NPCAI:
+        {
+            const int* ai_tid = (const int*)extraData;
+            if (!ai_tid)
+                CCLOG("SCObject::addComponent , extraData for SCComArmature must not be null! comType: %d", comType);
+            else
+                pComponent = new SCComNPCAI(*ai_tid);
+        }
+        break;
+    case SC_COMPONENT_PLAYER_PROPERTY:
+        {
+            scComPlayerPropertyData *data = (scComPlayerPropertyData*)extraData;
+            if (!data)
+                CCLOG("SCObject::addComponent, extraData for SCComPlayerProperty must not be null! comType: %d", comType);
+            else
+                pComponent = new SCComPlayerProperty(*data);
+        }
+        break;
 	default:
 		CCLOG("SCObject::addComponent, unknown component type!");
+        break;
 	}
 
 	if( pComponent )

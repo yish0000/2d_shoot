@@ -24,6 +24,7 @@ public:
 	virtual void update(float dt);
 
 	void setBirthPos(const cocos2d::Point& pos);
+    void setOwnerType(int type);
 
 public:
     virtual int DispatchMessage(const Message& msg);

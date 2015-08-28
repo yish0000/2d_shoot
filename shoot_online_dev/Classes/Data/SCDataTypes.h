@@ -41,7 +41,7 @@ enum SC_DATA_TYPE
     DT_WORLD_ESSENCE,			// 世界模板
 	DT_NPC_ESSENCE,				// NPC模板
     DT_BULLET_ESSENCE,          // 子弹模板
-    DT_NPCAI_ESSENCE,              // NPC AI模板
+    DT_NPCAI_ESSENCE,           // NPC AI模板
 };
 
 ///////////////////////////////////////////////////////////////////////////
@@ -55,8 +55,9 @@ DEFINE_TEMPL(NPC_ESSENCE)
 	int move_speed;
 	int jump_heigh;
     int ai_mode;
+    bool is_dispear;
 
-	NPC_ESSENCE() : scale(1.0),max_hp(100), move_speed(0), jump_heigh(100),ai_mode(1) {}
+	NPC_ESSENCE() : scale(1.0),max_hp(100), move_speed(0), jump_heigh(100),ai_mode(1),is_dispear(false) {}
 
 	void encode(scnet::JsonStream &stream) const
 	{
@@ -66,6 +67,7 @@ DEFINE_TEMPL(NPC_ESSENCE)
 		TEMPL_ENCODE(move_speed);
 		TEMPL_ENCODE(jump_heigh);
 		TEMPL_ENCODE(ai_mode);
+        TEMPL_ENCODE(is_dispear);
 	}
 
 	void decode(const scnet::JsonStream &stream)
@@ -76,6 +78,7 @@ DEFINE_TEMPL(NPC_ESSENCE)
 		TEMPL_DECODE(move_speed);
 		TEMPL_DECODE(jump_heigh);
 		TEMPL_DECODE(ai_mode);
+        TEMPL_DECODE(is_dispear);
 	}
 };
 
@@ -87,7 +90,7 @@ DEFINE_TEMPL(BULLET_ESSENCE)
     int atk_max;
     int atk_min;
 
-    BULLET_ESSENCE() : scale(1.0), move_speed(0), atk_min(0), atk_max(0) {}
+    BULLET_ESSENCE() : scale(1.0f), move_speed(0), atk_min(0), atk_max(0) {}
 
     void encode(scnet::JsonStream &stream) const
     {
@@ -113,7 +116,8 @@ DEFINE_TEMPL(BULLET_ESSENCE)
 
 DEFINE_TEMPL(NPCAI_ESSENCE)
 {
-    int mode;
+    int idle_mode;
+    int atk_mode;
     int bullet_id;
     int atk_interval;
 
@@ -121,14 +125,16 @@ DEFINE_TEMPL(NPCAI_ESSENCE)
 
     void encode(scnet::JsonStream &stream) const
     {
-        TEMPL_ENCODE(mode);
+        TEMPL_ENCODE(idle_mode);
+        TEMPL_ENCODE(atk_mode);
         TEMPL_ENCODE(bullet_id);
         TEMPL_ENCODE(atk_interval);
     }
 
     void decode(const scnet::JsonStream &stream)
     {
-        TEMPL_DECODE(mode);
+        TEMPL_DECODE(idle_mode);
+        TEMPL_DECODE(atk_mode);
         TEMPL_DECODE(bullet_id);
         TEMPL_DECODE(atk_interval);
     }
