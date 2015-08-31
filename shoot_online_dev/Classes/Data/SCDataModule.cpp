@@ -49,7 +49,7 @@ void SCDataModule::update(float dt)
 
 void SCDataModule::garbageCollect()
 {
-//	SCScopedMutex lock(m_mutex);
+    SCScopedMutex lock(m_mutex);
 
 	TemplRefMap::iterator it = m_refs.begin();
 	while (it != m_refs.end())

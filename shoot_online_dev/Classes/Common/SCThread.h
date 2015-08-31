@@ -17,7 +17,7 @@ class SCMutex
 	friend class SCCondition;
 
 public:
-	SCMutex(bool recursive=false);
+	SCMutex(bool recursive=true);
 	~SCMutex();
 
 	void lock();
