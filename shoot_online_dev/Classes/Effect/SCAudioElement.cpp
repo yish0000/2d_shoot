@@ -43,3 +43,25 @@ protected:
 	int m_iStartFrame;
 	int m_iEndFrame;
 };
+
+//////////////////////////////////////////////////////////////////////////////
+
+SCAudioElement::SCAudioElement() : SCEffectElement(EFT_ELEMENT_AUDIO), m_pData(NULL)
+{
+}
+
+SCAudioElement::~SCAudioElement()
+{
+}
+
+bool SCAudioElement::init(SCEffectElementData *pData, bool stepAction)
+{
+    if( !pData || pData->getType() != EFT_ELEMENT_AUDIO )
+        return false;
+    
+    m_pData = dynamic_cast<SCAudioElementData*>(pData);
+    if( !m_pData ) return false;
+
+    return true;
+}
+

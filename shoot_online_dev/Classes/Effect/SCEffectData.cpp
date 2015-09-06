@@ -62,6 +62,7 @@ bool SCEffectData::loadEffectData(const char* filename)
 
 		if( name == "events" )
 		{
+            
 		}
 		else if( name == "picani" )
 		{

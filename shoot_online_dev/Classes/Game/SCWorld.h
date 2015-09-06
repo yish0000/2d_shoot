@@ -57,6 +57,9 @@ public:
 
 	virtual bool init();
 	virtual void update(float dt);
+    
+    virtual void onEnterTransitionDidFinish();
+    virtual void onExit();
 
 	// 获取模板数据
 	const WORLD_ESSENCE* getEssence() const { return m_pEssence; }

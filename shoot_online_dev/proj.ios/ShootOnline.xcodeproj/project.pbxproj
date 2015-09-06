@@ -9,9 +9,7 @@
 /* Begin PBXBuildFile section */
 		1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
-		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
-		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
 		D210408B1B21F50E007AB304 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D210408A1B21F50E007AB304 /* Images.xcassets */; };
@@ -23,6 +21,29 @@
 		D22AC37B1B1E1EDD000F9AA4 /* SCSceneLogin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22AC3791B1E1EDD000F9AA4 /* SCSceneLogin.cpp */; };
 		D22AC37E1B1E206B000F9AA4 /* SCSceneMain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22AC37C1B1E206B000F9AA4 /* SCSceneMain.cpp */; };
 		D22AC3811B1E20AD000F9AA4 /* SCSceneBattle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22AC37F1B1E20AD000F9AA4 /* SCSceneBattle.cpp */; };
+		D2856E301B9C7EF4008648AC /* SCComBulletAtk.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2856E201B9C7EF4008648AC /* SCComBulletAtk.cpp */; };
+		D2856E311B9C7EF4008648AC /* SCComBulletMove.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2856E221B9C7EF4008648AC /* SCComBulletMove.cpp */; };
+		D2856E321B9C7EF4008648AC /* SCComNPCAI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2856E241B9C7EF4008648AC /* SCComNPCAI.cpp */; };
+		D2856E331B9C7EF4008648AC /* SCComNPCFSM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2856E261B9C7EF4008648AC /* SCComNPCFSM.cpp */; };
+		D2856E341B9C7EF4008648AC /* SCComNPCMove.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2856E281B9C7EF4008648AC /* SCComNPCMove.cpp */; };
+		D2856E351B9C7EF4008648AC /* SCComNPCProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2856E2A1B9C7EF4008648AC /* SCComNPCProperty.cpp */; };
+		D2856E361B9C7EF4008648AC /* SCComPlayerProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2856E2C1B9C7EF4008648AC /* SCComPlayerProperty.cpp */; };
+		D2856E371B9C7EF4008648AC /* SCComSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2856E2E1B9C7EF4008648AC /* SCComSprite.cpp */; };
+		D2856E4B1B9C7F6D008648AC /* SCUIChapter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2856E451B9C7F6D008648AC /* SCUIChapter.cpp */; };
+		D2856E4C1B9C7F6D008648AC /* SCUICustom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2856E471B9C7F6D008648AC /* SCUICustom.cpp */; };
+		D2856E4D1B9C7F6D008648AC /* SCUIStage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2856E491B9C7F6D008648AC /* SCUIStage.cpp */; };
+		D2856E501B9C7F74008648AC /* SCUIOption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2856E4E1B9C7F74008648AC /* SCUIOption.cpp */; };
+		D2856E531B9C7F7D008648AC /* SCUIStart.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2856E511B9C7F7D008648AC /* SCUIStart.cpp */; };
+		D2856E5A1B9C8023008648AC /* SCEffectData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2856E541B9C8023008648AC /* SCEffectData.cpp */; };
+		D2856E5B1B9C8023008648AC /* SCEffectElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2856E561B9C8023008648AC /* SCEffectElement.cpp */; };
+		D2856E5C1B9C8023008648AC /* SCEffectKeyframe.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2856E581B9C8023008648AC /* SCEffectKeyframe.cpp */; };
+		D2856E601B9C8039008648AC /* SCAudioElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2856E5E1B9C8039008648AC /* SCAudioElement.cpp */; };
+		D2856E621B9C8159008648AC /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2856E611B9C8159008648AC /* CoreMotion.framework */; };
+		D2856E641B9C8166008648AC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2856E631B9C8166008648AC /* UIKit.framework */; };
+		D2856E661B9C816E008648AC /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2856E651B9C816E008648AC /* OpenGLES.framework */; };
+		D2856E681B9C81AB008648AC /* sprite in Resources */ = {isa = PBXBuildFile; fileRef = D2856E671B9C81AB008648AC /* sprite */; };
+		D2856E6B1B9C9579008648AC /* music in Resources */ = {isa = PBXBuildFile; fileRef = D2856E691B9C9579008648AC /* music */; };
+		D2856E6C1B9C9579008648AC /* sound in Resources */ = {isa = PBXBuildFile; fileRef = D2856E6A1B9C9579008648AC /* sound */; };
 		D2AF41911B67E76C007EE59F /* SCUIBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2AF41891B67E76C007EE59F /* SCUIBase.cpp */; };
 		D2AF41921B67E76C007EE59F /* SCUIModule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2AF418B1B67E76C007EE59F /* SCUIModule.cpp */; };
 		D2AF41931B67E76C007EE59F /* SCUIModuleFrames.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2AF418D1B67E76C007EE59F /* SCUIModuleFrames.cpp */; };
@@ -31,7 +52,6 @@
 		D2AF420B1B67E79C007EE59F /* SCComCollider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2AF41E21B67E79C007EE59F /* SCComCollider.cpp */; };
 		D2AF420C1B67E79C007EE59F /* SCComPlayerFSM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2AF41E41B67E79C007EE59F /* SCComPlayerFSM.cpp */; };
 		D2AF420D1B67E79C007EE59F /* SCComPlayerMove.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2AF41E61B67E79C007EE59F /* SCComPlayerMove.cpp */; };
-		D2AF420E1B67E79C007EE59F /* SCComProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2AF41E91B67E79C007EE59F /* SCComProperty.cpp */; };
 		D2AF420F1B67E79C007EE59F /* SCComWeapon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2AF41EB1B67E79C007EE59F /* SCComWeapon.cpp */; };
 		D2AF42101B67E79C007EE59F /* MessageQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2AF41ED1B67E79C007EE59F /* MessageQueue.cpp */; };
 		D2AF42111B67E79C007EE59F /* SCBullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2AF41F01B67E79C007EE59F /* SCBullet.cpp */; };
@@ -96,7 +116,6 @@
 		D44C620C132DFF330009C878 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620B132DFF330009C878 /* OpenAL.framework */; };
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
-		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -194,18 +213,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1ACB3243164770DE00914215 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = ../../cocos2dx/platform/third_party/ios/libraries/libcurl.a; sourceTree = "<group>"; };
 		1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AppDelegate.cpp; path = ../Classes/AppDelegate.cpp; sourceTree = "<group>"; };
 		1AFAF8B416D35DE700DB1158 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../Classes/AppDelegate.h; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* ShootOnline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShootOnline.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		503AE11117EB99EE00D1A890 /* libcurl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcurl.dylib; path = usr/lib/libcurl.dylib; sourceTree = SDKROOT; };
 		503AE11A17EB9C5A00D1A890 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		5087E78817EB974C00C73F5D /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		5087E78A17EB975400C73F5D /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
-		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D210408A1B21F50E007AB304 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = SOURCE_ROOT; };
@@ -226,6 +242,46 @@
 		D22AC37D1B1E206B000F9AA4 /* SCSceneMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSceneMain.h; sourceTree = "<group>"; };
 		D22AC37F1B1E20AD000F9AA4 /* SCSceneBattle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SCSceneBattle.cpp; sourceTree = "<group>"; };
 		D22AC3801B1E20AD000F9AA4 /* SCSceneBattle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSceneBattle.h; sourceTree = "<group>"; };
+		D2856E201B9C7EF4008648AC /* SCComBulletAtk.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SCComBulletAtk.cpp; sourceTree = "<group>"; };
+		D2856E211B9C7EF4008648AC /* SCComBulletAtk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCComBulletAtk.h; sourceTree = "<group>"; };
+		D2856E221B9C7EF4008648AC /* SCComBulletMove.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SCComBulletMove.cpp; sourceTree = "<group>"; };
+		D2856E231B9C7EF4008648AC /* SCComBulletMove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCComBulletMove.h; sourceTree = "<group>"; };
+		D2856E241B9C7EF4008648AC /* SCComNPCAI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SCComNPCAI.cpp; sourceTree = "<group>"; };
+		D2856E251B9C7EF4008648AC /* SCComNPCAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCComNPCAI.h; sourceTree = "<group>"; };
+		D2856E261B9C7EF4008648AC /* SCComNPCFSM.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SCComNPCFSM.cpp; sourceTree = "<group>"; };
+		D2856E271B9C7EF4008648AC /* SCComNPCFSM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCComNPCFSM.h; sourceTree = "<group>"; };
+		D2856E281B9C7EF4008648AC /* SCComNPCMove.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SCComNPCMove.cpp; sourceTree = "<group>"; };
+		D2856E291B9C7EF4008648AC /* SCComNPCMove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCComNPCMove.h; sourceTree = "<group>"; };
+		D2856E2A1B9C7EF4008648AC /* SCComNPCProperty.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SCComNPCProperty.cpp; sourceTree = "<group>"; };
+		D2856E2B1B9C7EF4008648AC /* SCComNPCProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCComNPCProperty.h; sourceTree = "<group>"; };
+		D2856E2C1B9C7EF4008648AC /* SCComPlayerProperty.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SCComPlayerProperty.cpp; sourceTree = "<group>"; };
+		D2856E2D1B9C7EF4008648AC /* SCComPlayerProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCComPlayerProperty.h; sourceTree = "<group>"; };
+		D2856E2E1B9C7EF4008648AC /* SCComSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SCComSprite.cpp; sourceTree = "<group>"; };
+		D2856E2F1B9C7EF4008648AC /* SCComSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCComSprite.h; sourceTree = "<group>"; };
+		D2856E451B9C7F6D008648AC /* SCUIChapter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SCUIChapter.cpp; sourceTree = "<group>"; };
+		D2856E461B9C7F6D008648AC /* SCUIChapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCUIChapter.h; sourceTree = "<group>"; };
+		D2856E471B9C7F6D008648AC /* SCUICustom.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SCUICustom.cpp; sourceTree = "<group>"; };
+		D2856E481B9C7F6D008648AC /* SCUICustom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCUICustom.h; sourceTree = "<group>"; };
+		D2856E491B9C7F6D008648AC /* SCUIStage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SCUIStage.cpp; sourceTree = "<group>"; };
+		D2856E4A1B9C7F6D008648AC /* SCUIStage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCUIStage.h; sourceTree = "<group>"; };
+		D2856E4E1B9C7F74008648AC /* SCUIOption.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SCUIOption.cpp; sourceTree = "<group>"; };
+		D2856E4F1B9C7F74008648AC /* SCUIOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCUIOption.h; sourceTree = "<group>"; };
+		D2856E511B9C7F7D008648AC /* SCUIStart.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SCUIStart.cpp; sourceTree = "<group>"; };
+		D2856E521B9C7F7D008648AC /* SCUIStart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCUIStart.h; sourceTree = "<group>"; };
+		D2856E541B9C8023008648AC /* SCEffectData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SCEffectData.cpp; sourceTree = "<group>"; };
+		D2856E551B9C8023008648AC /* SCEffectData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCEffectData.h; sourceTree = "<group>"; };
+		D2856E561B9C8023008648AC /* SCEffectElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SCEffectElement.cpp; sourceTree = "<group>"; };
+		D2856E571B9C8023008648AC /* SCEffectElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCEffectElement.h; sourceTree = "<group>"; };
+		D2856E581B9C8023008648AC /* SCEffectKeyframe.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SCEffectKeyframe.cpp; sourceTree = "<group>"; };
+		D2856E591B9C8023008648AC /* SCEffectKeyframe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCEffectKeyframe.h; sourceTree = "<group>"; };
+		D2856E5E1B9C8039008648AC /* SCAudioElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SCAudioElement.cpp; sourceTree = "<group>"; };
+		D2856E5F1B9C8039008648AC /* SCAudioElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAudioElement.h; sourceTree = "<group>"; };
+		D2856E611B9C8159008648AC /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
+		D2856E631B9C8166008648AC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		D2856E651B9C816E008648AC /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/System/Library/Frameworks/OpenGLES.framework; sourceTree = DEVELOPER_DIR; };
+		D2856E671B9C81AB008648AC /* sprite */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sprite; sourceTree = "<group>"; };
+		D2856E691B9C9579008648AC /* music */ = {isa = PBXFileReference; lastKnownFileType = folder; path = music; sourceTree = "<group>"; };
+		D2856E6A1B9C9579008648AC /* sound */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sound; sourceTree = "<group>"; };
 		D2AF41891B67E76C007EE59F /* SCUIBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SCUIBase.cpp; sourceTree = "<group>"; };
 		D2AF418A1B67E76C007EE59F /* SCUIBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCUIBase.h; sourceTree = "<group>"; };
 		D2AF418B1B67E76C007EE59F /* SCUIModule.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SCUIModule.cpp; sourceTree = "<group>"; };
@@ -247,8 +303,6 @@
 		D2AF41E61B67E79C007EE59F /* SCComPlayerMove.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SCComPlayerMove.cpp; sourceTree = "<group>"; };
 		D2AF41E71B67E79C007EE59F /* SCComPlayerMove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCComPlayerMove.h; sourceTree = "<group>"; };
 		D2AF41E81B67E79C007EE59F /* SCComponentBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCComponentBase.h; sourceTree = "<group>"; };
-		D2AF41E91B67E79C007EE59F /* SCComProperty.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SCComProperty.cpp; sourceTree = "<group>"; };
-		D2AF41EA1B67E79C007EE59F /* SCComProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCComProperty.h; sourceTree = "<group>"; };
 		D2AF41EB1B67E79C007EE59F /* SCComWeapon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SCComWeapon.cpp; sourceTree = "<group>"; };
 		D2AF41EC1B67E79C007EE59F /* SCComWeapon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCComWeapon.h; sourceTree = "<group>"; };
 		D2AF41ED1B67E79C007EE59F /* MessageQueue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MessageQueue.cpp; sourceTree = "<group>"; };
@@ -382,7 +436,6 @@
 		D44C620B132DFF330009C878 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -390,14 +443,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2856E661B9C816E008648AC /* OpenGLES.framework in Frameworks */,
+				D2856E641B9C8166008648AC /* UIKit.framework in Frameworks */,
+				D2856E621B9C8159008648AC /* CoreMotion.framework in Frameworks */,
 				D2B5DA9B1B0CEBE700401BDF /* libcocos2dx iOS.a in Frameworks */,
 				D2B5DA9C1B0CEBE700401BDF /* libcocos2dx-extensions iOS.a in Frameworks */,
 				D2B5DA9D1B0CEBE700401BDF /* libCocosDenshion iOS.a in Frameworks */,
-				D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
-				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
-				BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */,
 				BF1712471292920000B8313A /* libz.dylib in Frameworks */,
 				BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */,
 				D44C620C132DFF330009C878 /* OpenAL.framework in Frameworks */,
@@ -472,21 +525,20 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D6B0611A1803AB670077942B /* CoreMotion.framework */,
+				D2856E651B9C816E008648AC /* OpenGLES.framework */,
+				D2856E631B9C8166008648AC /* UIKit.framework */,
+				D2856E611B9C8159008648AC /* CoreMotion.framework */,
 				503AE11A17EB9C5A00D1A890 /* IOKit.framework */,
 				503AE11117EB99EE00D1A890 /* libcurl.dylib */,
 				5087E78A17EB975400C73F5D /* OpenGL.framework */,
 				5087E78817EB974C00C73F5D /* AppKit.framework */,
-				1ACB3243164770DE00914215 /* libcurl.a */,
 				BF170DB412928DE900B8313A /* libz.dylib */,
 				D44C620F132DFF4E0009C878 /* AudioToolbox.framework */,
 				D44C620D132DFF430009C878 /* AVFoundation.framework */,
 				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				D44C620B132DFF330009C878 /* OpenAL.framework */,
-				BF170DB012928DE900B8313A /* OpenGLES.framework */,
 				BF1C47EA1293683800B63C5D /* QuartzCore.framework */,
-				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -494,6 +546,9 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D2856E691B9C9579008648AC /* music */,
+				D2856E6A1B9C9579008648AC /* sound */,
+				D2856E671B9C81AB008648AC /* sprite */,
 				D2AF422C1B67EA26007EE59F /* config */,
 				D2AF422D1B67EA26007EE59F /* data */,
 				D2AF422E1B67EA26007EE59F /* effect */,
@@ -533,6 +588,53 @@
 			name = scenes;
 			sourceTree = "<group>";
 		};
+		D2856E411B9C7F3A008648AC /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				D2856E4E1B9C7F74008648AC /* SCUIOption.cpp */,
+				D2856E4F1B9C7F74008648AC /* SCUIOption.h */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		D2856E421B9C7F42008648AC /* Battle */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Battle;
+			sourceTree = "<group>";
+		};
+		D2856E431B9C7F48008648AC /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				D2856E451B9C7F6D008648AC /* SCUIChapter.cpp */,
+				D2856E461B9C7F6D008648AC /* SCUIChapter.h */,
+				D2856E471B9C7F6D008648AC /* SCUICustom.cpp */,
+				D2856E481B9C7F6D008648AC /* SCUICustom.h */,
+				D2856E491B9C7F6D008648AC /* SCUIStage.cpp */,
+				D2856E4A1B9C7F6D008648AC /* SCUIStage.h */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
+		D2856E441B9C7F4C008648AC /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				D2856E511B9C7F7D008648AC /* SCUIStart.cpp */,
+				D2856E521B9C7F7D008648AC /* SCUIStart.h */,
+			);
+			name = Loading;
+			sourceTree = "<group>";
+		};
+		D2856E5D1B9C8026008648AC /* elements */ = {
+			isa = PBXGroup;
+			children = (
+				D2856E5E1B9C8039008648AC /* SCAudioElement.cpp */,
+				D2856E5F1B9C8039008648AC /* SCAudioElement.h */,
+			);
+			name = elements;
+			sourceTree = "<group>";
+		};
 		D2AF41DA1B67E79C007EE59F /* common */ = {
 			isa = PBXGroup;
 			children = (
@@ -547,6 +649,22 @@
 		D2AF41DF1B67E79C007EE59F /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				D2856E201B9C7EF4008648AC /* SCComBulletAtk.cpp */,
+				D2856E211B9C7EF4008648AC /* SCComBulletAtk.h */,
+				D2856E221B9C7EF4008648AC /* SCComBulletMove.cpp */,
+				D2856E231B9C7EF4008648AC /* SCComBulletMove.h */,
+				D2856E241B9C7EF4008648AC /* SCComNPCAI.cpp */,
+				D2856E251B9C7EF4008648AC /* SCComNPCAI.h */,
+				D2856E261B9C7EF4008648AC /* SCComNPCFSM.cpp */,
+				D2856E271B9C7EF4008648AC /* SCComNPCFSM.h */,
+				D2856E281B9C7EF4008648AC /* SCComNPCMove.cpp */,
+				D2856E291B9C7EF4008648AC /* SCComNPCMove.h */,
+				D2856E2A1B9C7EF4008648AC /* SCComNPCProperty.cpp */,
+				D2856E2B1B9C7EF4008648AC /* SCComNPCProperty.h */,
+				D2856E2C1B9C7EF4008648AC /* SCComPlayerProperty.cpp */,
+				D2856E2D1B9C7EF4008648AC /* SCComPlayerProperty.h */,
+				D2856E2E1B9C7EF4008648AC /* SCComSprite.cpp */,
+				D2856E2F1B9C7EF4008648AC /* SCComSprite.h */,
 				D2AF41E01B67E79C007EE59F /* SCComArmature.cpp */,
 				D2AF41E11B67E79C007EE59F /* SCComArmature.h */,
 				D2AF41E21B67E79C007EE59F /* SCComCollider.cpp */,
@@ -556,8 +674,6 @@
 				D2AF41E61B67E79C007EE59F /* SCComPlayerMove.cpp */,
 				D2AF41E71B67E79C007EE59F /* SCComPlayerMove.h */,
 				D2AF41E81B67E79C007EE59F /* SCComponentBase.h */,
-				D2AF41E91B67E79C007EE59F /* SCComProperty.cpp */,
-				D2AF41EA1B67E79C007EE59F /* SCComProperty.h */,
 				D2AF41EB1B67E79C007EE59F /* SCComWeapon.cpp */,
 				D2AF41EC1B67E79C007EE59F /* SCComWeapon.h */,
 			);
@@ -628,6 +744,13 @@
 		D2B7BF4B1B13A0500012C51B /* Effect */ = {
 			isa = PBXGroup;
 			children = (
+				D2856E5D1B9C8026008648AC /* elements */,
+				D2856E541B9C8023008648AC /* SCEffectData.cpp */,
+				D2856E551B9C8023008648AC /* SCEffectData.h */,
+				D2856E561B9C8023008648AC /* SCEffectElement.cpp */,
+				D2856E571B9C8023008648AC /* SCEffectElement.h */,
+				D2856E581B9C8023008648AC /* SCEffectKeyframe.cpp */,
+				D2856E591B9C8023008648AC /* SCEffectKeyframe.h */,
 				D2B7BF4C1B13A0500012C51B /* SCEffect.cpp */,
 				D2B7BF4D1B13A0500012C51B /* SCEffect.h */,
 			);
@@ -823,6 +946,10 @@
 		D2B7BF971B13A0500012C51B /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				D2856E441B9C7F4C008648AC /* Loading */,
+				D2856E431B9C7F48008648AC /* Main */,
+				D2856E421B9C7F42008648AC /* Battle */,
+				D2856E411B9C7F3A008648AC /* Common */,
 				D2AF41891B67E76C007EE59F /* SCUIBase.cpp */,
 				D2AF418A1B67E76C007EE59F /* SCUIBase.h */,
 				D2AF418B1B67E76C007EE59F /* SCUIModule.cpp */,
@@ -1002,9 +1129,12 @@
 				D2AF42341B67EA26007EE59F /* config in Resources */,
 				D2AF423B1B67EA26007EE59F /* ui in Resources */,
 				D2B5DA7F1B0CEA2200401BDF /* InfoPlist.strings in Resources */,
+				D2856E6C1B9C9579008648AC /* sound in Resources */,
 				D2AF423A1B67EA26007EE59F /* scripts in Resources */,
+				D2856E6B1B9C9579008648AC /* music in Resources */,
 				D2AF42351B67EA26007EE59F /* data in Resources */,
 				D2AF42361B67EA26007EE59F /* effect in Resources */,
+				D2856E681B9C81AB008648AC /* sprite in Resources */,
 				D2AF42391B67EA26007EE59F /* role in Resources */,
 				D2B5DA801B0CEA2200401BDF /* Localizable.strings in Resources */,
 			);
@@ -1018,16 +1148,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2AF41921B67E76C007EE59F /* SCUIModule.cpp in Sources */,
+				D2856E5B1B9C8023008648AC /* SCEffectElement.cpp in Sources */,
+				D2856E341B9C7EF4008648AC /* SCComNPCMove.cpp in Sources */,
 				D2B5DA921B0CEA4800401BDF /* AppController.mm in Sources */,
 				D2B7BFAF1B13A0500012C51B /* json_value.cpp in Sources */,
 				D2B7BFA91B13A0500012C51B /* HttpCurl.cpp in Sources */,
 				D22AC3741B1E1DC8000F9AA4 /* SCSceneManager.cpp in Sources */,
+				D2856E601B9C8039008648AC /* SCAudioElement.cpp in Sources */,
 				D2B7BFB51B13A0500012C51B /* JsonStreamCoder.cpp in Sources */,
 				D22AC37B1B1E1EDD000F9AA4 /* SCSceneLogin.cpp in Sources */,
 				D22AC3541B1DD9BC000F9AA4 /* SCGeometry.cpp in Sources */,
 				D2B5DA941B0CEA4800401BDF /* RootViewController.mm in Sources */,
 				D2B7BF9D1B13A0500012C51B /* AccountPlatform.cpp in Sources */,
 				D2AF42241B67E7C2007EE59F /* SCDataTypes.cpp in Sources */,
+				D2856E5A1B9C8023008648AC /* SCEffectData.cpp in Sources */,
 				D2AF41931B67E76C007EE59F /* SCUIModuleFrames.cpp in Sources */,
 				D2AF42141B67E79C007EE59F /* SCGameJoystick.cpp in Sources */,
 				D2AF42281B67E7EB007EE59F /* SCConfigs.cpp in Sources */,
@@ -1036,6 +1170,7 @@
 				D2B7BFA31B13A0500012C51B /* SCModuleBase.cpp in Sources */,
 				D2B7BFB61B13A0500012C51B /* KeyedStreamCoder.cpp in Sources */,
 				D2B7BFB81B13A0500012C51B /* SCSceneBase.cpp in Sources */,
+				D2856E531B9C7F7D008648AC /* SCUIStart.cpp in Sources */,
 				D2AF421C1B67E79C007EE59F /* SCObject.cpp in Sources */,
 				D2B7BF9F1B13A0500012C51B /* SCThread.cpp in Sources */,
 				D2AF421A1B67E79C007EE59F /* SCNpcController.cpp in Sources */,
@@ -1043,38 +1178,49 @@
 				D2AF42161B67E79C007EE59F /* SCHostPlayer.cpp in Sources */,
 				D2B7BFB31B13A0500012C51B /* Protocol.cpp in Sources */,
 				D2B7BFA61B13A0500012C51B /* crypt.cpp in Sources */,
+				D2856E5C1B9C8023008648AC /* SCEffectKeyframe.cpp in Sources */,
 				D2AF420B1B67E79C007EE59F /* SCComCollider.cpp in Sources */,
 				D2AF42101B67E79C007EE59F /* MessageQueue.cpp in Sources */,
 				D22AC3781B1E1E66000F9AA4 /* SCSceneLoading.cpp in Sources */,
 				D22AC3691B1DEC62000F9AA4 /* SCPlayerModule.cpp in Sources */,
 				D2B7BFAA1B13A0500012C51B /* HttpMan.cpp in Sources */,
 				D2B7BF9E1B13A0500012C51B /* SCEvent.cpp in Sources */,
+				D2856E361B9C7EF4008648AC /* SCComPlayerProperty.cpp in Sources */,
 				D2B7BFB91B13A0500012C51B /* SCTiledMap.cpp in Sources */,
 				D22AC37E1B1E206B000F9AA4 /* SCSceneMain.cpp in Sources */,
 				D2AF41941B67E76C007EE59F /* SCUISkill.cpp in Sources */,
+				D2856E4C1B9C7F6D008648AC /* SCUICustom.cpp in Sources */,
+				D2856E4B1B9C7F6D008648AC /* SCUIChapter.cpp in Sources */,
 				D2AF420F1B67E79C007EE59F /* SCComWeapon.cpp in Sources */,
 				D2B7BFA01B13A0500012C51B /* SCEffect.cpp in Sources */,
+				D2856E321B9C7EF4008648AC /* SCComNPCAI.cpp in Sources */,
 				D22AC3811B1E20AD000F9AA4 /* SCSceneBattle.cpp in Sources */,
 				D2AF420D1B67E79C007EE59F /* SCComPlayerMove.cpp in Sources */,
+				D2856E371B9C7EF4008648AC /* SCComSprite.cpp in Sources */,
 				D2B7BFB11B13A0500012C51B /* json_writer.cpp in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
 				D2B7BFB21B13A0500012C51B /* Processor.cpp in Sources */,
 				D2B5DA931B0CEA4800401BDF /* main.m in Sources */,
 				D2C57A281B1FCB24008DA7E3 /* SCJoystickBase.cpp in Sources */,
-				D2AF420E1B67E79C007EE59F /* SCComProperty.cpp in Sources */,
 				D2AF420C1B67E79C007EE59F /* SCComPlayerFSM.cpp in Sources */,
+				D2856E351B9C7EF4008648AC /* SCComNPCProperty.cpp in Sources */,
 				D2AF42111B67E79C007EE59F /* SCBullet.cpp in Sources */,
 				D2AF420A1B67E79C007EE59F /* SCComArmature.cpp in Sources */,
 				D2AF42191B67E79C007EE59F /* SCNpc.cpp in Sources */,
 				D2AF42171B67E79C007EE59F /* SCHostPlayerController.cpp in Sources */,
+				D2856E501B9C7F74008648AC /* SCUIOption.cpp in Sources */,
 				D2AF421B1B67E79C007EE59F /* SCNpcDispatcher.cpp in Sources */,
 				D2B7BFBC1B13A0500012C51B /* SCUtilityFunc.cpp in Sources */,
+				D2856E311B9C7EF4008648AC /* SCComBulletMove.cpp in Sources */,
 				D2B7BFA41B13A0500012C51B /* SCModuleManager.cpp in Sources */,
 				D2B7BFA51B13A0500012C51B /* ZLibUtil.cpp in Sources */,
 				D2AF42121B67E79C007EE59F /* SCBulletController.cpp in Sources */,
 				D2AF42151B67E79C007EE59F /* SCGameModule.cpp in Sources */,
+				D2856E331B9C7EF4008648AC /* SCComNPCFSM.cpp in Sources */,
 				D22AC36E1B1DF486000F9AA4 /* SCRole.cpp in Sources */,
 				D2AF42231B67E7C2007EE59F /* SCDataModule.cpp in Sources */,
+				D2856E4D1B9C7F6D008648AC /* SCUIStage.cpp in Sources */,
+				D2856E301B9C7EF4008648AC /* SCComBulletAtk.cpp in Sources */,
 				D2B7BFAE1B13A0500012C51B /* json_reader.cpp in Sources */,
 				D2AF422B1B67E80D007EE59F /* SCGame.cpp in Sources */,
 				D2AF421D1B67E79C007EE59F /* SCWorld.cpp in Sources */,

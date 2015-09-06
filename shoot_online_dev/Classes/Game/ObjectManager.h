@@ -112,7 +112,7 @@ public:
 
     void update(float dt)
     {
-		OBJECT_MAP::iterator it = obj_map.begin();
+		typename OBJECT_MAP::iterator it = obj_map.begin();
 		while (it != obj_map.end())
 		{
 			if (it->second != NULL)

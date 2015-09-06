@@ -14,6 +14,7 @@
 #include "Utility/SCGeometry.h"
 
 USING_NS_CC;
+using namespace CocosDenshion;
 
 //private function here:
 SCNpc * SCWorld::FindNPCByID(int64_t id)
@@ -110,6 +111,21 @@ bool SCWorld::init()
     return true;
 }
 
+void SCWorld::onEnterTransitionDidFinish()
+{
+    Node::onEnterTransitionDidFinish();
+    
+    if( !m_pEssence->back_music.empty() )
+        SimpleAudioEngine::getInstance()->playBackgroundMusic(m_pEssence->back_music.c_str(), true);
+}
+
+void SCWorld::onExit()
+{
+    SimpleAudioEngine::getInstance()->stopBackgroundMusic();
+    
+    Node::onExit();
+}
+
 void SCWorld::sendMessage(const Message& msg)
 {
     _msg_queue->AddMessage(msg);
@@ -119,7 +135,6 @@ void SCWorld::sendMessage(const std::vector<GID> &glist, const Message& msg)
 {
     _msg_queue->AddMuiltiMessage(glist,msg);
 }
-
 
 void SCWorld::dispatchMessage(const Message &msg)
 {
@@ -136,7 +151,6 @@ void SCWorld::dispatchMessage(const Message &msg)
     }
     return;
 }
-
 
 void SCWorld::update(float dt)
 {
