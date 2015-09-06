@@ -32,6 +32,7 @@ public:
 	virtual bool init();
 	virtual void update(float dt);
 
+	void addComponent(SCComponentBase* pCom);
 	void addComponent(int comType, void* extraData);
 	SCComponentBase* getComponent(int comType);
 

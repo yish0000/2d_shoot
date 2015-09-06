@@ -80,7 +80,7 @@ void SCHostPlayerController::Attack()
 	if( pArmature )
 	{
 		Point vBulletPos;
-		if (!pArmature->getBoneWorldPos("qiang", vBulletPos))
+		if (!pArmature->getBoneWorldPos("qiangkou", vBulletPos))
 		{
 			vBulletPos = getObject()->getPosition();
 			if (getObject()->getFaceDirection() > 0)

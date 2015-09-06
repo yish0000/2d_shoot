@@ -24,7 +24,7 @@ SCComSprite::~SCComSprite()
 bool SCComSprite::init()
 {
 	m_pSprite = Sprite::create(m_sFilename);
-	m_pSprite->setAnchorPoint(Point(0.5f, 0.0f));
+	m_pSprite->setAnchorPoint(Point(0.5f, 0.5f));
 	m_pGameObj->addChild(m_pSprite);
 	return true;
 }

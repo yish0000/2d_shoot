@@ -272,5 +272,6 @@ bool SCWorld::GenerateBullet(int tid, const cocos2d::Point& birthPos, SCObject* 
 
 void SCWorld::RemoveNPC(SCNpc *pNpc)
 {
-    _npc_manager.Remove(pNpc->getID());
+	if (pNpc && pNpc->getParent())
+		pNpc->removeFromParent();
 }

@@ -175,6 +175,18 @@ void SCObject::addComponent(int comType, void* extraData)
 	}
 }
 
+void SCObject::addComponent(SCComponentBase* pCom)
+{
+	if (pCom)
+	{
+		pCom->setObject(this);
+		if (pCom->init())
+			m_components.push_back(pCom);
+		else
+			CCLOG("SCObject::addComponent, initialize the component (%d) failed!", pCom->getType());
+	}
+}
+
 SCComponentBase* SCObject::getComponent(int comType)
 {
 	for(size_t i=0; i<m_components.size(); ++i)

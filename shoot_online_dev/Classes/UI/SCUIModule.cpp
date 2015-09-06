@@ -242,11 +242,16 @@ SCUIBase* SCUIModule::getUIFrame(const std::string& name)
 
 	UIMetaInfo& info = mit->second;
 	SCUIBase* pUI = createUIFrame(info.name);
-	if (!pUI) return NULL;
+	if (!pUI)
+	{
+		CCLOG("SCUIModule::getUIFrame, create the specified frame failed! (%s)", info.name.c_str());
+		return NULL;
+	}
 
 	if (!pUI->init())
 	{
 		delete pUI;
+		CCLOG("SCUIModule::getUIFrame, initialize the specified frame failed! (%s)", info.name.c_str());
 		return NULL;
 	}
 
