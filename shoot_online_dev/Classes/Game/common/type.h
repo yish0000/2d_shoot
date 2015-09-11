@@ -20,7 +20,6 @@ enum
     SC_OBJECT_BULLET,
 };
 
-
 class GID //游戏对象ID
 {
 public:
@@ -47,5 +46,10 @@ public:
     }
 
 };
+
+#define SC_INVALID_GID GID(SC_OBJECT_UNKNOWN, -1)
+#define SC_HOSTPLAYER_GID GID(SC_OBJECT_HOSTPLAYER, 0)
+#define SC_NPC_GID(id) GID(SC_OBJECT_NPC, id)
+#define SC_BULLET_GID(id) GID(SC_OBJECT_BULLET, id)
 
 #endif // __LOGIC_COMMON_TYPE_H__

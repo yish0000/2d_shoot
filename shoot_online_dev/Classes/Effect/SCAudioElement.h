@@ -21,13 +21,13 @@ public:
 	virtual ~SCAudioElement();
 
 	virtual bool init(SCEffectElementData* pData, bool stepAction);
-	virtual void play();
-	virtual void stop();
-	virtual void pause();
-	virtual void resume();
-	virtual void resetPlay();
+	virtual void play() {}
+	virtual void stop() {}
+	virtual void pause() {}
+	virtual void resume() {}
+	virtual void resetPlay() {}
 
-	virtual void runKeyFrameAction(cocos2d::Action* pAction, int type);
+	virtual void runKeyFrameAction(cocos2d::Action* pAction, int type) {}
 
 protected:
 	SCAudioElementData* m_pData;

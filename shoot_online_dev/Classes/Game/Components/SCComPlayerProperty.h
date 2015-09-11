@@ -23,6 +23,9 @@ public:
 
     bool IsZombie() { return isZombie; }
 
+	int getCurHP() const { return hp; }
+	int getMaxHP() const { return max_hp; }
+
     void HandleAttackMsg(attack_msg &msg);
 
 protected:

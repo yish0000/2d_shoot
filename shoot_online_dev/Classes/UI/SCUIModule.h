@@ -99,6 +99,7 @@ protected:
 protected:	// Event handlers.
 	void initEventHandlers();
 	void onEventSwitchGameState(SCEvent* pEvent);
+	void onEventStageClear(SCEvent* pEvent);
 	
 protected:	// Protocol handlers.
 };

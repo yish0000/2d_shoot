@@ -147,6 +147,7 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClCompile Include="..\Classes\Effect\SCEffectData.cpp" />
     <ClCompile Include="..\Classes\Effect\SCEffectElement.cpp" />
     <ClCompile Include="..\Classes\Effect\SCEffectKeyframe.cpp" />
+    <ClCompile Include="..\Classes\Effect\SCImageElement.cpp" />
     <ClCompile Include="..\Classes\Game\Components\SCComArmature.cpp" />
     <ClCompile Include="..\Classes\Game\Components\SCComBulletAtk.cpp" />
     <ClCompile Include="..\Classes\Game\Components\SCComBulletMove.cpp" />
@@ -214,6 +215,7 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClCompile Include="..\Classes\Utility\SCConfigs.cpp" />
     <ClCompile Include="..\Classes\Utility\SCGeometry.cpp" />
     <ClCompile Include="..\Classes\Utility\SCJoystickBase.cpp" />
+    <ClCompile Include="..\Classes\Utility\SCTickNum.cpp" />
     <ClCompile Include="..\Classes\Utility\SCUtilityFunc.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -230,6 +232,7 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\Effect\SCEffectData.h" />
     <ClInclude Include="..\Classes\Effect\SCEffectElement.h" />
     <ClInclude Include="..\Classes\Effect\SCEffectKeyframe.h" />
+    <ClInclude Include="..\Classes\Effect\SCImageElement.h" />
     <ClInclude Include="..\Classes\Game\common\config.h" />
     <ClInclude Include="..\Classes\Game\common\message.h" />
     <ClInclude Include="..\Classes\Game\common\mvc.h" />
@@ -317,6 +320,7 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\Utility\SCGeometry.h" />
     <ClInclude Include="..\Classes\Utility\SCJoystickBase.h" />
     <ClInclude Include="..\Classes\Utility\SCRandomGen.h" />
+    <ClInclude Include="..\Classes\Utility\SCTickNum.h" />
     <ClInclude Include="..\Classes\Utility\SCUtilityFunc.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="minidump.h" />

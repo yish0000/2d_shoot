@@ -22,6 +22,11 @@ public:
 	virtual bool init();
 	virtual void update(float dt);
 
+	// 播放慢镜头
+	void playTimeScaleEffect(float fTime = 1.0f, float fScale = 0.2f);
+	// 恢复镜头速度到正常
+	void resumeTimeScale();
+
 	SCWorld* getWorld() { return m_pWorld; }
 
 protected:
@@ -32,6 +37,7 @@ protected:
 
 	// Event handlers
 	void onEventSwitchGameState(SCEvent* pEvent);
+	void onEventStageClear(SCEvent* pEvent);
 };
 
 ///////////////////////////////////////////////////////////////////////////

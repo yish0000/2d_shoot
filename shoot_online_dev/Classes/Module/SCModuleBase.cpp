@@ -24,8 +24,8 @@ SCModuleBase::~SCModuleBase()
 
 bool SCModuleBase::init()
 {
-	addEventListener(SC_EVENT_MODULE_INITED, sceventcallback_selector(SCModuleBase::onEventModuleInited));
-	addEventListener(SC_EVENT_NEW_PROTOCOL, sceventcallback_selector(SCModuleBase::onEventNewProtocol));
+	REGISTER_EVENT_HANDLER(SC_EVENT_MODULE_INITED, SCModuleBase::onEventModuleInited);
+	REGISTER_EVENT_HANDLER(SC_EVENT_NEW_PROTOCOL, SCModuleBase::onEventNewProtocol);
 	return true;
 }
 

@@ -351,6 +351,10 @@
     <ClCompile Include="..\Classes\Game\Components\SCComPlayerProperty.cpp">
       <Filter>Classes\Game\Components</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Effect\SCImageElement.cpp" />
+    <ClCompile Include="..\Classes\Utility\SCTickNum.cpp">
+      <Filter>Classes\Utility</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -658,6 +662,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Game\Components\SCComPlayerProperty.h">
       <Filter>Classes\Game\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Effect\SCImageElement.h">
+      <Filter>Classes\Effect\elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Utility\SCTickNum.h">
+      <Filter>Classes\Utility</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

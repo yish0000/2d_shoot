@@ -30,6 +30,9 @@ public:
 	void setAccelerateX(float accel) { m_fXAccelerate = accel; }
 	void setAccelerateY(float accel) { m_fYAccelerate = accel; }
 
+	void setJumpHeight(float fHeight) { m_fInitJumpHeight = fHeight; }
+	void setMoveSpeed(float fSpeed) { m_fMoveSpeed = fSpeed; }
+
 	// For Demo,  临时函数
 	void move(float xDir, float yDir);
 	void jump(bool bDown = false);

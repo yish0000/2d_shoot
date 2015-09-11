@@ -7,7 +7,7 @@
 
 USING_NS_CC;
 
-SCNpc::SCNpc(GID gid, int tid) : SCObject(gid, tid), m_pEssence(NULL), m_iCurHP(0)
+SCNpc::SCNpc(GID gid, int tid) : SCObject(gid, tid), m_pEssence(NULL)
 {
 	_controller = new SCNpcController(this);
 	_dispatcher = new SCNpcDispatcher(this);
@@ -42,7 +42,6 @@ bool SCNpc::init()
 	scComNPCPropertyData data;
 //	data.name = m_pEssence->name;
 	data.max_hp = m_pEssence->max_hp;
-    data.isDispear = m_pEssence->is_dispear;
 	addComponent(SC_COMPONENT_NPC_PROPERTY, (void*)(&data));
 
 	// °üÎ§ºÐ×é¼þ
@@ -62,7 +61,9 @@ bool SCNpc::init()
 	SCComArmature* pArmature = dynamic_cast<SCComArmature*>(getComponent(SC_COMPONENT_ARMATURE));
 	pArmature->playAnimation("zhanli", true);
 	pArmature->setInitFaceDir(-1);
+
     setActive(true);
+	setScale(m_pEssence->scale);
     return true;
 }
 
@@ -87,4 +88,26 @@ cocos2d::Rect SCNpc::getBoundingBox()
 		CCASSERT(0, "Cannot find the collider component!");
 		return Rect(0, 0, 0, 0);
 	}
+}
+
+bool SCNpc::isZombied()
+{
+	SCComNPCProperty* pProp = dynamic_cast<SCComNPCProperty*>(getComponent(SC_COMPONENT_NPC_PROPERTY));
+	return pProp ? pProp->IsZombie() : true;
+}
+
+void SCNpc::doDispear(float fDelay)
+{
+	if (isZombied())
+	{
+		scheduleOnce(schedule_selector(SCNpc::onDispearing), fDelay);
+	}
+}
+
+void SCNpc::onDispearing(float dt)
+{
+	Sequence* pAction = Sequence::create(
+		FadeOut::create(0.6f), RemoveSelf::create(), nullptr);
+	setCascadeOpacityEnabled(true);
+	runAction(pAction);
 }

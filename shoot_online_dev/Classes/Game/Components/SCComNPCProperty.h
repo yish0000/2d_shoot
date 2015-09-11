@@ -17,13 +17,12 @@ struct scComNPCPropertyData
 {
 	std::string name;
 	int max_hp;
-    bool isDispear;
 };
 
 class SCComNPCProperty : public SCComponentBase
 {
 public:
-    SCComNPCProperty() : SCComponentBase(SC_COMPONENT_NPC_PROPERTY), hp(1), isZombie(false), removeCount(-1.0f), isDispear(true) {}
+    SCComNPCProperty() : SCComponentBase(SC_COMPONENT_NPC_PROPERTY), hp(1), isZombie(false) {}
     SCComNPCProperty(scComNPCPropertyData &data);
     virtual ~SCComNPCProperty() {}
 
@@ -40,8 +39,6 @@ protected:
 
     int hp; // ÉúÃüÖµ
     bool isZombie;
-    float removeCount;
-    bool isDispear;
 
 private:
     void OnDamage(int damage);

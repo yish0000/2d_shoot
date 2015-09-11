@@ -38,7 +38,7 @@ bool SCComNPCAI::init()
             break;
         }
 
-        m_pGameObj->setFaceDirection(-1);
+        //m_pGameObj->setFaceDirection(-1);
     }
     else
     {

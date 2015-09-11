@@ -13,6 +13,13 @@
 #include "SCComPlayerFSM.h"
 #include "Utility/SCUtilityFunc.h"
 
+///////////////////////////////////////////////////////////////////////////
+// Constant variables
+
+static const float DEFAULT_GRAVITY = -1400.0f;
+
+///////////////////////////////////////////////////////////////////////////
+
 USING_NS_CC;
  
 SCComPlayerMove::SCComPlayerMove()
@@ -20,7 +27,7 @@ SCComPlayerMove::SCComPlayerMove()
 {
 	m_fMoveSpeed = 200.0f;
 	m_fInitJumpHeight = 200.0f;
-	m_fGravity = -1400.0f;
+	m_fGravity = DEFAULT_GRAVITY;
 
 	m_fXSpeed = 0.0f;
 	m_fYSpeed = 0.0f;
@@ -41,13 +48,15 @@ bool SCComPlayerMove::init()
 	m_bActive = true;
 	m_pComCollider = dynamic_cast<SCComCollider*>(m_pGameObj->getComponent(SC_COMPONENT_COLLIDER));
 	m_pComFSM = dynamic_cast<SCComPlayerFSM*>(m_pGameObj->getComponent(SC_COMPONENT_PLAYERFSM));
+
+	const PLAYER_ESSENCE* pEssence = dynamic_cast<SCHostPlayer*>(getObject())->getEssence();
+	m_fInitJumpHeight = (float)pEssence->jump_height;
+	m_fMoveSpeed = (float)pEssence->move_speed;
 	return true;
 }
 
 void SCComPlayerMove::update(float dt)
 {
-    if (m_pComFSM->getCurState() == SCComPlayerFSM::STATE_DIE)
-        return;
 	float fMaxSpeed = 1000.0f;
 
 	SCWorld* pWorld = glb_getWorld();
@@ -75,7 +84,8 @@ void SCComPlayerMove::update(float dt)
 	cocos2d::Rect oldBB = m_pComCollider->getBoundingBox();
 
 	// 更新状态
-	if( m_pComFSM->getCurState() == SCComPlayerFSM::STATE_STAND )
+	if( m_pComFSM->getCurState() == SCComPlayerFSM::STATE_STAND ||
+		m_pComFSM->getCurState() == SCComPlayerFSM::STATE_DIE )
 	{
 		if( !collision.bottomCollision )
 			m_pComFSM->doJump(0.0f);

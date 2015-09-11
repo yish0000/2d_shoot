@@ -19,8 +19,11 @@ public:
 	virtual ~SCUISkill();
 
 	virtual bool init();
+	virtual void update(float dt);
 
 protected:
+	cocos2d::ui::LoadingBar* m_pPrgHP;
+	cocos2d::ui::LoadingBar* m_pPrgMP;
 	
 protected:
 	void onBtnAttack(cocos2d::Ref* pSender, cocos2d::ui::Widget::TouchEventType et);

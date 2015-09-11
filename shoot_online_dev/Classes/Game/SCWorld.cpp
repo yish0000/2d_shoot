@@ -89,7 +89,7 @@ bool SCWorld::init()
 	addChild(m_pTileMap);
 
 	// 加载主玩家
-	m_pHostPlayer = SCHostPlayer::create();
+	m_pHostPlayer = SCHostPlayer::create(1001);
 	m_pTileMap->addChildToLayer(m_pHostPlayer, "rd_add", SCENELAYER_ZORDER_HOSTPLAYER);
 	m_pHostPlayer->setPosition(300, 120);
     m_pHostPlayer->setActive(true);
@@ -257,6 +257,7 @@ bool SCWorld::GenerateNpc(int tid, const cocos2d::Point& birthPos)
     npc->setPosition(birthPos.x, birthPos.y);
 	m_pTileMap->addChildToLayer(npc, "rd_add", SCENELAYER_ZORDER_NPC);
     npc->setWorld(this);
+	npc->setFaceDirection(-1);
     //加入objlist
 	_npc_manager.Insert(npc, npc->getID());
     return true;
@@ -288,4 +289,10 @@ void SCWorld::RemoveNPC(SCNpc *pNpc)
 {
 	if (pNpc && pNpc->getParent())
 		pNpc->removeFromParent();
+}
+
+void SCWorld::shake(float fTime)
+{
+	if (m_pTileMap)
+		m_pTileMap->shake(fTime);
 }

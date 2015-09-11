@@ -14,6 +14,7 @@
 #include "Components/SCComPlayerMove.h"
 #include "Components/SCComArmature.h"
 #include "Components/SCComPlayerFSM.h"
+#include "Components/SCComWeapon.h"
 #include "Utility/SCUtilityFunc.h"
 #include "Game/SCWorld.h"
 #include "Game/SCGameJoystick.h"
@@ -46,6 +47,7 @@ void SCHostPlayerController::Move(float xDir, float yDir)
 {
     if (!getObject()->isActive())
         return;
+
     SCComPlayerMove* pPlayerMove = dynamic_cast<SCComPlayerMove*>(getObject()->getComponent(SC_COMPONENT_PLAYERMOVE));
     pPlayerMove->move(xDir, yDir);
 
@@ -68,27 +70,32 @@ void SCHostPlayerController::Jump()
 	pPlayerMove->jump(pJoystick->getYDir() < -0.5f);
 }
 
-void SCHostPlayerController::Attack()
+void SCHostPlayerController::AttackOnce()
 {
     if (!getObject()->isActive())
         return;
-	SCComPlayerFSM* pPlayerFSM = dynamic_cast<SCComPlayerFSM*>(getObject()->getComponent(SC_COMPONENT_PLAYERFSM));
-	pPlayerFSM->doAttack();
 
-	Point bulletPos;
-	SCComArmature* pArmature = dynamic_cast<SCComArmature*>(getObject()->getComponent(SC_COMPONENT_ARMATURE));
-	if( pArmature )
-	{
-		Point vBulletPos;
-		if (!pArmature->getBoneWorldPos("qiangkou", vBulletPos))
-		{
-			vBulletPos = getObject()->getPosition();
-			if (getObject()->getFaceDirection() > 0)
-				vBulletPos += Point(80, 40);
-			else
-				vBulletPos += Point(-80, 40);
-		}
+	SCComWeapon* pWeapon = dynamic_cast<SCComWeapon*>(getObject()->getComponent(SC_COMPONENT_WEAPON));
+	if (pWeapon)
+		pWeapon->attackOnce();
+}
 
-        glb_getWorld()->GenerateBullet(1, vBulletPos, getObject());
-	}
+void SCHostPlayerController::AttackBegin()
+{
+	if (!getObject()->isActive())
+		return;
+
+	SCComWeapon* pWeapon = dynamic_cast<SCComWeapon*>(getObject()->getComponent(SC_COMPONENT_WEAPON));
+	if (pWeapon)
+		pWeapon->attackBegin();
+}
+
+void SCHostPlayerController::AttackEnd()
+{
+	if (!getObject()->isActive())
+		return;
+
+	SCComWeapon* pWeapon = dynamic_cast<SCComWeapon*>(getObject()->getComponent(SC_COMPONENT_WEAPON));
+	if (pWeapon)
+		pWeapon->attackEnd();
 }

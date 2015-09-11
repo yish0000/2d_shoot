@@ -12,6 +12,7 @@
 #include "Scene/SCSceneBase.h"
 #include "SCHostPlayer.h"
 #include "Utility/SCUtilityFunc.h"
+#include "Utility/SCTickNum.h"
 #include "UI/SCUIModule.h"
 #include "2d/CCShapeNode.h"
 #include "SCGame.h"
@@ -37,11 +38,6 @@ bool SCGameModule::init()
 	return true;
 }
 
-void SCGameModule::initEventHandlers()
-{
-	addEventListener(SC_EVENT_SWITCH_GAMESTATE, sceventcallback_selector(SCGameModule::onEventSwitchGameState));
-}
-
 void SCGameModule::update(float dt)
 {
 	SCModuleBase::update(dt);
@@ -50,11 +46,55 @@ void SCGameModule::update(float dt)
 		m_pWorld->update(dt);
 }
 
+void SCGameModule::playTimeScaleEffect(float fTime, float fScale)
+{
+	resumeTimeScale();
+
+	Scheduler* pScheduler = glb_getScheduler();
+	pScheduler->setTimeScale(fScale);
+
+	auto resumeTick = [&](SCTickNum* pTick) {
+		glb_getScheduler()->setTimeScale(pTick->getCurNumber());
+	};
+
+	auto resumeEnd = [&](SCTickNum* pTick) {
+		glb_getScheduler()->setTimeScale(1.0f);
+		delete pTick;
+	};
+
+	Sequence* pAction = Sequence::create(DelayTime::create(fTime * fScale),
+		CallFunc::create(std::bind([&] {
+			SCTickNum* pTick = new SCTickNum();
+			pTick->setCurNumber(glb_getScheduler()->getTimeScale());
+			pTick->setDestNumber(1.0f);
+			pTick->setDuration(0.4f);
+			pTick->setExponential(2);
+			pTick->setTickCallback(resumeTick);
+			pTick->setEndCallback(resumeEnd);
+			pTick->start();
+		})), nullptr);
+	m_pWorld->runAction(pAction);
+}
+
+void SCGameModule::resumeTimeScale()
+{
+	Scheduler* pScheduler = glb_getScheduler();
+	pScheduler->setTimeScale(1.0f);
+}
+
+///////////////////////////////////////////////////////////////////////////
+// EVENT HANDLERS
+
+void SCGameModule::initEventHandlers()
+{
+	REGISTER_EVENT_HANDLER(SC_EVENT_SWITCH_GAMESTATE, SCGameModule::onEventSwitchGameState);
+}
+
 void SCGameModule::onEventSwitchGameState(SCEvent* pEvent)
 {
 	SCEventSwitchGameState* pState = dynamic_cast<SCEventSwitchGameState*>(pEvent);
 	if (pState->m_iNewState != SCGame::GS_BATTLE)
-		CC_SAFE_RELEASE(m_pWorld);
+		CC_SAFE_RELEASE_NULL(m_pWorld);
 	else
 	{
 		CCASSERT(m_pWorld == NULL, "m_pWorld is not null!");

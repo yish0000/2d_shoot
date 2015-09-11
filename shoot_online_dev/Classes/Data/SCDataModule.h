@@ -56,6 +56,7 @@ protected:
 	WORLD_ESSENCE* getWorldEssence(int tid);
 	BULLET_ESSENCE* getBulletEssence(int tid);
     NPCAI_ESSENCE * getNPCAIEssence(int tid);
+	PLAYER_ESSENCE* getPlayerEssence(int tid);
 
 	// 删除模板数据
 	void deleteTemplate(int tid);

@@ -3,6 +3,8 @@
 #include "SCComPlayerMove.h"
 #include "Utility/SCRandomGen.h"
 
+USING_NS_CC;
+
 SCComPlayerProperty::SCComPlayerProperty(scComPlayerPropertyData &data)
 :SCComponentBase(SC_COMPONENT_PLAYER_PROPERTY)
 {
@@ -43,8 +45,11 @@ void SCComPlayerProperty::OnDamage(int damage)
     {
         hp -= damage;
 
-        if (hp <= 0)
-            OnDeath();
+		if (hp <= 0)
+		{
+			hp = 0;
+			OnDeath();
+		}
         else
         {
             SCComArmature* pArmature = dynamic_cast<SCComArmature*>(getObject()->getComponent(SC_COMPONENT_ARMATURE));
@@ -52,7 +57,9 @@ void SCComPlayerProperty::OnDamage(int damage)
             {
                 pArmature->playAnimation("qitiao", false, true, pArmature->getCurAnimName());
             }
-           
+
+			Sequence* pAction = Sequence::create(Blink::create(1.0f, 10), Show::create(), nullptr);
+			getObject()->runAction(pAction);
         }
     }
 }
@@ -70,6 +77,4 @@ void SCComPlayerProperty::OnDeath()
     if (pMove)
         pMove->die();
     m_pGameObj->setActive(false);
-
-
 }

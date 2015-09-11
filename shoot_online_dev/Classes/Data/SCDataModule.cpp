@@ -79,10 +79,7 @@ const void* SCDataModule::getTemplate(int tid, SC_DATA_TYPE dt)
 {
 	std::unordered_map<int, DATA_TEMPL_BASE*>::iterator it = m_templs.find(tid);
 	if (it != m_templs.end())
-	{
-		m_refs[it->second].refCount++;
 		return it->second;
-	}
 
 	switch (dt)
 	{
@@ -90,6 +87,8 @@ const void* SCDataModule::getTemplate(int tid, SC_DATA_TYPE dt)
 		return getNPCEssence(tid);
 	case DT_WORLD_ESSENCE:
 		return getWorldEssence(tid);
+	case DT_PLAYER_ESSENCE:
+		return getPlayerEssence(tid);
 	case DT_BULLET_ESSENCE:
 		return getBulletEssence(tid);
     case DT_NPCAI_ESSENCE:
@@ -187,6 +186,23 @@ NPCAI_ESSENCE* SCDataModule::getNPCAIEssence(int tid)
     addTemplate(tid, pTempl);
     return pTempl;
 }
+
+PLAYER_ESSENCE* SCDataModule::getPlayerEssence(int tid)
+{
+	char szFile[260];
+	sprintf(szFile, "data/player/%d.json", tid);
+
+	PLAYER_ESSENCE* pTempl = new PLAYER_ESSENCE();
+	if (!loadTemplateFromFile(pTempl, szFile))
+	{
+		delete pTempl;
+		return NULL;
+	}
+
+	addTemplate(tid, pTempl);
+	return pTempl;
+}
+
 void SCDataModule::deleteTemplate(int tid)
 {
 	SCScopedMutex lock(m_mutex);

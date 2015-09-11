@@ -81,6 +81,11 @@ void SCComArmature::setScale(float x, float y)
 	m_pArmature->setScale(x, y);
 }
 
+void SCComArmature::setScale(float scale)
+{
+	m_pArmature->setScale(scale, scale);
+}
+
 void SCComArmature::setScaleX(float x)
 {
 	m_pArmature->setScaleX(x);

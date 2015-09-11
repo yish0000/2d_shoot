@@ -54,11 +54,6 @@ bool SCUIModule::init()
     return true;
 }
 
-void SCUIModule::initEventHandlers()
-{
-	addEventListener(SC_EVENT_SWITCH_GAMESTATE, sceventcallback_selector(SCUIModule::onEventSwitchGameState));
-}
-
 bool SCUIModule::loadUIMetaData()
 {
 	std::string fileData = FileUtils::getInstance()->getStringFromFile("ui/uimeta.xml");
@@ -350,6 +345,15 @@ const SCUIModule::UIMetaInfo* SCUIModule::getUIMetaInfo(const std::string& name)
 	return it != m_UIMetas.end() ? &it->second : NULL;
 }
 
+///////////////////////////////////////////////////////////////////////////
+// EVENT HANDLERS
+
+void SCUIModule::initEventHandlers()
+{
+	REGISTER_EVENT_HANDLER(SC_EVENT_SWITCH_GAMESTATE, SCUIModule::onEventSwitchGameState);
+	REGISTER_EVENT_HANDLER(SC_EVENT_STAGE_CLEAR, SCUIModule::onEventStageClear);
+}
+
 void SCUIModule::onEventSwitchGameState(SCEvent* pEvent)
 {
 	SCEventSwitchGameState* pSwitchState = dynamic_cast<SCEventSwitchGameState*>(pEvent);
@@ -361,4 +365,13 @@ void SCUIModule::onEventSwitchGameState(SCEvent* pEvent)
 		changeUIType(FRAME_MAIN);
 	else if (pSwitchState->m_iNewState == SCGame::GS_BATTLE)
 		changeUIType(FRAME_BATTLE);
+}
+
+void SCUIModule::onEventStageClear(SCEvent* pEvent)
+{
+	// 由于没有通关界面，临时代码 退出关卡状态
+	Sequence* pAction = Sequence::create(DelayTime::create(5.0f), CallFunc::create(std::bind([&] {
+		SCGame::getInstance().changeGameState(SCGame::GS_MAIN);
+	})), nullptr);
+	getUILayer()->runAction(pAction);
 }

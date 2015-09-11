@@ -26,8 +26,12 @@ public:
 public: //被外部直接调用的函数
     void Move(float xDir, float yDir);
     void Jump();
-    void Attack();
+    void AttackOnce();
+	void AttackBegin();
+	void AttackEnd();
 
+protected:
+	void onMsgAttackOnce(const Message& msg);
 };
 
 #endif //__SCHOSTPLAYERCONTROLLER_H__

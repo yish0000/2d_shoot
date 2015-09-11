@@ -34,6 +34,7 @@ public:
 	void setScaleX(float x);
 	void setScaleY(float y);
 	void setScale(float x, float y);
+	void setScale(float scale);
 
 	// 设置透明
 	void fadeTo(int opacity, float fTime);

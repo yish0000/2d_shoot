@@ -52,6 +52,7 @@ public:
 
     SCWorld* getWorld() const { return _world; }
 	void setWorld(SCWorld* pWorld) { _world = pWorld; }
+
 	// 发送消息
 	virtual void sendMessage(const Message& msg);
     

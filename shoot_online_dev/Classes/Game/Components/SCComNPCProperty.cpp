@@ -9,14 +9,17 @@
 #include "SCComNPCProperty.h"
 #include "SCComArmature.h"
 #include "SCComNPCAI.h"
+#include "../SCGameModule.h"
 #include "Utility/SCRandomGen.h"
+#include "Utility/SCUtilityFunc.h"
+
+USING_NS_CC;
 
 SCComNPCProperty::SCComNPCProperty(scComNPCPropertyData &data)
-: SCComponentBase(SC_COMPONENT_NPC_PROPERTY), removeCount(-1.0f), isDispear(true)
+: SCComponentBase(SC_COMPONENT_NPC_PROPERTY)
 {
     max_hp = data.max_hp;
     name = data.name;
-    isDispear = data.isDispear;
 
     hp = max_hp;
     isZombie = false;
@@ -30,20 +33,8 @@ bool SCComNPCProperty::init()
 void SCComNPCProperty::update(float dt)
 {
     if (isZombie)
-    {
-        if (removeCount < 0.00001)
-            return;
-        else if (removeCount >= NPC_REMOVE_COUNTDOWN)
-        {
-            m_pGameObj->removeFromParent();
-            removeCount = -1.0f;
-        }
-        else
-        {
-            removeCount += dt;
-        }
         return;
-    }
+
     if (hp <= 0)
     {
         OnDeath();
@@ -65,7 +56,10 @@ void SCComNPCProperty::OnDamage(int damage)
         hp -= damage;
 
 		if (hp <= 0)
+		{
+			hp = 0;
 			OnDeath();
+		}
 		else
 		{
 			SCComArmature* pArmature = dynamic_cast<SCComArmature*>(getObject()->getComponent(SC_COMPONENT_ARMATURE));
@@ -83,10 +77,6 @@ void SCComNPCProperty::OnDamage(int damage)
 void SCComNPCProperty::OnDeath()
 {
     isZombie = true;
-    if (isDispear)
-    {
-        removeCount = 0.0001f;
-    }
 
     //死亡动画
 	SCComArmature* pArmature = dynamic_cast<SCComArmature*>(m_pGameObj->getComponent(SC_COMPONENT_ARMATURE));
@@ -94,12 +84,24 @@ void SCComNPCProperty::OnDeath()
 		pArmature->playAnimation("siwang", false);
 
     //调用AI的死亡接口
-    /*
     SCComNPCAI* pNPCAI = dynamic_cast<SCComNPCAI*>(m_pGameObj->getComponent(SC_COMPONENT_NPCAI));
     if (pNPCAI)
         pNPCAI->onDeath();
-    */
+
+	// 临时代码
+	// 如果是BOSS，播放慢镜头效果，触发过关事件
+	if (getObject()->getTID() == 726)
+	{
+		glb_getGameModule()->playTimeScaleEffect();
+		glb_getGameModule()->dispatchEvent(SC_EVENT_STAGE_CLEAR);
+	}
+
     m_pGameObj->setActive(false);
 
-
+	// 一秒之后，销毁尸体
+	bool bDispear = dynamic_cast<SCNpc*>(getObject())->getEssence()->is_dispear;
+	if (bDispear)
+	{
+		dynamic_cast<SCNpc*>(getObject())->doDispear(1.0f);
+	}
 }

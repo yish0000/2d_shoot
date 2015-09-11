@@ -24,6 +24,7 @@
 #define SC_EVENT_APP_ENTERFRONT "sc_event_app_enterfront"
 #define SC_EVENT_NEW_PROTOCOL "sc_event_new_protocol"
 #define SC_EVENT_SWITCH_GAMESTATE "sc_event_switch_gamestate"
+#define SC_EVENT_STAGE_CLEAR "sc_event_stage_clear"
 
 ///////////////////////////////////////////////////////////////////////////
 //  

@@ -14,6 +14,9 @@
 #include "Common/SCEventTypes.h"
 #include "SCModuleTypes.h"
 
+#define REGISTER_EVENT_HANDLER(type, func) \
+	addEventListener(type, sceventcallback_selector(func))
+
 #define REGISTER_PROTO_HANDLER(type, func) \
 	registerProtoHandler(type, CC_CALLBACK_1(func, this))
 

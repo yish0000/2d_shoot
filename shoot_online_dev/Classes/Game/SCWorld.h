@@ -61,6 +61,9 @@ public:
     virtual void onEnterTransitionDidFinish();
     virtual void onExit();
 
+	// 地震
+	void shake(float fTime = 0.5f);
+
 	// 获取模板数据
 	const WORLD_ESSENCE* getEssence() const { return m_pEssence; }
 

@@ -23,6 +23,7 @@
 #include "Components/SCComNPCFSM.h"
 #include "Components/SCComNPCAI.h"
 #include "Components/SCComPlayerProperty.h"
+#include "Components/SCComWeapon.h"
 
 USING_NS_CC;
 
@@ -160,6 +161,9 @@ void SCObject::addComponent(int comType, void* extraData)
                 pComponent = new SCComPlayerProperty(*data);
         }
         break;
+	case SC_COMPONENT_WEAPON:
+		pComponent = new SCComWeapon((int)extraData);
+		break;
 	default:
 		CCLOG("SCObject::addComponent, unknown component type!");
         break;

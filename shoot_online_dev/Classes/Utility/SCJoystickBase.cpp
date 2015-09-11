@@ -31,8 +31,8 @@ bool SCJoystickBase::init()
 	if( !Node::init() )
 		return false;
 
-	m_fPosX = 150.0f * glb_getUIModule()->getUIScale();
-	m_fPosY = 150.0f * glb_getUIModule()->getUIScale();
+	m_fPosX = 120.0f * glb_getUIModule()->getUIScale();
+	m_fPosY = 120.0f * glb_getUIModule()->getUIScale();
 
 	// 创建摇杆节点
 	m_pRootNode = Node::create();
