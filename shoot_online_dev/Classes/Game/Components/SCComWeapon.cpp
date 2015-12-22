@@ -55,7 +55,7 @@ void SCComWeapon::update(float dt)
 
 void SCComWeapon::attackBegin()
 {
-	if (m_durative)
+	if (m_durative && m_cntAttack.isFull())
 	{
 		m_attacking = true;
 		m_cntAttack.reset(true);

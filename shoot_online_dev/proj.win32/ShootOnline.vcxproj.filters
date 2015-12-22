@@ -109,6 +109,9 @@
     <Filter Include="Classes\UI\Battle">
       <UniqueIdentifier>{c4490283-4904-4a25-8b24-99850703dd16}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\Main">
+      <UniqueIdentifier>{e951959d-2b2d-4e1e-885a-a5cda4c9eca1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -264,9 +267,6 @@
     <ClCompile Include="..\Classes\Game\Components\SCComPlayerMove.cpp">
       <Filter>Classes\Game\Components</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\SCGame.cpp">
-      <Filter>Classes</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\Game\SCGameModule.cpp">
       <Filter>Classes\Game</Filter>
     </ClCompile>
@@ -290,9 +290,6 @@
     </ClCompile>
     <ClCompile Include="..\Classes\Data\SCDataModule.cpp">
       <Filter>Classes\Data</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Utility\SCConfigs.cpp">
-      <Filter>Classes\Utility</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Data\SCDataTypes.cpp">
       <Filter>Classes\Data</Filter>
@@ -351,9 +348,17 @@
     <ClCompile Include="..\Classes\Game\Components\SCComPlayerProperty.cpp">
       <Filter>Classes\Game\Components</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Effect\SCImageElement.cpp" />
     <ClCompile Include="..\Classes\Utility\SCTickNum.cpp">
       <Filter>Classes\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Effect\SCImageElement.cpp">
+      <Filter>Classes\Effect\elements</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Main\SCConfigs.cpp">
+      <Filter>Classes\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Main\SCGame.cpp">
+      <Filter>Classes\Main</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -570,9 +575,6 @@
     <ClInclude Include="..\Classes\Game\Components\SCComponentBase.h">
       <Filter>Classes\Game\Components</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\SCGame.h">
-      <Filter>Classes</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\Game\SCGameModule.h">
       <Filter>Classes\Game</Filter>
     </ClInclude>
@@ -602,9 +604,6 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Game\SCHostPlayer.h">
       <Filter>Classes\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Utility\SCConfigs.h">
-      <Filter>Classes\Utility</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\UI\SCUITypes.h">
       <Filter>Classes\UI</Filter>
@@ -668,6 +667,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Utility\SCTickNum.h">
       <Filter>Classes\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Main\SCConfigs.h">
+      <Filter>Classes\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Main\SCGame.h">
+      <Filter>Classes\Main</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,14 +1,14 @@
-/*
+ï»¿/*
 * ------------------------------------------------------------------------
 *  Name:   SCUIStart.cpp
-*  Desc:   ÓÎÏ·¿ªÊ¼½çÃæ
+*  Desc:   æ¸¸æˆå¼€å§‹ç•Œé¢
 *  Author: Yish
 *  Date:   2015/8/20
 * ------------------------------------------------------------------------
 */
 
 #include "SCUIStart.h"
-#include "SCGame.h"
+#include "Main/SCGame.h"
 
 USING_NS_CC;
 using namespace ui;
@@ -44,6 +44,11 @@ void SCUIStart::onBtnSettings(cocos2d::Ref* pSender, cocos2d::ui::Widget::TouchE
 	{
 		SCUIBase* pFrame = getUIFrame("Option");
 		if (pFrame)
+		{
 			pFrame->showUI();
+
+			int* p = NULL;
+			*p = 0;
+		}
 	}
 }

@@ -175,6 +175,8 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClCompile Include="..\Classes\Game\SCNpcDispatcher.cpp" />
     <ClCompile Include="..\Classes\Game\SCObject.cpp" />
     <ClCompile Include="..\Classes\Game\SCWorld.cpp" />
+    <ClCompile Include="..\Classes\Main\SCConfigs.cpp" />
+    <ClCompile Include="..\Classes\Main\SCGame.cpp" />
     <ClCompile Include="..\Classes\Module\SCModuleBase.cpp" />
     <ClCompile Include="..\Classes\Module\SCModuleManager.cpp" />
     <ClCompile Include="..\Classes\Network\netlib\compress\ZLibUtil.cpp" />
@@ -202,7 +204,6 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClCompile Include="..\Classes\Scene\SCSceneMain.cpp" />
     <ClCompile Include="..\Classes\Scene\SCSceneManager.cpp" />
     <ClCompile Include="..\Classes\Scene\SCTiledMap.cpp" />
-    <ClCompile Include="..\Classes\SCGame.cpp" />
     <ClCompile Include="..\Classes\UI\SCUIBase.cpp" />
     <ClCompile Include="..\Classes\UI\SCUIChapter.cpp" />
     <ClCompile Include="..\Classes\UI\SCUICustom.cpp" />
@@ -212,7 +213,6 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClCompile Include="..\Classes\UI\SCUISkill.cpp" />
     <ClCompile Include="..\Classes\UI\SCUIStage.cpp" />
     <ClCompile Include="..\Classes\UI\SCUIStart.cpp" />
-    <ClCompile Include="..\Classes\Utility\SCConfigs.cpp" />
     <ClCompile Include="..\Classes\Utility\SCGeometry.cpp" />
     <ClCompile Include="..\Classes\Utility\SCJoystickBase.cpp" />
     <ClCompile Include="..\Classes\Utility\SCTickNum.cpp" />
@@ -266,6 +266,8 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\Game\SCNpcDispatcher.h" />
     <ClInclude Include="..\Classes\Game\SCObject.h" />
     <ClInclude Include="..\Classes\Game\SCWorld.h" />
+    <ClInclude Include="..\Classes\Main\SCConfigs.h" />
+    <ClInclude Include="..\Classes\Main\SCGame.h" />
     <ClInclude Include="..\Classes\Module\SCModuleBase.h" />
     <ClInclude Include="..\Classes\Module\SCModuleManager.h" />
     <ClInclude Include="..\Classes\Module\SCModuleTypes.h" />
@@ -305,7 +307,6 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\Scene\SCSceneMain.h" />
     <ClInclude Include="..\Classes\Scene\SCSceneManager.h" />
     <ClInclude Include="..\Classes\Scene\SCTiledMap.h" />
-    <ClInclude Include="..\Classes\SCGame.h" />
     <ClInclude Include="..\Classes\UI\SCUIBase.h" />
     <ClInclude Include="..\Classes\UI\SCUIChapter.h" />
     <ClInclude Include="..\Classes\UI\SCUICustom.h" />
@@ -315,7 +316,6 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\UI\SCUIStage.h" />
     <ClInclude Include="..\Classes\UI\SCUIStart.h" />
     <ClInclude Include="..\Classes\UI\SCUITypes.h" />
-    <ClInclude Include="..\Classes\Utility\SCConfigs.h" />
     <ClInclude Include="..\Classes\Utility\SCCounter.h" />
     <ClInclude Include="..\Classes\Utility\SCGeometry.h" />
     <ClInclude Include="..\Classes\Utility\SCJoystickBase.h" />

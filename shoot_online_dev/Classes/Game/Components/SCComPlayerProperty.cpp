@@ -1,7 +1,9 @@
 #include "SCComPlayerProperty.h"
 #include "SCComArmature.h"
 #include "SCComPlayerMove.h"
+#include "../SCGameModule.h"
 #include "Utility/SCRandomGen.h"
+#include "Utility/SCUtilityFunc.h"
 
 USING_NS_CC;
 
@@ -55,7 +57,7 @@ void SCComPlayerProperty::OnDamage(int damage)
             SCComArmature* pArmature = dynamic_cast<SCComArmature*>(getObject()->getComponent(SC_COMPONENT_ARMATURE));
             if (pArmature)
             {
-                pArmature->playAnimation("qitiao", false, true, pArmature->getCurAnimName());
+                pArmature->playAnimation("shoushang", false, true, pArmature->getCurAnimName());
             }
 
 			Sequence* pAction = Sequence::create(Blink::create(1.0f, 10), Show::create(), nullptr);
@@ -68,13 +70,11 @@ void SCComPlayerProperty::OnDeath()
 {
     isZombie = true;
 
-    //À¿Õˆ∂Øª≠
-    SCComArmature* pArmature = dynamic_cast<SCComArmature*>(m_pGameObj->getComponent(SC_COMPONENT_ARMATURE));
-    if (pArmature)
-        pArmature->playAnimation("siwang", false);
-
     SCComPlayerMove* pMove = dynamic_cast<SCComPlayerMove*>(m_pGameObj->getComponent(SC_COMPONENT_PLAYERMOVE));
     if (pMove)
         pMove->die();
+
     m_pGameObj->setActive(false);
+
+	glb_getGameModule()->dispatchEvent(SC_EVENT_STAGE_CLEAR);
 }

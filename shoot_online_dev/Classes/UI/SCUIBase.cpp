@@ -235,6 +235,9 @@ void SCUIBase::setWidgetAlign(const char* path, UIAlignType align, const cocos2d
 	case UI_ALIGN_RIGHT:
 		realPos.x = winSize.width;
 		break;
+	default:
+		CCLOG("SCUIBase::setWidgetAlign, unknown align type!");
+		break;
 	}
 
 	realPos += pos;

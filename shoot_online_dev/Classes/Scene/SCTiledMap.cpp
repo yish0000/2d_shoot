@@ -10,7 +10,7 @@
 #include "SCTiledMap.h"
 #include "SCSceneBase.h"
 #include "Data/SCDataModule.h"
-#include "Utility/SCConfigs.h"
+#include "Main/SCConfigs.h"
 #include "Utility/SCUtilityFunc.h"
 #include "Utility/SCGeometry.h"
 #include "cocos2d.h"

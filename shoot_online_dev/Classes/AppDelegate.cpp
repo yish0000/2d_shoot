@@ -1,5 +1,5 @@
 ﻿#include "AppDelegate.h"
-#include "SCGame.h"
+#include "Main/SCGame.h"
 
 USING_NS_CC;
 using namespace CocosDenshion;

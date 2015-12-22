@@ -12,7 +12,7 @@
 #include "Player/SCPlayerModule.h"
 #include "Game/SCGameModule.h"
 #include "Game/SCWorld.h"
-#include "SCGame.h"
+#include "Main/SCGame.h"
 
 int glb_getGameState()
 {

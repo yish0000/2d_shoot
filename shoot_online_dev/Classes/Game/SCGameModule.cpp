@@ -8,6 +8,7 @@
  */
 
 #include "SCGameModule.h"
+#include "Main/SCGame.h"
 #include "Scene/SCSceneManager.h"
 #include "Scene/SCSceneBase.h"
 #include "SCHostPlayer.h"
@@ -15,7 +16,6 @@
 #include "Utility/SCTickNum.h"
 #include "UI/SCUIModule.h"
 #include "2d/CCShapeNode.h"
-#include "SCGame.h"
 
 USING_NS_CC;
 

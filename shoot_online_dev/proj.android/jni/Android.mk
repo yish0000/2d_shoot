@@ -12,7 +12,7 @@ LOCAL_MODULE_FILENAME := libgame
 
 LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/AppDelegate.cpp \
-		   ../../Classes/SCGame.cpp
+                   ../../Classes/SCGame.cpp
 
 SRC_COMMON_FILES := $(wildcard $(LOCAL_PATH)/../../Classes/Account/*.cpp)
 SRC_COMMON_FILES += $(wildcard $(LOCAL_PATH)/../../Classes/Common/*.cpp)
@@ -38,7 +38,7 @@ SRC_COMMON_FILES := $(SRC_COMMON_FILES:$(LOCAL_PATH)/%=%)
 LOCAL_SRC_FILES += $(SRC_COMMON_FILES)
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes \
-					$(LOCAL_PATH)/../../../cocos2d-x-3.2/external/curl/include/androidß
+					$(LOCAL_PATH)/../../../cocos2d-x-3.2/external/curl/include/android
 
 LOCAL_WHOLE_STATIC_LIBRARIES := cocos2dx_static
 LOCAL_WHOLE_STATIC_LIBRARIES += cocosdenshion_static

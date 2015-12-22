@@ -7,14 +7,15 @@
  * ------------------------------------------------------------------------
  */
 
+#include "cocos2d.h"
+#include "tinyxml2/tinyxml2.h"
+
 #include "SCUIBase.h"
 #include "SCUIModule.h"
 #include "Scene/SCSceneBase.h"
 #include "Utility/SCUtilityFunc.h"
 #include "Scene/SCSceneManager.h"
-#include "tinyxml2/tinyxml2.h"
-#include "SCGame.h"
-#include "cocos2d.h"
+#include "Main/SCGame.h"
 
 USING_NS_CC;
 

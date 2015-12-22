@@ -1,7 +1,7 @@
-/*
+ï»¿/*
  * ------------------------------------------------------------------------
  *  Name:   SCUIOption.cpp
- *  Desc:   ÅäÖÃÑ¡Ïî½çÃæ
+ *  Desc:   é…ç½®é€‰é¡¹ç•Œé¢
  *  Author: Yish
  *  Date:   2015/8/20
  * ------------------------------------------------------------------------
@@ -26,7 +26,8 @@ bool SCUIOption::init()
 {
 	if (!SCUIBase::init())
 		return false;
-	m_pRootWidget->addTouchEventListener(std::bind([&] {
+
+	m_pRootWidget->addTouchEventListener(std::bind([&] {
 		hideUI();
 	}));
 

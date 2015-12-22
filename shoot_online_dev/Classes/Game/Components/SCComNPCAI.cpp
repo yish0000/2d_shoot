@@ -122,6 +122,8 @@ void SCComNPCAI::DoTurretAttack()
         SCComArmature* pArmature = dynamic_cast<SCComArmature*>(m_pGameObj->getComponent(SC_COMPONENT_ARMATURE));
         if (pArmature)
         {
+//			pArmature->playAnimation("gongji", false, true, "zhanli");
+
             Point vBulletPos;
             if (pArmature->getBoneWorldPos("tou", vBulletPos))
             {

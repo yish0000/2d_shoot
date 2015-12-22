@@ -8,9 +8,9 @@
  */
 
 #include "SCGame.h"
+#include "SCConfigs.h"
 #include "Module/SCModuleManager.h"
 #include "Scene/SCSceneManager.h"
-#include "Utility/SCConfigs.h"
 #include "cocos2d.h"
 
 USING_NS_CC;
@@ -85,6 +85,10 @@ void SCGame::changeGameState(SCGame::GAMESTATE state)
 	case GS_BATTLE:
 		SCSceneManager::getInstance().enterScene(SCENE_BATTLE, TRANS_FADEIN, 0.5f);
 		break;
+	default:
+		CCASSERT(0, "");
+		CCLOG("SCGame::changeGameState, unknown game state!");
+		return;
 	}
 
 	SCModuleManager::getInstance().dispatchEvent(new SCEventSwitchGameState((int)oldState, (int)state));

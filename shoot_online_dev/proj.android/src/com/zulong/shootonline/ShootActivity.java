@@ -29,7 +29,10 @@ package com.zulong.shootonline;
 import org.cocos2dx.lib.Cocos2dxActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
+
+import com.flurry.android.FlurryAgent;
 
 public class ShootActivity extends Cocos2dxActivity {
 	
@@ -37,6 +40,26 @@ public class ShootActivity extends Cocos2dxActivity {
 	protected void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
+		// Initialize the flurry.
+		FlurryAgent.setLogEnabled(false);
+		FlurryAgent.setCaptureUncaughtExceptions(true);
+		FlurryAgent.init(this, "69XRY538B7F4MZR4T3TD");
+		FlurryAgent.setReportLocation(false);
+	}
+	
+	@Override
+	protected void onStart() {
+		super.onStart();
+		
+		FlurryAgent.onStartSession(this);
+		FlurryAgent.logEvent("ShootOnline onStart!");
+	}
+	
+	@Override
+	protected void onStop() {
+		super.onStop();
+		
+		FlurryAgent.onEndSession(this);
 	}
 	
 	@Override
@@ -49,6 +72,9 @@ public class ShootActivity extends Cocos2dxActivity {
 					getString(R.string.exit_message),
 					getString(R.string.exit_yes),
 					getString(R.string.exit_no));
+			
+			String msg = null;
+			Log.d("onKeyUp", msg);
 		}
 		
 		return true;

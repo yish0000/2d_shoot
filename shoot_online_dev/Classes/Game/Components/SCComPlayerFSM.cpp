@@ -90,7 +90,7 @@ void SCComPlayerFSM::doAttack()
 void SCComPlayerFSM::doDie()
 {
     m_iState = STATE_DIE;
-    m_pArmature->playAnimation("zhanli", true);
+    m_pArmature->playAnimation("siwang", false, true, "siwangxunhuan");
 }
 
 void SCComPlayerFSM::update_Stand(float dt)

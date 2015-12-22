@@ -25,6 +25,8 @@ class SCDataModule : public SCModuleBase
 	};
 	typedef std::unordered_map<const void*, TemplStub> TemplRefMap;
 
+	friend struct DATA_TEMPL_BASE;
+
 public:
 	SCDataModule();
 	virtual ~SCDataModule();
@@ -36,11 +38,6 @@ public:
 
 	// 获取模板数据
 	const void* getTemplate(int tid, SC_DATA_TYPE dt);
-
-	// 添加指定模板的引用
-	void retainTemplate(DATA_TEMPL_BASE* ptr);
-	// 释放指定模板的引用
-	void releaseTemplate(DATA_TEMPL_BASE* ptr);
 
 protected:
 	SCMutex m_mutex;
@@ -61,6 +58,12 @@ protected:
 	// 删除模板数据
 	void deleteTemplate(int tid);
 
+	// 添加指定模板的引用
+	void retainTemplate(DATA_TEMPL_BASE* ptr);
+	// 释放指定模板的引用
+	void releaseTemplate(DATA_TEMPL_BASE* ptr);
+
+	// 垃圾处理
 	void garbageCollect();
 };
 

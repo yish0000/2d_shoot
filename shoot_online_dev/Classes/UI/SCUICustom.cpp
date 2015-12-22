@@ -1,7 +1,7 @@
-/*
+ï»¿/*
 * ------------------------------------------------------------------------
 *  Name:   SCUICustom.cpp
-*  Desc:   ÓÎÏ·¿ªÊ¼½çÃæ
+*  Desc:   æ¸¸æˆå¼€å§‹ç•Œé¢
 *  Author: Yish
 *  Date:   2015/8/20
 * ------------------------------------------------------------------------
@@ -22,6 +22,10 @@ bool SCUICustom::init()
 {
 	if (!SCUIBase::init())
 		return false;
+
+	m_pRootWidget->addTouchEventListener(std::bind([&] {
+		hideUI();
+	}));
 
 	return true;
 }

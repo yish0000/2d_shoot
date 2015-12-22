@@ -87,8 +87,11 @@ void SCComPlayerMove::update(float dt)
 	if( m_pComFSM->getCurState() == SCComPlayerFSM::STATE_STAND ||
 		m_pComFSM->getCurState() == SCComPlayerFSM::STATE_DIE )
 	{
-		if( !collision.bottomCollision )
-			m_pComFSM->doJump(0.0f);
+		if (!collision.bottomCollision)
+		{
+			if( m_pComFSM->getCurState() != SCComPlayerFSM::STATE_DIE )
+				m_pComFSM->doJump(0.0f);
+		}
 		else if( m_fXDirection != 0 )
 			m_pComFSM->doRun();
 		else
