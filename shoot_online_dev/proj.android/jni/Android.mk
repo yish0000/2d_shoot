@@ -11,15 +11,15 @@ LOCAL_MODULE := game_shared
 LOCAL_MODULE_FILENAME := libgame
 
 LOCAL_SRC_FILES := hellocpp/main.cpp \
-                   ../../Classes/AppDelegate.cpp \
-                   ../../Classes/SCGame.cpp
-
+                   ../../Classes/AppDelegate.cpp
+                   
 SRC_COMMON_FILES := $(wildcard $(LOCAL_PATH)/../../Classes/Account/*.cpp)
 SRC_COMMON_FILES += $(wildcard $(LOCAL_PATH)/../../Classes/Common/*.cpp)
 SRC_COMMON_FILES += $(wildcard $(LOCAL_PATH)/../../Classes/Effect/*.cpp)
 SRC_COMMON_FILES += $(wildcard $(LOCAL_PATH)/../../Classes/Game/*.cpp)
 SRC_COMMON_FILES += $(wildcard $(LOCAL_PATH)/../../Classes/Game/common/*.cpp)
 SRC_COMMON_FILES += $(wildcard $(LOCAL_PATH)/../../Classes/Game/Components/*.cpp)
+SRC_COMMON_FILES += $(wildcard $(LOCAL_PATH)/../../Classes/Main/*.cpp)
 SRC_COMMON_FILES += $(wildcard $(LOCAL_PATH)/../../Classes/Data/*.cpp)
 SRC_COMMON_FILES += $(wildcard $(LOCAL_PATH)/../../Classes/Module/*.cpp)
 SRC_COMMON_FILES += $(wildcard $(LOCAL_PATH)/../../Classes/Network/*.cpp)
