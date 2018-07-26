@@ -93,7 +93,7 @@
     </Link>
     <PostBuildEvent>
       <Command>copy $(OutDir)\*.dll ..\Resources
-copy $(TargetPath) ..\Resources</Command>
+copy $(TargetPath) ..\Resources\$(ProjectName)_d.exe</Command>
     </PostBuildEvent>
     <PreLinkEvent>
       <Command>if not exist "$(OutDir)" mkdir "$(OutDir)"

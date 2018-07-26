@@ -44,11 +44,6 @@ void SCUIStart::onBtnSettings(cocos2d::Ref* pSender, cocos2d::ui::Widget::TouchE
 	{
 		SCUIBase* pFrame = getUIFrame("Option");
 		if (pFrame)
-		{
 			pFrame->showUI();
-
-			int* p = NULL;
-			*p = 0;
-		}
 	}
 }

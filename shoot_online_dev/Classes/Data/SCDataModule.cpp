@@ -14,6 +14,47 @@ USING_NS_CC;
 
 SCDataModule* g_pDataModule = NULL;
 
+typedef std::unordered_map<SC_DATA_TYPE, std::function<void*(int)> > CreateFuncMap;
+static CreateFuncMap _dataTypeCreateFuncs;
+
+#define IMPLEMENT_DATA_TYPE(dt, path) {\
+	auto funcPtr = [&](int tid) -> dt* { \
+		char szFile[260]; \
+		sprintf(szFile, path"/%d.json", tid); \
+		dt* pTempl = new dt(); \
+		if (!loadTemplateFromFile(pTempl, szFile)) { \
+			delete pTempl; \
+			return NULL; \
+				} \
+		g_pDataModule->addTemplate(tid, pTempl); \
+		return pTempl; \
+	}; \
+	_dataTypeCreateFuncs[DT_##dt] = funcPtr; }
+
+static bool loadTemplateFromFile(DATA_TEMPL_BASE* pTempl, const char* filename)
+{
+	Json::Value rootNode;
+	Json::Reader json;
+
+	if (!FileUtils::getInstance()->isFileExist(filename))
+	{
+		CCLOG("SCConfigs::load, load the config file failed! (%s)", filename);
+		return false;
+	}
+
+	std::string content = FileUtils::getInstance()->getStringFromFile(filename);
+	if (!json.parse(content, rootNode))
+	{
+		CCLOG("SCConfigs::load, parse the file(%s) content failed! Reason=%s", filename, json.getFormattedErrorMessages().c_str());
+		return false;
+	}
+
+	// 添加新模板
+	scnet::JsonStream stream(rootNode);
+	stream.popRootObject(*pTempl);
+	return true;
+}
+
 SCDataModule::SCDataModule() : SCModuleBase(MODULE_TYPE_DATA)
 {
 	m_cntGC.setPeriod(30.0f);	// 30秒清理一次垃圾
@@ -33,6 +74,11 @@ bool SCDataModule::init()
 	if (!SCModuleBase::init())
 		return false;
 
+	IMPLEMENT_DATA_TYPE(NPC_ESSENCE, "data/npc");
+	IMPLEMENT_DATA_TYPE(WORLD_ESSENCE, "data/world");
+	IMPLEMENT_DATA_TYPE(BULLET_ESSENCE, "data/bullet");
+	IMPLEMENT_DATA_TYPE(NPCAI_ESSENCE, "data/ai");
+	IMPLEMENT_DATA_TYPE(PLAYER_ESSENCE, "data/player");
 	return true;
 }
 
@@ -73,134 +119,6 @@ void SCDataModule::clearResources()
 
 	m_templs.clear();
 	m_refs.clear();
-}
-
-const void* SCDataModule::getTemplate(int tid, SC_DATA_TYPE dt)
-{
-	std::unordered_map<int, DATA_TEMPL_BASE*>::iterator it = m_templs.find(tid);
-	if (it != m_templs.end())
-		return it->second;
-
-	switch (dt)
-	{
-	case DT_NPC_ESSENCE:
-		return getNPCEssence(tid);
-	case DT_WORLD_ESSENCE:
-		return getWorldEssence(tid);
-	case DT_PLAYER_ESSENCE:
-		return getPlayerEssence(tid);
-	case DT_BULLET_ESSENCE:
-		return getBulletEssence(tid);
-    case DT_NPCAI_ESSENCE:
-        return getNPCAIEssence(tid);
-	default:
-		CCLOG("SCDataModule::getTemplate, unknown data type (%d, %d)!", (int)dt, tid);
-		return NULL;
-	}
-}
-
-static bool loadTemplateFromFile(DATA_TEMPL_BASE* pTempl, const char* filename)
-{
-	Json::Value rootNode;
-	Json::Reader json;
-
-	if (!FileUtils::getInstance()->isFileExist(filename))
-	{
-		CCLOG("SCConfigs::load, load the config file failed! (%s)", filename);
-		return false;
-	}
-
-	std::string content = FileUtils::getInstance()->getStringFromFile(filename);
-	if (!json.parse(content, rootNode))
-	{
-		CCLOG("SCConfigs::load, parse the file(%s) content failed! Reason=%s", filename, json.getFormattedErrorMessages().c_str());
-		return false;
-	}
-
-	// 添加新模板
-	scnet::JsonStream stream(rootNode);
-	stream.popRootObject(*pTempl);
-	return true;
-}
-
-NPC_ESSENCE* SCDataModule::getNPCEssence(int tid)
-{
-	char szFile[260];
-	sprintf(szFile, "data/npc/%d.json", tid);
-
-	NPC_ESSENCE* pTempl = new NPC_ESSENCE();
-	if (!loadTemplateFromFile(pTempl, szFile))
-	{
-		delete pTempl;
-		return NULL;
-	}
-
-	addTemplate(tid, pTempl);
-	return pTempl;
-}
-
-WORLD_ESSENCE* SCDataModule::getWorldEssence(int tid)
-{
-	char szFile[260];
-	sprintf(szFile, "data/world/%d.json", tid);
-
-	WORLD_ESSENCE* pTempl = new WORLD_ESSENCE();
-	if (!loadTemplateFromFile(pTempl, szFile))
-	{
-		delete pTempl;
-		return NULL;
-	}
-
-	addTemplate(tid, pTempl);
-	return pTempl;
-}
-
-BULLET_ESSENCE* SCDataModule::getBulletEssence(int tid)
-{
-	char szFile[260];
-	sprintf(szFile, "data/bullet/%d.json", tid);
-
-	BULLET_ESSENCE* pTempl = new BULLET_ESSENCE();
-	if (!loadTemplateFromFile(pTempl, szFile))
-	{
-		delete pTempl;
-		return NULL;
-	}
-
-	addTemplate(tid, pTempl);
-	return pTempl;
-}
-
-NPCAI_ESSENCE* SCDataModule::getNPCAIEssence(int tid)
-{
-    char szFile[260];
-    sprintf(szFile, "data/ai/%d.json", tid);
-
-    NPCAI_ESSENCE* pTempl = new NPCAI_ESSENCE();
-    if (!loadTemplateFromFile(pTempl, szFile))
-    {
-        delete pTempl;
-        return NULL;
-    }
-
-    addTemplate(tid, pTempl);
-    return pTempl;
-}
-
-PLAYER_ESSENCE* SCDataModule::getPlayerEssence(int tid)
-{
-	char szFile[260];
-	sprintf(szFile, "data/player/%d.json", tid);
-
-	PLAYER_ESSENCE* pTempl = new PLAYER_ESSENCE();
-	if (!loadTemplateFromFile(pTempl, szFile))
-	{
-		delete pTempl;
-		return NULL;
-	}
-
-	addTemplate(tid, pTempl);
-	return pTempl;
 }
 
 void SCDataModule::deleteTemplate(int tid)
@@ -269,4 +187,20 @@ void SCDataModule::addTemplate(int tid, DATA_TEMPL_BASE* data)
 	stub.refCount = 0;
 	m_refs[data] = stub;
 	m_templs[tid] = data;
+}
+
+const void* SCDataModule::getTemplate(int tid, SC_DATA_TYPE dt)
+{
+	std::unordered_map<int, DATA_TEMPL_BASE*>::iterator it = m_templs.find(tid);
+	if (it != m_templs.end())
+		return it->second;
+
+	CreateFuncMap::const_iterator it2 = _dataTypeCreateFuncs.find(dt);
+	if (it2 != _dataTypeCreateFuncs.end())
+		return it2->second(tid);
+	else
+	{
+		CCLOG("SCDataModule::getTemplate, unknown data type (%d, %d)!", (int)dt, tid);
+		return NULL;
+	}
 }

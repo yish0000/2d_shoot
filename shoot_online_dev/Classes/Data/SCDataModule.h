@@ -16,6 +16,8 @@
 #include "Utility/SCCounter.h"
 #include "Common/SCThread.h"
 
+/** 数据模块
+*/
 class SCDataModule : public SCModuleBase
 {
 	struct TemplStub
@@ -39,30 +41,21 @@ public:
 	// 获取模板数据
 	const void* getTemplate(int tid, SC_DATA_TYPE dt);
 
+	// 添加模板数据
+	void addTemplate(int tid, DATA_TEMPL_BASE* data);
+
 protected:
 	SCMutex m_mutex;
 	std::unordered_map<int, DATA_TEMPL_BASE*> m_templs;
 	TemplRefMap m_refs;		// 引用管理
 	SCCounter m_cntGC;		// 垃圾处理
 
-	// 添加模板数据
-	void addTemplate(int tid, DATA_TEMPL_BASE* data);
-
-	// 获取指定类型的模板
-	NPC_ESSENCE* getNPCEssence(int tid);
-	WORLD_ESSENCE* getWorldEssence(int tid);
-	BULLET_ESSENCE* getBulletEssence(int tid);
-    NPCAI_ESSENCE * getNPCAIEssence(int tid);
-	PLAYER_ESSENCE* getPlayerEssence(int tid);
-
 	// 删除模板数据
 	void deleteTemplate(int tid);
-
 	// 添加指定模板的引用
 	void retainTemplate(DATA_TEMPL_BASE* ptr);
 	// 释放指定模板的引用
 	void releaseTemplate(DATA_TEMPL_BASE* ptr);
-
 	// 垃圾处理
 	void garbageCollect();
 };

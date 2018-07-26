@@ -72,9 +72,6 @@ public class ShootActivity extends Cocos2dxActivity {
 					getString(R.string.exit_message),
 					getString(R.string.exit_yes),
 					getString(R.string.exit_no));
-			
-			String msg = null;
-			Log.d("onKeyUp", msg);
 		}
 		
 		return true;

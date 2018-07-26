@@ -107,4 +107,11 @@
 		<nature>org.eclipse.cdt.managedbuilder.core.managedBuildNature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>GameSrc</name>
+			<type>2</type>
+			<location>D:/Project/2d_shoot_game/2d_shoot_online/shoot_online_dev/Classes</location>
+		</link>
+	</linkedResources>
 </projectDescription>

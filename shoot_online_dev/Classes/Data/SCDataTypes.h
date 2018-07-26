@@ -52,36 +52,36 @@ enum SC_DATA_TYPE
 
 DEFINE_TEMPL(NPC_ESSENCE)
 {
-    std::string res_path;
-    float scale;
+	std::string res_path;
+	float scale;
 	int max_hp;
 	int move_speed;
 	int jump_heigh;
-    int ai_mode;
-    bool is_dispear;
+	int ai_mode;
+	bool is_dispear;
 
-	NPC_ESSENCE() : scale(1.0),max_hp(100), move_speed(0), jump_heigh(100),ai_mode(1),is_dispear(false) {}
+	NPC_ESSENCE() : scale(1.0), max_hp(100), move_speed(0), jump_heigh(100), ai_mode(1), is_dispear(false) {}
 
 	void encode(scnet::JsonStream &stream) const
 	{
-        TEMPL_ENCODE(res_path);
-        TEMPL_ENCODE(scale);
+		TEMPL_ENCODE(res_path);
+		TEMPL_ENCODE(scale);
 		TEMPL_ENCODE(max_hp);
 		TEMPL_ENCODE(move_speed);
 		TEMPL_ENCODE(jump_heigh);
 		TEMPL_ENCODE(ai_mode);
-        TEMPL_ENCODE(is_dispear);
+		TEMPL_ENCODE(is_dispear);
 	}
 
 	void decode(const scnet::JsonStream &stream)
 	{
-        TEMPL_DECODE(res_path);
-        TEMPL_DECODE(scale);
+		TEMPL_DECODE(res_path);
+		TEMPL_DECODE(scale);
 		TEMPL_DECODE(max_hp);
 		TEMPL_DECODE(move_speed);
 		TEMPL_DECODE(jump_heigh);
 		TEMPL_DECODE(ai_mode);
-        TEMPL_DECODE(is_dispear);
+		TEMPL_DECODE(is_dispear);
 	}
 };
 
